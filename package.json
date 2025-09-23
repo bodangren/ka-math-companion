@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --max-warnings=0 .",
-    "test": "node --test",
+    "test": "tsx --test",
     "sync:khan:math3": "node docs/scripts/sync-khan-course.mjs --path /math/math3 --slug integrated-math-3"
   },
   "dependencies": {
@@ -27,6 +27,7 @@
     "@types/react-dom": "^19.1.9",
     "eslint": "8.57.1",
     "eslint-config-next": "15.5.3",
+    "tsx": "^4.20.5",
     "typescript": "^5.6.3"
   },
   "license": "MIT"
