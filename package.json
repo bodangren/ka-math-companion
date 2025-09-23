@@ -1,0 +1,13 @@
+{
+  "name": "ka-math-companion",
+  "version": "0.1.0",
+  "description": "Curriculum companion synced to Khan Academy integrated math",
+  "type": "module",
+  "scripts": {
+    "sync:khan:math3": "node docs/scripts/sync-khan-course.mjs --path /math/math3 --slug integrated-math-3"
+  },
+  "dependencies": {
+    "@bhavjit/khan-api": "^0.7.4"
+  },
+  "license": "MIT"
+}
