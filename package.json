@@ -2,12 +2,32 @@
   "name": "ka-math-companion",
   "version": "0.1.0",
   "description": "Curriculum companion synced to Khan Academy integrated math",
+  "private": true,
   "type": "module",
+  "packageManager": "pnpm@8.15.8",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint --max-warnings=0 .",
+    "test": "node --test",
     "sync:khan:math3": "node docs/scripts/sync-khan-course.mjs --path /math/math3 --slug integrated-math-3"
   },
   "dependencies": {
-    "@bhavjit/khan-api": "^0.7.4"
+    "@bhavjit/khan-api": "^0.7.4",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "15.5.3",
+    "next": "15.5.3",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.12.0",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "eslint": "8.57.1",
+    "eslint-config-next": "15.5.3",
+    "typescript": "^5.6.3"
   },
   "license": "MIT"
 }
