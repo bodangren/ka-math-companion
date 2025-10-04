@@ -66,7 +66,11 @@ test("MasteryIndicator applies size classes correctly", () => {
   const progress = createMockProgress('progressing');
   
   const sizes = ['small', 'medium', 'large'] as const;
-  const expectedClasses = ['w-4 h-4', 'w-5 h-5', 'w-6 h-6'];
+  const expectedSizes = [
+    { width: '16px', height: '16px' },
+    { width: '20px', height: '20px' },
+    { width: '24px', height: '24px' },
+  ];
   
   sizes.forEach((size, index) => {
     const markup = renderToStaticMarkup(
@@ -74,12 +78,14 @@ test("MasteryIndicator applies size classes correctly", () => {
     );
     const { document } = new JSDOM(markup).window;
     
-    const container = document.querySelector('div > div');
+    const container = document.querySelector('.mastery-indicator');
     assert.ok(container, "container should exist");
     
-    const classList = container?.className || '';
-    assert.ok(classList.includes(expectedClasses[index]), 
-      `size ${size} should have class ${expectedClasses[index]}`);
+    const style = container?.getAttribute('style') || '';
+    assert.ok(style.includes(`width:${expectedSizes[index].width}`), 
+      `size ${size} should have width ${expectedSizes[index].width}`);
+    assert.ok(style.includes(`height:${expectedSizes[index].height}`), 
+      `size ${size} should have height ${expectedSizes[index].height}`);
   });
 });
 

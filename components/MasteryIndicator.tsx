@@ -12,46 +12,41 @@ interface MasteryIndicatorProps {
 
 const masteryConfig = {
   'not-started': {
-    color: 'bg-gray-400',
-    borderColor: 'border-gray-400',
-    bgColor: 'bg-gray-100',
-    textColor: 'text-gray-600',
+    backgroundColor: '#9ca3af',
+    borderColor: '#9ca3af',
+    textColor: '#4b5563',
     label: 'Not started',
     description: 'No attempts yet',
     pattern: '○',
   },
   struggling: {
-    color: 'bg-red-500',
-    borderColor: 'border-red-500',
-    bgColor: 'bg-red-100',
-    textColor: 'text-red-700',
+    backgroundColor: '#ef4444',
+    borderColor: '#ef4444',
+    textColor: '#ffffff',
     label: 'Struggling',
     description: 'Less than 50% correct',
     pattern: '▲',
   },
   progressing: {
-    color: 'bg-yellow-500',
-    borderColor: 'border-yellow-500',
-    bgColor: 'bg-yellow-100',
-    textColor: 'text-yellow-700',
+    backgroundColor: '#eab308',
+    borderColor: '#eab308',
+    textColor: '#ffffff',
     label: 'Progressing',
     description: '50-79% correct',
     pattern: '◐',
   },
   mastered: {
-    color: 'bg-green-500',
-    borderColor: 'border-green-500',
-    bgColor: 'bg-green-100',
-    textColor: 'text-green-700',
+    backgroundColor: '#22c55e',
+    borderColor: '#22c55e',
+    textColor: '#ffffff',
     label: 'Mastered',
     description: '80%+ correct',
     pattern: '●',
   },
   overlearned: {
-    color: 'bg-blue-500',
-    borderColor: 'border-blue-500',
-    bgColor: 'bg-blue-100',
-    textColor: 'text-blue-700',
+    backgroundColor: '#3b82f6',
+    borderColor: '#3b82f6',
+    textColor: '#ffffff',
     label: 'Overlearned',
     description: 'Sustained mastery',
     pattern: '★',
@@ -60,16 +55,16 @@ const masteryConfig = {
 
 const sizeClasses = {
   small: {
-    container: 'w-4 h-4',
-    text: 'text-xs',
+    container: { width: '16px', height: '16px' },
+    text: { fontSize: '10px' },
   },
   medium: {
-    container: 'w-5 h-5',
-    text: 'text-sm',
+    container: { width: '20px', height: '20px' },
+    text: { fontSize: '12px' },
   },
   large: {
-    container: 'w-6 h-6',
-    text: 'text-base',
+    container: { width: '24px', height: '24px' },
+    text: { fontSize: '14px' },
   },
 } as const;
 
@@ -89,26 +84,42 @@ export function MasteryIndicator({
       aria-label={`${config.label}: ${config.description}`}
     >
       <div
-        className={`
-          relative rounded-full border-2 ${config.borderColor} ${config.color}
-          ${sizeClass.container}
-          flex items-center justify-center
-          transition-colors duration-200
-        `}
+        className="mastery-indicator"
+        style={{
+          backgroundColor: config.backgroundColor,
+          borderColor: config.borderColor,
+          width: sizeClass.container.width,
+          height: sizeClass.container.height,
+          borderRadius: '50%',
+          borderWidth: '2px',
+          borderStyle: 'solid',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'background-color 0.2s ease',
+        }}
         title={config.description}
       >
         <span
-          className={`
-            ${sizeClass.text} font-bold text-white
-            flex items-center justify-center
-          `}
+          style={{
+            fontSize: sizeClass.text.fontSize,
+            fontWeight: 'bold',
+            color: config.textColor,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
           aria-hidden="true"
         >
           {config.pattern}
         </span>
       </div>
       {showLabel && (
-        <span className={`text-xs font-medium ${config.textColor}`}>
+        <span style={{
+          fontSize: '12px',
+          fontWeight: '500',
+          color: config.textColor,
+        }}>
           {config.label}
         </span>
       )}
