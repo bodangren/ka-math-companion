@@ -100,6 +100,10 @@ a {
   gap: var(--spacing-lg);
 }
 
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
 .card {
   padding: var(--spacing-lg);
   border-radius: var(--radius-lg);
@@ -126,6 +130,287 @@ a {
   border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
+.hero {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  background: var(--surface-muted);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.hero-title {
+  margin: 0;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+.hero-lead {
+  margin: 0;
+  max-width: 70ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: #1d4ed8;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  text-decoration: underline;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 var(--spacing-xs);
+}
+
+.curriculum-header {
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.curriculum-title {
+  margin: 0;
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+}
+
+.curriculum-lead {
+  margin-top: var(--spacing-xs);
+  max-width: 70ch;
+}
+
+.overview-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: var(--spacing-sm);
+  margin: 0;
+}
+
+.overview-metrics div {
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  background: var(--surface-muted);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.overview-metrics dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.overview-metrics dd {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.unit-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.unit-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.unit-card-heading {
+  max-width: 55ch;
+}
+
+.unit-index {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.unit-title {
+  margin: var(--spacing-xs) 0;
+  font-size: 1.5rem;
+}
+
+.unit-summary {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.unit-meta {
+  display: flex;
+  gap: var(--spacing-md);
+  margin: 0;
+}
+
+.unit-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.unit-meta-item dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.unit-meta-item dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.unit-lessons {
+  border-top: 1px solid rgba(15, 23, 42, 0.12);
+  padding-top: var(--spacing-md);
+}
+
+.unit-lessons-heading {
+  margin: 0 0 var(--spacing-sm);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.unit-lessons-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.unit-lessons-list a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.unit-lessons-list a:hover,
+.unit-lessons-list a:focus-visible {
+  text-decoration: underline;
+}
+
+.back-link {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  text-decoration: underline;
+}
+
+.curricula-title {
+  margin: 0;
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+}
+
+.curricula-lead {
+  margin-top: var(--spacing-xs);
+  max-width: 70ch;
+}
+
+.curricula-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.course-card {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.course-card-title {
+  margin: 0;
+}
+
+.course-card-description {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.course-card-meta {
+  display: flex;
+  gap: var(--spacing-md);
+  margin: 0;
+}
+
+.course-card-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.course-card-meta dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.course-card-meta dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.course-card-link {
+  justify-self: start;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.course-card-link:hover,
+.course-card-link:focus-visible {
+  background: #1d4ed8;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --surface: #101828;
@@ -138,8 +423,29 @@ a {
   }
 
   .card,
-  .note {
+  .note,
+  .hero {
     box-shadow: none;
     border-color: rgba(255, 255, 255, 0.12);
   }
+
+  .overview-metrics div {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .unit-lessons {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .course-card-link {
+    color: white;
+  }
+
+  .button {
+    color: white;
+  }
+}
+
+.mastery-indicator {
+  flex-shrink: 0;
 }
