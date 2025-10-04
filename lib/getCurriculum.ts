@@ -1,5 +1,15 @@
 import document from "../docs/data/integrated-math-3.course.json";
 
+export const DEFAULT_CURRICULUM_SLUG = "integrated-math-3";
+
+type CurriculumRegistryEntry = {
+  source: unknown;
+};
+
+const CURRICULUM_REGISTRY: Record<string, CurriculumRegistryEntry> = {
+  [DEFAULT_CURRICULUM_SLUG]: { source: document },
+};
+
 export interface CurriculumAssessment {
   id: string;
   slug: string;
@@ -87,6 +97,12 @@ export interface CurriculumDocument {
 class CurriculumSchemaError extends Error {
   constructor(message: string) {
     super(`Invalid Integrated Math 3 course payload: ${message}`);
+  }
+}
+
+export class CurriculumNotFoundError extends Error {
+  constructor(slug: string) {
+    super(`No curriculum registered for slug "${slug}"`);
   }
 }
 
@@ -282,11 +298,39 @@ export function parseCurriculumDocument(raw: unknown): CurriculumDocument {
   return { source, course };
 }
 
-let cachedCourse: CurriculumCourse | null = null;
+const curriculumCache = new Map<string, CurriculumCourse>();
 
-export function getCurriculum(): CurriculumCourse {
-  if (!cachedCourse) {
-    cachedCourse = parseCurriculumDocument(document).course;
+function loadCurriculum(slug: string): CurriculumCourse {
+  const entry = CURRICULUM_REGISTRY[slug];
+  if (!entry) {
+    throw new CurriculumNotFoundError(slug);
   }
-  return cachedCourse;
+  if (!curriculumCache.has(slug)) {
+    const parsed = parseCurriculumDocument(entry.source);
+    curriculumCache.set(slug, parsed.course);
+  }
+  return curriculumCache.get(slug)!;
+}
+
+export function getCurriculum(slug: string = DEFAULT_CURRICULUM_SLUG): CurriculumCourse {
+  return loadCurriculum(slug);
+}
+
+export interface RegisteredCurriculumSummary {
+  slug: string;
+  title: string;
+  description: string;
+  unitCount: number;
+}
+
+export function listCurricula(): RegisteredCurriculumSummary[] {
+  return Object.keys(CURRICULUM_REGISTRY).map((slug) => {
+    const course = loadCurriculum(slug);
+    return {
+      slug,
+      title: course.title,
+      description: course.description,
+      unitCount: course.units.length,
+    };
+  });
 }
