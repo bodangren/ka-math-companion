@@ -6,6 +6,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { DEFAULT_CURRICULUM_SLUG, getCurriculum } from "../../lib/getCurriculum";
 import { MasteryIndicator } from "../../components/MasteryIndicator";
+import { CurriculumOverview } from "./CurriculumOverview";
 
 test("MasteryIndicator renders in curriculum context", () => {
   // Test that the MasteryIndicator component can render with different progress states
@@ -39,4 +40,26 @@ test("MasteryIndicator renders in curriculum context", () => {
     assert.ok(ariaLabel?.includes(expectedLabel), 
       `label should include ${expectedLabel}`);
   });
+});
+
+test("CurriculumOverview lists units with static lesson links", () => {
+  const course = getCurriculum(DEFAULT_CURRICULUM_SLUG);
+  const markup = renderToStaticMarkup(
+    <CurriculumOverview course={course} courseSlug={DEFAULT_CURRICULUM_SLUG} />
+  );
+  const { document } = new JSDOM(markup).window;
+
+  const overview = document.querySelector('[data-testid="curriculum-overview"]');
+  assert.ok(overview, "curriculum overview wrapper should render");
+
+  const lessonCountNodes = document.querySelectorAll('[data-testid="lessons-count"]');
+  assert.ok(lessonCountNodes.length > 0, "lesson counts should be present for each unit");
+
+  const firstLessonLink = document.querySelector('.unit-lessons-list a');
+  assert.ok(firstLessonLink, "at least one lesson link should render");
+
+  const href = firstLessonLink?.getAttribute("href");
+  assert.ok(href, "lesson link should include href");
+  assert.ok(href?.startsWith(`/curriculum/${DEFAULT_CURRICULUM_SLUG}/`), "lesson link must be statically routed");
+  assert.ok(!href?.includes("?"), "lesson link should avoid query parameters for static export");
 });
