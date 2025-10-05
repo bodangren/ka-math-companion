@@ -22,7 +22,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "types": ["vitest", "node"]
   },
   "include": [
     "**/*.mdx",
