@@ -198,6 +198,44 @@ async function main() {
     throw new Error('Unable to determine output slug for course');
   }
 
+  const courseTitle = normalized.course.title ?? effectiveSlug;
+  const units = normalized.course.units ?? [];
+  const unitSummaries = units.map((unit) => {
+    const lessons = unit?.lessons ?? [];
+    const assessments = unit?.assessments ?? {};
+    const quizCount = assessments.quizzes?.length ?? 0;
+    const unitTestCount = assessments.unitTests?.length ?? 0;
+    const otherCount = assessments.other?.length ?? 0;
+    return {
+      title: unit?.title ?? '(untitled unit)',
+      lessonCount: lessons.length,
+      quizCount,
+      unitTestCount,
+      otherCount
+    };
+  });
+
+  const totalLessons = unitSummaries.reduce((sum, unit) => sum + unit.lessonCount, 0);
+  const totalAssessments = unitSummaries.reduce(
+    (sum, unit) => sum + unit.quizCount + unit.unitTestCount + unit.otherCount,
+    0
+  );
+
+  console.log(
+    `Fetched ${units.length} units for "${courseTitle}" · ${totalLessons} lessons · ${totalAssessments} assessments`
+  );
+  for (const [index, unit] of unitSummaries.entries()) {
+    const details = [
+      unit.lessonCount ? `${unit.lessonCount} lessons` : null,
+      unit.quizCount ? `${unit.quizCount} quizzes` : null,
+      unit.unitTestCount ? `${unit.unitTestCount} unit tests` : null,
+      unit.otherCount ? `${unit.otherCount} other` : null
+    ].filter(Boolean);
+    const prefix = String(index + 1).padStart(2, '0');
+    const detailText = details.length ? ` (${details.join(', ')})` : '';
+    console.log(`  ${prefix}. ${unit.title}${detailText}`);
+  }
+
   const outputPath = outArg
     ? resolve(REPO_ROOT, outArg)
     : resolve(REPO_ROOT, 'docs', 'data', `${effectiveSlug}.course.json`);

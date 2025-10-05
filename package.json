@@ -14,7 +14,8 @@
     "test:watch": "vitest",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "sync:khan:math3": "node docs/scripts/sync-khan-course.mjs --path /math/math3 --slug integrated-math-3",
+    "sync:khan": "node docs/scripts/sync-khan-course.mjs",
+    "sync:khan:math3": "pnpm sync:khan -- --path /math/math3 --slug integrated-math-3",
     "bmad:refresh": "bmad-method install -f -i codex",
     "bmad:list": "bmad-method list:agents",
     "bmad:validate": "bmad-method validate"

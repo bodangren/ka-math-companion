@@ -81,8 +81,8 @@ pnpm build       # next build && next export (outputs to ./out)
 ## Curriculum Sync (Khan Academy)
 
 - `@bhavjit/khan-api` powers a script that snapshots Khan Academy course data so our local curriculum tracks official units.
-- Run `node docs/scripts/sync-khan-course.mjs --path /math/math3 --slug integrated-math-3` to refresh `docs/data/integrated-math-3.course.json`.
-- Pass `--path` for other courses (for example, `/math/algebra2`) and `--out` to write to a custom location.
+- Run `pnpm sync:khan:math3` to refresh `docs/data/integrated-math-3.course.json`. The command prints a per-unit summary (unit count, lessons, assessments) so you can verify the fetch at a glance.
+- Use `pnpm sync:khan -- --path /math/algebra2 --slug algebra2` for other courses, or add `--out` to write to a custom location.
 - See `docs/automation.md` for all flags, JSON schema notes, and follow-up tasks (Markdown generation, diffing, CI hooks).
 
 ## Spaced Practice
