@@ -5,8 +5,8 @@ This project uses Khan Academy's internal GraphQL API (via the [`@bhavjit/khan-a
 ## Fetching course data
 
 ```bash
-npm install              # once, to install @bhavjit/khan-api
-node docs/scripts/sync-khan-course.mjs --path /math/math3 --slug integrated-math-3
+pnpm install             # once, to ensure dependencies are present
+pnpm sync:khan:math3
 ```
 
 The script:
@@ -28,7 +28,7 @@ Flag | Description | Default
 Example – mirror Algebra 2 into `docs/data/algebra2.course.json`:
 
 ```bash
-node docs/scripts/sync-khan-course.mjs --path /math/algebra2 --slug algebra2
+pnpm sync:khan -- --path /math/algebra2 --slug algebra2
 ```
 
 ## Next steps
