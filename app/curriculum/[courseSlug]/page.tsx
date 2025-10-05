@@ -10,9 +10,9 @@ import {
 import { CurriculumOverview } from "../CurriculumOverview";
 
 type PageProps = {
-  params: Promise<{
+  params: {
     courseSlug: string;
-  }>;
+  };
 };
 
 function tryGetCurriculum(slug: string): CurriculumCourse | null {
@@ -31,7 +31,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { courseSlug } = await params;
+  const { courseSlug } = params;
   const course = tryGetCurriculum(courseSlug);
   if (!course) {
     return {
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function CurriculumCoursePage({ params }: PageProps) {
-  const { courseSlug } = await params;
+  const { courseSlug } = params;
   const course = tryGetCurriculum(courseSlug);
 
   if (!course) {

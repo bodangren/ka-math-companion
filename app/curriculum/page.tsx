@@ -43,7 +43,7 @@ export default function CurriculumIndexPage() {
             </dl>
             <Link
               className="course-card-link"
-              href={{ pathname: "/curriculum/[courseSlug]", query: { courseSlug: course.slug } }}
+              href={`/curriculum/${course.slug}`}
             >
               View curriculum
             </Link>
