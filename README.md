@@ -2,6 +2,28 @@
 
 A pedagogy-first, static Next.js companion to Khan Academy math courses. The site blends conceptual exploration, algorithmic scaffolding, and spaced retrieval practice to help learners build durable understanding across middle and high school mathematics.
 
+## Project Overview
+
+The KA Math Companion is a functional educational platform enhancing Khan Academy's Integrated Math 3 curriculum. We're currently in Sprint S1 of a structured enhancement initiative focusing on UI/UX improvements, interactive practice generators, and teacher tools while maintaining our static site architecture.
+
+### Current State & Sprint Focus
+
+- **Existing Foundation**: Fully functional static Next.js application with curriculum navigation and mastery tracking
+- **Current Sprint (S1)**: Static site foundation improvements and Khan Academy sync automation
+- **Enhancement Roadmap**: 3-sprint plan targeting modern UI/UX, interactive practice, and teacher dashboard
+- **Architecture**: Maintaining static export compatibility while adding client-side interactivity
+- **Content Model**: Content-first approach with objectives, lessons, and deterministic generators
+
+### Sprint Progress
+
+**Sprint S1: Static Site Foundation** (See [S1.md](docs/sprint/S1.md))
+- ✅ Basic curriculum integration and mastery indicators
+- 🔄 Enhanced static site generation and export
+- 🔄 Automated Khan Academy sync improvements
+- 🔄 Progress tracking and visualization enhancements
+
+See our [roadmap](docs/sprint/roadmap.md) for the complete 3-sprint development plan.
+
 ## Guiding Principles
 
 - **Mastery learning**: Track progress per objective; mastery requires success in scaffolded + independent practice and sustained spaced-review performance.
@@ -113,15 +135,25 @@ BR="feat/${NUM}-$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-
 git switch -c "$BR"
 ```
 
-## Roadmap Highlights
+## Development Roadmap
 
-- ✅ Architecture + content model
-- ⬜️ Implement core interactive components (FunctionGrapher, NumberLine, DragArrange)
-- ⬜️ Ship initial Algebra II objective set with generator coverage
-- ⬜️ Add Leitner SRS UI and export/import
-- ⬜️ Expand accessibility settings (reduced motion, high contrast)
-- ⬜️ Introduce SM-2 spacing option and richer analytics
-- ⬜️ Support integrated math course mappings and cross-course dashboards
+### Current Sprint (S1): Static Site Foundation
+- Enhanced static site generation and GitHub Pages deployment
+- Improved Khan Academy course sync automation (see [automation.md](docs/automation.md))
+- Progress tracking and mastery visualization improvements
+- Content structure optimization for Integrated Math 3
+
+### Upcoming Sprints
+- **S2**: Interactive Practice Components - FunctionGrapher, NumberLine, DragArrange
+- **S3**: Teacher Dashboard & Analytics - Comprehensive tools for educators
+
+### Long-term Vision
+- SM-2 spacing algorithm and richer analytics
+- Expanded accessibility settings (reduced motion, high contrast)
+- Cross-course dashboards and integrated math mappings
+- Advanced gamification and engagement features
+
+See [roadmap.md](docs/sprint/roadmap.md) for detailed planning and [PRD](docs/prd/) for comprehensive requirements.
 
 ---
 
@@ -133,5 +165,18 @@ git switch -c "$BR"
 4. Request review via `gh pr edit --add-reviewer`.
 5. Enable auto-merge (`gh pr merge --auto --squash`).
 6. After merge, sync `main` and delete the feature branch locally and remote.
+
+## BMAD Framework & Documentation
+
+This project uses the BMad-Method framework for structured development:
+- **Agents**: Specialized AI assistants for different roles (see [AGENTS.md](AGENTS.md))
+- **Tasks**: Reusable workflows for development activities
+- **Documentation**: Structured PRD, architecture, and quality assurance
+
+### Key Documentation
+- [Product Requirements](docs/prd/) - Sharded PRD with comprehensive feature planning
+- [Sprint Planning](docs/sprint/) - Current sprint and roadmap
+- [Automation Guide](docs/automation.md) - Khan Academy sync and CI/CD
+- [Architecture Guide](docs/architecture/) - Technical architecture and patterns
 
 See `AGENTS.md` for automation and assistant guidance.
