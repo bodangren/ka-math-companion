@@ -2,25 +2,25 @@
 
 ## 📑 Sharded Document Notice
 
-This PRD has been sharded for better navigation and management. Please access the content through the organized sections in the [docs/prd/](./prd/) directory.
+This PRD has been migrated to SynthesisFlow structure. Please access the content through the organized sections in the [docs/](./) directory.
 
 ## 📁 Document Structure
 
 The PRD is organized into the following sections:
 
-- **[Introduction and Project Context](./prd/introduction.md)** - Project overview and current system state
-- **[Requirements](./prd/requirements.md)** - Functional, non-functional, and compatibility requirements  
-- **[User Interface Enhancement Goals](./prd/ui-enhancement-goals.md)** - Design philosophy and UX improvements
-- **[Technical Constraints](./prd/technical-constraints.md)** - Architecture and integration requirements
-- **[Epic and Story Structure](./prd/epic-structure.md)** - Organization of development work
-- **[Epic Details](./prd/epic-details.md)** - Detailed epic and story definitions
+- **[Introduction and Project Context](./introduction.md)** - Project overview and current system state
+- **[Requirements](./specs/requirements.md)** - Functional, non-functional, and compatibility requirements
+- **[User Interface Enhancement Goals](./ui-enhancement-goals.md)** - Design philosophy and UX improvements
+- **[Technical Constraints](./technical-constraints.md)** - Architecture and integration requirements
+- **[Epic and Story Structure](./epic-structure.md)** - Organization of development work
+- **[Epic Details](./epic-details.md)** - Detailed epic and story definitions
 
 ## 🚀 Quick Access
 
-- **[Start Here → Introduction](./prd/introduction.md)**
-- **[For Developers → Epic Details](./prd/epic-details.md)**
-- **[For Designers → UI Enhancement Goals](./prd/ui-enhancement-goals.md)**
-- **[For Architects → Technical Constraints](./prd/technical-constraints.md)**
+- **[Start Here → Introduction](./introduction.md)**
+- **[For Developers → Epic Details](./epic-details.md)**
+- **[For Designers → UI Enhancement Goals](./ui-enhancement-goals.md)**
+- **[For Architects → Technical Constraints](./technical-constraints.md)**
 
 ---
 

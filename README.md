@@ -16,7 +16,8 @@ The KA Math Companion is a functional educational platform enhancing Khan Academ
 
 ### Sprint Progress
 
-**Sprint S1: Static Site Foundation** (See [S1.md](docs/sprint/S1.md))
+**Sprint S1: Static Site Foundation** (See [S1.md](docs/S1.md))
+
 - ✅ Basic curriculum integration and mastery indicators
 - 🔄 Enhanced static site generation and export
 - 🔄 Automated Khan Academy sync improvements
@@ -36,7 +37,7 @@ See our [roadmap](docs/sprint/roadmap.md) for the complete 3-sprint development 
 ## Architecture Overview
 
 - **Framework**: Next.js (App Router) exported as a static site (`output: 'export'`, `trailingSlash: true`) for GitHub Pages deployment.
-- **Content model**  
+- **Content model**
   - `content/objectives/*.yml|json`: canonical objective metadata (prereqs, standards, references).
   - `content/lessons/<objectiveId>/<slug>.mdx`: MDX lessons with YAML front matter; embed React components for activities.
   - `content/items/<objectiveId>/*.ts`: Deterministic item generators exporting `generate(seed)` + `check(response)`.
@@ -138,22 +139,25 @@ git switch -c "$BR"
 ## Development Roadmap
 
 ### Current Sprint (S1): Static Site Foundation
+
 - Enhanced static site generation and GitHub Pages deployment
 - Improved Khan Academy course sync automation (see [automation.md](docs/automation.md))
 - Progress tracking and mastery visualization improvements
 - Content structure optimization for Integrated Math 3
 
 ### Upcoming Sprints
+
 - **S2**: Interactive Practice Components - FunctionGrapher, NumberLine, DragArrange
 - **S3**: Teacher Dashboard & Analytics - Comprehensive tools for educators
 
 ### Long-term Vision
+
 - SM-2 spacing algorithm and richer analytics
 - Expanded accessibility settings (reduced motion, high contrast)
 - Cross-course dashboards and integrated math mappings
 - Advanced gamification and engagement features
 
-See [roadmap.md](docs/sprint/roadmap.md) for detailed planning and [PRD](docs/prd/) for comprehensive requirements.
+See [roadmap.md](docs/specs/roadmap.md) for detailed planning and [PRD](docs/prd.md) for comprehensive requirements.
 
 ---
 
@@ -166,17 +170,18 @@ See [roadmap.md](docs/sprint/roadmap.md) for detailed planning and [PRD](docs/pr
 5. Enable auto-merge (`gh pr merge --auto --squash`).
 6. After merge, sync `main` and delete the feature branch locally and remote.
 
-## BMAD Framework & Documentation
+## SynthesisFlow Framework & Documentation
 
-This project uses the BMad-Method framework for structured development:
-- **Agents**: Specialized AI assistants for different roles (see [AGENTS.md](AGENTS.md))
-- **Tasks**: Reusable workflows for development activities
-- **Documentation**: Structured PRD, architecture, and quality assurance
+This project uses SynthesisFlow framework for structured development:
+
+- **Skills**: Specialized capabilities for project management, development, and automation
+- **Documentation**: Structured PRD, specs, and quality assurance
 
 ### Key Documentation
-- [Product Requirements](docs/prd/) - Sharded PRD with comprehensive feature planning
-- [Sprint Planning](docs/sprint/) - Current sprint and roadmap
-- [Automation Guide](docs/automation.md) - Khan Academy sync and CI/CD
-- [Architecture Guide](docs/architecture/) - Technical architecture and patterns
 
-See `AGENTS.md` for automation and assistant guidance.
+- [Product Requirements](docs/prd.md) - Comprehensive feature planning
+- [Sprint Planning](docs/S1.md, docs/S2.md) - Current sprint and roadmap
+- [Automation Guide](docs/automation.md) - Khan Academy sync and CI/CD
+- [Agent Guide](docs/AGENTS.md) - AI assistant guidance and workflows
+
+See `docs/AGENTS.md` for automation and assistant guidance.
