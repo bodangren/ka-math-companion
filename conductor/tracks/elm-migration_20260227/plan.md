@@ -1,6 +1,6 @@
 # Track Plan: Next.js to Elm/ElmLand Migration
 
-## Phase 1: Next.js Removal & Cleanup
+## Phase 1: Next.js Removal & Cleanup [checkpoint: 16a9c91]
 
 - [x] **Task 1: Remove Next.js Application Code** [85a3ca3]
   - [x] Write Tests: N/A (deletion task)
