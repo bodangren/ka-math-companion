@@ -53,7 +53,7 @@
 - [x] **Task 13: Curriculum Overview Page** [1fe851c]
   - [x] Write Tests: Verify all units are listed with correct links
   - [x] Implement: Create `src/Pages/Curriculum.elm` displaying unit list
-- [ ] **Task 14: Unit Detail Page**
+- [~] **Task 14: Unit Detail Page**
   - [ ] Write Tests: Verify unit page shows lessons with correct hierarchy
   - [ ] Implement: Create `src/Pages/Curriculum/Unit_.elm` with dynamic routing
 - [ ] **Task 15: Lesson Detail Page**
