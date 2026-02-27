@@ -8,9 +8,9 @@
 - [x] **Task 2: Remove Next.js Configuration** [ae73645]
   - [x] Write Tests: N/A (deletion task)
   - [x] Implement: Delete `next.config.ts`, `next-env.d.ts`, `tsconfig.json`, `mdx.d.ts`
-- [~] **Task 3: Remove Build Artifacts**
-  - [ ] Write Tests: N/A (deletion task)
-  - [ ] Implement: Delete `.next/`, `out/`, `node_modules/`, `pnpm-lock.yaml`
+- [x] **Task 3: Remove Build Artifacts** [5cf5d27]
+  - [x] Write Tests: N/A (deletion task)
+  - [x] Implement: Delete `.next/`, `out/`, `node_modules/`, `pnpm-lock.yaml`
 - [ ] **Task 4: Remove JavaScript Tooling**
   - [ ] Write Tests: N/A (deletion task)
   - [ ] Implement: Delete `vitest.config.ts`, `vitest.setup.ts`, `.eslintrc.cjs`, `.prettierrc.json`, `.prettierignore`
