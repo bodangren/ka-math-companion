@@ -14,5 +14,12 @@
     "sync:khan": "node docs/scripts/sync-khan-course.mjs",
     "sync:khan:math3": "npm run sync:khan -- --path /math/math3 --slug integrated-math-3"
   },
+  "devDependencies": {
+    "elm": "^0.19.1-6",
+    "elm-format": "^0.8.8",
+    "elm-review": "^2.13.5",
+    "elm-test": "^0.19.1-revision17",
+    "elm-land": "^0.20.1"
+  },
   "license": "MIT"
 }
