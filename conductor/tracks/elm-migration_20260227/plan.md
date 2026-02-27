@@ -37,7 +37,7 @@
 
 ## Phase 3: Curriculum Data Model
 
-- [ ] **Task 10: Design Curriculum Types**
+- [~] **Task 10: Design Curriculum Types**
   - [ ] Write Tests: Unit tests for curriculum type constructors and decoders
   - [ ] Implement: Create `src/Data/Curriculum.elm` with Course, Unit, Lesson types
 - [ ] **Task 11: Parse Curriculum Data**
