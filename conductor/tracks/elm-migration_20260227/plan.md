@@ -47,9 +47,9 @@
 
 ## Phase 4: Routing & Pages
 
-- [~] **Task 12: Home Page**
-  - [ ] Write Tests: Verify home page renders with expected content
-  - [ ] Implement: Create `src/Pages/Home_.elm` with landing content
+- [x] **Task 12: Home Page** [1d1e863]
+  - [x] Write Tests: Verify home page renders with expected content
+  - [x] Implement: Create `src/Pages/Home_.elm` with landing content
 - [ ] **Task 13: Curriculum Overview Page**
   - [ ] Write Tests: Verify all units are listed with correct links
   - [ ] Implement: Create `src/Pages/Curriculum.elm` displaying unit list
