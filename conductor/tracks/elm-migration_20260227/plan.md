@@ -11,7 +11,7 @@
 - [x] **Task 3: Remove Build Artifacts** [5cf5d27]
   - [x] Write Tests: N/A (deletion task)
   - [x] Implement: Delete `.next/`, `out/`, `node_modules/`, `pnpm-lock.yaml`
-- [ ] **Task 4: Remove JavaScript Tooling**
+- [~] **Task 4: Remove JavaScript Tooling**
   - [ ] Write Tests: N/A (deletion task)
   - [ ] Implement: Delete `vitest.config.ts`, `vitest.setup.ts`, `.eslintrc.cjs`, `.prettierrc.json`, `.prettierignore`
 - [ ] **Task 5: Update package.json**
