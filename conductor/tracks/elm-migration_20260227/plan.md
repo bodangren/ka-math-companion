@@ -56,7 +56,7 @@
 - [x] **Task 14: Unit Detail Page** [7143175]
   - [x] Write Tests: Verify unit page shows lessons with correct hierarchy
   - [x] Implement: Create `src/Pages/Curriculum/Unit_.elm` with dynamic routing
-- [x] **Task 15: Lesson Detail Page** [c7fd1ca]
+- [x] **Task 15: Lesson Detail Page** [3e900ab]
   - [x] Write Tests: Verify lesson page renders objectives
   - [x] Implement: Create `src/Pages/Curriculum/Unit/Lesson_.elm` with nested routing
 - [ ] **Task: Conductor - User Manual Verification 'Phase 4: Routing & Pages'**
