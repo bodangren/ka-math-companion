@@ -1,24 +1,37 @@
 # Technology Stack
 
 ## Core Frameworks
-- **Frontend**: Next.js 15 (App Router)
-- **UI Library**: React 19
-- **Language**: TypeScript
+
+- **Frontend**: ElmLand
+- **Language**: Elm 0.19.1
+- **Styling**: Tailwind CSS (via ElmLand integration)
 
 ## Content & Rendering
-- **Authoring**: MDX (@next/mdx)
-- **Math Notation**: KaTeX
-- **Validation**: Zod (for content metadata)
+
+- **Math Notation**: KaTeX (via ports)
+- **Charts & Graphs**: elm-charts (native), ECharts/D3 (via ports for complex visualizations)
 
 ## Tooling & Infrastructure
-- **Package Manager**: pnpm 8+
-- **Build System**: Next.js static export (`output: export`)
-- **Deployment**: GitHub Pages
-- **Code Quality**: ESLint, Prettier
+
+- **Package Manager**: npm
+- **Build System**: ElmLand CLI + Vite
+- **Deployment**: GitHub Pages (static export)
+- **Code Quality**: elm-review, elm-format
 
 ## Testing
-- **Unit/Integration**: Vitest
+
+- **Unit**: elm-test
 - **E2E**: Playwright (for interaction flows)
 
 ## State Management
-- **Progress/Settings**: Browser LocalStorage
+
+- **Architecture**: The Elm Architecture (TEA) — built-in
+- **Persistence**: Browser LocalStorage (via ports)
+
+## Interop Strategy
+
+- **Ports**: JavaScript interop for:
+  - KaTeX rendering
+  - Complex chart libraries
+  - Browser APIs not available in Elm
+- **Flags**: Initial app state from localStorage

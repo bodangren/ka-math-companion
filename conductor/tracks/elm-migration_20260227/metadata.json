@@ -1,0 +1,8 @@
+{
+  "track_id": "elm-migration_20260227",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-02-27T00:00:00Z",
+  "updated_at": "2026-02-27T00:00:00Z",
+  "description": "Migrate application from Next.js/React to Elm/ElmLand, removing JavaScript infrastructure and establishing Elm foundation while preserving curriculum data."
+}
