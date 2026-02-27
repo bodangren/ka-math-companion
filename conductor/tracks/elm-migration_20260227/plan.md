@@ -19,7 +19,7 @@
   - [x] Implement: Remove all Next.js/React dependencies, reset for ElmLand
 - [ ] **Task: Conductor - User Manual Verification 'Phase 1: Next.js Removal & Cleanup'**
 
-## Phase 2: Elm/ElmLand Foundation
+## Phase 2: Elm/ElmLand Foundation [checkpoint: ee7ff27]
 
 - [x] **Task 6: Initialize ElmLand Project** [159ee3a]
   - [x] Write Tests: Verify ElmLand CLI is installed and project scaffolds correctly
