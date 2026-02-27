@@ -4,44 +4,9 @@
   "description": "Curriculum companion synced to Khan Academy integrated math",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@8.15.8",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint --max-warnings=0 .",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
     "sync:khan": "node docs/scripts/sync-khan-course.mjs",
-    "sync:khan:math3": "pnpm sync:khan -- --path /math/math3 --slug integrated-math-3",
-    "bmad:refresh": "bmad-method install -f -i codex",
-    "bmad:list": "bmad-method list:agents",
-    "bmad:validate": "bmad-method validate"
-  },
-  "dependencies": {
-    "@bhavjit/khan-api": "^0.7.4",
-    "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "15.5.3",
-    "next": "15.5.3",
-    "react": "19.1.1",
-    "react-dom": "19.1.1"
-  },
-  "devDependencies": {
-    "@types/node": "^22.12.0",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
-    "@typescript-eslint/eslint-plugin": "^8.18.2",
-    "@typescript-eslint/parser": "^8.18.2",
-    "eslint": "8.57.1",
-    "eslint-config-next": "15.5.3",
-    "eslint-plugin-mdx": "^3.1.4",
-    "jsdom": "^27.0.0",
-    "prettier": "^3.4.2",
-    "tsx": "^4.20.5",
-    "typescript": "^5.6.3",
-    "vitest": "^2.1.4"
+    "sync:khan:math3": "npm run sync:khan -- --path /math/math3 --slug integrated-math-3"
   },
   "license": "MIT"
 }
