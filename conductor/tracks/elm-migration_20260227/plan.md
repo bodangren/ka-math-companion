@@ -14,9 +14,9 @@
 - [x] **Task 4: Remove JavaScript Tooling** [aa08602]
   - [x] Write Tests: N/A (deletion task)
   - [x] Implement: Delete `vitest.config.ts`, `vitest.setup.ts`, `.eslintrc.cjs`, `.prettierrc.json`, `.prettierignore`
-- [ ] **Task 5: Update package.json**
-  - [ ] Write Tests: N/A (configuration task)
-  - [ ] Implement: Remove all Next.js/React dependencies, reset for ElmLand
+- [x] **Task 5: Update package.json** [f5e56fc]
+  - [x] Write Tests: N/A (configuration task)
+  - [x] Implement: Remove all Next.js/React dependencies, reset for ElmLand
 - [ ] **Task: Conductor - User Manual Verification 'Phase 1: Next.js Removal & Cleanup'**
 
 ## Phase 2: Elm/ElmLand Foundation
