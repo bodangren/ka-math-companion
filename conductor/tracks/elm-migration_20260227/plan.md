@@ -40,9 +40,9 @@
 - [x] **Task 10: Design Curriculum Types** [5b047c0]
   - [x] Write Tests: Unit tests for curriculum type constructors and decoders
   - [x] Implement: Create `src/Data/Curriculum.elm` with Course, Unit, Lesson types
-- [~] **Task 11: Parse Curriculum Data**
-  - [ ] Write Tests: Verify curriculum markdown parses into Elm structures
-  - [ ] Implement: Create curriculum data module, embed parsed data as Elm constants
+- [x] **Task 11: Parse Curriculum Data** [df8e612]
+  - [x] Write Tests: Verify curriculum markdown parses into Elm structures
+  - [x] Implement: Create curriculum data module, embed parsed data as Elm constants
 - [ ] **Task: Conductor - User Manual Verification 'Phase 3: Curriculum Data Model'**
 
 ## Phase 4: Routing & Pages
