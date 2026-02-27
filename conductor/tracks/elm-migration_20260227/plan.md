@@ -2,9 +2,9 @@
 
 ## Phase 1: Next.js Removal & Cleanup
 
-- [~] **Task 1: Remove Next.js Application Code**
-  - [ ] Write Tests: N/A (deletion task)
-  - [ ] Implement: Delete `app/`, `components/`, `lib/` directories
+- [x] **Task 1: Remove Next.js Application Code** [85a3ca3]
+  - [x] Write Tests: N/A (deletion task)
+  - [x] Implement: Delete `app/`, `components/`, `lib/` directories
 - [ ] **Task 2: Remove Next.js Configuration**
   - [ ] Write Tests: N/A (deletion task)
   - [ ] Implement: Delete `next.config.ts`, `next-env.d.ts`, `tsconfig.json`, `mdx.d.ts`
