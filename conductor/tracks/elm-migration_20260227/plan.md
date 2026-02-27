@@ -27,7 +27,7 @@
 - [x] **Task 7: Configure Tailwind CSS** [d35fdb0]
   - [x] Write Tests: Verify Tailwind classes apply correctly in rendered page
   - [x] Implement: Confirm ElmLand Tailwind integration, add custom config if needed
-- [ ] **Task 8: Set Up Code Quality Tools**
+- [~] **Task 8: Set Up Code Quality Tools**
   - [ ] Write Tests: Verify elm-review and elm-format execute without errors
   - [ ] Implement: Create `elm-review.json` config, add format scripts to package.json
 - [ ] **Task 9: Configure elm-test**
