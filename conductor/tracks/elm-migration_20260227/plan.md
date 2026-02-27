@@ -35,7 +35,7 @@
   - [x] Implement: Run `npx elm-land test` setup, verify test runner works
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: Elm/ElmLand Foundation'**
 
-## Phase 3: Curriculum Data Model
+## Phase 3: Curriculum Data Model [checkpoint: 0ec3054]
 
 - [x] **Task 10: Design Curriculum Types** [5b047c0]
   - [x] Write Tests: Unit tests for curriculum type constructors and decoders
