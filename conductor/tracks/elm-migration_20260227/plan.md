@@ -21,7 +21,7 @@
 
 ## Phase 2: Elm/ElmLand Foundation
 
-- [ ] **Task 6: Initialize ElmLand Project**
+- [~] **Task 6: Initialize ElmLand Project**
   - [ ] Write Tests: Verify ElmLand CLI is installed and project scaffolds correctly
   - [ ] Implement: Run `npx elm-land init` and verify project structure
 - [ ] **Task 7: Configure Tailwind CSS**

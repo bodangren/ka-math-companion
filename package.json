@@ -5,6 +5,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "elm-land server",
+    "build": "elm-land build",
+    "test": "elm-test",
+    "format": "elm-format src/ --yes",
+    "format:check": "elm-format src/ --validate",
+    "review": "elm-review",
     "sync:khan": "node docs/scripts/sync-khan-course.mjs",
     "sync:khan:math3": "npm run sync:khan -- --path /math/math3 --slug integrated-math-3"
   },
