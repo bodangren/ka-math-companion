@@ -20,7 +20,7 @@
         }
       ],
       "link": [],
-      "script": []
+      "script": [{ "src": "https://cdn.tailwindcss.com" }]
     },
     "router": {
       "useHashRouting": false
