@@ -1,4 +1,4 @@
-module Pages.Curriculum.Unit_.Lesson_ exposing (page, view)
+module Pages.Curriculum.Unit_.Lesson_ exposing (Model, Msg, page, view)
 
 import Data.Curriculum exposing (Lesson, Unit)
 import Data.IntegratedMath3 as IntegratedMath3
