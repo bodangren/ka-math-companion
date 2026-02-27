@@ -19,17 +19,25 @@ suite =
                     model =
                         {}
 
+                    url =
+                        { protocol = Url.Http
+                        , host = "localhost"
+                        , port_ = Nothing
+                        , path = "/curriculum/polynomial-arithmetic/intro-to-polynomials"
+                        , query = Nothing
+                        , fragment = Nothing
+                        }
+
                     route =
                         { path = Route.Path.Curriculum_Unit__Lesson_ { unit = "polynomial-arithmetic", lesson = "intro-to-polynomials" }
-                        , params = { lesson = "intro-to-polynomials" }
+                        , params = { unit = "polynomial-arithmetic", lesson = "intro-to-polynomials" }
                         , query = Dict.empty
                         , hash = Nothing
-                        , url = { protocol = Url.Http, host = "localhost", port_ = Nothing, path = "/curriculum/polynomial-arithmetic/intro-to-polynomials", query = Nothing, fragment = Nothing }
+                        , url = url
                         }
                 in
                 Lesson.view route model
                     |> .body
-                    |> List.map (Html.map never)
                     |> Html.div []
                     |> Query.fromHtml
                     |> Query.has [ text "Intro to polynomials" ]

@@ -6,12 +6,19 @@ import Html
 import Html.Attributes exposing (class, href)
 import Page exposing (Page)
 import Route exposing (Route)
-import Route.Path
 import Shared
 import View exposing (View)
 
 
-page : Shared.Model -> Route { lesson : String } -> Page {} Never
+type alias Model =
+    {}
+
+
+type alias Msg =
+    Never
+
+
+page : Shared.Model -> Route { unit : String, lesson : String } -> Page Model Msg
 page _ route =
     Page.sandbox
         { init = {}
@@ -20,26 +27,16 @@ page _ route =
         }
 
 
-view : Route { lesson : String } -> {} -> View Never
+view : Route { unit : String, lesson : String } -> Model -> View Msg
 view route _ =
-    let
-        unitSlug =
-            case route.path of
-                Route.Path.Curriculum_Unit__Lesson_ params ->
-                    params.unit
-
-                _ ->
-                    ""
-    in
-    case ( findUnit unitSlug, findLesson unitSlug route.params.lesson ) of
+    case ( findUnit route.params.unit, findLesson route.params.unit route.params.lesson ) of
         ( Just unit, Just lesson ) ->
             viewLesson unit lesson
 
         ( Just unit, Nothing ) ->
             viewLessonNotFound unit route.params.lesson
-
         ( Nothing, _ ) ->
-            viewUnitNotFound unitSlug
+            viewUnitNotFound route.params.unit
 
 
 findUnit : String -> Maybe Unit
@@ -60,7 +57,7 @@ findLesson unitSlug lessonSlug =
             )
 
 
-viewLesson : Unit -> Lesson -> View Never
+viewLesson : Unit -> Lesson -> View Msg
 viewLesson unit lesson =
     { title = lesson.title ++ " - KA Math Companion"
     , body =
@@ -86,7 +83,7 @@ viewLesson unit lesson =
     }
 
 
-viewObjectives : List { description : String } -> Html.Html Never
+viewObjectives : List { description : String } -> Html.Html Msg
 viewObjectives objectives =
     if List.isEmpty objectives then
         Html.p [ class "text-gray-500 italic" ]
@@ -97,7 +94,7 @@ viewObjectives objectives =
             (List.map viewObjective objectives)
 
 
-viewObjective : { description : String } -> Html.Html Never
+viewObjective : { description : String } -> Html.Html Msg
 viewObjective objective =
     Html.li [ class "flex items-start" ]
         [ Html.span [ class "text-indigo-500 mr-2" ] [ Html.text "•" ]
@@ -105,7 +102,7 @@ viewObjective objective =
         ]
 
 
-viewLessonNotFound : Unit -> String -> View Never
+viewLessonNotFound : Unit -> String -> View Msg
 viewLessonNotFound unit lessonSlug =
     { title = "Lesson Not Found - KA Math Companion"
     , body =
@@ -123,7 +120,7 @@ viewLessonNotFound unit lessonSlug =
     }
 
 
-viewUnitNotFound : String -> View Never
+viewUnitNotFound : String -> View Msg
 viewUnitNotFound unitSlug =
     { title = "Unit Not Found - KA Math Companion"
     , body =
