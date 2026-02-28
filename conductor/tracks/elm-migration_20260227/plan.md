@@ -45,7 +45,7 @@
   - [x] Implement: Create curriculum data module, embed parsed data as Elm constants
 - [ ] **Task: Conductor - User Manual Verification 'Phase 3: Curriculum Data Model'**
 
-## Phase 4: Routing & Pages
+## Phase 4: Routing & Pages [checkpoint: ee72d3e]
 
 - [x] **Task 12: Home Page** [1d1e863]
   - [x] Write Tests: Verify home page renders with expected content
