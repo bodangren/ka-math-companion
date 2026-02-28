@@ -69,7 +69,7 @@
 - [x] **Task 17: Verify Build & Static Export** [086b11a]
   - [x] Write Tests: Verify `npm run build` produces static files
   - [x] Implement: Run production build, verify output structure
-- [ ] **Task 18: Update Documentation**
-  - [ ] Write Tests: N/A (documentation task)
-  - [ ] Implement: Update README.md with Elm/ElmLand instructions
+- [x] **Task 18: Update Documentation** [2d0a771]
+  - [x] Write Tests: N/A (documentation task)
+  - [x] Implement: Update README.md with Elm/ElmLand instructions
 - [ ] **Task: Conductor - User Manual Verification 'Phase 5: Integration & Deployment'**
