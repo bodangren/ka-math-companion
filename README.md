@@ -1,29 +1,23 @@
 # KA Math Companion
 
-A pedagogy-first, static Next.js companion to Khan Academy math courses. The site blends conceptual exploration, algorithmic scaffolding, and spaced retrieval practice to help learners build durable understanding across middle and high school mathematics.
+A pedagogy-first, static Elm companion to Khan Academy math courses. The site blends conceptual exploration, algorithmic scaffolding, and spaced retrieval practice to help learners build durable understanding across middle and high school mathematics.
 
 ## Project Overview
 
-The KA Math Companion is a functional educational platform enhancing Khan Academy's Integrated Math 3 curriculum. We're currently in Sprint S1 of a structured enhancement initiative focusing on UI/UX improvements, interactive practice generators, and teacher tools while maintaining our static site architecture.
+The KA Math Companion is a functional educational platform enhancing Khan Academy's Integrated Math 3 curriculum. Built with ElmLand for compile-time safety and zero runtime exceptions.
 
-### Current State & Sprint Focus
+### Current State
 
-- **Existing Foundation**: Fully functional static Next.js application with curriculum navigation and mastery tracking
-- **Current Sprint (S1)**: Static site foundation improvements and Khan Academy sync automation
-- **Enhancement Roadmap**: 3-sprint plan targeting modern UI/UX, interactive practice, and teacher dashboard
-- **Architecture**: Maintaining static export compatibility while adding client-side interactivity
-- **Content Model**: Content-first approach with objectives, lessons, and deterministic generators
+- **Framework**: ElmLand (Elm 0.19.1) with Tailwind CSS
+- **Architecture**: Static site generation for GitHub Pages deployment
+- **Content Model**: Type-safe curriculum data in Elm modules
+- **Testing**: elm-test with elm-review for code quality
 
-### Sprint Progress
+### Curriculum Coverage
 
-**Sprint S1: Static Site Foundation** (See [S1.md](docs/S1.md))
-
-- ✅ Basic curriculum integration and mastery indicators
-- 🔄 Enhanced static site generation and export
-- 🔄 Automated Khan Academy sync improvements
-- 🔄 Progress tracking and visualization enhancements
-
-See our [roadmap](docs/sprint/roadmap.md) for the complete 3-sprint development plan.
+- 13 instructional units from Khan Academy Integrated Math 3
+- Units, lessons, and learning objectives hierarchy
+- Progress tracking (future enhancement)
 
 ## Guiding Principles
 
@@ -36,152 +30,92 @@ See our [roadmap](docs/sprint/roadmap.md) for the complete 3-sprint development 
 
 ## Architecture Overview
 
-- **Framework**: Next.js (App Router) exported as a static site (`output: 'export'`, `trailingSlash: true`) for GitHub Pages deployment.
-- **Content model**
-  - `content/objectives/*.yml|json`: canonical objective metadata (prereqs, standards, references).
-  - `content/lessons/<objectiveId>/<slug>.mdx`: MDX lessons with YAML front matter; embed React components for activities.
-  - `content/items/<objectiveId>/*.ts`: Deterministic item generators exporting `generate(seed)` + `check(response)`.
-  - `content/courses/*.json`: Course sequences referencing objective IDs with optional overrides.
-  - `content/cards/*.json`: Flashcard decks per objective for rote knowledge.
-- **Build-time utilities** (`lib/content-loader.ts`, `lib/validators.ts`):
-  - File-system enumerators validate content with Zod.
-  - Emit `content/index.json` for client-side search, prerequisite lookups, and SRS scheduling.
-- **Client components** (`components/`):
-  - `FunctionGrapher`, `NumberLine`, `TileAreaModel`, `ScaffoldedSteps`, `WorkedExample`, `FadedExample`, `DragArrange`.
-  - All interactions are client-only (`'use client'`) and seeded for reproducibility.
-- **State management**:
-  - `localStorage` keys (`ka:settings:v1`, `ka:progress:v1`, `ka:srs:v1`, `ka:notes:v1`).
-  - Optional download/upload of a JSON progress export for multi-device use.
+- **Framework**: ElmLand (Elm 0.19.1) with Vite build system
+- **Styling**: Tailwind CSS via CDN
+- **Routing**: File-based routing with dynamic parameters
+- **Content model**: Type-safe Elm data structures in `src/Data/`
+- **Deployment**: Static export to GitHub Pages
 
 ## Getting Started
 
 ```bash
-pnpm install
-pnpm dev         # run locally (http://localhost:3000)
-pnpm lint        # static analysis
-pnpm test        # unit/integration tests
-pnpm build       # next build && next export (outputs to ./out)
+npm install
+npm run dev         # run locally (http://localhost:1234)
+npm run test        # unit tests
+npm run review      # code quality checks
+npm run build       # production build (outputs to ./dist)
 ```
 
-> **Prerequisites**: Node.js 20+, pnpm 8+, GitHub CLI (`gh`) configured with repo access.
+> **Prerequisites**: Node.js 18+, npm
 
-## Content Authoring Workflow
+## Project Structure
 
-1. **Define an objective** in `content/objectives/` with title, description, prerequisites, and linked KA skills.
-2. **Author or update lessons** in MDX:
-   - Use front matter for metadata (duration, vocab, misconceptions).
-   - Embed interactive components (e.g., `<FunctionGrapher config={...} />`).
-   - Include retrieval starters and reflection prompts.
-3. **Add practice generators**:
-   - Create a TypeScript module exporting deterministic `generate`/`check` functions.
-   - Provide step data, hints, and misconception tags.
-   - Include automated sample generation in `pnpm test` to catch invalid seeds.
-4. **Optional flashcards** per objective to reinforce vocabulary or formulas.
-5. **Run validators** (`pnpm lint && pnpm test`) before publishing.
+```
+src/
+├── Data/
+│   ├── Curriculum.elm      # Course, Unit, Lesson types
+│   └── IntegratedMath3.elm # Curriculum data
+└── Pages/
+    ├── Home_.elm           # /
+    ├── Curriculum.elm      # /curriculum
+    └── Curriculum/
+        └── Unit_/
+            └── Lesson_.elm # /curriculum/:unit/:lesson
+
+tests/
+├── Data/                   # Data module tests
+└── Pages/                  # Page component tests
+
+review/
+└── src/
+    └── ReviewConfig.elm    # elm-review configuration
+```
+
+## Available Scripts
+
+| Command                | Description                                       |
+| ---------------------- | ------------------------------------------------- |
+| `npm run dev`          | Start development server at http://localhost:1234 |
+| `npm run build`        | Build for production (outputs to ./dist)          |
+| `npm run test`         | Run elm-test suite                                |
+| `npm run review`       | Run elm-review code quality checks                |
+| `npm run format`       | Format code with elm-format                       |
+| `npm run format:check` | Check formatting without modifying                |
 
 ## Curriculum Sync (Khan Academy)
 
 - `@bhavjit/khan-api` powers a script that snapshots Khan Academy course data so our local curriculum tracks official units.
-- Run `pnpm sync:khan:math3` to refresh `docs/data/integrated-math-3.course.json`. The command prints a per-unit summary (unit count, lessons, assessments) so you can verify the fetch at a glance.
-- Use `pnpm sync:khan -- --path /math/algebra2 --slug algebra2` for other courses, or add `--out` to write to a custom location.
-- See `docs/automation.md` for all flags, JSON schema notes, and follow-up tasks (Markdown generation, diffing, CI hooks).
-
-## Spaced Practice
-
-- Default Leitner 5-box system with intervals (1, 2, 4, 8, 16 days).
-- Items move up on correct responses without hints; drop on errors or heavy hint use.
-- Daily session mixes current lesson objectives (≈70%) with due review items (≈30%).
-- Flashcards share the same SRS backend for rote knowledge.
-- Future roadmap: SM-2 algorithm, streak bonuses, streak decay visualizations.
-
-## Graphing & Notation
-
-- **Notation**: KaTeX for fast, offline-friendly rendering; math inputs offer live previews with a constrained symbol palette.
-- **Graph fidelity**:
-  - SVG-based grapher with snapping, keyboard navigation, retina support, and ARIA descriptions.
-  - Supports points, lines, segments, rays, polygons, circles, parabolas, inequalities (phase 2).
-  - Checkers compare canonical forms with tolerances; deterministic seeds guarantee identical layouts for shareable links.
-
-## Testing Strategy
-
-- **Unit tests**: Item generators, checkers, utility math functions.
-- **Integration tests**: Lesson pages render with given content; static export smoke tests ensure required routes exist.
-- **Visual/interaction tests**: Playwright (opt-in) for primary lesson flows and accessibility assertions.
-- **Content linting**: Verify objective references, prerequisite DAG integrity, and hint coverage per item.
+- Run `npm run sync:khan:math3` to refresh curriculum data.
 
 ## Deployment
 
-1. `pnpm build` → `next export` writes static assets to `out/`.
-2. GitHub Actions workflow uploads `out/` to the `gh-pages` branch.
-3. GitHub Pages serves the site at `<user>.github.io/<repo>` with SPA fallback disabled (only static exports).
-
-## GitHub-Centric Workflow (gh CLI)
-
-- Default branch `main`, trunk-based. Every issue gets a short-lived branch (`<type>/<issue>-<title>`).
-- Issues must include label(s), milestone, and (optionally) project board entry.
-- Commit messages follow Conventional Commits.
-- Prefer squash merges; enable auto-merge after approvals and passing checks.
-- Protect `main`: require PR, ≥1 approval, lint/test checks.
-- Scripts:
-  - `gh issue create` + `git switch -c` workflow (see below).
-  - Sprint seeding via `scripts/seed-issues.sh` and `docs/sprint/SX.md`.
-- Post-merge hygiene: checkout `main`, `git pull --ff-only`, prune merged branches locally and remote.
-
-```bash
-export SPRINT_MILESTONE="S0 – Skeleton + Auth"
-TITLE="Lesson scaffolding for vertex form"
-DESC="Goals, acceptance criteria..."
-NUM=$(gh issue create --title "$TITLE" --body "$DESC" --label "type:feature" --milestone "$SPRINT_MILESTONE" --assignee @me --json number --jq .number)
-BR="feat/${NUM}-$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g;s/^-|-$//g' | cut -c1-40)"
-git switch -c "$BR"
-```
+1. `npm run build` writes static assets to `dist/`.
+2. GitHub Actions workflow uploads `dist/` to the `gh-pages` branch.
+3. GitHub Pages serves the site at `<user>.github.io/<repo>`.
 
 ## Development Roadmap
 
-### Current Sprint (S1): Static Site Foundation
+### Completed
 
-- Enhanced static site generation and GitHub Pages deployment
-- Improved Khan Academy course sync automation (see [automation.md](docs/automation.md))
-- Progress tracking and mastery visualization improvements
-- Content structure optimization for Integrated Math 3
+- ✅ Elm/ElmLand migration from Next.js
+- ✅ Curriculum data model with 13 units
+- ✅ Routing for curriculum, units, and lessons
+- ✅ Static site generation
 
-### Upcoming Sprints
+### Upcoming
 
-- **S2**: Interactive Practice Components - FunctionGrapher, NumberLine, DragArrange
-- **S3**: Teacher Dashboard & Analytics - Comprehensive tools for educators
-
-### Long-term Vision
-
-- SM-2 spacing algorithm and richer analytics
-- Expanded accessibility settings (reduced motion, high contrast)
-- Cross-course dashboards and integrated math mappings
-- Advanced gamification and engagement features
-
-See [roadmap.md](docs/specs/roadmap.md) for detailed planning and [PRD](docs/prd.md) for comprehensive requirements.
-
----
+- **Phase 2**: Design system and UI components
+- **Phase 3**: KaTeX rendering for math notation
+- **Phase 4**: Interactive visualizations (charts, graphs)
+- **Phase 5**: Progress tracking and state persistence
 
 ## Contributing
 
-1. Use the GitHub CLI workflow to create an issue → branch → PR.
+1. Create an issue → branch → PR workflow.
 2. Keep changes scoped; write tests first (TDD: Red → Green → Refactor).
-3. Run `pnpm lint && pnpm test` locally before pushing.
-4. Request review via `gh pr edit --add-reviewer`.
-5. Enable auto-merge (`gh pr merge --auto --squash`).
-6. After merge, sync `main` and delete the feature branch locally and remote.
+3. Run `npm run test && npm run review` locally before pushing.
+4. Request review and enable auto-merge after approvals.
 
-## SynthesisFlow Framework & Documentation
+## License
 
-This project uses SynthesisFlow framework for structured development:
-
-- **Skills**: Specialized capabilities for project management, development, and automation
-- **Documentation**: Structured PRD, specs, and quality assurance
-
-### Key Documentation
-
-- [Product Requirements](docs/prd.md) - Comprehensive feature planning
-- [Sprint Planning](docs/S1.md, docs/S2.md) - Current sprint and roadmap
-- [Automation Guide](docs/automation.md) - Khan Academy sync and CI/CD
-- [Agent Guide](docs/AGENTS.md) - AI assistant guidance and workflows
-
-See `docs/AGENTS.md` for automation and assistant guidance.
+MIT
