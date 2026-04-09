@@ -37,6 +37,8 @@ unit1 =
                 , "Identify parts of a polynomial expression"
                 , "Classify polynomials by degree and number of terms"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Average rate of change of polynomials"
           , slug = "average-rate-of-change-of-polynomials"
@@ -45,6 +47,8 @@ unit1 =
                 , "Interpret average rate of change in context"
                 , "Compare rates of change across intervals"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Adding and subtracting polynomials"
           , slug = "adding-and-subtracting-polynomials"
@@ -53,6 +57,8 @@ unit1 =
                 , "Distribute negative signs to subtract polynomials"
                 , "Write results in standard form"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Multiplying monomials by polynomials"
           , slug = "multiplying-monomials-by-polynomials"
@@ -61,6 +67,8 @@ unit1 =
                 , "Use exponent rules when multiplying powers"
                 , "Simplify products to standard form"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Multiplying binomials by polynomials"
           , slug = "multiplying-binomials-by-polynomials"
@@ -69,6 +77,8 @@ unit1 =
                 , "Use area models to visualize polynomial multiplication"
                 , "Multiply binomials by trinomials using distribution"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Special products"
           , slug = "special-products"
@@ -77,6 +87,8 @@ unit1 =
                 , "Apply difference of squares pattern (a+b)(a-b)"
                 , "Use special products to multiply efficiently"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -90,22 +102,32 @@ unit2 =
         [ { title = "Factoring monomials and greatest common factor"
           , slug = "factoring-monomials-and-gcf"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Factoring polynomials with common factors"
           , slug = "factoring-polynomials-with-common-factors"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Factorization using substitution"
           , slug = "factorization-using-substitution"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Polynomial identities"
           , slug = "polynomial-identities"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Geometric series applications"
           , slug = "geometric-series-applications"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -119,22 +141,32 @@ unit3 =
         [ { title = "Dividing polynomials by x"
           , slug = "dividing-polynomials-by-x"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Dividing quadratics by linear expressions"
           , slug = "dividing-quadratics-by-linear-expressions"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "General division by linear expressions"
           , slug = "general-division-by-linear-expressions"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Using division for factoring"
           , slug = "using-division-for-factoring"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Remainder theorem"
           , slug = "remainder-theorem"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -148,18 +180,26 @@ unit4 =
         [ { title = "Zeros of polynomials"
           , slug = "zeros-of-polynomials"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Positive and negative intervals"
           , slug = "positive-and-negative-intervals"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "End behavior of polynomials"
           , slug = "end-behavior-of-polynomials"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Comprehensive graph analysis"
           , slug = "comprehensive-graph-analysis"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -177,6 +217,8 @@ unit5 =
                 , "Evaluate logarithms with base 10 and base e"
                 , "Convert between exponential and logarithmic form"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Relationships between exponentials and logarithms"
           , slug = "exponentials-and-logarithms"
@@ -185,6 +227,8 @@ unit5 =
                 , "Use the property that log_b(b^x) = x and b^(log_b(x)) = x"
                 , "Graph exponential and logarithmic functions as reflections"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Properties of logarithms"
           , slug = "properties-of-logarithms"
@@ -193,6 +237,8 @@ unit5 =
                 , "Apply the quotient rule: log_b(M/N) = log_b(M) - log_b(N)"
                 , "Apply the power rule: log_b(M^n) = n·log_b(M)"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Solving exponential equations"
           , slug = "solving-exponential-equations"
@@ -201,6 +247,8 @@ unit5 =
                 , "Apply the change of base formula"
                 , "Solve real-world problems involving exponential growth/decay"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Exponential modeling word problems"
           , slug = "exponential-modeling-word-problems"
@@ -209,6 +257,8 @@ unit5 =
                 , "Write exponential models from given information"
                 , "Use models to make predictions and answer questions"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -226,6 +276,8 @@ unit6 =
                 , "Identify reflections over x-axis and y-axis"
                 , "Graph transformed functions using shift rules"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Vertical and horizontal scaling"
           , slug = "vertical-and-horizontal-scaling"
@@ -234,6 +286,8 @@ unit6 =
                 , "Identify horizontal stretches and compressions"
                 , "Graph functions with combined transformations"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Identifying composite transformations"
           , slug = "identifying-composite-transformations"
@@ -242,6 +296,8 @@ unit6 =
                 , "Apply transformations in the correct order"
                 , "Write equations from transformed graphs"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Graphs of square and cube root functions"
           , slug = "graphs-of-square-and-cube-root-functions"
@@ -250,6 +306,8 @@ unit6 =
                 , "Apply transformations to root functions"
                 , "Identify domain and range of transformed root functions"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -263,18 +321,26 @@ unit7 =
         [ { title = "Rational and square-root equations"
           , slug = "rational-and-square-root-equations"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Cube-root equations"
           , slug = "cube-root-equations"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Quadratic systems"
           , slug = "quadratic-systems"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Solving equations graphically"
           , slug = "solving-equations-graphically"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -292,6 +358,8 @@ unit8 =
                 , "Apply the Law of Cosines to find missing sides and angles"
                 , "Determine when each law is appropriate to use"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Unit circle"
           , slug = "unit-circle"
@@ -300,6 +368,8 @@ unit8 =
                 , "Evaluate trigonometric functions at standard angles"
                 , "Identify reference angles and use symmetry"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Pythagorean identity"
           , slug = "pythagorean-identity"
@@ -308,6 +378,8 @@ unit8 =
                 , "Use the identity to find missing trigonometric values"
                 , "Verify trigonometric equations using the identity"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Graphs of sinusoidal functions"
           , slug = "graphs-of-sinusoidal-functions"
@@ -316,6 +388,8 @@ unit8 =
                 , "Graph sine and cosine functions with transformations"
                 , "Write equations from graphs of sinusoidal functions"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Modeling with sinusoidal functions"
           , slug = "modeling-with-sinusoidal-functions"
@@ -324,6 +398,8 @@ unit8 =
                 , "Interpret amplitude, period, and phase shift in context"
                 , "Make predictions using sinusoidal models"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -337,18 +413,26 @@ unit9 =
         [ { title = "Function combination and periodicity"
           , slug = "function-combination-and-periodicity"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "End behavior and algebraic model analysis"
           , slug = "end-behavior-and-algebraic-model-analysis"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Formula manipulation"
           , slug = "formula-manipulation"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Word problems with multiple variables"
           , slug = "word-problems-with-multiple-variables"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -362,14 +446,20 @@ unit10 =
         [ { title = "Valid claims from statistical studies"
           , slug = "valid-claims-from-statistical-studies"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Inferences from random samples"
           , slug = "inferences-from-random-samples"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Study types: surveys, observational studies, experiments"
           , slug = "study-types"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -383,6 +473,8 @@ unit11 =
         [ { title = "Binomial probability"
           , slug = "binomial-probability"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -396,6 +488,8 @@ unit12 =
         [ { title = "Normal distribution concepts"
           , slug = "normal-distribution-concepts"
           , objectives = []
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }
@@ -413,6 +507,8 @@ unit13 =
                 , "Simplify rational expressions by canceling common factors"
                 , "Identify excluded values from the domain"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Multiplying and dividing rational expressions"
           , slug = "multiplying-and-dividing-rational-expressions"
@@ -421,6 +517,8 @@ unit13 =
                 , "Divide rational expressions by multiplying by the reciprocal"
                 , "Simplify products and quotients of rational expressions"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Adding and subtracting rational expressions"
           , slug = "adding-and-subtracting-rational-expressions"
@@ -429,6 +527,8 @@ unit13 =
                 , "Add and subtract rational expressions with like denominators"
                 , "Add and subtract rational expressions with unlike denominators"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Rational function analysis"
           , slug = "rational-function-analysis"
@@ -437,6 +537,8 @@ unit13 =
                 , "Identify horizontal and oblique asymptotes from degrees"
                 , "Analyze end behavior of rational functions"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         , { title = "Modeling with rational functions"
           , slug = "modeling-with-rational-functions"
@@ -445,6 +547,8 @@ unit13 =
                 , "Interpret asymptotes in context"
                 , "Use rational models to make predictions"
                 ]
+          , description = ""
+          , estimatedMinutes = 30
           }
         ]
     }

@@ -1,6 +1,6 @@
 module Pages.Curriculum.Unit_ exposing (page)
 
-import Data.Curriculum exposing (Unit)
+import Data.Curriculum exposing (Lesson, Unit)
 import Data.IntegratedMath3 as IntegratedMath3
 import Html
 import Html.Attributes exposing (class, href)
@@ -42,7 +42,7 @@ viewUnit unit =
     }
 
 
-viewLesson : String -> { title : String, slug : String, objectives : List String } -> Html.Html msg
+viewLesson : String -> Lesson -> Html.Html msg
 viewLesson unitSlug lesson =
     Html.a
         [ href ("/curriculum/" ++ unitSlug ++ "/" ++ lesson.slug)

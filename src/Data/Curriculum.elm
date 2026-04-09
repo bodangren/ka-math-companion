@@ -23,4 +23,6 @@ type alias Lesson =
     { title : String
     , slug : String
     , objectives : List String
+    , description : String
+    , estimatedMinutes : Int
     }
