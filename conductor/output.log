@@ -943,3 +943,38 @@ Tests pass. Let me verify build as well.
 [32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
 [0m
 Build successful. Now finalizing - commit with git note, update tech-debt and lessons-learned.
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && git add -A && git commit -m "feat: add description and estimatedMinutes fields to Lesson type"
+[feat/30-render-curriculum-overview-page 6872096] feat: add description and estimatedMinutes fields to Lesson type
+ 5 files changed, 1041 insertions(+), 3 deletions(-)
+[0m
+[0m← [0mEdit conductor/tech-debt.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/conductor/tech-debt.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/conductor/tech-debt.md
++++ /home/daniel-bo/Desktop/ka-math-companion/conductor/tech-debt.md
+@@ -7,5 +7,6 @@
+ > **Status:** `Open` | `Resolved`
+ 
+ | Date | Track | Item | Severity | Status | Notes |
+ |------|-------|------|----------|--------|-------|
++| 2026-04-09 | curriculum-data | Add real descriptions and time estimates to all 65+ lessons | Medium | Open | Currently using empty strings and default 30min |
+ | 2026-01-01 | example_track | Example: Hardcoded timeout value | Low | Resolved | Replaced with config value in v1.2 |
+
+[0m
+[0m← [0mEdit conductor/lessons-learned.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
++++ /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
+@@ -15,8 +15,9 @@
+ 
+ ## Patterns That Worked Well
+ <!-- Approaches worth repeating -->
+ 
++- (2026-04-09, curriculum-data) TDD for type changes: write failing tests first, then add fields to all usages systematically
+ - (YYYY-MM-DD, track_id) Example: Writing acceptance criteria before implementation caught scope creep early
+ 
+ ## Planning Improvements
+ <!-- Notes on where estimates were wrong and why -->
+
+[0m
