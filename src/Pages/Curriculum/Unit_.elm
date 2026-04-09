@@ -35,17 +35,17 @@ viewUnit unit =
                 , Html.h1 [ class "text-3xl font-bold text-indigo-900 mb-6" ]
                     [ Html.text unit.title ]
                 , Html.div [ class "space-y-3" ]
-                    (List.map viewLesson unit.lessons)
+                    (List.map (viewLesson unit.slug) unit.lessons)
                 ]
             ]
         ]
     }
 
 
-viewLesson : { title : String, slug : String, objectives : List a } -> Html.Html msg
-viewLesson lesson =
+viewLesson : String -> { title : String, slug : String, objectives : List String } -> Html.Html msg
+viewLesson unitSlug lesson =
     Html.a
-        [ href ("/curriculum/" ++ lesson.slug)
+        [ href ("/curriculum/" ++ unitSlug ++ "/" ++ lesson.slug)
         , class "block bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow"
         ]
         [ Html.h2 [ class "text-lg font-semibold text-indigo-700" ]

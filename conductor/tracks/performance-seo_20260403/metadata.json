@@ -1,0 +1,8 @@
+{
+  "track_id": "performance-seo_20260403",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-03T00:00:00Z",
+  "updated_at": "2026-04-03T00:00:00Z",
+  "description": "Optimize bundle size, add meta tags and Open Graph data, implement service worker for offline access, and achieve Lighthouse 90+ scores."
+}

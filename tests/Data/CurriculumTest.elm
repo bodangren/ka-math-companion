@@ -1,6 +1,6 @@
 module Data.CurriculumTest exposing (suite)
 
-import Data.Curriculum exposing (Course, Lesson, Objective, Unit)
+import Data.Curriculum exposing (Course, Lesson, Unit)
 import Expect
 import Test
 
@@ -42,20 +42,9 @@ suite =
                         lesson =
                             { title = "Intro to polynomials"
                             , slug = "intro-to-polynomials"
-                            , objectives = []
+                            , objectives = [ "Define polynomial, degree, leading coefficient, and standard form" ]
                             }
                     in
                     Expect.equal lesson.title "Intro to polynomials"
-            ]
-        , Test.describe "Objective"
-            [ Test.test "can create an objective with description" <|
-                \_ ->
-                    let
-                        objective : Objective
-                        objective =
-                            { description = "Understand polynomial structure"
-                            }
-                    in
-                    Expect.equal objective.description "Understand polynomial structure"
             ]
         ]

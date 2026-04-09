@@ -1,7 +1,6 @@
 module Data.Curriculum exposing
     ( Course
     , Lesson
-    , Objective
     , Unit
     )
 
@@ -23,10 +22,5 @@ type alias Unit =
 type alias Lesson =
     { title : String
     , slug : String
-    , objectives : List Objective
-    }
-
-
-type alias Objective =
-    { description : String
+    , objectives : List String
     }

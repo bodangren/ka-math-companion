@@ -1,0 +1,8 @@
+{
+  "track_id": "assessment-mastery_20260403",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-03T00:00:00Z",
+  "updated_at": "2026-04-03T00:00:00Z",
+  "description": "Build unit quizzes with mastery thresholds, prerequisite checking, and progress reports for formal assessment."
+}

@@ -26,5 +26,5 @@ suite =
                 Home.page.body
                     |> Html.div []
                     |> Query.fromHtml
-                    |> Query.has [ text "A pedagogy-first companion to Khan Academy math courses" ]
+                    |> Query.has [ text "A pedagogy-first companion to Khan Academy Integrated Math 3" ]
         ]

@@ -64,7 +64,7 @@ viewLesson unit lesson =
     }
 
 
-viewObjectives : List { description : String } -> Html.Html msg
+viewObjectives : List String -> Html.Html msg
 viewObjectives objectives =
     if List.isEmpty objectives then
         Html.p [ class "text-gray-500 italic" ]
@@ -75,11 +75,11 @@ viewObjectives objectives =
             (List.map viewObjective objectives)
 
 
-viewObjective : { description : String } -> Html.Html msg
+viewObjective : String -> Html.Html msg
 viewObjective objective =
     Html.li [ class "flex items-start" ]
         [ Html.span [ class "text-indigo-500 mr-2" ] [ Html.text "•" ]
-        , Html.text objective.description
+        , Html.text objective
         ]
 
 

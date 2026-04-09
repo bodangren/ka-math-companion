@@ -1,0 +1,8 @@
+{
+  "track_id": "spaced-practice_20260403",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-03T00:00:00Z",
+  "updated_at": "2026-04-03T00:00:00Z",
+  "description": "Implement Leitner box spaced repetition system for long-term retention with flashcards and daily review queues."
+}
