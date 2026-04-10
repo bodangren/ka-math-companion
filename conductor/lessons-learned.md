@@ -17,7 +17,7 @@
 <!-- Approaches worth repeating -->
 
 - (2026-04-09, curriculum-data) TDD for type changes: write failing tests first, then add fields to all usages systematically
-- (YYYY-MM-DD, track_id) Example: Writing acceptance criteria before implementation caught scope creep early
+- (2026-04-10, curriculum-data) Batch similar tasks: adding objectives to multiple units in one commit reduced context switching
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
