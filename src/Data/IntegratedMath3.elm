@@ -101,31 +101,51 @@ unit2 =
     , lessons =
         [ { title = "Factoring monomials and greatest common factor"
           , slug = "factoring-monomials-and-gcf"
-          , objectives = []
+          , objectives =
+                [ "Find the greatest common factor (GCF) of two or more monomials"
+                , "Factor polynomial expressions by identifying the GCF"
+                , "Factor expressions with negative coefficients"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Factoring polynomials with common factors"
           , slug = "factoring-polynomials-with-common-factors"
-          , objectives = []
+          , objectives =
+                [ "Factor out common binomial factors"
+                , "Factor by grouping with two distinct pairs"
+                , "Identify when factoring by grouping is appropriate"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Factorization using substitution"
           , slug = "factorization-using-substitution"
-          , objectives = []
+          , objectives =
+                [ "Recognize patterns that suggest substitution"
+                , "Apply substitution to factor complex polynomials"
+                , "Reverse substitution to restore original variables"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Polynomial identities"
           , slug = "polynomial-identities"
-          , objectives = []
+          , objectives =
+                [ "Verify polynomial identities using algebraic manipulation"
+                , "Use difference of cubes and sum of cubes identities"
+                , "Apply identities to factor expressions with three terms"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Geometric series applications"
           , slug = "geometric-series-applications"
-          , objectives = []
+          , objectives =
+                [ "Apply formulas for sums of geometric sequences"
+                , "Solve problems involving geometric series in context"
+                , "Connect geometric series to polynomial factorization"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
@@ -140,31 +160,51 @@ unit3 =
     , lessons =
         [ { title = "Dividing polynomials by x"
           , slug = "dividing-polynomials-by-x"
-          , objectives = []
+          , objectives =
+                [ "Divide polynomials by monomials using the quotient rule"
+                , "Express division of polynomials as a simplified fraction"
+                , "Identify quotients and remainders in polynomial division"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Dividing quadratics by linear expressions"
           , slug = "dividing-quadratics-by-linear-expressions"
-          , objectives = []
+          , objectives =
+                [ "Divide quadratic polynomials by linear expressions"
+                , "Use long division to find quotients and remainders"
+                , "Verify division results by multiplying back"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "General division by linear expressions"
           , slug = "general-division-by-linear-expressions"
-          , objectives = []
+          , objectives =
+                [ "Apply polynomial long division to polynomials of any degree"
+                , "Divide by linear expressions in the form (x - c)"
+                , "Interpret remainders in context of polynomial division"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Using division for factoring"
           , slug = "using-division-for-factoring"
-          , objectives = []
+          , objectives =
+                [ "Use polynomial division to factor polynomials"
+                , "Find roots of polynomials using the factor theorem"
+                , "Determine whether a binomial is a factor of a polynomial"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Remainder theorem"
           , slug = "remainder-theorem"
-          , objectives = []
+          , objectives =
+                [ "State and apply the remainder theorem"
+                , "Evaluate polynomials using the remainder theorem"
+                , "Use the remainder theorem to check for factors"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
@@ -179,25 +219,41 @@ unit4 =
     , lessons =
         [ { title = "Zeros of polynomials"
           , slug = "zeros-of-polynomials"
-          , objectives = []
+          , objectives =
+                [ "Find zeros of polynomial functions from equations"
+                , "Connect zeros to x-intercepts on a graph"
+                , "Determine multiplicity of zeros from factored forms"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Positive and negative intervals"
           , slug = "positive-and-negative-intervals"
-          , objectives = []
+          , objectives =
+                [ "Identify intervals where polynomial functions are positive or negative"
+                , "Use sign charts to analyze polynomial function behavior"
+                , "Connect sign intervals to the graph of the function"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "End behavior of polynomials"
           , slug = "end-behavior-of-polynomials"
-          , objectives = []
+          , objectives =
+                [ "Describe the end behavior of polynomial functions"
+                , "Use degree and leading coefficient to predict end behavior"
+                , "Match polynomial graphs to their equations based on end behavior"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Comprehensive graph analysis"
           , slug = "comprehensive-graph-analysis"
-          , objectives = []
+          , objectives =
+                [ "Analyze polynomial functions using all learned concepts"
+                , "Sketch polynomial graphs from given characteristics"
+                , "Write polynomial equations from given graphs"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }

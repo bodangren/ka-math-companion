@@ -12,21 +12,21 @@
 
 ## Phase 2: Unit 2 - Polynomial Factorization
 
-- [ ] **Task 3: Add objectives for Unit 2 lessons**
-  - [ ] Write Tests: Verify objectives are non-empty
-  - [ ] Implement: Add 3-5 objectives per lesson (5 lessons)
+- [x] **Task 3: Add objectives for Unit 2 lessons**
+  - [x] Write Tests: Verify objectives are non-empty
+  - [x] Implement: Add 3-5 objectives per lesson (5 lessons)
 
 ## Phase 3: Unit 3 - Polynomial Division
 
-- [ ] **Task 4: Add objectives for Unit 3 lessons**
-  - [ ] Write Tests: Verify objectives are non-empty
-  - [ ] Implement: Add 3-5 objectives per lesson (5 lessons)
+- [x] **Task 4: Add objectives for Unit 3 lessons**
+  - [x] Write Tests: Verify objectives are non-empty
+  - [x] Implement: Add 3-5 objectives per lesson (5 lessons)
 
 ## Phase 4: Unit 4 - Polynomial Graphs
 
-- [ ] **Task 5: Add objectives for Unit 4 lessons**
-  - [ ] Write Tests: Verify objectives are non-empty
-  - [ ] Implement: Add 3-5 objectives per lesson (4 lessons)
+- [x] **Task 5: Add objectives for Unit 4 lessons**
+  - [x] Write Tests: Verify objectives are non-empty
+  - [x] Implement: Add 3-5 objectives per lesson (4 lessons)
 
 ## Phase 5: Unit 7 - Equations
 

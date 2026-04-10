@@ -1,6 +1,7 @@
 module Data.IntegratedMath3Test exposing (suite)
 
 import Data.IntegratedMath3 as IntegratedMath3
+import Data.Curriculum exposing (Unit)
 import Expect
 import Test
 
@@ -39,4 +40,52 @@ suite =
                         Expect.equal unit.slug "polynomial-arithmetic"
                     Nothing ->
                         Expect.fail "No units found"
+        , Test.test "Unit 2 lessons have non-empty objectives" <|
+            \_ ->
+                let
+                    unit2 =
+                        IntegratedMath3.course.units
+                            |> List.drop 1
+                            |> List.head
+                in
+                case unit2 of
+                    Just unit ->
+                        unit.lessons
+                            |> List.map (\lesson -> List.length lesson.objectives > 0)
+                            |> List.all identity
+                            |> Expect.equal True
+                    Nothing ->
+                        Expect.fail "Unit 2 not found"
+        , Test.test "Unit 3 lessons have non-empty objectives" <|
+            \_ ->
+                let
+                    unit3 =
+                        IntegratedMath3.course.units
+                            |> List.drop 2
+                            |> List.head
+                in
+                case unit3 of
+                    Just unit ->
+                        unit.lessons
+                            |> List.map (\lesson -> List.length lesson.objectives > 0)
+                            |> List.all identity
+                            |> Expect.equal True
+                    Nothing ->
+                        Expect.fail "Unit 3 not found"
+        , Test.test "Unit 4 lessons have non-empty objectives" <|
+            \_ ->
+                let
+                    unit4 =
+                        IntegratedMath3.course.units
+                            |> List.drop 3
+                            |> List.head
+                in
+                case unit4 of
+                    Just unit ->
+                        unit.lessons
+                            |> List.map (\lesson -> List.length lesson.objectives > 0)
+                            |> List.all identity
+                            |> Expect.equal True
+                    Nothing ->
+                        Expect.fail "Unit 4 not found"
         ]
