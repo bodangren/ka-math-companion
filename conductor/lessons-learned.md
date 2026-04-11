@@ -18,6 +18,7 @@
 
 - (2026-04-09, curriculum-data) TDD for type changes: write failing tests first, then add fields to all usages systematically
 - (2026-04-10, curriculum-data) Batch similar tasks: adding objectives to multiple units in one commit reduced context switching
+- (2026-04-11, curriculum-data) Unit indexing: use `List.drop n |> List.head` to safely access units by position
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
