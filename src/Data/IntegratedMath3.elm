@@ -376,25 +376,45 @@ unit7 =
     , lessons =
         [ { title = "Rational and square-root equations"
           , slug = "rational-and-square-root-equations"
-          , objectives = []
+          , objectives =
+                [ "Solve rational equations by finding common denominators"
+                , "Identify extraneous solutions in rational equations"
+                , "Solve square-root equations by squaring both sides"
+                , "Check solutions to square-root equations for extraneous roots"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Cube-root equations"
           , slug = "cube-root-equations"
-          , objectives = []
+          , objectives =
+                [ "Solve equations involving cube roots"
+                , "Use the property that cube root preserves sign"
+                , "Cube both sides to eliminate radicals"
+                , "Verify solutions in original equations"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Quadratic systems"
           , slug = "quadratic-systems"
-          , objectives = []
+          , objectives =
+                [ "Solve systems containing one linear and one quadratic equation"
+                , "Use substitution to solve quadratic systems"
+                , "Find intersection points of parabolas and lines"
+                , "Interpret solutions graphically as intersection points"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Solving equations graphically"
           , slug = "solving-equations-graphically"
-          , objectives = []
+          , objectives =
+                [ "Use graphs to find approximate solutions to equations"
+                , "Identify x-intercepts as solutions to f(x) = 0"
+                , "Use graphing calculators to solve complex equations"
+                , "Compare graphical and algebraic solution methods"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
