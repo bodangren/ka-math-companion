@@ -4,13 +4,10 @@
 [0m→ [0mRead conductor/autonomous_prompt.md
 [0m→ [0mSkill "conductor"
 [0m→ [0mRead conductor/tracks.md
-[0m→ [0mRead conductor/tech-debt.md
 [0m✗ [0mread failed
 [91m[1mError: [0mFile not found: /home/daniel-bo/Desktop/ka-math-companion/conductor/current_directive.md
+[0m→ [0mRead conductor/tech-debt.md
 [0m→ [0mRead conductor/lessons-learned.md
-[0m
-[0m$ [0mgit log -1 --format='%an %ae'
-Daniel Bo bodangren@gmail.com
 [0m
 [0m$ [0mgit status
 On branch feat/30-render-curriculum-overview-page
@@ -23,4 +20,8 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [0m
-[0m✱ [0mGlob "conductor/tracks/**/plan.md"[90m 13 matches[0m
+[0m$ [0mgit log -1 --oneline
+12fcb06 docs: update tech-debt and lessons-learned
+[0m
+[0m✱ [0mGlob "conductor/tracks/*/plan.md"[90m 13 matches[0m
+Dirty workspace detected. Let me commit the output.log and check the current track status.
