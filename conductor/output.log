@@ -241,3 +241,53 @@ Index: /home/daniel-bo/Desktop/ka-math-companion/conductor/tracks/curriculum-dat
  - [ ] **Task 8: Add objectives for Unit 10 lessons**
 
 [0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && git add -A && git commit -m "$(cat <<'EOF'
+feat(curriculum-data): add objectives for Unit 9 Modeling lessons
+
+Add 3-5 objectives each to the 4 Unit 9 lessons covering function
+combination, end behavior, formula manipulation, and word problems.
+
+[minimax-m2.7]
+EOF
+)"
+[feat/30-render-curriculum-overview-page c4459e2] feat(curriculum-data): add objectives for Unit 9 Modeling lessons
+ 4 files changed, 259 insertions(+), 7 deletions(-)
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && git push
+To https://github.com/bodangren/ka-math-companion.git
+   12fcb06..c4459e2  feat/30-render-curriculum-overview-page -> feat/30-render-curriculum-overview-page
+[0m
+Updating tech-debt and lessons-learned.
+[0m← [0mEdit conductor/tech-debt.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/conductor/tech-debt.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/conductor/tech-debt.md
++++ /home/daniel-bo/Desktop/ka-math-companion/conductor/tech-debt.md
+@@ -8,6 +8,6 @@
+ 
+ | Date | Track | Item | Severity | Status | Notes |
+ |------|-------|------|----------|--------|-------|
+ | 2026-04-09 | curriculum-data | Add real descriptions and time estimates to all 65+ lessons | Medium | Open | Currently using empty strings and default 30min |
+-| 2026-04-10 | curriculum-data | Units 5-13 still need objectives populated | Medium | Open | Units 1-6 have objectives; Units 7-13 need work |
++| 2026-04-12 | curriculum-data | Units 10, 11, 12 still need objectives populated | Medium | Open | Units 1-9 and 13 have objectives; Units 10-12 need work |
+ | 2026-01-01 | example_track | Example: Hardcoded timeout value | Low | Resolved | Replaced with config value in v1.2 |
+
+[0m
+[0m← [0mEdit conductor/lessons-learned.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
++++ /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
+@@ -18,8 +18,10 @@
+ 
+ - (2026-04-09, curriculum-data) TDD for type changes: write failing tests first, then add fields to all usages systematically
+ - (2026-04-10, curriculum-data) Batch similar tasks: adding objectives to multiple units in one commit reduced context switching
+ - (2026-04-11, curriculum-data) Unit indexing: use `List.drop n |> List.head` to safely access units by position
++- (2026-04-12, curriculum-data) TDD for curriculum: write failing test first, then implement. Tests confirmed Unit 7 already had objectives (plan was stale)
++- (2026-04-12, curriculum-data) Modeling unit objectives cover: function combination/periodicity, end behavior analysis, formula rearrangement, multi-variable word problems
+ 
+ ## Planning Improvements
+ <!-- Notes on where estimates were wrong and why -->
+ 
+
+[0m
