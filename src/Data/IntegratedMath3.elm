@@ -488,25 +488,45 @@ unit9 =
     , lessons =
         [ { title = "Function combination and periodicity"
           , slug = "function-combination-and-periodicity"
-          , objectives = []
+          , objectives =
+                [ "Combine functions using addition, subtraction, multiplication, and division"
+                , "Identify the domain and range of combined functions"
+                , "Recognize periodic functions and their applications"
+                , "Analyze how operations affect the periodicity of functions"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "End behavior and algebraic model analysis"
           , slug = "end-behavior-and-algebraic-model-analysis"
-          , objectives = []
+          , objectives =
+                [ "Describe the end behavior of polynomial and rational functions"
+                , "Use algebraic methods to analyze model behavior"
+                , "Interpret end behavior in real-world contexts"
+                , "Compare graphical and algebraic approaches to model analysis"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Formula manipulation"
           , slug = "formula-manipulation"
-          , objectives = []
+          , objectives =
+                [ "Rearrange formulas to solve for specified variables"
+                , "Apply formula manipulation to real-world formulas"
+                , "Verify algebraic manipulations using dimensional analysis"
+                , "Translate between verbal and algebraic representations"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Word problems with multiple variables"
           , slug = "word-problems-with-multiple-variables"
-          , objectives = []
+          , objectives =
+                [ "Create equations from real-world scenarios involving multiple variables"
+                , "Solve multi-variable equations for specified variables"
+                , "Interpret solutions in the context of the original problem"
+                , "Check the reasonableness of solutions in context"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }

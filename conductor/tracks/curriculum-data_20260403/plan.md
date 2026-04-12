@@ -36,9 +36,9 @@
 
 ## Phase 6: Unit 9 - Modeling
 
-- [ ] **Task 7: Add objectives for Unit 9 lessons**
-  - [ ] Write Tests: Verify objectives are non-empty
-  - [ ] Implement: Add 3-5 objectives per lesson (4 lessons)
+- [x] **Task 7: Add objectives for Unit 9 lessons**
+  - [x] Write Tests: Verify objectives are non-empty
+  - [x] Implement: Add 3-5 objectives per lesson (4 lessons)
 
 ## Phase 7: Unit 10 - Study Design
 

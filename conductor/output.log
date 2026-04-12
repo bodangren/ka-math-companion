@@ -25,3 +25,219 @@ no changes added to commit (use "git add" and/or "git commit -a")
 [0m
 [0m✱ [0mGlob "conductor/tracks/*/plan.md"[90m 13 matches[0m
 Dirty workspace detected. Let me commit the output.log and check the current track status.
+[0m
+[0m$ [0mgit add conductor/output.log && git commit -m "$(cat <<'EOF'
+chore: checkpoint output.log
+EOF
+)"
+[feat/30-render-curriculum-overview-page 858c9f8] chore: checkpoint output.log
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+[0m
+[0m→ [0mRead conductor/tracks/curriculum-data_20260403/metadata.json
+[0m→ [0mRead conductor/tracks/curriculum-data_20260403/plan.md
+Next pending is Phase 5, Task 6: Add objectives for Unit 7 lessons. Let me read the spec and the curriculum data.
+[0m✱ [0mGlob "src/**/Curriculum*.elm"[90m 2 matches[0m
+[0m→ [0mRead conductor/tracks/curriculum-data_20260403/spec.md
+[0m✱ [0mGrep "Unit 7|unit7|Unit Seven"[90m 7 matches[0m
+[0m→ [0mRead src/Data/IntegratedMath3.elm[90m [offset=372, limit=60][0m
+Unit 7 lessons already have objectives populated. Let me check the test to understand what Task 6 actually needs.
+[0m→ [0mRead tests/Data/IntegratedMath3Test.elm[90m [offset=85, limit=40][0m
+Unit 7 objectives are already populated. Let me run the tests to see current state.
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && elm-test 2>&1 | head -50
+/bin/bash: line 1: elm-test: command not found
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm test 2>&1 | head -60
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 26 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 148802810097887
+
+
+TEST RUN PASSED
+
+Duration: 2953 ms
+Passed:   26
+Failed:   0
+[0m
+Tests pass. Unit 7 already has objectives. Let me check which units still need objectives populated.
+[0m→ [0mRead src/Data/IntegratedMath3.elm[90m [offset=425, limit=210][0m
+Units 9, 10, 11, 12 still need objectives. Next is Unit 9 (Phase 6). Let me check the test structure then implement.
+[0m→ [0mRead tests/Data/IntegratedMath3Test.elm
+TDD Cycle - Step 1: Add test for Unit 9 (will fail initially)
+[0m
+[0m← [0mEdit tests/Data/IntegratedMath3Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Data/IntegratedMath3Test.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Data/IntegratedMath3Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Data/IntegratedMath3Test.elm
+@@ -103,5 +103,21 @@
+                     |> List.all identity
+                     |> Expect.equal True
+             Nothing ->
+                 Expect.fail "Unit 7 not found"
++, Test.test "Unit 9 (Modeling) lessons have non-empty objectives" <|
++    \_ ->
++        let
++            unit9 =
++                IntegratedMath3.course.units
++                    |> List.drop 8
++                    |> List.head
++        in
++        case unit9 of
++            Just unit ->
++                unit.lessons
++                    |> List.map (\lesson -> List.length lesson.objectives > 0)
++                    |> List.all identity
++                    |> Expect.equal True
++            Nothing ->
++                Expect.fail "Unit 9 not found"
+ ]
+
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm test 2>&1
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 27 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 29789550029157
+
+↓ Data.IntegratedMath3Test
+↓ Data.IntegratedMath3
+✗ Unit 9 (Modeling) lessons have non-empty objectives
+
+    ▼▼▼▼ 
+    False
+    ╷
+    │ Expect.equal
+    ╵
+    True
+    ▲▲▲ 
+
+
+
+TEST RUN FAILED
+
+Duration: 363 ms
+Passed:   26
+Failed:   1
+[0m
+Test fails as expected. Now implementing Unit 9 objectives (Green phase).
+[0m← [0mEdit src/Data/IntegratedMath3.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Data/IntegratedMath3.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Data/IntegratedMath3.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Data/IntegratedMath3.elm
+@@ -487,27 +487,47 @@
+ , slug = "modeling"
+ , lessons =
+     [ { title = "Function combination and periodicity"
+       , slug = "function-combination-and-periodicity"
+-      , objectives = []
++      , objectives =
++            [ "Combine functions using addition, subtraction, multiplication, and division"
++            , "Identify the domain and range of combined functions"
++            , "Recognize periodic functions and their applications"
++            , "Analyze how operations affect the periodicity of functions"
++            ]
+       , description = ""
+       , estimatedMinutes = 30
+       }
+     , { title = "End behavior and algebraic model analysis"
+       , slug = "end-behavior-and-algebraic-model-analysis"
+-      , objectives = []
++      , objectives =
++            [ "Describe the end behavior of polynomial and rational functions"
++            , "Use algebraic methods to analyze model behavior"
++            , "Interpret end behavior in real-world contexts"
++            , "Compare graphical and algebraic approaches to model analysis"
++            ]
+       , description = ""
+       , estimatedMinutes = 30
+       }
+     , { title = "Formula manipulation"
+       , slug = "formula-manipulation"
+-      , objectives = []
++      , objectives =
++            [ "Rearrange formulas to solve for specified variables"
++            , "Apply formula manipulation to real-world formulas"
++            , "Verify algebraic manipulations using dimensional analysis"
++            , "Translate between verbal and algebraic representations"
++            ]
+       , description = ""
+       , estimatedMinutes = 30
+       }
+     , { title = "Word problems with multiple variables"
+       , slug = "word-problems-with-multiple-variables"
+-      , objectives = []
++      , objectives =
++            [ "Create equations from real-world scenarios involving multiple variables"
++            , "Solve multi-variable equations for specified variables"
++            , "Interpret solutions in the context of the original problem"
++            , "Check the reasonableness of solutions in context"
++            ]
+       , description = ""
+       , estimatedMinutes = 30
+       }
+     ]
+
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm test 2>&1
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 27 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 272336272319953
+
+
+TEST RUN PASSED
+
+Duration: 567 ms
+Passed:   27
+Failed:   0
+[0m
+Tests pass. Let me verify build.
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm run build 2>&1 | head -30
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
+Build successful. Now updating the plan and committing.
+[0m← [0mEdit conductor/tracks/curriculum-data_20260403/plan.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/conductor/tracks/curriculum-data_20260403/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/conductor/tracks/curriculum-data_20260403/plan.md
++++ /home/daniel-bo/Desktop/ka-math-companion/conductor/tracks/curriculum-data_20260403/plan.md
+@@ -35,11 +35,11 @@
+   - [ ] Implement: Add 3-5 objectives per lesson (4 lessons)
+ 
+ ## Phase 6: Unit 9 - Modeling
+ 
+-- [ ] **Task 7: Add objectives for Unit 9 lessons**
+-  - [ ] Write Tests: Verify objectives are non-empty
+-  - [ ] Implement: Add 3-5 objectives per lesson (4 lessons)
++- [x] **Task 7: Add objectives for Unit 9 lessons**
++  - [x] Write Tests: Verify objectives are non-empty
++  - [x] Implement: Add 3-5 objectives per lesson (4 lessons)
+ 
+ ## Phase 7: Unit 10 - Study Design
+ 
+ - [ ] **Task 8: Add objectives for Unit 10 lessons**
+
+[0m
