@@ -586,7 +586,13 @@ unit11 =
     , lessons =
         [ { title = "Binomial probability"
           , slug = "binomial-probability"
-          , objectives = []
+          , objectives =
+                [ "Identify experiments that follow a binomial distribution"
+                , "Calculate binomial coefficients using combinations"
+                , "Apply the binomial probability formula P(X=k) = C(n,k)p^k(1-p)^(n-k)"
+                , "Compute the mean and standard deviation of a binomial distribution"
+                , "Use binomial probability to make predictions about outcomes"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }

@@ -22,6 +22,7 @@
 - (2026-04-12, curriculum-data) TDD for curriculum: write failing test first, then implement. Tests confirmed Unit 7 already had objectives (plan was stale)
 - (2026-04-12, curriculum-data) Modeling unit objectives cover: function combination/periodicity, end behavior analysis, formula rearrangement, multi-variable word problems
 - (2026-04-13, curriculum-data) Study Design objectives: statistical inference, hypothesis testing, experimental design topics
+- (2026-04-13, curriculum-data) Binomial Probability objectives: binomial formula, combinations, mean and standard deviation of distribution
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->

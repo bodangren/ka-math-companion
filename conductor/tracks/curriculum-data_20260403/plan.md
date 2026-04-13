@@ -48,9 +48,9 @@
 
 ## Phase 8: Unit 11 - Binomial Probability
 
-- [ ] **Task 9: Add objectives for Unit 11 lesson**
-  - [ ] Write Tests: Verify objectives are non-empty
-  - [ ] Implement: Add 3-5 objectives (1 lesson)
+- [x] **Task 9: Add objectives for Unit 11 lesson**
+  - [x] Write Tests: Verify objectives are non-empty
+  - [x] Implement: Add 3-5 objectives (1 lesson)
 
 ## Phase 9: Unit 12 - Normal Distributions
 
