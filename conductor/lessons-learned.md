@@ -21,6 +21,7 @@
 - (2026-04-11, curriculum-data) Unit indexing: use `List.drop n |> List.head` to safely access units by position
 - (2026-04-12, curriculum-data) TDD for curriculum: write failing test first, then implement. Tests confirmed Unit 7 already had objectives (plan was stale)
 - (2026-04-12, curriculum-data) Modeling unit objectives cover: function combination/periodicity, end behavior analysis, formula rearrangement, multi-variable word problems
+- (2026-04-13, curriculum-data) Study Design objectives: statistical inference, hypothesis testing, experimental design topics
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
