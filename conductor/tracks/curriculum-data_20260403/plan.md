@@ -54,9 +54,9 @@
 
 ## Phase 9: Unit 12 - Normal Distributions
 
-- [ ] **Task 10: Add objectives for Unit 12 lesson**
-  - [ ] Write Tests: Verify objectives are non-empty
-  - [ ] Implement: Add 3-5 objectives (1 lesson)
+- [x] **Task 10: Add objectives for Unit 12 lesson**
+  - [x] Write Tests: Verify objectives are non-empty
+  - [x] Implement: Add 3-5 objectives (1 lesson)
 
 ## Phase 10: Descriptions & Time Estimates
 

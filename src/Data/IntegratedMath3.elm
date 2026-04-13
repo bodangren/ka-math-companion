@@ -607,7 +607,13 @@ unit12 =
     , lessons =
         [ { title = "Normal distribution concepts"
           , slug = "normal-distribution-concepts"
-          , objectives = []
+          , objectives =
+                [ "Identify the key features of a normal distribution curve"
+                , "Apply the empirical rule (68-95-99.7) to solve problems"
+                , "Calculate and interpret z-scores"
+                , "Use z-scores to compare values from different normal distributions"
+                , "Determine probabilities using the standard normal distribution"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
