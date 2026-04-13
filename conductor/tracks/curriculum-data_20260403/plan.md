@@ -42,9 +42,9 @@
 
 ## Phase 7: Unit 10 - Study Design
 
-- [ ] **Task 8: Add objectives for Unit 10 lessons**
-  - [ ] Write Tests: Verify objectives are non-empty
-  - [ ] Implement: Add 3-5 objectives per lesson (3 lessons)
+- [x] **Task 8: Add objectives for Unit 10 lessons**
+  - [x] Write Tests: Verify objectives are non-empty
+  - [x] Implement: Add 3-5 objectives per lesson (3 lessons)
 
 ## Phase 8: Unit 11 - Binomial Probability
 

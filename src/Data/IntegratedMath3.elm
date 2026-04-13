@@ -541,19 +541,37 @@ unit10 =
     , lessons =
         [ { title = "Valid claims from statistical studies"
           , slug = "valid-claims-from-statistical-studies"
-          , objectives = []
+          , objectives =
+                [ "Distinguish between valid and invalid statistical claims"
+                , "Identify the population and sample in a statistical study"
+                , "Recognize common sources of bias in sampling methods"
+                , "Differentiate between correlation and causation"
+                , "Evaluate whether conclusions are supported by the data"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Inferences from random samples"
           , slug = "inferences-from-random-samples"
-          , objectives = []
+          , objectives =
+                [ "Explain how random sampling allows for inference about a population"
+                , "Interpret margin of error and confidence intervals"
+                , "Understand the relationship between sample size and precision"
+                , "Conduct hypothesis testing to evaluate claims"
+                , "Distinguish between statistical significance and practical significance"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }
         , { title = "Study types: surveys, observational studies, experiments"
           , slug = "study-types"
-          , objectives = []
+          , objectives =
+                [ "Compare and contrast surveys, observational studies, and experiments"
+                , "Identify the role of control groups in experiments"
+                , "Explain random assignment and why it matters"
+                , "Understand placebo and blinding in experimental design"
+                , "Determine appropriate study type to answer specific research questions"
+                ]
           , description = ""
           , estimatedMinutes = 30
           }

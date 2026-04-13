@@ -120,4 +120,20 @@ suite =
                             |> Expect.equal True
                     Nothing ->
                         Expect.fail "Unit 9 not found"
+        , Test.test "Unit 10 (Study Design) lessons have non-empty objectives" <|
+            \_ ->
+                let
+                    unit10 =
+                        IntegratedMath3.course.units
+                            |> List.drop 9
+                            |> List.head
+                in
+                case unit10 of
+                    Just unit ->
+                        unit.lessons
+                            |> List.map (\lesson -> List.length lesson.objectives > 0)
+                            |> List.all identity
+                            |> Expect.equal True
+                    Nothing ->
+                        Expect.fail "Unit 10 not found"
         ]
