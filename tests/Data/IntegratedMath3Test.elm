@@ -1,7 +1,6 @@
 module Data.IntegratedMath3Test exposing (suite)
 
 import Data.IntegratedMath3 as IntegratedMath3
-import Data.Curriculum exposing (Unit)
 import Expect
 import Test
 
