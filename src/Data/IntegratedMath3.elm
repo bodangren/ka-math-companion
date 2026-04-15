@@ -382,7 +382,7 @@ unit7 =
                 , "Solve square-root equations by squaring both sides"
                 , "Check solutions to square-root equations for extraneous roots"
                 ]
-          , description = ""
+          , description = "Learn to solve equations containing fractions and square roots, identifying when solutions are invalid."
           , estimatedMinutes = 30
           }
         , { title = "Cube-root equations"
@@ -393,7 +393,7 @@ unit7 =
                 , "Cube both sides to eliminate radicals"
                 , "Verify solutions in original equations"
                 ]
-          , description = ""
+          , description = "Extend equation-solving skills to cube roots and learn why cubing preserves sign properties."
           , estimatedMinutes = 30
           }
         , { title = "Quadratic systems"
@@ -404,7 +404,7 @@ unit7 =
                 , "Find intersection points of parabolas and lines"
                 , "Interpret solutions graphically as intersection points"
                 ]
-          , description = ""
+          , description = "Find where parabolic and linear graphs intersect by solving systems of equations algebraically."
           , estimatedMinutes = 30
           }
         , { title = "Solving equations graphically"
@@ -415,7 +415,7 @@ unit7 =
                 , "Use graphing calculators to solve complex equations"
                 , "Compare graphical and algebraic solution methods"
                 ]
-          , description = ""
+          , description = "Use graphing technology to estimate solutions and understand the connection between graphs and equations."
           , estimatedMinutes = 30
           }
         ]
