@@ -167,6 +167,30 @@ suite =
                             |> Expect.equal True
                     Nothing ->
                         Expect.fail "Unit 12 not found"
+        , Test.test "All lessons have non-empty descriptions" <|
+            \_ ->
+                let
+                    lessonsWithEmptyDescriptions =
+                        IntegratedMath3.course.units
+                            |> List.concatMap (\unit -> List.map (\lesson -> ( unit.title, lesson.title, lesson.description )) unit.lessons)
+                            |> List.filter (\( _, _, description ) -> String.isEmpty description)
+                in
+                case lessonsWithEmptyDescriptions of
+                    [] ->
+                        Expect.pass
+                    first :: rest ->
+                        let
+                            ( unitTitle, lessonTitle, _ ) =
+                                first
+                            count =
+                                1 + List.length rest
+                        in
+                        Expect.fail <|
+                            String.fromInt count
+                                ++ " lesson(s) missing descriptions: "
+                                ++ lessonTitle
+                                ++ " in "
+                                ++ unitTitle
         , Test.test "Unit 7 (Equations) lessons have non-empty descriptions" <|
             \_ ->
                 let

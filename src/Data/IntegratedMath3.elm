@@ -37,7 +37,7 @@ unit1 =
                 , "Identify parts of a polynomial expression"
                 , "Classify polynomials by degree and number of terms"
                 ]
-          , description = ""
+          , description = "Learn the vocabulary and classification system for polynomials, including degree, terms, and standard form."
           , estimatedMinutes = 30
           }
         , { title = "Average rate of change of polynomials"
@@ -47,7 +47,7 @@ unit1 =
                 , "Interpret average rate of change in context"
                 , "Compare rates of change across intervals"
                 ]
-          , description = ""
+          , description = "Understand how polynomials change over intervals and learn to calculate and interpret average rates of change."
           , estimatedMinutes = 30
           }
         , { title = "Adding and subtracting polynomials"
@@ -57,7 +57,7 @@ unit1 =
                 , "Distribute negative signs to subtract polynomials"
                 , "Write results in standard form"
                 ]
-          , description = ""
+          , description = "Master the techniques for combining polynomials through addition and subtraction using like terms."
           , estimatedMinutes = 30
           }
         , { title = "Multiplying monomials by polynomials"
@@ -67,7 +67,7 @@ unit1 =
                 , "Use exponent rules when multiplying powers"
                 , "Simplify products to standard form"
                 ]
-          , description = ""
+          , description = "Apply the distributive property to multiply monomials by polynomials and simplify using exponent rules."
           , estimatedMinutes = 30
           }
         , { title = "Multiplying binomials by polynomials"
@@ -77,7 +77,7 @@ unit1 =
                 , "Use area models to visualize polynomial multiplication"
                 , "Multiply binomials by trinomials using distribution"
                 ]
-          , description = ""
+          , description = "Learn FOIL and area models to multiply binomials and extend to larger polynomial expressions."
           , estimatedMinutes = 30
           }
         , { title = "Special products"
@@ -87,7 +87,7 @@ unit1 =
                 , "Apply difference of squares pattern (a+b)(a-b)"
                 , "Use special products to multiply efficiently"
                 ]
-          , description = ""
+          , description = "Discover shortcut patterns for multiplying conjugates and perfect square binomials to speed up calculations."
           , estimatedMinutes = 30
           }
         ]
@@ -106,7 +106,7 @@ unit2 =
                 , "Factor polynomial expressions by identifying the GCF"
                 , "Factor expressions with negative coefficients"
                 ]
-          , description = ""
+          , description = "Learn to find the greatest common factor of polynomial terms and use it to factor expressions."
           , estimatedMinutes = 30
           }
         , { title = "Factoring polynomials with common factors"
@@ -116,7 +116,7 @@ unit2 =
                 , "Factor by grouping with two distinct pairs"
                 , "Identify when factoring by grouping is appropriate"
                 ]
-          , description = ""
+          , description = "Master factoring by grouping to break apart polynomials with four or more terms into products."
           , estimatedMinutes = 30
           }
         , { title = "Factorization using substitution"
@@ -126,7 +126,7 @@ unit2 =
                 , "Apply substitution to factor complex polynomials"
                 , "Reverse substitution to restore original variables"
                 ]
-          , description = ""
+          , description = "Use substitution to simplify complex factorization problems by recognizing repeating patterns."
           , estimatedMinutes = 30
           }
         , { title = "Polynomial identities"
@@ -136,7 +136,7 @@ unit2 =
                 , "Use difference of cubes and sum of cubes identities"
                 , "Apply identities to factor expressions with three terms"
                 ]
-          , description = ""
+          , description = "Learn special cube identities to factor sums and differences of cubes efficiently."
           , estimatedMinutes = 30
           }
         , { title = "Geometric series applications"
@@ -146,7 +146,7 @@ unit2 =
                 , "Solve problems involving geometric series in context"
                 , "Connect geometric series to polynomial factorization"
                 ]
-          , description = ""
+          , description = "Connect geometric series to factorization by exploring how series sums relate to polynomial expressions."
           , estimatedMinutes = 30
           }
         ]
@@ -165,7 +165,7 @@ unit3 =
                 , "Express division of polynomials as a simplified fraction"
                 , "Identify quotients and remainders in polynomial division"
                 ]
-          , description = ""
+          , description = "Learn to divide polynomial expressions by monomials using the quotient rule for exponents."
           , estimatedMinutes = 30
           }
         , { title = "Dividing quadratics by linear expressions"
@@ -175,7 +175,7 @@ unit3 =
                 , "Use long division to find quotients and remainders"
                 , "Verify division results by multiplying back"
                 ]
-          , description = ""
+          , description = "Learn to divide quadratic polynomials by linear expressions using long division and verify results."
           , estimatedMinutes = 30
           }
         , { title = "General division by linear expressions"
@@ -185,7 +185,7 @@ unit3 =
                 , "Divide by linear expressions in the form (x - c)"
                 , "Interpret remainders in context of polynomial division"
                 ]
-          , description = ""
+          , description = "Extend polynomial division skills to handle polynomials of any degree divided by linear expressions."
           , estimatedMinutes = 30
           }
         , { title = "Using division for factoring"
@@ -195,7 +195,7 @@ unit3 =
                 , "Find roots of polynomials using the factor theorem"
                 , "Determine whether a binomial is a factor of a polynomial"
                 ]
-          , description = ""
+          , description = "Use polynomial division as a tool to factor polynomials and find their roots efficiently."
           , estimatedMinutes = 30
           }
         , { title = "Remainder theorem"
@@ -205,7 +205,7 @@ unit3 =
                 , "Evaluate polynomials using the remainder theorem"
                 , "Use the remainder theorem to check for factors"
                 ]
-          , description = ""
+          , description = "Discover how evaluating a polynomial at a point gives insight into its factors and roots."
           , estimatedMinutes = 30
           }
         ]
@@ -224,7 +224,7 @@ unit4 =
                 , "Connect zeros to x-intercepts on a graph"
                 , "Determine multiplicity of zeros from factored forms"
                 ]
-          , description = ""
+          , description = "Learn to find where polynomial functions equal zero and connect these points to graph intercepts."
           , estimatedMinutes = 30
           }
         , { title = "Positive and negative intervals"
@@ -234,7 +234,7 @@ unit4 =
                 , "Use sign charts to analyze polynomial function behavior"
                 , "Connect sign intervals to the graph of the function"
                 ]
-          , description = ""
+          , description = "Analyze where polynomial functions are positive or negative using sign charts and factored forms."
           , estimatedMinutes = 30
           }
         , { title = "End behavior of polynomials"
@@ -244,7 +244,7 @@ unit4 =
                 , "Use degree and leading coefficient to predict end behavior"
                 , "Match polynomial graphs to their equations based on end behavior"
                 ]
-          , description = ""
+          , description = "Understand how the degree and leading coefficient determine what happens at the far ends of polynomial graphs."
           , estimatedMinutes = 30
           }
         , { title = "Comprehensive graph analysis"
@@ -254,7 +254,7 @@ unit4 =
                 , "Sketch polynomial graphs from given characteristics"
                 , "Write polynomial equations from given graphs"
                 ]
-          , description = ""
+          , description = "Synthesize zeros, end behavior, and sign analysis to create complete polynomial function graphs."
           , estimatedMinutes = 30
           }
         ]
@@ -273,7 +273,7 @@ unit5 =
                 , "Evaluate logarithms with base 10 and base e"
                 , "Convert between exponential and logarithmic form"
                 ]
-          , description = ""
+          , description = "Learn what logarithms are and how to evaluate them as inverses of exponential functions."
           , estimatedMinutes = 30
           }
         , { title = "Relationships between exponentials and logarithms"
@@ -283,7 +283,7 @@ unit5 =
                 , "Use the property that log_b(b^x) = x and b^(log_b(x)) = x"
                 , "Graph exponential and logarithmic functions as reflections"
                 ]
-          , description = ""
+          , description = "Understand how exponential and logarithmic functions are inverses that undo each other's operations."
           , estimatedMinutes = 30
           }
         , { title = "Properties of logarithms"
@@ -293,7 +293,7 @@ unit5 =
                 , "Apply the quotient rule: log_b(M/N) = log_b(M) - log_b(N)"
                 , "Apply the power rule: log_b(M^n) = n·log_b(M)"
                 ]
-          , description = ""
+          , description = "Master logarithmic rules for products, quotients, and powers to simplify complex expressions."
           , estimatedMinutes = 30
           }
         , { title = "Solving exponential equations"
@@ -303,7 +303,7 @@ unit5 =
                 , "Apply the change of base formula"
                 , "Solve real-world problems involving exponential growth/decay"
                 ]
-          , description = ""
+          , description = "Learn to solve equations where variables appear in exponents using logarithms."
           , estimatedMinutes = 30
           }
         , { title = "Exponential modeling word problems"
@@ -313,7 +313,7 @@ unit5 =
                 , "Write exponential models from given information"
                 , "Use models to make predictions and answer questions"
                 ]
-          , description = ""
+          , description = "Apply exponential functions to real-world scenarios like population growth and radioactive decay."
           , estimatedMinutes = 30
           }
         ]
@@ -332,7 +332,7 @@ unit6 =
                 , "Identify reflections over x-axis and y-axis"
                 , "Graph transformed functions using shift rules"
                 ]
-          , description = ""
+          , description = "Learn how adding constants or negating terms shifts and reflects function graphs."
           , estimatedMinutes = 30
           }
         , { title = "Vertical and horizontal scaling"
@@ -342,7 +342,7 @@ unit6 =
                 , "Identify horizontal stretches and compressions"
                 , "Graph functions with combined transformations"
                 ]
-          , description = ""
+          , description = "Understand how multiplying by constants stretches or compresses functions horizontally and vertically."
           , estimatedMinutes = 30
           }
         , { title = "Identifying composite transformations"
@@ -352,7 +352,7 @@ unit6 =
                 , "Apply transformations in the correct order"
                 , "Write equations from transformed graphs"
                 ]
-          , description = ""
+          , description = "Analyze complex transformations by identifying and sequencing multiple shifts, reflections, and scales."
           , estimatedMinutes = 30
           }
         , { title = "Graphs of square and cube root functions"
@@ -362,7 +362,7 @@ unit6 =
                 , "Apply transformations to root functions"
                 , "Identify domain and range of transformed root functions"
                 ]
-          , description = ""
+          , description = "Graph square root and cube root functions and apply transformations to create related graphs."
           , estimatedMinutes = 30
           }
         ]
@@ -434,7 +434,7 @@ unit8 =
                 , "Apply the Law of Cosines to find missing sides and angles"
                 , "Determine when each law is appropriate to use"
                 ]
-          , description = ""
+          , description = "Learn to solve triangles using the Law of Sines and Law of Cosines when standard right triangle trigonometry doesn't apply."
           , estimatedMinutes = 30
           }
         , { title = "Unit circle"
@@ -444,7 +444,7 @@ unit8 =
                 , "Evaluate trigonometric functions at standard angles"
                 , "Identify reference angles and use symmetry"
                 ]
-          , description = ""
+          , description = "Use the unit circle to understand trigonometric functions beyond 0 to 90 degrees."
           , estimatedMinutes = 30
           }
         , { title = "Pythagorean identity"
@@ -454,7 +454,7 @@ unit8 =
                 , "Use the identity to find missing trigonometric values"
                 , "Verify trigonometric equations using the identity"
                 ]
-          , description = ""
+          , description = "Discover the fundamental Pythagorean identity and use it to simplify trigonometric expressions."
           , estimatedMinutes = 30
           }
         , { title = "Graphs of sinusoidal functions"
@@ -464,7 +464,7 @@ unit8 =
                 , "Graph sine and cosine functions with transformations"
                 , "Write equations from graphs of sinusoidal functions"
                 ]
-          , description = ""
+          , description = "Analyze and graph sine and cosine functions using amplitude, period, and phase shift transformations."
           , estimatedMinutes = 30
           }
         , { title = "Modeling with sinusoidal functions"
@@ -474,7 +474,7 @@ unit8 =
                 , "Interpret amplitude, period, and phase shift in context"
                 , "Make predictions using sinusoidal models"
                 ]
-          , description = ""
+          , description = "Apply sinusoidal functions to model real-world periodic phenomena like sound waves and seasonal patterns."
           , estimatedMinutes = 30
           }
         ]
@@ -494,7 +494,7 @@ unit9 =
                 , "Recognize periodic functions and their applications"
                 , "Analyze how operations affect the periodicity of functions"
                 ]
-          , description = ""
+          , description = "Explore how combining functions affects their periodicity and other properties."
           , estimatedMinutes = 30
           }
         , { title = "End behavior and algebraic model analysis"
@@ -505,7 +505,7 @@ unit9 =
                 , "Interpret end behavior in real-world contexts"
                 , "Compare graphical and algebraic approaches to model analysis"
                 ]
-          , description = ""
+          , description = "Analyze what happens to function values as inputs become very large or very small."
           , estimatedMinutes = 30
           }
         , { title = "Formula manipulation"
@@ -516,7 +516,7 @@ unit9 =
                 , "Verify algebraic manipulations using dimensional analysis"
                 , "Translate between verbal and algebraic representations"
                 ]
-          , description = ""
+          , description = "Master rearranging complex formulas to isolate different variables for various applications."
           , estimatedMinutes = 30
           }
         , { title = "Word problems with multiple variables"
@@ -527,7 +527,7 @@ unit9 =
                 , "Interpret solutions in the context of the original problem"
                 , "Check the reasonableness of solutions in context"
                 ]
-          , description = ""
+          , description = "Translate complex real-world scenarios into equations with multiple variables and solve systematically."
           , estimatedMinutes = 30
           }
         ]
@@ -548,7 +548,7 @@ unit10 =
                 , "Differentiate between correlation and causation"
                 , "Evaluate whether conclusions are supported by the data"
                 ]
-          , description = ""
+          , description = "Learn to critically evaluate statistical claims and identify valid conclusions from data."
           , estimatedMinutes = 30
           }
         , { title = "Inferences from random samples"
@@ -560,7 +560,7 @@ unit10 =
                 , "Conduct hypothesis testing to evaluate claims"
                 , "Distinguish between statistical significance and practical significance"
                 ]
-          , description = ""
+          , description = "Use random samples to make predictions about larger populations and understand the reliability of those predictions."
           , estimatedMinutes = 30
           }
         , { title = "Study types: surveys, observational studies, experiments"
@@ -572,7 +572,7 @@ unit10 =
                 , "Understand placebo and blinding in experimental design"
                 , "Determine appropriate study type to answer specific research questions"
                 ]
-          , description = ""
+          , description = "Understand the differences between surveys, observational studies, and experiments to design effective research."
           , estimatedMinutes = 30
           }
         ]
@@ -593,7 +593,7 @@ unit11 =
                 , "Compute the mean and standard deviation of a binomial distribution"
                 , "Use binomial probability to make predictions about outcomes"
                 ]
-          , description = ""
+          , description = "Calculate probabilities for experiments with two outcomes repeated multiple times using the binomial formula."
           , estimatedMinutes = 30
           }
         ]
@@ -614,7 +614,7 @@ unit12 =
                 , "Use z-scores to compare values from different normal distributions"
                 , "Determine probabilities using the standard normal distribution"
                 ]
-          , description = ""
+          , description = "Explore the normal distribution curve, use the empirical rule, and calculate probabilities with z-scores."
           , estimatedMinutes = 30
           }
         ]
@@ -633,7 +633,7 @@ unit13 =
                 , "Simplify rational expressions by canceling common factors"
                 , "Identify excluded values from the domain"
                 ]
-          , description = ""
+          , description = "Learn to simplify rational expressions by factoring and canceling common terms."
           , estimatedMinutes = 30
           }
         , { title = "Multiplying and dividing rational expressions"
@@ -643,7 +643,7 @@ unit13 =
                 , "Divide rational expressions by multiplying by the reciprocal"
                 , "Simplify products and quotients of rational expressions"
                 ]
-          , description = ""
+          , description = "Master multiplication and division of rational expressions with proper simplification."
           , estimatedMinutes = 30
           }
         , { title = "Adding and subtracting rational expressions"
@@ -653,7 +653,7 @@ unit13 =
                 , "Add and subtract rational expressions with like denominators"
                 , "Add and subtract rational expressions with unlike denominators"
                 ]
-          , description = ""
+          , description = "Learn to add and subtract rational expressions by finding common denominators."
           , estimatedMinutes = 30
           }
         , { title = "Rational function analysis"
@@ -663,7 +663,7 @@ unit13 =
                 , "Identify horizontal and oblique asymptotes from degrees"
                 , "Analyze end behavior of rational functions"
                 ]
-          , description = ""
+          , description = "Analyze rational functions to identify asymptotes and understand their long-run behavior."
           , estimatedMinutes = 30
           }
         , { title = "Modeling with rational functions"
@@ -673,7 +673,7 @@ unit13 =
                 , "Interpret asymptotes in context"
                 , "Use rational models to make predictions"
                 ]
-          , description = ""
+          , description = "Apply rational functions to model real-world situations involving rates and proportions."
           , estimatedMinutes = 30
           }
         ]
