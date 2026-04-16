@@ -2,218 +2,94 @@
 > build · MiniMax-M2.7
 [0m
 [0m→ [0mRead conductor/autonomous_prompt.md
-I'll run the autonomous conductor workflow. Let me load the skill and context files.
-[0m→ [0mSkill "conductor"
-[0m→ [0mRead conductor/tracks.md
+[0m✗ [0mskill failed
+[91m[1mError: [0mWebAssembly.Module doesn't parse at byte 175: wasm-simd is not enabled, in function at index 81
 [0m→ [0mRead conductor/tech-debt.md
+[0m→ [0mRead conductor/tracks.md
+[0m→ [0mRead conductor/lessons-learned.md
 [0m✗ [0mread failed
 [91m[1mError: [0mFile not found: /home/daniel-bo/Desktop/ka-math-companion/conductor/current_directive.md
-[0m→ [0mRead conductor/lessons-learned.md
 [0m
-[0m$ [0mgit status
-On branch feat/30-render-curriculum-overview-page
-Your branch is ahead of 'origin/feat/30-render-curriculum-overview-page' by 1 commit.
-  (use "git push" to publish your local commits)
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-	modified:   conductor/output.log
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	conductor/review-output.log
-
-no changes added to commit (use "git add" and/or "git commit -a")
+[0m$ [0mgit status --short
+M conductor/autonomous_prompt.md
+ M conductor/output.log
 [0m
-[0m$ [0mgit log -1 --format='%an %ae'
-Daniel Bo bodangren@gmail.com
+[0m$ [0mgit branch -v
+docs/6-document-architecture-decisions-for-s1  8cd3c2c Added sprint 1 docs
+  feat/28-bootstrap-nextjs-static-app            007cfcb Update opencode.jsonc configuration
+  feat/3-render-curriculum-overview              8c20c67 feat: add Integrated Math 3 curriculum loader (#8)
+* feat/30-render-curriculum-overview-page        938c94a checkpoint(MiniMax-M2.7): update tech-debt and lessons-learned after Unit 7 descriptions
+  feat/33-document-architecture-decisions-for-s1 8b5ab3d test: expand curriculum loader test coverage
+  main                                           1e0797d [ahead 3, behind 1] docs: enhance sprint S1 implementation notes with comprehensive architectural decisions
 [0m
-Workspace is dirty. Committing and pushing first.
-[0m$ [0mgit add conductor/output.log conductor/review-output.log && git commit -m "chore: save conductor output logs
-
-- Track dirty workspace state
-- Unattended autonomous run checkpoint"
-[feat/30-render-curriculum-overview-page c0ae5dd] chore: save conductor output logs
- 2 files changed, 359 insertions(+), 273 deletions(-)
- create mode 100644 conductor/review-output.log
+[0m$ [0mgit log --oneline -10
+938c94a checkpoint(MiniMax-M2.7): update tech-debt and lessons-learned after Unit 7 descriptions
+dd2117b feat(curriculum-data): add Unit 7 lesson descriptions
+c0ae5dd chore: save conductor output logs
+d48dd73 chore(review): fix 1 unused import lint issue and update tech-debt
+17dbd5c feat(curriculum-data): add objectives for Unit 12 Normal Distributions
+96b88e1 feat(curriculum-data): add objectives for Unit 11 Binomial Probability
+98bdce1 docs: update tech-debt and lessons-learned for Unit 10 completion
+87074f5 feat(curriculum-data): add objectives for Unit 10 Study Design lessons
+a582e8e docs: update tech-debt and lessons-learned for Unit 9 completion
+c4459e2 feat(curriculum-data): add objectives for Unit 9 Modeling lessons
 [0m
-[0m$ [0mgit push
-To https://github.com/bodangren/ka-math-companion.git
-   17dbd5c..c0ae5dd  feat/30-render-curriculum-overview-page -> feat/30-render-curriculum-overview-page
+[0m$ [0mgit log feat/30-render-curriculum-overview-page --oneline -5
+938c94a checkpoint(MiniMax-M2.7): update tech-debt and lessons-learned after Unit 7 descriptions
+dd2117b feat(curriculum-data): add Unit 7 lesson descriptions
+c0ae5dd chore: save conductor output logs
+d48dd73 chore(review): fix 1 unused import lint issue and update tech-debt
+17dbd5c feat(curriculum-data): add objectives for Unit 12 Normal Distributions
 [0m
-No in-progress phases. The top tech-debt item is "Add real descriptions and time estimates to all 65+ lessons" under the curriculum-data track. Let me check the curriculum-data track state.
-[0m→ [0mRead conductor/tracks/curriculum-data_20260403/metadata.json
-[0m→ [0mRead conductor/tracks/curriculum-data_20260403/plan.md
-The curriculum-data track exists with pending Task 6 (Unit 7 objectives). The top tech-debt item about descriptions/time estimates maps to Phase 10 Tasks 11-12 which are already in the plan. Continuing with the next pending task: **Task 6: Add objectives for Unit 7 lessons**.
-
-Let me first understand the current codebase structure to write the TDD test.
-[0m✱ [0mGlob "**/Curriculum*.elm"[90m 4 matches[0m
-[0m✱ [0mGlob "**/Unit*.elm"[90m 2 matches[0m
-[0m✱ [0mGrep "unit7|Unit 7|unitSeven"[90m 7 matches[0m
-[0m→ [0mRead tests/Data/CurriculumTest.elm
-[0m→ [0mRead tests/Data/IntegratedMath3Test.elm[90m [offset=80, limit=50][0m
-[0m→ [0mRead src/Data/IntegratedMath3.elm[90m [offset=370, limit=60][0m
-Let me run the tests to see the current state:
+[0m$ [0mgit diff --stat
+conductor/autonomous_prompt.md |   2 +
+ conductor/output.log           | 244 ++++++-----------------------------------
+ 2 files changed, 36 insertions(+), 210 deletions(-)
 [0m
-[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm test 2>&1 | head -100
-> ka-math-companion@0.1.0 test
-> elm-test
-
-CompilingCompiling > Starting tests
-
-elm-test 0.19.1-revision17
---------------------------
-
-Running 30 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 81777345056749
-
-
-TEST RUN PASSED
-
-Duration: 179 ms
-Passed:   30
-Failed:   0
+[0m$ [0mgit diff conductor/autonomous_prompt.md
+diff --git a/conductor/autonomous_prompt.md b/conductor/autonomous_prompt.md
+index 8c6e619..bd3435e 100644
+--- a/conductor/autonomous_prompt.md
++++ b/conductor/autonomous_prompt.md
+@@ -10,6 +10,8 @@ AUTONOMOUS CONDUCTOR — UNATTENDED RUN
+    - In-progress phase exists? Finish it.
+    - Nothing in progress? Create ONE new track from current_directive.md (or top tech-debt item if no directive).
+ 
++2.1 Review the work in the previous phase and check-fix before moving onto the new phase in step 3. 
++
+ 3. Implement ONE phase with TDD:
+    Red-Green-Refactor cycle. Run tests, correct build errors.
+    After each task: merge changes and push.
 [0m
-Tests pass. Let me check the actual Lesson type definition to see if Phase 1 (Tasks 1-2) is truly pending:
-[0m✱ [0mGrep "type alias Lesson"[90m 1 match[0m
-[0m→ [0mRead src/Data/Curriculum.elm[90m [offset=20, limit=20][0m
-Lesson type already has description and estimatedMinutes fields. Phase 1 is done. Unit 7 has objectives but empty descriptions. The next pending work is **Phase 10: Task 11 - Add descriptions to all lessons**.
-
-Let me write the failing test first (TDD Red phase):
-[0m→ [0mRead tests/Data/IntegratedMath3Test.elm[90m [limit=90][0m
-Let me write a test for Task 11 (descriptions for all lessons):
-[0m→ [0mRead tests/Data/IntegratedMath3Test.elm[90m [offset=140][0m
+[0m$ [0mgit diff conductor/output.log | head -30
+diff --git a/conductor/output.log b/conductor/output.log
+index b091dc9..7196b3b 100644
+--- a/conductor/output.log
++++ b/conductor/output.log
+@@ -2,218 +2,62 @@
+ > build · MiniMax-M2.7
+ [0m
+ [0m→ [0mRead conductor/autonomous_prompt.md
+-I'll run the autonomous conductor workflow. Let me load the skill and context files.
+-[0m→ [0mSkill "conductor"
+-[0m→ [0mRead conductor/tracks.md
++[0m✗ [0mskill failed
++[91m[1mError: [0mWebAssembly.Module doesn't parse at byte 175: wasm-simd is not enabled, in function at index 81
+ [0m→ [0mRead conductor/tech-debt.md
++[0m→ [0mRead conductor/tracks.md
++[0m→ [0mRead conductor/lessons-learned.md
+ [0m✗ [0mread failed
+ [91m[1mError: [0mFile not found: /home/daniel-bo/Desktop/ka-math-companion/conductor/current_directive.md
+-[0m→ [0mRead conductor/lessons-learned.md
+-[0m
+-[0m$ [0mgit status
+-On branch feat/30-render-curriculum-overview-page
+-Your branch is ahead of 'origin/feat/30-render-curriculum-overview-page' by 1 commit.
+-  (use "git push" to publish your local commits)
+-
+-Changes not staged for commit:
+-  (use "git add <file>..." to update what will be committed)
+-  (use "git restore <file>..." to discard changes in working directory)
+-	modified:   conductor/output.log
+-
 [0m
-[0m← [0mEdit tests/Data/IntegratedMath3Test.elm
-Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Data/IntegratedMath3Test.elm
-===================================================================
---- /home/daniel-bo/Desktop/ka-math-companion/tests/Data/IntegratedMath3Test.elm
-+++ /home/daniel-bo/Desktop/ka-math-companion/tests/Data/IntegratedMath3Test.elm
-@@ -166,5 +166,21 @@
-                     |> List.all identity
-                     |> Expect.equal True
-             Nothing ->
-                 Expect.fail "Unit 12 not found"
-+, Test.test "Unit 7 (Equations) lessons have non-empty descriptions" <|
-+    \_ ->
-+        let
-+            unit7 =
-+                IntegratedMath3.course.units
-+                    |> List.drop 6
-+                    |> List.head
-+        in
-+        case unit7 of
-+            Just unit ->
-+                unit.lessons
-+                    |> List.map (\lesson -> String.length lesson.description > 0)
-+                    |> List.all identity
-+                    |> Expect.equal True
-+            Nothing ->
-+                Expect.fail "Unit 7 not found"
- ]
-
-[0m
-[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm test 2>&1
-> ka-math-companion@0.1.0 test
-> elm-test
-
-CompilingCompiling > Starting tests
-
-elm-test 0.19.1-revision17
---------------------------
-
-Running 31 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 30563482326250
-
-↓ Data.IntegratedMath3Test
-↓ Data.IntegratedMath3
-✗ Unit 7 (Equations) lessons have non-empty descriptions
-
-    ▼▼▼▼ 
-    False
-    ╷
-    │ Expect.equal
-    ╵
-    True
-    ▲▲▲ 
-
-
-
-TEST RUN FAILED
-
-Duration: 201 ms
-Passed:   30
-Failed:   1
-[0m
-Red phase confirmed - Unit 7 descriptions are empty. Now implementing Unit 7 descriptions (Green phase):
-[0m→ [0mRead src/Data/IntegratedMath3.elm[90m [offset=370, limit=60][0m
-[0m
-[0m← [0mEdit src/Data/IntegratedMath3.elm
-Index: /home/daniel-bo/Desktop/ka-math-companion/src/Data/IntegratedMath3.elm
-===================================================================
---- /home/daniel-bo/Desktop/ka-math-companion/src/Data/IntegratedMath3.elm
-+++ /home/daniel-bo/Desktop/ka-math-companion/src/Data/IntegratedMath3.elm
-@@ -381,9 +381,9 @@
-             , "Identify extraneous solutions in rational equations"
-             , "Solve square-root equations by squaring both sides"
-             , "Check solutions to square-root equations for extraneous roots"
-             ]
--      , description = ""
-+      , description = "Learn to solve equations containing fractions and square roots, identifying when solutions are invalid."
-       , estimatedMinutes = 30
-       }
-     , { title = "Cube-root equations"
-       , slug = "cube-root-equations"
-@@ -392,9 +392,9 @@
-             , "Use the property that cube root preserves sign"
-             , "Cube both sides to eliminate radicals"
-             , "Verify solutions in original equations"
-             ]
--      , description = ""
-+      , description = "Extend equation-solving skills to cube roots and learn why cubing preserves sign properties."
-       , estimatedMinutes = 30
-       }
-     , { title = "Quadratic systems"
-       , slug = "quadratic-systems"
-@@ -403,9 +403,9 @@
-             , "Use substitution to solve quadratic systems"
-             , "Find intersection points of parabolas and lines"
-             , "Interpret solutions graphically as intersection points"
-             ]
--      , description = ""
-+      , description = "Find where parabolic and linear graphs intersect by solving systems of equations algebraically."
-       , estimatedMinutes = 30
-       }
-     , { title = "Solving equations graphically"
-       , slug = "solving-equations-graphically"
-@@ -414,9 +414,9 @@
-             , "Identify x-intercepts as solutions to f(x) = 0"
-             , "Use graphing calculators to solve complex equations"
-             , "Compare graphical and algebraic solution methods"
-             ]
--      , description = ""
-+      , description = "Use graphing technology to estimate solutions and understand the connection between graphs and equations."
-       , estimatedMinutes = 30
-       }
-     ]
- }
-
-[0m
-[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm test 2>&1
-> ka-math-companion@0.1.0 test
-> elm-test
-
-CompilingCompiling > Starting tests
-
-elm-test 0.19.1-revision17
---------------------------
-
-Running 31 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 201579202706399
-
-
-TEST RUN PASSED
-
-Duration: 194 ms
-Passed:   31
-Failed:   0
-[0m
-All tests pass. Now committing and pushing:
