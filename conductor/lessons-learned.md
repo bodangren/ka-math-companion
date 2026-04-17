@@ -26,6 +26,7 @@
 - (2026-04-13, curriculum-data) Normal Distribution objectives: empirical rule, z-scores, probability calculations with standard normal distribution
 - (2026-04-15, curriculum-data) TDD for lesson descriptions: write test checking String.length description > 0 first, then implement. Unit 7 done; 60+ lessons still need descriptions.
 - (2026-04-16, curriculum-data) Completed all lesson descriptions: 52 lessons across 13 units now have descriptions. Test-driven approach confirmed progress.
+- (2026-04-17, curriculum-data) TDD for validation: write tests first that enumerate issues, then implement fix. Added tests for all lessons having positive estimatedMinutes and non-empty objectives.
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
