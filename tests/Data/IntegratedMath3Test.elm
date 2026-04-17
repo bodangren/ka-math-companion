@@ -207,4 +207,55 @@ suite =
                             |> Expect.equal True
                     Nothing ->
                         Expect.fail "Unit 7 not found"
+        , Test.test "All lessons have positive estimatedMinutes" <|
+            \_ ->
+                let
+                    lessonsWithInvalidTime =
+                        IntegratedMath3.course.units
+                            |> List.concatMap (\unit -> List.map (\lesson -> ( unit.title, lesson.title, lesson.estimatedMinutes )) unit.lessons)
+                            |> List.filter (\( _, _, minutes ) -> minutes <= 0)
+                in
+                case lessonsWithInvalidTime of
+                    [] ->
+                        Expect.pass
+                    first :: rest ->
+                        let
+                            ( unitTitle, lessonTitle, minutes ) =
+                                first
+                            count =
+                                1 + List.length rest
+                        in
+                        Expect.fail <|
+                            String.fromInt count
+                                ++ " lesson(s) with invalid time estimates: "
+                                ++ lessonTitle
+                                ++ " in "
+                                ++ unitTitle
+                                ++ " has "
+                                ++ String.fromInt minutes
+                                ++ " minutes"
+        , Test.test "All lessons have non-empty objectives" <|
+            \_ ->
+                let
+                    lessonsWithEmptyObjectives =
+                        IntegratedMath3.course.units
+                            |> List.concatMap (\unit -> List.map (\lesson -> ( unit.title, lesson.title, lesson.objectives )) unit.lessons)
+                            |> List.filter (\( _, _, objectives ) -> List.isEmpty objectives)
+                in
+                case lessonsWithEmptyObjectives of
+                    [] ->
+                        Expect.pass
+                    first :: rest ->
+                        let
+                            ( unitTitle, lessonTitle, _ ) =
+                                first
+                            count =
+                                1 + List.length rest
+                        in
+                        Expect.fail <|
+                            String.fromInt count
+                                ++ " lesson(s) missing objectives: "
+                                ++ lessonTitle
+                                ++ " in "
+                                ++ unitTitle
         ]
