@@ -24,13 +24,13 @@
   - [x] Write Tests: Verify alert types render correctly
   - [x] Implement: Create `src/Design/Alert.elm`
 
-- [ ] **Task 6: Progress Component**
-  - [ ] Write Tests: Verify progress bar renders percentage
-  - [ ] Implement: Create `src/Design/Progress.elm`
+- [x] **Task 6: Progress Component** (e9f0a1b)
+  - [x] Write Tests: Verify progress bar renders percentage
+  - [x] Implement: Create `src/Design/Progress.elm`
 
-- [ ] **Task 7: Spinner Component**
-  - [ ] Write Tests: Verify spinner renders
-  - [ ] Implement: Create `src/Design/Spinner.elm`
+- [x] **Task 7: Spinner Component** (f0b1c2d)
+  - [x] Write Tests: Verify spinner renders
+  - [x] Implement: Create `src/Design/Spinner.elm`
 
 ## Phase 3: Layout Components
 
