@@ -16,9 +16,9 @@
   - [x] Write Tests: Verify card renders with header/footer
   - [x] Implement: Create `src/Design/Card.elm`
 
-- [ ] **Task 4: Badge Component**
-  - [ ] Write Tests: Verify badge renders with colors
-  - [ ] Implement: Create `src/Design/Badge.elm`
+- [x] **Task 4: Badge Component** (b7c8d9e)
+  - [x] Write Tests: Verify badge renders with colors
+  - [x] Implement: Create `src/Design/Badge.elm`
 
 - [ ] **Task 5: Alert Component**
   - [ ] Write Tests: Verify alert types render correctly
