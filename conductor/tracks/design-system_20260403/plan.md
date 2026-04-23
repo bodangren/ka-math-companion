@@ -20,9 +20,9 @@
   - [x] Write Tests: Verify badge renders with colors
   - [x] Implement: Create `src/Design/Badge.elm`
 
-- [ ] **Task 5: Alert Component**
-  - [ ] Write Tests: Verify alert types render correctly
-  - [ ] Implement: Create `src/Design/Alert.elm`
+- [x] **Task 5: Alert Component** (c8d9e0f)
+  - [x] Write Tests: Verify alert types render correctly
+  - [x] Implement: Create `src/Design/Alert.elm`
 
 - [ ] **Task 6: Progress Component**
   - [ ] Write Tests: Verify progress bar renders percentage
