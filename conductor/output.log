@@ -655,3 +655,75 @@ Index: /home/daniel-bo/Desktop/ka-math-companion/conductor/tracks/design-system_
    - [ ] Implement: Create `src/Design/Grid.elm`
 
 [0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && git add -A && git status
+On branch feat/30-render-curriculum-overview-page
+Your branch is ahead of 'origin/feat/30-render-curriculum-overview-page' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   conductor/output.log
+	modified:   conductor/tracks/design-system_20260403/plan.md
+	new file:   src/Design/Stack.elm
+	new file:   tests/Design/StackTest.elm
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && git commit -m "feat(design-system): add Design.Stack with Direction and Spacing
+
+Implement Task 9: Stack component with vertical/horizontal direction
+support and small/medium/large spacing options. Uses flexbox with
+gap property for child spacing. All 104 tests pass."
+[feat/30-render-curriculum-overview-page 118f8de] feat(design-system): add Design.Stack with Direction and Spacing
+ 4 files changed, 803 insertions(+), 3 deletions(-)
+ create mode 100644 src/Design/Stack.elm
+ create mode 100644 tests/Design/StackTest.elm
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm run review 2>&1 | head -30
+> ka-math-companion@0.1.0 review
+> elm-review
+
+-- ELM-REVIEW ERROR ---------------------------------- src/Design/Alert.elm:1:53
+
+(fix) NoUnused.Exports: Exposed function or value `info` is never used outside
+this module
+
+1| module Design.Alert exposing (AlertType(..), alert, info, success, warning, error)
+                                                       ^^^^
+
+This exposed element is never used. You may want to remove it to keep your
+project clean, and maybe detect some unused code in your project.
+
+────────────────────────────────────────────────────── src/Design/Alert.elm:1:59
+
+(fix) NoUnused.Exports: Exposed function or value `success` is never used
+outside this module
+
+1| module Design.Alert exposing (AlertType(..), alert, info, success, warning, error)
+                                                             ^^^^^^^
+
+This exposed element is never used. You may want to remove it to keep your
+project clean, and maybe detect some unused code in your project.
+
+────────────────────────────────────────────────────── src/Design/Alert.elm:1:68
+
+(fix) NoUnused.Exports: Exposed function or value `warning` is never used
+outside this module
+[0m
+[0m→ [0mRead conductor/tech-debt.md
+[0m
+[0m← [0mEdit conductor/lessons-learned.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
++++ /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
+@@ -30,8 +30,9 @@
+ - (2026-04-23, design-system) TDD for design tokens: write tests first verifying all token values, then implement. Elm module structure requires proper type aliases and exposed values.
+ - (2026-04-23, design-system) Design system structure: use `src/Design/` for source modules, `tests/Design/` for tests, following existing Data/ pattern in this project.
+ - (2026-04-23, design-system) Elm type variables with msg: When Attr type uses `Html.Html msg`, declare `type Attr msg` not `type Attr`. Unbound type variable error means you need to add the type variable.
+ - (2026-04-23, design-system) Container component pattern: use Width type with variants (Mobile, Tablet, Desktop, Wide, Full), List.filterMap to resolve attrs, spacing from Design.Tokens for padding
++- (2026-04-24, design-system) Stack component design: Direction and Spacing are separate concerns. Direction (Vertical/Horizontal) is a parameter to `stack`, not an Attr. Spacing variants (Small/Medium/Large) are exported as values for use in `spacing` attribute.
+ 
+ ## Planning Improvements
+ <!-- Notes on where estimates were wrong and why -->
+ 
+
+[0m

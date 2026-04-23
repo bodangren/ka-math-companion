@@ -31,6 +31,7 @@
 - (2026-04-23, design-system) Design system structure: use `src/Design/` for source modules, `tests/Design/` for tests, following existing Data/ pattern in this project.
 - (2026-04-23, design-system) Elm type variables with msg: When Attr type uses `Html.Html msg`, declare `type Attr msg` not `type Attr`. Unbound type variable error means you need to add the type variable.
 - (2026-04-23, design-system) Container component pattern: use Width type with variants (Mobile, Tablet, Desktop, Wide, Full), List.filterMap to resolve attrs, spacing from Design.Tokens for padding
+- (2026-04-24, design-system) Stack component design: Direction and Spacing are separate concerns. Direction (Vertical/Horizontal) is a parameter to `stack`, not an Attr. Spacing variants (Small/Medium/Large) are exported as values for use in `spacing` attribute.
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
