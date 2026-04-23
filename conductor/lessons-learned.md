@@ -27,6 +27,8 @@
 - (2026-04-15, curriculum-data) TDD for lesson descriptions: write test checking String.length description > 0 first, then implement. Unit 7 done; 60+ lessons still need descriptions.
 - (2026-04-16, curriculum-data) Completed all lesson descriptions: 52 lessons across 13 units now have descriptions. Test-driven approach confirmed progress.
 - (2026-04-17, curriculum-data) TDD for validation: write tests first that enumerate issues, then implement fix. Added tests for all lessons having positive estimatedMinutes and non-empty objectives.
+- (2026-04-23, design-system) TDD for design tokens: write tests first verifying all token values, then implement. Elm module structure requires proper type aliases and exposed values.
+- (2026-04-23, design-system) Design system structure: use `src/Design/` for source modules, `tests/Design/` for tests, following existing Data/ pattern in this project.
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
