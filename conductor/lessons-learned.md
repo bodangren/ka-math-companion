@@ -29,6 +29,7 @@
 - (2026-04-17, curriculum-data) TDD for validation: write tests first that enumerate issues, then implement fix. Added tests for all lessons having positive estimatedMinutes and non-empty objectives.
 - (2026-04-23, design-system) TDD for design tokens: write tests first verifying all token values, then implement. Elm module structure requires proper type aliases and exposed values.
 - (2026-04-23, design-system) Design system structure: use `src/Design/` for source modules, `tests/Design/` for tests, following existing Data/ pattern in this project.
+- (2026-04-23, design-system) Elm type variables with msg: When Attr type uses `Html.Html msg`, declare `type Attr msg` not `type Attr`. Unbound type variable error means you need to add the type variable.
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
