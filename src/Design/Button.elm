@@ -1,7 +1,7 @@
 module Design.Button exposing
     ( Variant(..)
-    , Size(..)
-    , Attr(..)
+    , Size
+    , Attr
     , button
     , primary
     , secondary

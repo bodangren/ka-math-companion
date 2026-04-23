@@ -1,6 +1,6 @@
 module Design.TokensTest exposing (suite)
 
-import Design.Tokens exposing (ColorPalette, Spacing, TypographyScale, colorPalette, spacing, typographyScale)
+import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Expect
 import Test
 

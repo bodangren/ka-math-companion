@@ -71,8 +71,6 @@ spinner attrs =
                 ++ strokeWidth
                 ++ ";"
 
-        keyframesStyle =
-            "@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }"
     in
     Html.div [ Html.Attributes.style "all" "initial", Html.Attributes.style "all" containerStyles ]
         [ Html.node "svg"

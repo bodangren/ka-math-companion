@@ -1,7 +1,6 @@
 module Design.ContainerTest exposing (suite)
 
 import Design.Container as Container
-import Design.Tokens exposing (spacing)
 import Expect
 import Html
 import Test

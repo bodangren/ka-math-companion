@@ -1,6 +1,6 @@
 module Design.Container exposing
-    ( Width(..)
-    , Attr(..)
+    ( Width
+    , Attr
     , container
     , mobile
     , tablet

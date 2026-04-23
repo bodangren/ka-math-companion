@@ -1,14 +1,9 @@
 module Design.ButtonTest exposing (suite)
 
 import Design.Button as Button
-import Design.Tokens exposing (ColorPalette, colorPalette, spacing)
 import Expect
 import Html
 import Test
-
-
-type alias Msg =
-    ()
 
 
 suite : Test.Test
