@@ -8,9 +8,9 @@
 
 ## Phase 2: Core Components
 
-- [ ] **Task 2: Button Component**
-  - [ ] Write Tests: Verify all variants render correctly
-  - [ ] Implement: Create `src/Design/Button.elm` with primary, secondary, outline, ghost
+- [x] **Task 2: Button Component** (a3b7c9d)
+  - [x] Write Tests: Verify all variants render correctly
+  - [x] Implement: Create `src/Design/Button.elm` with primary, secondary, outline, ghost
 
 - [ ] **Task 3: Card Component**
   - [ ] Write Tests: Verify card renders with header/footer
