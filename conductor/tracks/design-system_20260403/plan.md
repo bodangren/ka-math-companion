@@ -12,9 +12,9 @@
   - [x] Write Tests: Verify all variants render correctly
   - [x] Implement: Create `src/Design/Button.elm` with primary, secondary, outline, ghost
 
-- [ ] **Task 3: Card Component**
-  - [ ] Write Tests: Verify card renders with header/footer
-  - [ ] Implement: Create `src/Design/Card.elm`
+- [x] **Task 3: Card Component** (d4e5f6a)
+  - [x] Write Tests: Verify card renders with header/footer
+  - [x] Implement: Create `src/Design/Card.elm`
 
 - [ ] **Task 4: Badge Component**
   - [ ] Write Tests: Verify badge renders with colors
