@@ -2,9 +2,9 @@
 
 ## Phase 1: Design Tokens
 
-- [ ] **Task 1: Create Design Tokens Module**
-  - [ ] Write Tests: Verify token values are defined
-  - [ ] Implement: Create `src/Design/Tokens.elm` with colors, spacing, typography
+- [x] **Task 1: Create Design Tokens Module** (3c4041)
+  - [x] Write Tests: Verify token values are defined
+  - [x] Implement: Create `src/Design/Tokens.elm` with colors, spacing, typography
 
 ## Phase 2: Core Components
 
