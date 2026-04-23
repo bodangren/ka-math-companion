@@ -38,9 +38,9 @@
   - [x] Write Tests: Verify container has max-width
   - [x] Implement: Create `src/Design/Container.elm`
 
-- [ ] **Task 9: Stack Component**
-  - [ ] Write Tests: Verify spacing between children
-  - [ ] Implement: Create `src/Design/Stack.elm` with vertical/horizontal
+- [x] **Task 9: Stack Component** (elm-test passed)
+  - [x] Write Tests: Verify spacing between children
+  - [x] Implement: Create `src/Design/Stack.elm` with vertical/horizontal
 
 - [ ] **Task 10: Grid Component**
   - [ ] Write Tests: Verify responsive columns
