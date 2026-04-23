@@ -34,9 +34,9 @@
 
 ## Phase 3: Layout Components
 
-- [ ] **Task 8: Container Component**
-  - [ ] Write Tests: Verify container has max-width
-  - [ ] Implement: Create `src/Design/Container.elm`
+- [x] **Task 8: Container Component** (a8a589e)
+  - [x] Write Tests: Verify container has max-width
+  - [x] Implement: Create `src/Design/Container.elm`
 
 - [ ] **Task 9: Stack Component**
   - [ ] Write Tests: Verify spacing between children
