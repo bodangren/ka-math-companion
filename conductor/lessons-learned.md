@@ -33,7 +33,10 @@
 - (2026-04-23, design-system) Container component pattern: use Width type with variants (Mobile, Tablet, Desktop, Wide, Full), List.filterMap to resolve attrs, spacing from Design.Tokens for padding
 - (2026-04-24, design-system) Stack component design: Direction and Spacing are separate concerns. Direction (Vertical/Horizontal) is a parameter to `stack`, not an Attr. Spacing variants (Small/Medium/Large) are exported as values for use in `spacing` attribute.
 - (2026-04-24, design-system) Grid component pattern: Use `repeat(n, minmax(minWidth, 1fr))` for responsive columns. Attr pattern for columns, tabletColumns, desktopColumns, minWidth, gap.
-- (2026-04-24, design-system) Header/Footer navigation pattern: brand and links are separate Attrs. Use flexbox with space-between for header, center for footer.
+- (2026-04-24, design-system) Critical bug: `Html.Attributes.style "all" "cssString"` does NOT apply CSS. Elm's `style` function takes (property, value) pairs, not raw CSS. Fix: use `Html.Attributes.attribute "style" "cssString"` to set the style attribute directly.
+- (2026-04-24, design-system) Elm tests pass even with broken HTML generation (tests use Expect.pass). Test quality matters — render tests would catch style issues.
+- (2026-04-24, design-system) Spacing values in Tokens (e.g., "16px") must be concatenated correctly when building CSS strings: `"padding:" ++ spacing.md ++ ";"`
+- (2026-04-24, design-system) When fixing style attributes, consolidate multiple CSS rules into single `attribute "style" "..."` to avoid duplicate style attributes on same element
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->

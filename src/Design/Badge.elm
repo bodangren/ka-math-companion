@@ -1,17 +1,12 @@
-module Design.Badge exposing (Attr, badge, default, primary, secondary, success, warning, error)
+module Design.Badge exposing (Attr, badge, primary, secondary, success, warning, error)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html
-import Html.Attributes
+import Html.Attributes exposing (attribute)
 
 
 type Attr
     = Color String
-
-
-default : Attr
-default =
-    Color ("#" ++ colorPalette.neutral)
 
 
 primary : Attr
@@ -53,7 +48,7 @@ badge attrs children =
                 |> List.head
                 |> Maybe.withDefault ("#" ++ colorPalette.neutral)
 
-        badgeStyles =
+        badgeStyleValue =
             "display:inline-block;padding:"
                 ++ spacing.xs
                 ++ " "
@@ -66,4 +61,4 @@ badge attrs children =
                 ++ resolvedColor
                 ++ ";color:#fff;font-weight:500;"
     in
-    Html.span [ Html.Attributes.style "all" "initial", Html.Attributes.style "all" badgeStyles ] children
+    Html.span [ attribute "style" badgeStyleValue ] children

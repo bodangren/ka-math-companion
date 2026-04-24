@@ -2,7 +2,7 @@ module Design.Card exposing (Attr, card, header, footer)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html
-import Html.Attributes
+import Html.Attributes exposing (attribute, style)
 
 
 type Attr msg
@@ -35,31 +35,34 @@ card attrs children =
                 ( [], [] )
                 attrs
 
-        cardStyles =
-            "border-radius:8px;border:1px solid #" ++ colorPalette.neutral ++ ";overflow:hidden;font-family:" ++ typographyScale.bodyFont ++ ";"
+        cardStyleValue =
+            "border-radius:8px;border:1px solid #" ++ colorPalette.neutral ++ ";overflow:hidden;font-family:" ++ typographyScale.bodyFont ++ ";display:flex;flex-direction:column;"
 
-        headerStyles =
+        headerStyleValue =
             "padding:" ++ spacing.md ++ ";border-bottom:1px solid #" ++ colorPalette.neutral ++ ";background-color:#f9fafb;"
                 ++ ";font-size:" ++ typographyScale.bodyFontSize ++ ";font-weight:600;"
 
-        footerStyles =
+        footerStyleValue =
             "padding:" ++ spacing.md ++ ";border-top:1px solid #" ++ colorPalette.neutral ++ ";background-color:#f9fafb;"
                 ++ ";font-size:" ++ typographyScale.smallFontSize ++ ";"
+
+        bodyStyleValue =
+            "padding:" ++ spacing.md ++ ";"
     in
-    Html.div [ Html.Attributes.style "all" "initial", Html.Attributes.style "display" "flex", Html.Attributes.style "flex-direction" "column", Html.Attributes.style "all" cardStyles ]
+    Html.div [ attribute "style" cardStyleValue ]
         (List.concat
             [ if List.isEmpty headerContent then
                 []
 
               else
-                [ Html.div [ Html.Attributes.style "all" "initial", Html.Attributes.style "all" headerStyles ] headerContent
+                [ Html.div [ attribute "style" headerStyleValue ] headerContent
                 ]
-            , [ Html.div [ Html.Attributes.style "all" "initial", Html.Attributes.style "padding" spacing.md, Html.Attributes.style "all" "initial" ] children ]
+            , [ Html.div [ attribute "style" bodyStyleValue ] children ]
             , if List.isEmpty footerContent then
                 []
 
               else
-                [ Html.div [ Html.Attributes.style "all" "initial", Html.Attributes.style "all" footerStyles ] footerContent
+                [ Html.div [ attribute "style" footerStyleValue ] footerContent
                 ]
             ]
         )

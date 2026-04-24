@@ -15,7 +15,7 @@ module Design.Button exposing
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html
-import Html.Attributes
+import Html.Attributes exposing (attribute, style)
 
 
 type Variant
@@ -117,10 +117,7 @@ button variant attrs children =
                 )
                 attrs
 
-        baseStyles =
-            "border-radius:4px;font-family:" ++ typographyScale.bodyFont ++ ";cursor:pointer;transition:all 0.15s ease;border:none;"
-
-        variantStyles =
+        variantStyleValue =
             case resolvedVariant of
                 Primary ->
                     "background-color:#" ++ colorPalette.primary ++ ";color:#fff;"
@@ -134,7 +131,7 @@ button variant attrs children =
                 Ghost ->
                     "background-color:transparent;color:#" ++ colorPalette.neutral ++ ";"
 
-        sizeStyles =
+        sizeStyleValue =
             case resolvedSize of
                 Small ->
                     "padding:" ++ spacing.xs ++ " " ++ spacing.sm ++ ";font-size:" ++ typographyScale.smallFontSize ++ ";"
@@ -145,20 +142,20 @@ button variant attrs children =
                 Large ->
                     "padding:" ++ spacing.md ++ " " ++ spacing.lg ++ ";font-size:" ++ typographyScale.largeFontSize ++ ";"
 
-        disabledAttr =
+        baseStyleValue =
+            "border-radius:4px;font-family:" ++ typographyScale.bodyFont ++ ";cursor:pointer;transition:all 0.15s ease;border:none;"
+
+        disabledAttrs =
             if isDisabled then
-                [ Html.Attributes.disabled True, Html.Attributes.style "opacity" "0.5", Html.Attributes.style "cursor" "not-allowed" ]
+                [ Html.Attributes.disabled True, style "opacity" "0.5", style "cursor" "not-allowed" ]
 
             else
                 []
     in
     Html.button
-        ([ Html.Attributes.style "all" "initial"
-         , Html.Attributes.style "display" "inline-block"
-         , Html.Attributes.style "all" baseStyles
-         , Html.Attributes.style "variant" variantStyles
-         , Html.Attributes.style "size" sizeStyles
+        ([ attribute "style" (baseStyleValue ++ variantStyleValue ++ sizeStyleValue)
+         , style "display" "inline-block"
          ]
-            ++ disabledAttr
+            ++ disabledAttrs
         )
         children

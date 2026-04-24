@@ -1,8 +1,8 @@
-module Design.Alert exposing (AlertType(..), alert, info, success, warning, error)
+module Design.Alert exposing (AlertType(..), alert)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html
-import Html.Attributes
+import Html.Attributes exposing (attribute)
 
 
 type AlertType
@@ -10,26 +10,6 @@ type AlertType
     | Success
     | Warning
     | Error
-
-
-info : AlertType
-info =
-    Info
-
-
-success : AlertType
-success =
-    Success
-
-
-warning : AlertType
-warning =
-    Warning
-
-
-error : AlertType
-error =
-    Error
 
 
 alert : AlertType -> List (Html.Html msg) -> List (Html.Html msg) -> Html.Html msg
@@ -49,7 +29,7 @@ alert alertType title content =
                 Error ->
                     ( "#fef2f2", "#" ++ colorPalette.error, "#" ++ colorPalette.error )
 
-        containerStyles =
+        containerStyleValue =
             "border-radius:8px;padding:"
                 ++ spacing.md
                 ++ ";border-left:4px solid "
@@ -60,7 +40,7 @@ alert alertType title content =
                 ++ typographyScale.bodyFont
                 ++ ";"
 
-        titleStyles =
+        titleStyleValue =
             "font-size:"
                 ++ typographyScale.bodyFontSize
                 ++ ";font-weight:600;color:"
@@ -69,12 +49,12 @@ alert alertType title content =
                 ++ spacing.sm
                 ++ ";"
 
-        contentStyles =
+        contentStyleValue =
             "font-size:"
                 ++ typographyScale.bodyFontSize
                 ++ ";color:#374151;"
     in
-    Html.div [ Html.Attributes.style "all" "initial", Html.Attributes.style "all" containerStyles ]
-        [ Html.div [ Html.Attributes.style "all" "initial", Html.Attributes.style "all" titleStyles ] title
-        , Html.div [ Html.Attributes.style "all" "initial", Html.Attributes.style "all" contentStyles ] content
+    Html.div [ attribute "style" containerStyleValue ]
+        [ Html.div [ attribute "style" titleStyleValue ] title
+        , Html.div [ attribute "style" contentStyleValue ] content
         ]

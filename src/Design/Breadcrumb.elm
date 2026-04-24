@@ -1,32 +1,27 @@
 module Design.Breadcrumb exposing
-    ( Attr
-    , item
+    ( item
     , breadcrumb
     )
 
 import Design.Tokens as Tokens
 import Html
-import Html.Attributes
-
-
-type Attr
-    = ItemAttr String String
+import Html.Attributes exposing (href, style)
 
 
 item : String -> String -> Html.Html msg
 item url label =
-    Html.a [ Html.Attributes.href url ] [ Html.text label ]
+    Html.a [ href url ] [ Html.text label ]
 
 
-breadcrumb : List Attr -> List (Html.Html msg) -> Html.Html msg
-breadcrumb attrs children =
+breadcrumb : List a -> List (Html.Html msg) -> Html.Html msg
+breadcrumb _ children =
     Html.nav
-        [ Html.Attributes.style "display" "flex"
-        , Html.Attributes.style "align-items" "center"
-        , Html.Attributes.style "gap" Tokens.spacing.sm
-        , Html.Attributes.style "font-size" Tokens.typographyScale.bodyFontSize
+        [ style "display" "flex"
+        , style "align-items" "center"
+        , style "gap" Tokens.spacing.sm
+        , style "font-size" Tokens.typographyScale.bodyFontSize
         ]
         (List.intersperse
-            (Html.span [ Html.Attributes.style "color" ("#" ++ Tokens.colorPalette.neutral) ] [ Html.text "/" ])
+            (Html.span [ style "color" ("#" ++ Tokens.colorPalette.neutral) ] [ Html.text "/" ])
             children
         )
