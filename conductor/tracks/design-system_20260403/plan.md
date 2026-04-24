@@ -42,9 +42,9 @@
   - [x] Write Tests: Verify spacing between children
   - [x] Implement: Create `src/Design/Stack.elm` with vertical/horizontal
 
-- [ ] **Task 10: Grid Component**
-  - [ ] Write Tests: Verify responsive columns
-  - [ ] Implement: Create `src/Design/Grid.elm`
+- [x] **Task 10: Grid Component** (9cd4752)
+  - [x] Write Tests: Verify responsive columns
+  - [x] Implement: Create `src/Design/Grid.elm`
 
 ## Phase 4: Navigation Components
 
