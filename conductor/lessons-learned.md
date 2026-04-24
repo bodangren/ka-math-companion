@@ -32,6 +32,8 @@
 - (2026-04-23, design-system) Elm type variables with msg: When Attr type uses `Html.Html msg`, declare `type Attr msg` not `type Attr`. Unbound type variable error means you need to add the type variable.
 - (2026-04-23, design-system) Container component pattern: use Width type with variants (Mobile, Tablet, Desktop, Wide, Full), List.filterMap to resolve attrs, spacing from Design.Tokens for padding
 - (2026-04-24, design-system) Stack component design: Direction and Spacing are separate concerns. Direction (Vertical/Horizontal) is a parameter to `stack`, not an Attr. Spacing variants (Small/Medium/Large) are exported as values for use in `spacing` attribute.
+- (2026-04-24, design-system) Grid component pattern: Use `repeat(n, minmax(minWidth, 1fr))` for responsive columns. Attr pattern for columns, tabletColumns, desktopColumns, minWidth, gap.
+- (2026-04-24, design-system) Header/Footer navigation pattern: brand and links are separate Attrs. Use flexbox with space-between for header, center for footer.
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
