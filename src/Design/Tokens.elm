@@ -1,5 +1,5 @@
 module Design.Tokens exposing
-    (ColorPalette
+    ( ColorPalette
     , Spacing
     , TypographyScale
     , colorPalette

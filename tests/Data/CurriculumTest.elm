@@ -34,7 +34,7 @@ suite =
                     in
                     Expect.equal unit.title "Polynomial Arithmetic"
             ]
-        ,         Test.describe "Lesson"
+        , Test.describe "Lesson"
             [ Test.test "can create a lesson with title, slug, and objectives" <|
                 \_ ->
                     let

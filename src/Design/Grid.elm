@@ -1,15 +1,15 @@
 module Design.Grid exposing
-    ( Gap(..)
-    , Attr
-    , gap
+    ( Attr
+    , Gap(..)
     , columns
-    , tabletColumns
     , desktopColumns
-    , minWidth
+    , gap
     , grid
-    , small
-    , medium
     , large
+    , medium
+    , minWidth
+    , small
+    , tabletColumns
     )
 
 import Design.Tokens as Tokens
@@ -80,6 +80,7 @@ grid attrs children =
                     case attr of
                         ColumnsAttr n ->
                             Just n
+
                         _ ->
                             Nothing
                 )
@@ -93,6 +94,7 @@ grid attrs children =
                     case attr of
                         TabletColumnsAttr n ->
                             Just n
+
                         _ ->
                             Nothing
                 )
@@ -106,6 +108,7 @@ grid attrs children =
                     case attr of
                         DesktopColumnsAttr n ->
                             Just n
+
                         _ ->
                             Nothing
                 )
@@ -119,6 +122,7 @@ grid attrs children =
                     case attr of
                         MinWidthAttr w ->
                             Just w
+
                         _ ->
                             Nothing
                 )
@@ -132,6 +136,7 @@ grid attrs children =
                     case attr of
                         GapAttr g ->
                             Just g
+
                         _ ->
                             Nothing
                 )

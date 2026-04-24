@@ -13,14 +13,14 @@ suite =
             \_ ->
                 let
                     breadcrumb =
-                        Breadcrumb.breadcrumb [] [ Html.text "Home" ]
+                        Breadcrumb.breadcrumb [ Html.text "Home" ]
                 in
                 Expect.pass
         , Test.test "breadcrumb renders with items" <|
             \_ ->
                 let
                     breadcrumb =
-                        Breadcrumb.breadcrumb []
+                        Breadcrumb.breadcrumb
                             [ Breadcrumb.item "/home" "Home"
                             , Breadcrumb.item "/about" "About"
                             ]
@@ -30,7 +30,7 @@ suite =
             \_ ->
                 let
                     breadcrumb =
-                        Breadcrumb.breadcrumb [] [ Breadcrumb.item "/home" "Home" ]
+                        Breadcrumb.breadcrumb [ Breadcrumb.item "/home" "Home" ]
                 in
                 Expect.pass
         ]

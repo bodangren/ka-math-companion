@@ -1,4 +1,4 @@
-module Design.Progress exposing (Attr, progress, label)
+module Design.Progress exposing (Attr, label, progress)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html

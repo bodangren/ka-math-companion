@@ -1,16 +1,16 @@
 module Design.Button exposing
-    ( Variant(..)
+    ( Attr
     , Size
-    , Attr
+    , Variant(..)
     , button
+    , disabled
+    , ghost
+    , large
+    , medium
+    , outline
     , primary
     , secondary
-    , outline
-    , ghost
     , small
-    , medium
-    , large
-    , disabled
     )
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
@@ -86,6 +86,7 @@ button variant attrs children =
                     case attr of
                         VariantAttr v ->
                             Just v
+
                         _ ->
                             Nothing
                 )
@@ -99,6 +100,7 @@ button variant attrs children =
                     case attr of
                         SizeAttr s ->
                             Just s
+
                         _ ->
                             Nothing
                 )
@@ -112,6 +114,7 @@ button variant attrs children =
                     case attr of
                         Disabled ->
                             True
+
                         _ ->
                             False
                 )

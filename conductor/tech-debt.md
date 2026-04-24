@@ -15,5 +15,8 @@
 | 2026-04-14 | lesson-content | No page-level tests for Unit_ and Lesson_ views | Medium | Open | Only data model tests exist, no Html render tests |
 | 2026-04-24 | design-system | All components use `style "all" cssString` — styles never applied | Critical | Resolved | Fixed: replaced `Html.Attributes.style "all" "css"` with `Html.Attributes.attribute "style" "css"` in Button, Alert, Badge, Card, Progress, Spinner |
 | 2026-04-24 | design-system | Spinner `@keyframes` animation never injected into DOM | Medium | Open | `keyframesStyle` was dead code; animation won't work without a `<style>` node injection |
-| 2026-04-24 | design-system | Card.elm double semicolons in headerStyles/footerStyles (lines 43,47) | Low | Resolved | Styles consolidated into single attribute; cosmetic issue fixed |
+| 2026-04-24 | design-system | Card.elm double semicolons in headerStyles/footerStyles (lines 43,47) | Low | Resolved | Fixed in review: removed extra `;` between background-color and font-size |
 | 2026-04-24 | design-system | Progress component does not clamp percentage to 0-100 | Low | Resolved | Added `clamp 0 100` to percentage and display value |
+| 2026-04-25 | design-system | Grid.elm tabletColumns/desktopColumns computed but never applied to CSS | Medium | Open | Responsive column attrs accepted but silently ignored; only base `columns` used in grid-template-columns |
+| 2026-04-25 | design-system | All design-system tests use `Expect.pass` — no real assertions on rendered HTML | Medium | Open | Tests only verify functions don't crash; should assert actual style values or DOM structure |
+| 2026-04-25 | design-system | Mixed style application: some components use `attribute "style" string`, others use `style` individual | Low | Open | Button.elm mixes both; should standardize on one approach across all components |

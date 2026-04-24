@@ -1,8 +1,8 @@
 module Design.Header exposing
     ( Attr
     , brand
-    , link
     , header
+    , link
     )
 
 import Design.Tokens as Tokens
@@ -34,6 +34,7 @@ header attrs children =
                     case attr of
                         BrandAttr name ->
                             Just name
+
                         _ ->
                             Nothing
                 )
@@ -47,6 +48,7 @@ header attrs children =
                     case attr of
                         LinkAttr url label ->
                             Just (Html.a [ Html.Attributes.href url ] [ Html.text label ])
+
                         _ ->
                             Nothing
                 )
@@ -60,10 +62,11 @@ header attrs children =
         , Html.Attributes.style "background-color" ("#" ++ Tokens.colorPalette.primary)
         , Html.Attributes.style "color" "#fff"
         ]
-        ([ Html.div [ Html.Attributes.style "font-size" Tokens.typographyScale.largeFontSize
-                    , Html.Attributes.style "font-weight" "bold"
-                    ]
-                    [ Html.text resolvedBrand ]
+        ([ Html.div
+            [ Html.Attributes.style "font-size" Tokens.typographyScale.largeFontSize
+            , Html.Attributes.style "font-weight" "bold"
+            ]
+            [ Html.text resolvedBrand ]
          ]
             ++ navItems
             ++ children

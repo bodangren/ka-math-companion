@@ -26,6 +26,7 @@ suite =
                 case firstUnit of
                     Just unit ->
                         Expect.equal unit.title "Polynomial Arithmetic"
+
                     Nothing ->
                         Expect.fail "No units found"
         , Test.test "first unit has correct slug" <|
@@ -37,6 +38,7 @@ suite =
                 case firstUnit of
                     Just unit ->
                         Expect.equal unit.slug "polynomial-arithmetic"
+
                     Nothing ->
                         Expect.fail "No units found"
         , Test.test "Unit 2 lessons have non-empty objectives" <|
@@ -53,6 +55,7 @@ suite =
                             |> List.map (\lesson -> List.length lesson.objectives > 0)
                             |> List.all identity
                             |> Expect.equal True
+
                     Nothing ->
                         Expect.fail "Unit 2 not found"
         , Test.test "Unit 3 lessons have non-empty objectives" <|
@@ -69,6 +72,7 @@ suite =
                             |> List.map (\lesson -> List.length lesson.objectives > 0)
                             |> List.all identity
                             |> Expect.equal True
+
                     Nothing ->
                         Expect.fail "Unit 3 not found"
         , Test.test "Unit 4 lessons have non-empty objectives" <|
@@ -85,6 +89,7 @@ suite =
                             |> List.map (\lesson -> List.length lesson.objectives > 0)
                             |> List.all identity
                             |> Expect.equal True
+
                     Nothing ->
                         Expect.fail "Unit 4 not found"
         , Test.test "Unit 7 (Equations) lessons have non-empty objectives" <|
@@ -101,6 +106,7 @@ suite =
                             |> List.map (\lesson -> List.length lesson.objectives > 0)
                             |> List.all identity
                             |> Expect.equal True
+
                     Nothing ->
                         Expect.fail "Unit 7 not found"
         , Test.test "Unit 9 (Modeling) lessons have non-empty objectives" <|
@@ -117,6 +123,7 @@ suite =
                             |> List.map (\lesson -> List.length lesson.objectives > 0)
                             |> List.all identity
                             |> Expect.equal True
+
                     Nothing ->
                         Expect.fail "Unit 9 not found"
         , Test.test "Unit 10 (Study Design) lessons have non-empty objectives" <|
@@ -133,6 +140,7 @@ suite =
                             |> List.map (\lesson -> List.length lesson.objectives > 0)
                             |> List.all identity
                             |> Expect.equal True
+
                     Nothing ->
                         Expect.fail "Unit 10 not found"
         , Test.test "Unit 11 (Binomial Probability) lessons have non-empty objectives" <|
@@ -149,6 +157,7 @@ suite =
                             |> List.map (\lesson -> List.length lesson.objectives > 0)
                             |> List.all identity
                             |> Expect.equal True
+
                     Nothing ->
                         Expect.fail "Unit 11 not found"
         , Test.test "Unit 12 (Normal Distributions) lessons have non-empty objectives" <|
@@ -165,6 +174,7 @@ suite =
                             |> List.map (\lesson -> List.length lesson.objectives > 0)
                             |> List.all identity
                             |> Expect.equal True
+
                     Nothing ->
                         Expect.fail "Unit 12 not found"
         , Test.test "All lessons have non-empty descriptions" <|
@@ -178,10 +188,12 @@ suite =
                 case lessonsWithEmptyDescriptions of
                     [] ->
                         Expect.pass
+
                     first :: rest ->
                         let
                             ( unitTitle, lessonTitle, _ ) =
                                 first
+
                             count =
                                 1 + List.length rest
                         in
@@ -205,6 +217,7 @@ suite =
                             |> List.map (\lesson -> String.length lesson.description > 0)
                             |> List.all identity
                             |> Expect.equal True
+
                     Nothing ->
                         Expect.fail "Unit 7 not found"
         , Test.test "All lessons have positive estimatedMinutes" <|
@@ -218,10 +231,12 @@ suite =
                 case lessonsWithInvalidTime of
                     [] ->
                         Expect.pass
+
                     first :: rest ->
                         let
                             ( unitTitle, lessonTitle, minutes ) =
                                 first
+
                             count =
                                 1 + List.length rest
                         in
@@ -245,10 +260,12 @@ suite =
                 case lessonsWithEmptyObjectives of
                     [] ->
                         Expect.pass
+
                     first :: rest ->
                         let
                             ( unitTitle, lessonTitle, _ ) =
                                 first
+
                             count =
                                 1 + List.length rest
                         in

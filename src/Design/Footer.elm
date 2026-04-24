@@ -1,7 +1,7 @@
 module Design.Footer exposing
     ( Attr
-    , link
     , footer
+    , link
     )
 
 import Design.Tokens as Tokens

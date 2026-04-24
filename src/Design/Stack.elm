@@ -1,12 +1,12 @@
 module Design.Stack exposing
-    ( Direction(..)
+    ( Attr
+    , Direction(..)
     , Spacing(..)
-    , Attr
-    , stack
-    , spacing
-    , small
-    , medium
     , large
+    , medium
+    , small
+    , spacing
+    , stack
     )
 
 import Design.Tokens as Tokens

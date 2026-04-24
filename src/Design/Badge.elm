@@ -1,4 +1,4 @@
-module Design.Badge exposing (Attr, badge, primary, secondary, success, warning, error)
+module Design.Badge exposing (Attr, badge, error, primary, secondary, success, warning)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html

@@ -1,6 +1,6 @@
 module Design.Breadcrumb exposing
-    ( item
-    , breadcrumb
+    ( breadcrumb
+    , item
     )
 
 import Design.Tokens as Tokens
@@ -13,8 +13,8 @@ item url label =
     Html.a [ href url ] [ Html.text label ]
 
 
-breadcrumb : List a -> List (Html.Html msg) -> Html.Html msg
-breadcrumb _ children =
+breadcrumb : List (Html.Html msg) -> Html.Html msg
+breadcrumb children =
     Html.nav
         [ style "display" "flex"
         , style "align-items" "center"

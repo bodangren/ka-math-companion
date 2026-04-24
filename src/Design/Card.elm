@@ -1,4 +1,4 @@
-module Design.Card exposing (Attr, card, header, footer)
+module Design.Card exposing (Attr, card, footer, header)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html
@@ -29,6 +29,7 @@ card attrs children =
                     case attr of
                         Header content ->
                             ( content ++ hAcc, fAcc )
+
                         Footer content ->
                             ( hAcc, content ++ fAcc )
                 )
@@ -39,12 +40,22 @@ card attrs children =
             "border-radius:8px;border:1px solid #" ++ colorPalette.neutral ++ ";overflow:hidden;font-family:" ++ typographyScale.bodyFont ++ ";display:flex;flex-direction:column;"
 
         headerStyleValue =
-            "padding:" ++ spacing.md ++ ";border-bottom:1px solid #" ++ colorPalette.neutral ++ ";background-color:#f9fafb;"
-                ++ ";font-size:" ++ typographyScale.bodyFontSize ++ ";font-weight:600;"
+            "padding:"
+                ++ spacing.md
+                ++ ";border-bottom:1px solid #"
+                ++ colorPalette.neutral
+                ++ ";background-color:#f9fafb;font-size:"
+                ++ typographyScale.bodyFontSize
+                ++ ";font-weight:600;"
 
         footerStyleValue =
-            "padding:" ++ spacing.md ++ ";border-top:1px solid #" ++ colorPalette.neutral ++ ";background-color:#f9fafb;"
-                ++ ";font-size:" ++ typographyScale.smallFontSize ++ ";"
+            "padding:"
+                ++ spacing.md
+                ++ ";border-top:1px solid #"
+                ++ colorPalette.neutral
+                ++ ";background-color:#f9fafb;font-size:"
+                ++ typographyScale.smallFontSize
+                ++ ";"
 
         bodyStyleValue =
             "padding:" ++ spacing.md ++ ";"

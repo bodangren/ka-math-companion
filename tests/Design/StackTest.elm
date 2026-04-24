@@ -1,8 +1,8 @@
 module Design.StackTest exposing (suite)
 
 import Design.Stack as Stack
-import Html
 import Expect
+import Html
 import Test
 
 

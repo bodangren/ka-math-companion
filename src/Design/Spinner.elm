@@ -1,4 +1,4 @@
-module Design.Spinner exposing (Attr, spinner, small, medium, large)
+module Design.Spinner exposing (Attr, large, medium, small, spinner)
 
 import Design.Tokens exposing (colorPalette)
 import Html
@@ -70,7 +70,6 @@ spinner attrs =
                 ++ "stroke-width:"
                 ++ strokeWidth
                 ++ ";"
-
     in
     Html.div [ attribute "style" containerStyleValue ]
         [ Html.node "svg"

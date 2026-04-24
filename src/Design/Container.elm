@@ -1,12 +1,12 @@
 module Design.Container exposing
-    ( Width
-    , Attr
+    ( Attr
+    , Width
     , container
+    , desktop
+    , full
     , mobile
     , tablet
-    , desktop
     , wide
-    , full
     )
 
 import Design.Tokens exposing (spacing)
