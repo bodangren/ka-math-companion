@@ -2,14 +2,12 @@ module Design.Grid exposing
     ( Attr
     , Gap(..)
     , columns
-    , desktopColumns
     , gap
     , grid
     , large
     , medium
     , minWidth
     , small
-    , tabletColumns
     )
 
 import Design.Tokens as Tokens
@@ -25,8 +23,6 @@ type Gap
 
 type Attr
     = ColumnsAttr Int
-    | TabletColumnsAttr Int
-    | DesktopColumnsAttr Int
     | MinWidthAttr String
     | GapAttr Gap
 
@@ -34,16 +30,6 @@ type Attr
 columns : Int -> Attr
 columns n =
     ColumnsAttr n
-
-
-tabletColumns : Int -> Attr
-tabletColumns n =
-    TabletColumnsAttr n
-
-
-desktopColumns : Int -> Attr
-desktopColumns n =
-    DesktopColumnsAttr n
 
 
 minWidth : String -> Attr
@@ -87,34 +73,6 @@ grid attrs children =
                 attrs
                 |> List.head
                 |> Maybe.withDefault 1
-
-        resolvedTabletColumns =
-            List.filterMap
-                (\attr ->
-                    case attr of
-                        TabletColumnsAttr n ->
-                            Just n
-
-                        _ ->
-                            Nothing
-                )
-                attrs
-                |> List.head
-                |> Maybe.withDefault resolvedColumns
-
-        resolvedDesktopColumns =
-            List.filterMap
-                (\attr ->
-                    case attr of
-                        DesktopColumnsAttr n ->
-                            Just n
-
-                        _ ->
-                            Nothing
-                )
-                attrs
-                |> List.head
-                |> Maybe.withDefault resolvedTabletColumns
 
         resolvedMinWidth =
             List.filterMap

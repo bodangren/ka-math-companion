@@ -37,6 +37,7 @@
 - (2026-04-24, design-system) Elm tests pass even with broken HTML generation (tests use Expect.pass). Test quality matters — render tests would catch style issues.
 - (2026-04-24, design-system) Spacing values in Tokens (e.g., "16px") must be concatenated correctly when building CSS strings: `"padding:" ++ spacing.md ++ ";"`
 - (2026-04-24, design-system) When fixing style attributes, consolidate multiple CSS rules into single `attribute "style" "..."` to avoid duplicate style attributes on same element
+- (2026-04-25, design-system) Removed dead Grid attrs (tabletColumns, desktopColumns): computed but never applied to CSS. Lesson: unused code that looks functional is worse than no code - it misleads future maintainers. Attrs should only exist if they're actually used.
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->

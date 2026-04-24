@@ -44,7 +44,7 @@
 
 - [x] **Task 10: Grid Component** (9cd4752)
   - [x] Write Tests: Verify responsive columns
-  - [x] Implement: Create `src/Design/Grid.elm`
+  - [x] Implement: Create `src/Design/Grid.elm` with columns, minWidth, gap (removed unused tabletColumns/desktopColumns)
 
 ## Phase 4: Navigation Components
 
