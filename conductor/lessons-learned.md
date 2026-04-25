@@ -38,6 +38,9 @@
 - (2026-04-24, design-system) Spacing values in Tokens (e.g., "16px") must be concatenated correctly when building CSS strings: `"padding:" ++ spacing.md ++ ";"`
 - (2026-04-24, design-system) When fixing style attributes, consolidate multiple CSS rules into single `attribute "style" "..."` to avoid duplicate style attributes on same element
 - (2026-04-25, design-system) Removed dead Grid attrs (tabletColumns, desktopColumns): computed but never applied to CSS. Lesson: unused code that looks functional is worse than no code - it misleads future maintainers. Attrs should only exist if they're actually used.
+- (2026-04-25, visual_refresh) Elm operator precedence: `attribute "x" "y" ++ z` is parsed as `(attribute "x" "y") ++ z`, not `attribute "x" ("y" ++ z)`. Always use parentheses when concatenating strings to pass to a function.
+- (2026-04-25, visual_refresh) When refactoring component APIs, update tests as part of the same change. Tests are coupled to public API signatures - they will break if you don't update them.
+- (2026-04-25, visual_refresh) Elm module exports: `exposing (badge)` does not expose the `Variant` type or its constructors. Use `exposing (Variant(..), badge)` to expose both the type and constructors for tests.
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->

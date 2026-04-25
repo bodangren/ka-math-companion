@@ -1738,3 +1738,52 @@ All tests pass. Let me verify the build still works.
 [32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
 [0m
 Build successful. Now let me commit all the fixes and finalize.
+[0m$ [0mgit add -A && git commit -m "fix(design): resolve build and test failures from visual refresh
+
+- Fix Header.elm operator precedence for attribute string concatenation
+- Fix Curriculum.elm missing attribute import
+- Fix Footer.elm redundant pattern case
+- Update Badge/Alert modules to expose Variant type for tests
+- Update tests to match new component APIs (Badge, Card, Container, Alert)
+- Update TokensTest for Orbital Editorial design tokens
+- Update Home_Test for new description text
+
+Autonomous run checkpoint - MiniMax-M2.7"
+[feat/30-render-curriculum-overview-page 8594954] fix(design): resolve build and test failures from visual refresh
+ 12 files changed, 1722 insertions(+), 125 deletions(-)
+[0m
+[0m→ [0mRead conductor/tech-debt.md
+[0m→ [0mRead conductor/lessons-learned.md
+[0m
+[0m← [0mEdit conductor/tech-debt.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/conductor/tech-debt.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/conductor/tech-debt.md
++++ /home/daniel-bo/Desktop/ka-math-companion/conductor/tech-debt.md
+@@ -19,4 +19,5 @@
+ | 2026-04-24 | design-system | Progress component does not clamp percentage to 0-100 | Low | Resolved | Added `clamp 0 100` to percentage and display value |
+ | 2026-04-25 | design-system | Grid.elm tabletColumns/desktopColumns computed but never applied to CSS | Medium | Resolved | Removed unused tabletColumns/desktopColumns attrs; Grid now only exposes functional columns, minWidth, gap |
+ | 2026-04-25 | design-system | All design-system tests use `Expect.pass` — no real assertions on rendered HTML | Medium | Open | Tests only verify functions don't crash; should assert actual style values or DOM structure |
+ | 2026-04-25 | design-system | Mixed style application: some components use `attribute "style" string`, others use `style` individual | Low | Open | Button.elm mixes both; should standardize on one approach across all components |
++| 2026-04-25 | visual_refresh | Visual refresh changed design tokens and component APIs | Medium | Resolved | Tests updated to match Orbital Editorial theme values |
+
+[0m
+[0m← [0mEdit conductor/lessons-learned.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
++++ /home/daniel-bo/Desktop/ka-math-companion/conductor/lessons-learned.md
+@@ -37,8 +37,11 @@
+ - (2026-04-24, design-system) Elm tests pass even with broken HTML generation (tests use Expect.pass). Test quality matters — render tests would catch style issues.
+ - (2026-04-24, design-system) Spacing values in Tokens (e.g., "16px") must be concatenated correctly when building CSS strings: `"padding:" ++ spacing.md ++ ";"`
+ - (2026-04-24, design-system) When fixing style attributes, consolidate multiple CSS rules into single `attribute "style" "..."` to avoid duplicate style attributes on same element
+ - (2026-04-25, design-system) Removed dead Grid attrs (tabletColumns, desktopColumns): computed but never applied to CSS. Lesson: unused code that looks functional is worse than no code - it misleads future maintainers. Attrs should only exist if they're actually used.
++- (2026-04-25, visual_refresh) Elm operator precedence: `attribute "x" "y" ++ z` is parsed as `(attribute "x" "y") ++ z`, not `attribute "x" ("y" ++ z)`. Always use parentheses when concatenating strings to pass to a function.
++- (2026-04-25, visual_refresh) When refactoring component APIs, update tests as part of the same change. Tests are coupled to public API signatures - they will break if you don't update them.
++- (2026-04-25, visual_refresh) Elm module exports: `exposing (badge)` does not expose the `Variant` type or its constructors. Use `exposing (Variant(..), badge)` to expose both the type and constructors for tests.
+ 
+ ## Planning Improvements
+ <!-- Notes on where estimates were wrong and why -->
+ 
+
+[0m

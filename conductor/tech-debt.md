@@ -20,3 +20,4 @@
 | 2026-04-25 | design-system | Grid.elm tabletColumns/desktopColumns computed but never applied to CSS | Medium | Resolved | Removed unused tabletColumns/desktopColumns attrs; Grid now only exposes functional columns, minWidth, gap |
 | 2026-04-25 | design-system | All design-system tests use `Expect.pass` — no real assertions on rendered HTML | Medium | Open | Tests only verify functions don't crash; should assert actual style values or DOM structure |
 | 2026-04-25 | design-system | Mixed style application: some components use `attribute "style" string`, others use `style` individual | Low | Open | Button.elm mixes both; should standardize on one approach across all components |
+| 2026-04-25 | visual_refresh | Visual refresh changed design tokens and component APIs | Medium | Resolved | Tests updated to match Orbital Editorial theme values |
