@@ -6,7 +6,7 @@ module Design.Footer exposing
 
 import Design.Tokens as Tokens
 import Html
-import Html.Attributes
+import Html.Attributes exposing (style)
 
 
 type Attr
@@ -26,17 +26,31 @@ footer attrs children =
                 (\attr ->
                     case attr of
                         LinkAttr url label ->
-                            Just (Html.a [ Html.Attributes.href url, Html.Attributes.style "margin-right" Tokens.spacing.md ] [ Html.text label ])
+                            Just
+                                (Html.a
+                                    [ Html.Attributes.href url
+                                    , style "margin-right" Tokens.spacing.md
+                                    , style "color" ("#" ++ Tokens.colorPalette.secondary)
+                                    , style "font-weight" "700"
+                                    ]
+                                    [ Html.text label ]
+                                )
+
+                        _ ->
+                            Nothing
                 )
                 attrs
     in
     Html.footer
-        [ Html.Attributes.style "display" "flex"
-        , Html.Attributes.style "align-items" "center"
-        , Html.Attributes.style "justify-content" "center"
-        , Html.Attributes.style "padding" Tokens.spacing.md
-        , Html.Attributes.style "background-color" ("#" ++ Tokens.colorPalette.neutral)
-        , Html.Attributes.style "color" "#fff"
-        , Html.Attributes.style "margin-top" "auto"
+        [ style "display" "flex"
+        , style "align-items" "center"
+        , style "justify-content" "center"
+        , style "padding" Tokens.spacing.xxl
+        , style "background-color" ("#" ++ Tokens.colorPalette.surface)
+        , style "color" ("#" ++ Tokens.colorPalette.textSecondary)
+        , style "margin-top" "auto"
+        , style "font-family" Tokens.typographyScale.bodyFont
+        , style "font-size" Tokens.typographyScale.smallFontSize
+        , style "border-top" "1px solid rgba(0,0,0,0.05)"
         ]
         (links ++ children)

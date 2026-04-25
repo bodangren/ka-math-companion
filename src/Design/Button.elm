@@ -123,37 +123,39 @@ button variant attrs children =
         variantStyleValue =
             case resolvedVariant of
                 Primary ->
-                    "background-color:#" ++ colorPalette.primary ++ ";color:#fff;"
+                    "background-color:#" ++ colorPalette.primary ++ ";color:#" ++ colorPalette.white ++ ";"
 
                 Secondary ->
-                    "background-color:#" ++ colorPalette.secondary ++ ";color:#fff;"
+                    "background-color:#" ++ colorPalette.secondary ++ ";color:#" ++ colorPalette.white ++ ";"
 
                 Outline ->
-                    "background-color:transparent;color:#" ++ colorPalette.primary ++ ";border:1px solid #" ++ colorPalette.primary ++ ";"
+                    "background-color:transparent;color:#" ++ colorPalette.primary ++ ";border-width:2px;border-style:solid;border-color:#" ++ colorPalette.primary ++ ";"
 
                 Ghost ->
-                    "background-color:transparent;color:#" ++ colorPalette.neutral ++ ";"
+                    "background-color:transparent;color:#" ++ colorPalette.textSecondary ++ ";border:none;"
 
         sizeStyleValue =
             case resolvedSize of
                 Small ->
-                    "padding:" ++ spacing.xs ++ " " ++ spacing.sm ++ ";font-size:" ++ typographyScale.smallFontSize ++ ";"
+                    "padding:" ++ spacing.xs ++ " " ++ spacing.md ++ ";font-size:" ++ typographyScale.smallFontSize ++ ";"
 
                 Medium ->
-                    "padding:" ++ spacing.sm ++ " " ++ spacing.md ++ ";font-size:" ++ typographyScale.bodyFontSize ++ ";"
+                    "padding:" ++ spacing.sm ++ " " ++ spacing.lg ++ ";font-size:" ++ typographyScale.bodyFontSize ++ ";"
 
                 Large ->
-                    "padding:" ++ spacing.md ++ " " ++ spacing.lg ++ ";font-size:" ++ typographyScale.largeFontSize ++ ";"
+                    "padding:" ++ spacing.md ++ " " ++ spacing.xl ++ ";font-size:" ++ typographyScale.largeFontSize ++ ";"
 
         baseStyleValue =
-            "border-radius:4px;font-family:" ++ typographyScale.bodyFont ++ ";cursor:pointer;transition:all 0.15s ease;border:none;"
+            "border-radius:9999px;font-family:" ++ typographyScale.bodyFont ++ ";cursor:pointer;transition:all 0.2s ease;border:none;font-weight:600;display:inline-flex;align-items:center;justify-content:center;text-align:center;"
 
         disabledAttrs =
             if isDisabled then
                 [ Html.Attributes.disabled True, style "opacity" "0.5", style "cursor" "not-allowed" ]
 
             else
-                []
+                [ attribute "onmouseover" "this.style.opacity='0.9';this.style.transform='scale(1.02)'"
+                , attribute "onmouseout" "this.style.opacity='1';this.style.transform='scale(1)'"
+                ]
     in
     Html.button
         ([ attribute "style" (baseStyleValue ++ variantStyleValue ++ sizeStyleValue)

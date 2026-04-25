@@ -1,60 +1,44 @@
-module Design.Alert exposing (AlertType(..), alert)
+module Design.Alert exposing (alert)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
-import Html
-import Html.Attributes exposing (attribute)
+import Html exposing (Html, div)
+import Html.Attributes exposing (attribute, style)
 
 
-type AlertType
+type Variant
     = Info
     | Success
     | Warning
     | Error
 
 
-alert : AlertType -> List (Html.Html msg) -> List (Html.Html msg) -> Html.Html msg
-alert alertType title content =
+alert : Variant -> List (Html msg) -> Html msg
+alert variant children =
     let
-        ( bgColor, borderColor, iconColor ) =
-            case alertType of
+        variantColor =
+            case variant of
                 Info ->
-                    ( "#eff6ff", "#" ++ colorPalette.info, "#" ++ colorPalette.info )
+                    colorPalette.info
 
                 Success ->
-                    ( "#ecfdf5", "#" ++ colorPalette.success, "#" ++ colorPalette.success )
+                    colorPalette.success
 
                 Warning ->
-                    ( "#fffbeb", "#" ++ colorPalette.warning, "#" ++ colorPalette.warning )
+                    colorPalette.warning
 
                 Error ->
-                    ( "#fef2f2", "#" ++ colorPalette.error, "#" ++ colorPalette.error )
-
-        containerStyleValue =
-            "border-radius:8px;padding:"
-                ++ spacing.md
-                ++ ";border-left:4px solid "
-                ++ borderColor
-                ++ ";background-color:"
-                ++ bgColor
-                ++ ";font-family:"
-                ++ typographyScale.bodyFont
-                ++ ";"
-
-        titleStyleValue =
-            "font-size:"
-                ++ typographyScale.bodyFontSize
-                ++ ";font-weight:600;color:"
-                ++ iconColor
-                ++ ";margin-bottom:"
-                ++ spacing.sm
-                ++ ";"
-
-        contentStyleValue =
-            "font-size:"
-                ++ typographyScale.bodyFontSize
-                ++ ";color:#374151;"
+                    colorPalette.error
     in
-    Html.div [ attribute "style" containerStyleValue ]
-        [ Html.div [ attribute "style" titleStyleValue ] title
-        , Html.div [ attribute "style" contentStyleValue ] content
+    div
+        [ attribute "style"
+            ("background-color:#" ++ colorPalette.white ++ ";box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);padding:" ++ spacing.sm ++ " " ++ spacing.lg ++ ";margin-bottom:" ++ spacing.md ++ ";border-radius:9999px;font-family:" ++ typographyScale.bodyFont ++ ";display:flex;align-items:center;gap:" ++ spacing.sm ++ ";border:1px solid rgba(0,0,0,0.05);")
+        ]
+        [ div
+            [ attribute "style"
+                ("width:12px;height:12px;border-radius:50%;background-color:#" ++ variantColor ++ ";flex-shrink:0;")
+            ]
+            []
+        , div
+            [ attribute "style" ("color:#" ++ colorPalette.textPrimary ++ ";font-weight:500;") ]
+            children
         ]

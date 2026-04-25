@@ -19,8 +19,15 @@
           "content": "width=device-width, initial-scale=1.0"
         }
       ],
-      "link": [],
-      "script": [{ "src": "https://cdn.tailwindcss.com" }]
+      "link": [
+        { "rel": "preconnect", "href": "https://fonts.googleapis.com" },
+        { "rel": "preconnect", "href": "https://fonts.gstatic.com", "crossorigin": "" },
+        { "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&display=swap", "rel": "stylesheet" }
+      ],
+      "script": [
+        { "src": "https://cdn.tailwindcss.com" },
+        { "content": "tailwind.config = { theme: { extend: { colors: { 'primary': '#EB001B', 'secondary': '#FF5F00', 'accent': '#F79E1B', 'surface': '#F9F7F2', 'anthracite': '#1A1A1A' }, fontFamily: { 'sans': ['Inter', 'sans-serif'], 'serif': ['Newsreader', 'serif'] }, borderRadius: { 'orbital': '24px' } } } }" }
+      ]
     },
     "router": {
       "useHashRouting": false

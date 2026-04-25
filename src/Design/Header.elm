@@ -7,7 +7,7 @@ module Design.Header exposing
 
 import Design.Tokens as Tokens
 import Html
-import Html.Attributes
+import Html.Attributes exposing (attribute, style)
 
 
 type Attr
@@ -47,7 +47,21 @@ header attrs children =
                 (\attr ->
                     case attr of
                         LinkAttr url label ->
-                            Just (Html.a [ Html.Attributes.href url ] [ Html.text label ])
+                            Just
+                                (Html.a
+                                    [ Html.Attributes.href url
+                                    , style "color" ("#" ++ Tokens.colorPalette.textSecondary)
+                                    , style "text-decoration" "none"
+                                    , style "font-weight" "600"
+                                    , style "padding" "8px 16px"
+                                    , style "margin-left" Tokens.spacing.sm
+                                    , style "border-radius" "9999px"
+                                    , style "transition" "all 0.2s ease"
+                                    , attribute "onmouseover" "this.style.backgroundColor='rgba(0,0,0,0.05)';this.style.color='#" ++ Tokens.colorPalette.primary ++ "'"
+                                    , attribute "onmouseout" "this.style.backgroundColor='transparent';this.style.color='#" ++ Tokens.colorPalette.textSecondary ++ "'"
+                                    ]
+                                    [ Html.text label ]
+                                )
 
                         _ ->
                             Nothing
@@ -55,19 +69,21 @@ header attrs children =
                 attrs
     in
     Html.header
-        [ Html.Attributes.style "display" "flex"
-        , Html.Attributes.style "align-items" "center"
-        , Html.Attributes.style "justify-content" "space-between"
-        , Html.Attributes.style "padding" (Tokens.spacing.md ++ " " ++ Tokens.spacing.lg)
-        , Html.Attributes.style "background-color" ("#" ++ Tokens.colorPalette.primary)
-        , Html.Attributes.style "color" "#fff"
+        [ style "display" "flex"
+        , style "align-items" "center"
+        , style "justify-content" "space-between"
+        , style "padding" (Tokens.spacing.md ++ " " ++ Tokens.spacing.xxl)
+        , style "background-color" ("#" ++ Tokens.colorPalette.surface)
+        , style "color" ("#" ++ Tokens.colorPalette.textPrimary)
+        , style "font-family" Tokens.typographyScale.headingFont
         ]
         ([ Html.div
-            [ Html.Attributes.style "font-size" Tokens.typographyScale.largeFontSize
-            , Html.Attributes.style "font-weight" "bold"
+            [ style "font-size" Tokens.typographyScale.h3FontSize
+            , style "font-weight" "700"
+            , style "color" ("#" ++ Tokens.colorPalette.primary)
             ]
             [ Html.text resolvedBrand ]
          ]
-            ++ navItems
+            ++ [ Html.nav [ style "display" "flex" ] navItems ]
             ++ children
         )

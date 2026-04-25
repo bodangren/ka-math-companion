@@ -1,7 +1,14 @@
 module Pages.Home_ exposing (page)
 
+import Design.Button as Button
+import Design.Card as Card
+import Design.Container as Container
+import Design.Grid as Grid
+import Design.Header as Header
+import Design.Stack as Stack
+import Design.Tokens as Tokens
 import Html
-import Html.Attributes exposing (class, href)
+import Html.Attributes exposing (style)
 import View exposing (View)
 
 
@@ -9,60 +16,89 @@ page : View msg
 page =
     { title = "KA Math Companion"
     , body =
-        [ Html.div [ class "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100" ]
-            [ viewNav
-            , viewHero
-            , viewFeatures
+        [ Html.div
+            [ style "min-h" "100-vh"
+            , style "background-color" ("#" ++ Tokens.colorPalette.surface)
+            , style "color" ("#" ++ Tokens.colorPalette.textPrimary)
+            , style "font-family" Tokens.typographyScale.bodyFont
+            ]
+            [ viewHeader
+            , Container.container
+                [ viewHero
+                , viewFeatures
+                ]
             ]
         ]
     }
 
 
-viewNav : Html.Html msg
-viewNav =
-    Html.nav [ class "flex items-center justify-between px-8 py-4" ]
-        [ Html.a [ href "/", class "text-xl font-bold text-indigo-900" ]
-            [ Html.text "KA Math" ]
-        , Html.div [ class "flex gap-6" ]
-            [ Html.a [ href "/curriculum", class "text-indigo-700 hover:text-indigo-900 font-medium" ]
-                [ Html.text "Curriculum" ]
-            ]
+viewHeader : Html.Html msg
+viewHeader =
+    Header.header
+        [ Header.brand "KA Math Companion"
+        , Header.link "/curriculum" "Curriculum"
         ]
+        []
 
 
 viewHero : Html.Html msg
 viewHero =
-    Html.div [ class "flex flex-col items-center justify-center px-8 py-20" ]
-        [ Html.h1 [ class "text-5xl font-bold text-indigo-900 mb-6 text-center" ]
-            [ Html.text "KA Math Companion" ]
-        , Html.p [ class "text-xl text-gray-600 mb-8 text-center max-w-2xl" ]
-            [ Html.text "A pedagogy-first companion to Khan Academy Integrated Math 3. Build durable understanding through conceptual exploration and spaced practice." ]
-        , Html.a
-            [ href "/curriculum"
-            , class "bg-indigo-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+    Html.div
+        [ style "padding" (Tokens.spacing.xxl ++ " 0")
+        , style "margin-bottom" Tokens.spacing.xxl
+        ]
+        [ Stack.stack Stack.Vertical
+            [ Stack.spacing Stack.Large ]
+            [ Html.h1
+                [ style "font-size" Tokens.typographyScale.h1FontSize
+                , style "font-family" Tokens.typographyScale.headingFont
+                , style "font-weight" "700"
+                , style "margin" "0"
+                , style "line-height" "1.0"
+                , style "letter-spacing" "-0.04em"
+                ]
+                [ Html.text "Pedagogy-First"
+                , Html.br [] []
+                , Html.span [ style "color" ("#" ++ Tokens.colorPalette.primary) ] [ Html.text "Math Mastery" ]
+                ]
+            , Html.p
+                [ style "font-size" Tokens.typographyScale.largeFontSize
+                , style "max-width" "600px"
+                , style "line-height" "1.6"
+                , style "font-weight" "400"
+                , style "color" ("#" ++ Tokens.colorPalette.textSecondary)
+                ]
+                [ Html.text "A technical companion to Khan Academy Integrated Math 3. Built for durable understanding through conceptual rigor and spaced retrieval." ]
+            , Html.div [ style "padding-top" Tokens.spacing.md ]
+                [ Button.button Button.Primary
+                    [ Button.large ]
+                    [ Html.text "Explore Curriculum" ]
+                ]
             ]
-            [ Html.text "Browse Curriculum" ]
         ]
 
 
 viewFeatures : Html.Html msg
 viewFeatures =
-    Html.div [ class "max-w-4xl mx-auto px-8 py-16" ]
-        [ Html.h2 [ class "text-2xl font-bold text-indigo-900 mb-8 text-center" ]
-            [ Html.text "What You'll Find" ]
-        , Html.div [ class "grid grid-cols-1 md:grid-cols-3 gap-6" ]
-            [ viewFeatureCard "13 Units" "Polynomials through rational functions, covering Integrated Math 3."
-            , viewFeatureCard "Interactive Lessons" "Conceptual exploration with visualizations and examples."
-            , viewFeatureCard "Spaced Practice" "Leitner-based review system for long-term retention."
+    Html.div [ style "padding-bottom" Tokens.spacing.xxl ]
+        [ Html.h2
+            [ style "font-size" Tokens.typographyScale.h2FontSize
+            , style "font-family" Tokens.typographyScale.headingFont
+            , style "font-weight" "600"
+            , style "margin-bottom" Tokens.spacing.xl
+            ]
+            [ Html.text "Core Infrastructure" ]
+        , Grid.grid
+            [ Grid.columns 3, Grid.gap Grid.Large ]
+            [ viewFeatureCard "13 Units" "Comprehensive coverage from Polynomials to Rational Functions."
+            , viewFeatureCard "Interactive" "Conceptual exploration with visualizations and precision examples."
+            , viewFeatureCard "Spaced Review" "Leitner-based retrieval system for permanent mastery."
             ]
         ]
 
 
 viewFeatureCard : String -> String -> Html.Html msg
 viewFeatureCard title description =
-    Html.div [ class "bg-white rounded-lg shadow-sm p-6" ]
-        [ Html.h3 [ class "text-lg font-semibold text-indigo-700 mb-2" ]
-            [ Html.text title ]
-        , Html.p [ class "text-gray-600" ]
-            [ Html.text description ]
-        ]
+    Card.withHeader
+        [ Html.text title ]
+        [ Html.p [ style "margin" "0", style "line-height" "1.5" ] [ Html.text description ] ]

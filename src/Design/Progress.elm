@@ -2,7 +2,7 @@ module Design.Progress exposing (Attr, label, progress)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html
-import Html.Attributes exposing (attribute)
+import Html.Attributes exposing (attribute, style)
 
 
 type Attr
@@ -28,24 +28,25 @@ progress attrs percentage =
                 |> List.head
 
         containerStyleValue =
-            "width:100%;font-family:" ++ typographyScale.bodyFont ++ ";"
+            "width:100%;font-family:" ++ typographyScale.bodyFont ++ ";margin-bottom:" ++ spacing.md ++ ";"
 
         labelStyleValue =
             "font-size:"
                 ++ typographyScale.smallFontSize
-                ++ ";color:#374151;margin-bottom:"
+                ++ ";color:#" ++ colorPalette.textPrimary
+                ++ ";margin-bottom:"
                 ++ spacing.xs
-                ++ ";display:flex;justify-content:space-between;"
+                ++ ";display:flex;justify-content:space-between;font-weight:600;"
 
         trackStyleValue =
-            "width:100%;height:8px;background-color:#e5e7eb;border-radius:9999px;overflow:hidden;"
+            "width:100%;height:12px;background-color:rgba(0,0,0,0.05);position:relative;overflow:hidden;border-radius:9999px;"
 
         fillStyleValue =
             "height:100%;width:"
                 ++ String.fromInt (clamp 0 100 percentage)
                 ++ "%;background-color:#"
                 ++ colorPalette.primary
-                ++ ";border-radius:9999px;transition:width 0.3s ease;"
+                ++ ";transition:width 0.3s ease;border-radius:9999px;"
     in
     Html.div [ attribute "style" containerStyleValue ]
         [ Html.div [ attribute "style" labelStyleValue ]
