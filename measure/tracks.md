@@ -61,4 +61,6 @@
   _Link: [./tracks/performance-seo_20260403/](./tracks/performance-seo_20260403/)_
   Bundle optimization, meta tags, service worker, Lighthouse targets.
 
-- [~] [Visual Refresh: Define Unique Identity](tracks/visual_refresh_20260425/index.md)
+- [x] **Track: Visual Refresh: Define Unique Identity**
+  *Link: [./archive/visual_refresh_20260425/](./archive/visual_refresh_20260425/)*
+  *Status: Complete*

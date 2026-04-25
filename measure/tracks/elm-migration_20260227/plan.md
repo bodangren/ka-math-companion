@@ -17,7 +17,7 @@
 - [x] **Task 5: Update package.json** [f5e56fc]
   - [x] Write Tests: N/A (configuration task)
   - [x] Implement: Remove all Next.js/React dependencies, reset for ElmLand
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1: Next.js Removal & Cleanup'**
+- [ ] **Task: Measure - User Manual Verification 'Phase 1: Next.js Removal & Cleanup'**
 
 ## Phase 2: Elm/ElmLand Foundation [checkpoint: ee7ff27]
 
@@ -33,7 +33,7 @@
 - [x] **Task 9: Configure elm-test** [210b5da]
   - [x] Write Tests: Create sample test that passes
   - [x] Implement: Run `npx elm-land test` setup, verify test runner works
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2: Elm/ElmLand Foundation'**
+- [ ] **Task: Measure - User Manual Verification 'Phase 2: Elm/ElmLand Foundation'**
 
 ## Phase 3: Curriculum Data Model [checkpoint: 0ec3054]
 
@@ -43,7 +43,7 @@
 - [x] **Task 11: Parse Curriculum Data** [df8e612]
   - [x] Write Tests: Verify curriculum markdown parses into Elm structures
   - [x] Implement: Create curriculum data module, embed parsed data as Elm constants
-- [ ] **Task: Conductor - User Manual Verification 'Phase 3: Curriculum Data Model'**
+- [ ] **Task: Measure - User Manual Verification 'Phase 3: Curriculum Data Model'**
 
 ## Phase 4: Routing & Pages [checkpoint: ee72d3e]
 
@@ -59,7 +59,7 @@
 - [x] **Task 15: Lesson Detail Page** [3e900ab]
   - [x] Write Tests: Verify lesson page renders objectives
   - [x] Implement: Create `src/Pages/Curriculum/Unit/Lesson_.elm` with nested routing
-- [ ] **Task: Conductor - User Manual Verification 'Phase 4: Routing & Pages'**
+- [ ] **Task: Measure - User Manual Verification 'Phase 4: Routing & Pages'**
 
 ## Phase 5: Integration & Deployment
 
@@ -72,4 +72,4 @@
 - [x] **Task 18: Update Documentation** [2d0a771]
   - [x] Write Tests: N/A (documentation task)
   - [x] Implement: Update README.md with Elm/ElmLand instructions
-- [ ] **Task: Conductor - User Manual Verification 'Phase 5: Integration & Deployment'**
+- [ ] **Task: Measure - User Manual Verification 'Phase 5: Integration & Deployment'**

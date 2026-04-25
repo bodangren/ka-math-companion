@@ -1,4 +1,4 @@
-# Conductor Index - ka-math-companion
+# Measure Index - ka-math-companion
 
 > Universal File Resolution Protocol: Named references resolve to paths below.
 
