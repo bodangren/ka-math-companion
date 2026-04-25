@@ -76,3 +76,1665 @@ conductor/output.log                   | 914 ++-------------------------------
 Significant work has been done. Let me check the output log to understand what's been completed, then commit the dirty state.
 [0m→ [0mRead conductor/output.log[90m [offset=1, limit=100][0m
 The previous run started but didn't complete. I need to commit the dirty workspace first, then continue with implementation.
+[0m
+[0m$ [0mgit add -A && git commit -m "feat(design): implement Orbital Editorial visual identity
+
+- Add DESIGN.md with Orbital Editorial theme (Mastercard-inspired palette)
+- Refactor design system components to new visual style
+- Update Tokens with new color palette
+- Update pages (Curriculum, Home_, Unit_, Lesson_) to new design
+
+Autonomous run checkpoint - MiniMax-M2.7"
+[feat/30-render-curriculum-overview-page 2e1587b] feat(design): implement Orbital Editorial visual identity
+ 23 files changed, 685 insertions(+), 1268 deletions(-)
+ create mode 100644 DESIGN.md
+ create mode 100644 conductor/tracks/visual_refresh_20260425/metadata.json
+ create mode 100644 conductor/tracks/visual_refresh_20260425/plan.md
+ create mode 100644 conductor/tracks/visual_refresh_20260425/spec.md
+ create mode 100644 gemini_design_update.log
+ create mode 100644 visual_refresh_track.log
+[0m
+Good, committed. Now let me review Phase 1 work and check what remains. Let me run the design.md lint and verify the build.
+[0m$ [0mnpm run build 2>&1 | head -50
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m failed to build this project.
+[31m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[elm-watch] Could not load /home/daniel-bo/Desktop/ka-math-companion/.elm-land/src/Main.elm (imported by .elm-land/server/main.js): [36m-- TYPE MISMATCH -------------------------------------  <button data-source="/home/daniel-bo/Desktop/ka-math-companion/src/Design/Header.elm:61:39">Jump to problem</button>[0m
+
+
+The (++) operator cannot append this type of value:
+
+61|                                     , attribute "onmouseout" "this.style.backgroundColor='transparent';this.style.color='#" ++ Tokens.colorPalette.textSecondary ++ "'"
+                                          [0m[31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+This `attribute` call produces:
+
+    [0m[33mHtml.Attribute msg[0m
+
+But the (++) operator is only for appending [0m[33mList[0m and [0m[33mString[0m values. Maybe put
+this value in [] to make it a list?[0m
+
+[36m-- TYPE MISMATCH -------------------------------------  <button data-source="/home/daniel-bo/Desktop/ka-math-companion/src/Design/Header.elm:60:39">Jump to problem</button>[0m
+
+
+The (++) operator cannot append this type of value:
+
+60|                                     , attribute "onmouseover" "this.style.backgroundColor='rgba(0,0,0,0.05)';this.style.color='#" ++ Tokens.colorPalette.primary ++ "'"
+                                          [0m[31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+This `attribute` call produces:
+
+    [0m[33mHtml.Attribute msg[0m
+
+But the (++) operator is only for appending [0m[33mList[0m and [0m[33mString[0m values. Maybe put
+this value in [] to make it a list?[0m
+[0m
+[0m$ [0mnpx -y @google/design.md lint DESIGN.md 2>&1 || true
+{
+  "findings": [
+    {
+      "severity": "warning",
+      "path": "components.button-secondary",
+      "message": "textColor (#ffffff) on backgroundColor (#ff5f00) has contrast ratio 3.05:1, below WCAG AA minimum of 4.5:1."
+    },
+    {
+      "severity": "warning",
+      "path": "colors.accent",
+      "message": "'accent' is defined but never referenced by any component."
+    },
+    {
+      "severity": "warning",
+      "path": "colors.neutral",
+      "message": "'neutral' is defined but never referenced by any component."
+    },
+    {
+      "severity": "warning",
+      "path": "colors.success",
+      "message": "'success' is defined but never referenced by any component."
+    },
+    {
+      "severity": "warning",
+      "path": "colors.warning",
+      "message": "'warning' is defined but never referenced by any component."
+    },
+    {
+      "severity": "warning",
+      "path": "colors.error",
+      "message": "'error' is defined but never referenced by any component."
+    },
+    {
+      "severity": "warning",
+      "path": "colors.info",
+      "message": "'info' is defined but never referenced by any component."
+    },
+    {
+      "severity": "warning",
+      "path": "colors.text-primary",
+      "message": "'text-primary' is defined but never referenced by any component."
+    },
+    {
+      "severity": "warning",
+      "path": "colors.text-secondary",
+      "message": "'text-secondary' is defined but never referenced by any component."
+    },
+    {
+      "severity": "info",
+      "message": "Design system defines 12 colors, 6 typography scales, 3 rounding levels, 6 spacing tokens, 4 components."
+    }
+  ],
+  "summary": {
+    "errors": 0,
+    "warnings": 9,
+    "infos": 1
+  }
+}
+[0m
+Build has type errors in Header.elm. Let me fix it.
+[0m→ [0mRead src/Design/Header.elm[90m [offset=50, limit=30][0m
+[0m→ [0mRead src/Design/Tokens.elm
+The issue is operator precedence in Elm. The `++` is being parsed before `attribute`. I need to add parentheses around the string concatenation.
+[0m→ [0mRead src/Design/Header.elm
+[0m
+[0m← [0mEdit src/Design/Header.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Design/Header.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Design/Header.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Design/Header.elm
+@@ -56,10 +56,10 @@
+     , style "padding" "8px 16px"
+     , style "margin-left" Tokens.spacing.sm
+     , style "border-radius" "9999px"
+     , style "transition" "all 0.2s ease"
+-    , attribute "onmouseover" "this.style.backgroundColor='rgba(0,0,0,0.05)';this.style.color='#" ++ Tokens.colorPalette.primary ++ "'"
+-    , attribute "onmouseout" "this.style.backgroundColor='transparent';this.style.color='#" ++ Tokens.colorPalette.textSecondary ++ "'"
++    , attribute "onmouseover" ("this.style.backgroundColor='rgba(0,0,0,0.05)';this.style.color='#" ++ Tokens.colorPalette.primary ++ "'")
++    , attribute "onmouseout" ("this.style.backgroundColor='transparent';this.style.color='#" ++ Tokens.colorPalette.textSecondary ++ "'")
+     ]
+     [ Html.text label ]
+ )
+ 
+
+[0m
+[0m$ [0mnpm run build 2>&1 | head -80
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m failed to build this project.
+[31m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[elm-watch] Could not load /home/daniel-bo/Desktop/ka-math-companion/.elm-land/src/Main.elm (imported by .elm-land/server/main.js): [36m-- NAMING ERROR --------------------------------------  <button data-source="/home/daniel-bo/Desktop/ka-math-companion/src/Pages/Curriculum.elm:68:11">Jump to problem</button>[0m
+
+
+I cannot find a `attribute` variable:
+
+68|         , attribute "onmouseover" "this.style.transform='translateY(-4px)'"
+              [0m[31m^^^^^^^^^[0m
+These names seem close though:
+
+    [0m[33mHtml.cite[0m
+    [0m[33mtruncate[0m
+    [0m[33mBasics.e[0m
+    [0m[33mHtml.b[0m
+
+[0m[4mHint[0m: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.[0m
+
+[36m-- NAMING ERROR --------------------------------------  <button data-source="/home/daniel-bo/Desktop/ka-math-companion/src/Pages/Curriculum.elm:69:11">Jump to problem</button>[0m
+
+
+I cannot find a `attribute` variable:
+
+69|         , attribute "onmouseout" "this.style.transform='translateY(0)'"
+              [0m[31m^^^^^^^^^[0m
+These names seem close though:
+
+    [0m[33mHtml.cite[0m
+    [0m[33mtruncate[0m
+    [0m[33mBasics.e[0m
+    [0m[33mHtml.b[0m
+
+[0m[4mHint[0m: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.[0m
+[0m
+[0m→ [0mRead src/Pages/Curriculum.elm[90m [limit=30][0m
+[0m
+[0m← [0mEdit src/Pages/Curriculum.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Pages/Curriculum.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Pages/Curriculum.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Pages/Curriculum.elm
+@@ -6,9 +6,9 @@
+ import Design.Grid as Grid
+ import Design.Header as Header
+ import Design.Tokens as Tokens
+ import Html
+-import Html.Attributes exposing (href, style)
++import Html.Attributes exposing (attribute, href, style)
+ import View exposing (View)
+ 
+ 
+ page : View msg
+
+[0m
+[0m$ [0mnpm run build 2>&1 | head -100
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
+Build successful. Let me run the tests.
+[0m$ [0mnpm test 2>&1
+> ka-math-companion@0.1.0 test
+> elm-test
+
+Compiling-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
+
+I cannot find a `Badge.primary` variable:
+
+23|                         Badge.badge [ Badge.primary ] [ Html.text "Primary" ]
+                                          ^^^^^^^^^^^^^
+The `Badge` module does not expose a `primary` variable. These names seem close
+though:
+
+    Badge.badge
+    Html.summary
+    Maybe.map
+    Maybe.map2
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
+
+I cannot find a `Badge.secondary` variable:
+
+30|                         Badge.badge [ Badge.secondary ] [ Html.text "Secondary" ]
+                                          ^^^^^^^^^^^^^^^
+The `Badge` module does not expose a `secondary` variable. These names seem
+close though:
+
+    Tuple.second
+    Badge.badge
+    Basics.compare
+    Basics.modBy
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
+
+I cannot find a `Badge.success` variable:
+
+37|                         Badge.badge [ Badge.success ] [ Html.text "Success" ]
+                                          ^^^^^^^^^^^^^
+The `Badge` module does not expose a `success` variable. These names seem close
+though:
+
+    Badge.badge
+    Basics.acos
+    Basics.cos
+    badge
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
+
+I cannot find a `Badge.warning` variable:
+
+44|                         Badge.badge [ Badge.warning ] [ Html.text "Warning" ]
+                                          ^^^^^^^^^^^^^
+The `Badge` module does not expose a `warning` variable. These names seem close
+though:
+
+    Badge.badge
+    Basics.asin
+    Basics.ceiling
+    badge
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
+
+I cannot find a `Badge.error` variable:
+
+51|                         Badge.badge [ Badge.error ] [ Html.text "Error" ]
+                                          ^^^^^^^^^^^
+The `Badge` module does not expose a `error` variable. These names seem close
+though:
+
+    Badge.badge
+    badge
+    Basics.floor
+    Basics.xor
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+                                                         Design.BadgeTest  ↑    
+====o======================================================================o====
+    ↓  Design.CardTest
+
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/CardTest.elm
+
+I cannot find a `Card.header` variable:
+
+23|                         Card.card [ Card.header [ Html.text "Header" ] ] [ Html.text "Body" ]
+                                        ^^^^^^^^^^^
+The `Card` module does not expose a `header` variable. These names seem close
+though:
+
+    Card.withHeader
+    Html.header
+    Card.card
+    List.head
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/CardTest.elm
+
+I cannot find a `Card.footer` variable:
+
+30|                         Card.card [ Card.footer [ Html.text "Footer" ] ] [ Html.text "Body" ]
+                                        ^^^^^^^^^^^
+The `Card` module does not expose a `footer` variable. These names seem close
+though:
+
+    Card.withFooter
+    Html.footer
+    Char.toLower
+    Card.card
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/CardTest.elm
+
+I cannot find a `Card.header` variable:
+
+38|                             [ Card.header [ Html.text "Header" ]
+                                  ^^^^^^^^^^^
+The `Card` module does not expose a `header` variable. These names seem close
+though:
+
+    Card.withHeader
+    Html.header
+    Card.card
+    List.head
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/CardTest.elm
+
+I cannot find a `Card.footer` variable:
+
+39|                             , Card.footer [ Html.text "Footer" ]
+                                  ^^^^^^^^^^^
+The `Card` module does not expose a `footer` variable. These names seem close
+though:
+
+    Card.withFooter
+    Html.footer
+    Char.toLower
+    Card.card
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+                                                          Design.CardTest  ↑    
+====o======================================================================o====
+    ↓  Design.ContainerTest
+
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/ContainerTest.elm
+
+I cannot find a `Container.mobile` variable:
+
+45|                             Container.container [ Container.mobile ] [ Html.text "Mobile" ]
+                                                      ^^^^^^^^^^^^^^^^
+The `Container` module does not expose a `mobile` variable. These names seem
+close though:
+
+    Container.container
+    container
+    Char.toCode
+    String.foldl
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/ContainerTest.elm
+
+I cannot find a `Container.tablet` variable:
+
+52|                             Container.container [ Container.tablet ] [ Html.text "Tablet" ]
+                                                      ^^^^^^^^^^^^^^^^
+The `Container` module does not expose a `tablet` variable. These names seem
+close though:
+
+    Container.container
+    container
+    Html.table
+    String.padLeft
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/ContainerTest.elm
+
+I cannot find a `Container.desktop` variable:
+
+59|                             Container.container [ Container.desktop ] [ Html.text "Desktop" ]
+                                                      ^^^^^^^^^^^^^^^^^
+The `Container` module does not expose a `desktop` variable. These names seem
+close though:
+
+    container
+    Container.container
+    String.left
+    String.length
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/ContainerTest.elm
+
+I cannot find a `Container.wide` variable:
+
+66|                             Container.container [ Container.wide ] [ Html.text "Wide" ]
+                                                      ^^^^^^^^^^^^^^
+The `Container` module does not expose a `wide` variable. These names seem close
+though:
+
+    container
+    Container.container
+    String.lines
+    String.pad
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/ContainerTest.elm
+
+I cannot find a `Container.full` variable:
+
+73|                             Container.container [ Container.full ] [ Html.text "Full" ]
+                                                      ^^^^^^^^^^^^^^
+The `Container` module does not expose a `full` variable. These names seem close
+though:
+
+    container
+    String.all
+    String.foldl
+    Container.container
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+                                                     Design.ContainerTest  ↑    
+====o======================================================================o====
+    ↓  Design.AlertTest
+
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
+
+I cannot find a `Alert.Info` variant:
+
+16|                         Alert.alert Alert.Info [] [ Html.text "Information message" ]
+                                        ^^^^^^^^^^
+The `Alert` module does not expose a `Info` variant. These names seem close
+though:
+
+    Nothing
+    Err
+    LT
+    Basics.EQ
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
+
+I cannot find a `Alert.Success` variant:
+
+23|                         Alert.alert Alert.Success [] [ Html.text "Success message" ]
+                                        ^^^^^^^^^^^^^
+The `Alert` module does not expose a `Success` variant. These names seem close
+though:
+
+    Maybe.Just
+    Result.Err
+    Result.Ok
+    False
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
+
+I cannot find a `Alert.Warning` variant:
+
+30|                         Alert.alert Alert.Warning [] [ Html.text "Warning message" ]
+                                        ^^^^^^^^^^^^^
+The `Alert` module does not expose a `Warning` variant. These names seem close
+though:
+
+    Maybe.Nothing
+    Nothing
+    Err
+    Basics.False
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
+
+I cannot find a `Alert.Error` variant:
+
+37|                         Alert.alert Alert.Error [] [ Html.text "Error message" ]
+                                        ^^^^^^^^^^^
+The `Alert` module does not expose a `Error` variant. These names seem close
+though:
+
+    Result.Err
+    Err
+    Basics.EQ
+    Basics.True
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+                                                         Design.AlertTest  ↑    
+====o======================================================================o====
+    ↓  Design.Footer
+
+
+-- REDUNDANT PATTERN - /home/daniel-bo/Desktop/ka-math-companion/src/Design/Footer.elm
+
+The 2nd pattern is redundant:
+
+27|                     case attr of
+28|                         LinkAttr url label ->
+29|                             Just
+30|                                 (Html.a
+31|                                     [ Html.Attributes.href url
+32|                                     , style "margin-right" Tokens.spacing.md
+33|                                     , style "color" ("#" ++ Tokens.colorPalette.secondary)
+34|                                     , style "font-weight" "700"
+35|                                     ]
+36|                                     [ Html.text label ]
+37|                                 )
+38| 
+39|>                        _ ->
+40|                             Nothing
+
+Any value with this shape will be handled by a previous pattern, so it should be
+removed.
+
+
+`elm make` failed with exit code 1.
+[0m
+The tests are failing because they use old component APIs. Let me check the current component signatures and fix the issues.
+[0m→ [0mRead src/Design/Badge.elm
+[0m→ [0mRead src/Design/Card.elm
+[0m→ [0mRead src/Design/Container.elm
+[0m→ [0mRead src/Design/Alert.elm
+[0m→ [0mRead src/Design/Footer.elm
+Let me read the test files to understand what needs to be fixed.
+[0m→ [0mRead tests/Design/BadgeTest.elm
+[0m→ [0mRead tests/Design/CardTest.elm
+[0m→ [0mRead tests/Design/ContainerTest.elm
+[0m→ [0mRead tests/Design/AlertTest.elm
+The tests use old APIs. I need to fix both the tests to match the new component APIs and the Footer redundant pattern. Let me update the tests and fix Footer.
+[0m
+[0m← [0mEdit tests/Design/BadgeTest.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
+@@ -1,54 +1,41 @@
+ module Design.BadgeTest exposing (suite)
+ 
+ import Design.Badge as Badge
++import Design.Badge exposing (Variant(..))
+ import Expect
+ import Html
+ import Test
+ 
+ 
+ suite : Test.Test
+ suite =
+     Test.describe "Design.Badge"
+-        [ Test.test "default badge renders" <|
++        [ Test.test "neutral badge renders" <|
+             \_ ->
+                 let
+                     badge =
+-                        Badge.badge [] [ Html.text "Default" ]
++                        Badge.badge Neutral "Neutral"
+                 in
+                 Expect.pass
+-        , Test.test "primary badge renders" <|
+-            \_ ->
+-                let
+-                    badge =
+-                        Badge.badge [ Badge.primary ] [ Html.text "Primary" ]
+-                in
+-                Expect.pass
+-        , Test.test "secondary badge renders" <|
+-            \_ ->
+-                let
+-                    badge =
+-                        Badge.badge [ Badge.secondary ] [ Html.text "Secondary" ]
+-                in
+-                Expect.pass
+         , Test.test "success badge renders" <|
+             \_ ->
+                 let
+                     badge =
+-                        Badge.badge [ Badge.success ] [ Html.text "Success" ]
++                        Badge.badge Success "Success"
+                 in
+                 Expect.pass
+         , Test.test "warning badge renders" <|
+             \_ ->
+                 let
+                     badge =
+-                        Badge.badge [ Badge.warning ] [ Html.text "Warning" ]
++                        Badge.badge Warning "Warning"
+                 in
+                 Expect.pass
+         , Test.test "error badge renders" <|
+             \_ ->
+                 let
+                     badge =
+-                        Badge.badge [ Badge.error ] [ Html.text "Error" ]
++                        Badge.badge Error "Error"
+                 in
+                 Expect.pass
+         ]
+
+[0m
+[0m← [0mEdit tests/Design/CardTest.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Design/CardTest.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Design/CardTest.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Design/CardTest.elm
+@@ -12,33 +12,22 @@
+ [ Test.test "card renders with children" <|
+     \_ ->
+         let
+             card =
+-                Card.card [] [ Html.text "Card content" ]
++                Card.card [ Html.text "Card content" ]
+         in
+         Expect.pass
+ , Test.test "card with header renders" <|
+     \_ ->
+         let
+             card =
+-                Card.card [ Card.header [ Html.text "Header" ] ] [ Html.text "Body" ]
++                Card.withHeader [ Html.text "Header" ] [ Html.text "Body" ]
+         in
+         Expect.pass
+ , Test.test "card with footer renders" <|
+     \_ ->
+         let
+             card =
+-                Card.card [ Card.footer [ Html.text "Footer" ] ] [ Html.text "Body" ]
++                Card.withFooter [ Html.text "Header" ] [ Html.text "Body" ] [ Html.text "Footer" ]
+         in
+         Expect.pass
+-, Test.test "card with header and footer renders" <|
+-    \_ ->
+-        let
+-            card =
+-                Card.card
+-                    [ Card.header [ Html.text "Header" ]
+-                    , Card.footer [ Html.text "Footer" ]
+-                    ]
+-                    [ Html.text "Body" ]
+-        in
+-        Expect.pass
+ ]
+
+[0m
+[0m← [0mEdit tests/Design/ContainerTest.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Design/ContainerTest.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Design/ContainerTest.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Design/ContainerTest.elm
+@@ -12,66 +12,29 @@
+ [ Test.test "container renders with children" <|
+     \_ ->
+         let
+             container =
+-                Container.container [] [ Html.text "Content" ]
++                Container.container [ Html.text "Content" ]
+         in
+         Expect.pass
+ , Test.test "container has max-width" <|
+     \_ ->
+         let
+             container =
+-                Container.container [] [ Html.text "Content" ]
++                Container.container [ Html.text "Content" ]
+         in
+         Expect.pass
+ , Test.test "container is centered" <|
+     \_ ->
+         let
+             container =
+-                Container.container [] [ Html.text "Content" ]
++                Container.container [ Html.text "Content" ]
+         in
+         Expect.pass
+ , Test.test "container has horizontal padding" <|
+     \_ ->
+         let
+             container =
+-                Container.container [] [ Html.text "Content" ]
++                Container.container [ Html.text "Content" ]
+         in
+         Expect.pass
+-, Test.describe "width variants"
+-    [ Test.test "container with mobile width" <|
+-        \_ ->
+-            let
+-                container =
+-                    Container.container [ Container.mobile ] [ Html.text "Mobile" ]
+-            in
+-            Expect.pass
+-    , Test.test "container with tablet width" <|
+-        \_ ->
+-            let
+-                container =
+-                    Container.container [ Container.tablet ] [ Html.text "Tablet" ]
+-            in
+-            Expect.pass
+-    , Test.test "container with desktop width" <|
+-        \_ ->
+-            let
+-                container =
+-                    Container.container [ Container.desktop ] [ Html.text "Desktop" ]
+-            in
+-            Expect.pass
+-    , Test.test "container with wide width" <|
+-        \_ ->
+-            let
+-                container =
+-                    Container.container [ Container.wide ] [ Html.text "Wide" ]
+-            in
+-            Expect.pass
+-    , Test.test "container with full width" <|
+-        \_ ->
+-            let
+-                container =
+-                    Container.container [ Container.full ] [ Html.text "Full" ]
+-            in
+-            Expect.pass
+-    ]
+ ]
+
+[0m
+[0m← [0mEdit tests/Design/AlertTest.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
+@@ -1,7 +1,8 @@
+ module Design.AlertTest exposing (suite)
+ 
+ import Design.Alert as Alert
++import Design.Alert exposing (Variant(..))
+ import Expect
+ import Html
+ import Test
+ 
+@@ -12,29 +13,29 @@
+         [ Test.test "info alert renders" <|
+             \_ ->
+                 let
+                     alert =
+-                        Alert.alert Alert.Info [] [ Html.text "Information message" ]
++                        Alert.alert Info [ Html.text "Information message" ]
+                 in
+                 Expect.pass
+         , Test.test "success alert renders" <|
+             \_ ->
+                 let
+                     alert =
+-                        Alert.alert Alert.Success [] [ Html.text "Success message" ]
++                        Alert.alert Success [ Html.text "Success message" ]
+                 in
+                 Expect.pass
+         , Test.test "warning alert renders" <|
+             \_ ->
+                 let
+                     alert =
+-                        Alert.alert Alert.Warning [] [ Html.text "Warning message" ]
++                        Alert.alert Warning [ Html.text "Warning message" ]
+                 in
+                 Expect.pass
+         , Test.test "error alert renders" <|
+             \_ ->
+                 let
+                     alert =
+-                        Alert.alert Alert.Error [] [ Html.text "Error message" ]
++                        Alert.alert Error [ Html.text "Error message" ]
+                 in
+                 Expect.pass
+         ]
+
+[0m
+[0m← [0mEdit src/Design/Footer.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Design/Footer.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Design/Footer.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Design/Footer.elm
+@@ -34,11 +34,8 @@
+                                 , style "font-weight" "700"
+                                 ]
+                                 [ Html.text label ]
+                             )
+-
+-                    _ ->
+-                        Nothing
+             )
+             attrs
+ in
+ Html.footer
+
+[0m
+[0m$ [0mnpm test 2>&1
+> ka-math-companion@0.1.0 test
+> elm-test
+
+Compiling-- BAD IMPORT - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
+
+The `Design.Badge` module does not expose `Variant`:
+
+4| import Design.Badge exposing (Variant(..))
+                                 ^^^^^^^
+I cannot find any super similar exposed names. Maybe it is private?
+
+                                                         Design.BadgeTest  ↑    
+====o======================================================================o====
+    ↓  Design.AlertTest
+
+
+-- BAD IMPORT - /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
+
+The `Design.Alert` module does not expose `Variant`:
+
+4| import Design.Alert exposing (Variant(..))
+                                 ^^^^^^^
+I cannot find any super similar exposed names. Maybe it is private?
+
+
+`elm make` failed with exit code 1.
+[0m
+The Variant type isn't exposed. Let me fix the imports to use unqualified access.
+[0m← [0mEdit tests/Design/BadgeTest.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Design/BadgeTest.elm
+@@ -1,8 +1,7 @@
+ module Design.BadgeTest exposing (suite)
+ 
+ import Design.Badge as Badge
+-import Design.Badge exposing (Variant(..))
+ import Expect
+ import Html
+ import Test
+ 
+@@ -13,29 +12,29 @@
+         [ Test.test "neutral badge renders" <|
+             \_ ->
+                 let
+                     badge =
+-                        Badge.badge Neutral "Neutral"
++                        Badge.badge Badge.Neutral "Neutral"
+                 in
+                 Expect.pass
+         , Test.test "success badge renders" <|
+             \_ ->
+                 let
+                     badge =
+-                        Badge.badge Success "Success"
++                        Badge.badge Badge.Success "Success"
+                 in
+                 Expect.pass
+         , Test.test "warning badge renders" <|
+             \_ ->
+                 let
+                     badge =
+-                        Badge.badge Warning "Warning"
++                        Badge.badge Badge.Warning "Warning"
+                 in
+                 Expect.pass
+         , Test.test "error badge renders" <|
+             \_ ->
+                 let
+                     badge =
+-                        Badge.badge Error "Error"
++                        Badge.badge Badge.Error "Error"
+                 in
+                 Expect.pass
+         ]
+
+[0m
+[0m← [0mEdit tests/Design/AlertTest.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Design/AlertTest.elm
+@@ -1,8 +1,7 @@
+ module Design.AlertTest exposing (suite)
+ 
+ import Design.Alert as Alert
+-import Design.Alert exposing (Variant(..))
+ import Expect
+ import Html
+ import Test
+ 
+@@ -13,29 +12,29 @@
+         [ Test.test "info alert renders" <|
+             \_ ->
+                 let
+                     alert =
+-                        Alert.alert Info [ Html.text "Information message" ]
++                        Alert.alert Alert.Info [ Html.text "Information message" ]
+                 in
+                 Expect.pass
+         , Test.test "success alert renders" <|
+             \_ ->
+                 let
+                     alert =
+-                        Alert.alert Success [ Html.text "Success message" ]
++                        Alert.alert Alert.Success [ Html.text "Success message" ]
+                 in
+                 Expect.pass
+         , Test.test "warning alert renders" <|
+             \_ ->
+                 let
+                     alert =
+-                        Alert.alert Warning [ Html.text "Warning message" ]
++                        Alert.alert Alert.Warning [ Html.text "Warning message" ]
+                 in
+                 Expect.pass
+         , Test.test "error alert renders" <|
+             \_ ->
+                 let
+                     alert =
+-                        Alert.alert Error [ Html.text "Error message" ]
++                        Alert.alert Alert.Error [ Html.text "Error message" ]
+                 in
+                 Expect.pass
+         ]
+
+[0m
+The module doesn't expose the Variant type. I need to expose it for tests to work.
+[0m← [0mEdit src/Design/Badge.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Design/Badge.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Design/Badge.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Design/Badge.elm
+@@ -1,5 +1,5 @@
+-module Design.Badge exposing (badge)
++module Design.Badge exposing (Variant(..), badge)
+ 
+ import Design.Tokens exposing (colorPalette, spacing, typographyScale)
+ import Html exposing (Html, span)
+ import Html.Attributes exposing (attribute)
+
+[0m
+[0m← [0mEdit src/Design/Alert.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Design/Alert.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Design/Alert.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Design/Alert.elm
+@@ -1,5 +1,5 @@
+-module Design.Alert exposing (alert)
++module Design.Alert exposing (Variant(..), alert)
+ 
+ import Design.Tokens exposing (colorPalette, spacing, typographyScale)
+ import Html exposing (Html, div)
+ import Html.Attributes exposing (attribute, style)
+
+[0m
+[0m$ [0mnpm test 2>&1
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 111 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 112474295275626
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ colorPalette
+✗ primary blue is defined
+
+     ▼▼▼▼   
+    "2563EB"
+    ╷
+    │ Expect.equal
+    ╵
+    "EB001B"
+       ▲▲▲▲ 
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ colorPalette
+✗ secondary purple is defined
+
+     ▼▼▼▼▼▼ 
+    "7C3AED"
+    ╷
+    │ Expect.equal
+    ╵
+    "FF5F00"
+     ▲▲▲▲▲▲ 
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ colorPalette
+✗ accent teal is defined
+
+    "0D9488"
+    ╷
+    │ Expect.equal
+    ╵
+    "F79E1B"
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ colorPalette
+✗ neutral gray is defined
+
+      ▼▼▼▼▼ 
+    "6B7280"
+    ╷
+    │ Expect.equal
+    ╵
+    "6E6E6E"
+      ▲▲▲▲▲ 
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ colorPalette
+✗ success green is defined
+
+      ▼▼▼ ▼ 
+    "10B981"
+    ╷
+    │ Expect.equal
+    ╵
+    "15803D"
+      ▲▲ ▲▲ 
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ colorPalette
+✗ warning amber is defined
+
+    "F59E0B"
+    ╷
+    │ Expect.equal
+    ╵
+    "CA8A04"
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ colorPalette
+✗ error red is defined
+
+     ▼▼▼▼▼▼ 
+    "EF4444"
+    ╷
+    │ Expect.equal
+    ╵
+    "DC2626"
+     ▲▲▲▲▲▲ 
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ colorPalette
+✗ info blue is defined
+
+    "3B82F6"
+    ╷
+    │ Expect.equal
+    ╵
+    "EB001B"
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ spacing
+✗ xs is 4px
+
+     ▼   
+    "4px"
+    ╷
+    │ Expect.equal
+    ╵
+    "8px"
+     ▲   
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ spacing
+✗ sm is 8px
+
+     ▼   
+    "8px"
+    ╷
+    │ Expect.equal
+    ╵
+    "12px"
+     ▲▲   
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ spacing
+✗ md is 16px
+
+     ▼▼   
+    "16px"
+    ╷
+    │ Expect.equal
+    ╵
+    "24px"
+     ▲▲   
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ spacing
+✗ lg is 24px
+
+     ▼▼   
+    "24px"
+    ╷
+    │ Expect.equal
+    ╵
+    "36px"
+     ▲▲   
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ spacing
+✗ xl is 32px
+
+     ▼▼   
+    "32px"
+    ╷
+    │ Expect.equal
+    ╵
+    "48px"
+     ▲▲   
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ spacing
+✗ 2xl is 48px
+
+     ▼▼   
+    "48px"
+    ╷
+    │ Expect.equal
+    ╵
+    "96px"
+     ▲▲   
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ typographyScale
+✗ headingFont is defined
+
+     ▼▼▼▼▼▼▼ ▼▼▼ ▼▼▼▼▼▼▼▼▼▼▼▼▼▼    ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼ ▼▼▼▼▼▼▼▼▼▼▼▼▼▼  
+    "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+    ╷
+    │ Expect.equal
+    ╵
+    "'Newsreader', serif"
+     ▲▲▲▲ ▲▲ ▲  ▲    ▲▲▲ 
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ typographyScale
+✗ bodyFont is defined
+
+     ▼▼▼▼▼ ▼▼▼  ▼▼   ▼▼▼▼▼▼▼▼▼▼▼ ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼         
+    "ui-sans-serif, system-ui, -apple-system, sans-serif"
+    ╷
+    │ Expect.equal
+    ╵
+    "'Inter', sans-serif"
+     ▲▲ ▲  ▲             
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ typographyScale
+✗ bodyFontSize is defined
+
+          
+    "1rem"
+    ╷
+    │ Expect.equal
+    ╵
+    "1.125rem"
+      ▲▲▲▲    
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ typographyScale
+✗ largeFontSize is defined
+
+       ▼      
+    "1.125rem"
+    ╷
+    │ Expect.equal
+    ╵
+    "1.25rem"
+             
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ typographyScale
+✗ h3FontSize is defined
+
+       ▼     
+    "1.25rem"
+    ╷
+    │ Expect.equal
+    ╵
+    "1.75rem"
+       ▲     
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ typographyScale
+✗ h2FontSize is defined
+
+     ▼      
+    "1.5rem"
+    ╷
+    │ Expect.equal
+    ╵
+    "2.5rem"
+     ▲      
+
+
+↓ Design.TokensTest
+↓ Design.Tokens
+↓ typographyScale
+✗ h1FontSize is defined
+
+     ▼ ▼▼     
+    "1.875rem"
+    ╷
+    │ Expect.equal
+    ╵
+    "3.5rem"
+     ▲      
+
+
+↓ Pages.Home_Test
+↓ Pages.Home_
+✗ page body contains description
+
+    ▼ Query.fromHtml
+    
+        <div>
+            <div style="background-color:#F9F7F2;color:#1A1A1A;font-family:'Inter', sans-serif;min-h:100-vh;">
+                <header style="align-items:center;background-color:#F9F7F2;color:#1A1A1A;display:flex;font-family:'Newsreader', serif;justify-content:space-between;padding:24px 96px;">
+                    <div style="color:#EB001B;font-size:1.75rem;font-weight:700;">
+                        KA Math Companion
+                    </div>
+                    <nav style="display:flex;">
+                        <a style="border-radius:9999px;color:#555555;font-weight:600;margin-left:12px;padding:8px 16px;text-decoration:none;transition:all 0.2s ease;" data-onmouseout="this.style.backgroundColor='transparent';this.style.color='#555555'" data-onmouseover="this.style.backgroundColor='rgba(0,0,0,0.05)';this.style.color='#EB001B'" href="/curriculum">
+                            Curriculum
+                        </a>
+                    </nav>
+                </header>
+                <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+                    <div style="margin-bottom:96px;padding:96px 0;">
+                        <div style="display:flex;flex-direction:column;gap:24px;">
+                            <h1 style="font-family:'Newsreader', serif;font-size:3.5rem;font-weight:700;letter-spacing:-0.04em;line-height:1.0;margin:0;">
+                                Pedagogy-First
+                                <br>
+                                <span style="color:#EB001B;">
+                                    Math Mastery
+                                </span>
+                            </h1>
+                            <p style="color:#555555;font-size:1.25rem;font-weight:400;line-height:1.6;max-width:600px;">
+                                A technical companion to Khan Academy Integrated Math 3. Built for durable understanding through conceptual rigor and spaced retrieval.
+                            </p>
+                            <div style="padding-top:24px;">
+                                <button style="display:inline-block;" data-onmouseout="this.style.opacity='1';this.style.transform='scale(1)'" data-onmouseover="this.style.opacity='0.9';this.style.transform='scale(1.02)'" style="border-radius:9999px;font-family:'Inter', sans-serif;cursor:pointer;transition:all 0.2s ease;border:none;font-weight:600;display:inline-flex;align-items:center;justify-content:center;text-align:center;background-color:#EB001B;color:#FFFFFF;padding:24px 48px;font-size:1.25rem;">
+                                    Explore Curriculum
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-bottom:96px;">
+                        <h2 style="font-family:'Newsreader', serif;font-size:2.5rem;font-weight:600;margin-bottom:48px;">
+                            Core Infrastructure
+                        </h2>
+                        <div style="display:grid;gap:24px;grid-template-columns:repeat(3, minmax(200px, 1fr));">
+                            <div style="background-color:#FFFFFF;box-shadow:0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02);margin-bottom:24px;border-radius:24px;overflow:hidden;">
+                                <div style="background-color:#F9F7F2;padding:24px 24px;font-family:'Newsreader', serif;font-weight:700;color:#EB001B;">
+                                    13 Units
+                                </div>
+                                <div style="padding:24px">
+                                    <p style="line-height:1.5;margin:0;">
+                                        Comprehensive coverage from Polynomials to Rational Functions.
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="background-color:#FFFFFF;box-shadow:0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02);margin-bottom:24px;border-radius:24px;overflow:hidden;">
+                                <div style="background-color:#F9F7F2;padding:24px 24px;font-family:'Newsreader', serif;font-weight:700;color:#EB001B;">
+                                    Interactive
+                                </div>
+                                <div style="padding:24px">
+                                    <p style="line-height:1.5;margin:0;">
+                                        Conceptual exploration with visualizations and precision examples.
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="background-color:#FFFFFF;box-shadow:0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02);margin-bottom:24px;border-radius:24px;overflow:hidden;">
+                                <div style="background-color:#F9F7F2;padding:24px 24px;font-family:'Newsreader', serif;font-weight:700;color:#EB001B;">
+                                    Spaced Review
+                                </div>
+                                <div style="padding:24px">
+                                    <p style="line-height:1.5;margin:0;">
+                                        Leitner-based retrieval system for permanent mastery.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    ▼ Query.has [ text "A pedagogy-first companion to Khan Academy Integrated Math 3" ]
+    
+    ✗ has text "A pedagogy-first companion to Khan Academy Integrated Math 3"
+
+
+
+TEST RUN FAILED
+
+Duration: 638 ms
+Passed:   89
+Failed:   22
+[0m
+The tests need updating for the new Orbital Editorial design tokens. Let me fix the tokens test.
+[0m→ [0mRead tests/Design/TokensTest.elm
+[0m
+[0m← [0mEdit tests/Design/TokensTest.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Design/TokensTest.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Design/TokensTest.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Design/TokensTest.elm
+@@ -8,76 +8,76 @@
+ suite : Test.Test
+ suite =
+     Test.describe "Design.Tokens"
+         [ Test.describe "colorPalette"
+-            [ Test.test "primary blue is defined" <|
++            [ Test.test "primary red is defined" <|
+                 \_ ->
+-                    Expect.equal colorPalette.primary "2563EB"
+-            , Test.test "secondary purple is defined" <|
++                    Expect.equal colorPalette.primary "EB001B"
++            , Test.test "secondary orange is defined" <|
+                 \_ ->
+-                    Expect.equal colorPalette.secondary "7C3AED"
+-            , Test.test "accent teal is defined" <|
++                    Expect.equal colorPalette.secondary "FF5F00"
++            , Test.test "accent yellow is defined" <|
+                 \_ ->
+-                    Expect.equal colorPalette.accent "0D9488"
++                    Expect.equal colorPalette.accent "F79E1B"
+             , Test.test "neutral gray is defined" <|
+                 \_ ->
+-                    Expect.equal colorPalette.neutral "6B7280"
++                    Expect.equal colorPalette.neutral "6E6E6E"
+             , Test.test "success green is defined" <|
+                 \_ ->
+-                    Expect.equal colorPalette.success "10B981"
++                    Expect.equal colorPalette.success "15803D"
+             , Test.test "warning amber is defined" <|
+                 \_ ->
+-                    Expect.equal colorPalette.warning "F59E0B"
++                    Expect.equal colorPalette.warning "CA8A04"
+             , Test.test "error red is defined" <|
+                 \_ ->
+-                    Expect.equal colorPalette.error "EF4444"
+-            , Test.test "info blue is defined" <|
++                    Expect.equal colorPalette.error "DC2626"
++            , Test.test "info red is defined" <|
+                 \_ ->
+-                    Expect.equal colorPalette.info "3B82F6"
++                    Expect.equal colorPalette.info "EB001B"
+             ]
+         , Test.describe "spacing"
+-            [ Test.test "xs is 4px" <|
++            [ Test.test "xs is 8px" <|
+                 \_ ->
+-                    Expect.equal spacing.xs "4px"
+-            , Test.test "sm is 8px" <|
++                    Expect.equal spacing.xs "8px"
++            , Test.test "sm is 12px" <|
+                 \_ ->
+-                    Expect.equal spacing.sm "8px"
+-            , Test.test "md is 16px" <|
++                    Expect.equal spacing.sm "12px"
++            , Test.test "md is 24px" <|
+                 \_ ->
+-                    Expect.equal spacing.md "16px"
+-            , Test.test "lg is 24px" <|
++                    Expect.equal spacing.md "24px"
++            , Test.test "lg is 36px" <|
+                 \_ ->
+-                    Expect.equal spacing.lg "24px"
+-            , Test.test "xl is 32px" <|
++                    Expect.equal spacing.lg "36px"
++            , Test.test "xl is 48px" <|
+                 \_ ->
+-                    Expect.equal spacing.xl "32px"
+-            , Test.test "2xl is 48px" <|
++                    Expect.equal spacing.xl "48px"
++            , Test.test "2xl is 96px" <|
+                 \_ ->
+-                    Expect.equal spacing.xxl "48px"
++                    Expect.equal spacing.xxl "96px"
+             ]
+         , Test.describe "typographyScale"
+-            [ Test.test "headingFont is defined" <|
++            [ Test.test "headingFont is Newsreader serif" <|
+                 \_ ->
+-                    Expect.equal typographyScale.headingFont "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+-            , Test.test "bodyFont is defined" <|
++                    Expect.equal typographyScale.headingFont "'Newsreader', serif"
++            , Test.test "bodyFont is Inter sans-serif" <|
+                 \_ ->
+-                    Expect.equal typographyScale.bodyFont "ui-sans-serif, system-ui, -apple-system, sans-serif"
++                    Expect.equal typographyScale.bodyFont "'Inter', sans-serif"
+             , Test.test "smallFontSize is defined" <|
+                 \_ ->
+                     Expect.equal typographyScale.smallFontSize "0.875rem"
+-            , Test.test "bodyFontSize is defined" <|
++            , Test.test "bodyFontSize is 1.125rem" <|
+                 \_ ->
+-                    Expect.equal typographyScale.bodyFontSize "1rem"
+-            , Test.test "largeFontSize is defined" <|
++                    Expect.equal typographyScale.bodyFontSize "1.125rem"
++            , Test.test "largeFontSize is 1.25rem" <|
+                 \_ ->
+-                    Expect.equal typographyScale.largeFontSize "1.125rem"
+-            , Test.test "h3FontSize is defined" <|
++                    Expect.equal typographyScale.largeFontSize "1.25rem"
++            , Test.test "h3FontSize is 1.75rem" <|
+                 \_ ->
+-                    Expect.equal typographyScale.h3FontSize "1.25rem"
+-            , Test.test "h2FontSize is defined" <|
++                    Expect.equal typographyScale.h3FontSize "1.75rem"
++            , Test.test "h2FontSize is 2.5rem" <|
+                 \_ ->
+-                    Expect.equal typographyScale.h2FontSize "1.5rem"
+-            , Test.test "h1FontSize is defined" <|
++                    Expect.equal typographyScale.h2FontSize "2.5rem"
++            , Test.test "h1FontSize is 3.5rem" <|
+                 \_ ->
+-                    Expect.equal typographyScale.h1FontSize "1.875rem"
++                    Expect.equal typographyScale.h1FontSize "3.5rem"
+             ]
+         ]
+
+[0m
+[0m$ [0mnpm test 2>&1
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 111 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 253840930228842
+
+↓ Pages.Home_Test
+↓ Pages.Home_
+✗ page body contains description
+
+    ▼ Query.fromHtml
+    
+        <div>
+            <div style="background-color:#F9F7F2;color:#1A1A1A;font-family:'Inter', sans-serif;min-h:100-vh;">
+                <header style="align-items:center;background-color:#F9F7F2;color:#1A1A1A;display:flex;font-family:'Newsreader', serif;justify-content:space-between;padding:24px 96px;">
+                    <div style="color:#EB001B;font-size:1.75rem;font-weight:700;">
+                        KA Math Companion
+                    </div>
+                    <nav style="display:flex;">
+                        <a style="border-radius:9999px;color:#555555;font-weight:600;margin-left:12px;padding:8px 16px;text-decoration:none;transition:all 0.2s ease;" data-onmouseout="this.style.backgroundColor='transparent';this.style.color='#555555'" data-onmouseover="this.style.backgroundColor='rgba(0,0,0,0.05)';this.style.color='#EB001B'" href="/curriculum">
+                            Curriculum
+                        </a>
+                    </nav>
+                </header>
+                <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+                    <div style="margin-bottom:96px;padding:96px 0;">
+                        <div style="display:flex;flex-direction:column;gap:24px;">
+                            <h1 style="font-family:'Newsreader', serif;font-size:3.5rem;font-weight:700;letter-spacing:-0.04em;line-height:1.0;margin:0;">
+                                Pedagogy-First
+                                <br>
+                                <span style="color:#EB001B;">
+                                    Math Mastery
+                                </span>
+                            </h1>
+                            <p style="color:#555555;font-size:1.25rem;font-weight:400;line-height:1.6;max-width:600px;">
+                                A technical companion to Khan Academy Integrated Math 3. Built for durable understanding through conceptual rigor and spaced retrieval.
+                            </p>
+                            <div style="padding-top:24px;">
+                                <button style="display:inline-block;" data-onmouseout="this.style.opacity='1';this.style.transform='scale(1)'" data-onmouseover="this.style.opacity='0.9';this.style.transform='scale(1.02)'" style="border-radius:9999px;font-family:'Inter', sans-serif;cursor:pointer;transition:all 0.2s ease;border:none;font-weight:600;display:inline-flex;align-items:center;justify-content:center;text-align:center;background-color:#EB001B;color:#FFFFFF;padding:24px 48px;font-size:1.25rem;">
+                                    Explore Curriculum
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-bottom:96px;">
+                        <h2 style="font-family:'Newsreader', serif;font-size:2.5rem;font-weight:600;margin-bottom:48px;">
+                            Core Infrastructure
+                        </h2>
+                        <div style="display:grid;gap:24px;grid-template-columns:repeat(3, minmax(200px, 1fr));">
+                            <div style="background-color:#FFFFFF;box-shadow:0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02);margin-bottom:24px;border-radius:24px;overflow:hidden;">
+                                <div style="background-color:#F9F7F2;padding:24px 24px;font-family:'Newsreader', serif;font-weight:700;color:#EB001B;">
+                                    13 Units
+                                </div>
+                                <div style="padding:24px">
+                                    <p style="line-height:1.5;margin:0;">
+                                        Comprehensive coverage from Polynomials to Rational Functions.
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="background-color:#FFFFFF;box-shadow:0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02);margin-bottom:24px;border-radius:24px;overflow:hidden;">
+                                <div style="background-color:#F9F7F2;padding:24px 24px;font-family:'Newsreader', serif;font-weight:700;color:#EB001B;">
+                                    Interactive
+                                </div>
+                                <div style="padding:24px">
+                                    <p style="line-height:1.5;margin:0;">
+                                        Conceptual exploration with visualizations and precision examples.
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="background-color:#FFFFFF;box-shadow:0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02);margin-bottom:24px;border-radius:24px;overflow:hidden;">
+                                <div style="background-color:#F9F7F2;padding:24px 24px;font-family:'Newsreader', serif;font-weight:700;color:#EB001B;">
+                                    Spaced Review
+                                </div>
+                                <div style="padding:24px">
+                                    <p style="line-height:1.5;margin:0;">
+                                        Leitner-based retrieval system for permanent mastery.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    ▼ Query.has [ text "A pedagogy-first companion to Khan Academy Integrated Math 3" ]
+    
+    ✗ has text "A pedagogy-first companion to Khan Academy Integrated Math 3"
+
+
+
+TEST RUN FAILED
+
+Duration: 502 ms
+Passed:   110
+Failed:   1
+[0m
+One test still fails. Let me find and fix the Home test.
+[0m✱ [0mGrep "A pedagogy-first companion"[90m 1 match[0m
+[0m→ [0mRead tests/Pages/Home_Test.elm
+[0m→ [0mRead src/Pages/Home_.elm
+[0m
+[0m← [0mEdit tests/Pages/Home_Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Pages/Home_Test.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Pages/Home_Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Pages/Home_Test.elm
+@@ -25,6 +25,6 @@
+     \_ ->
+         Home.page.body
+             |> Html.div []
+             |> Query.fromHtml
+-            |> Query.has [ text "A pedagogy-first companion to Khan Academy Integrated Math 3" ]
++            |> Query.has [ text "A technical companion to Khan Academy Integrated Math 3" ]
+ ]
+
+[0m
+[0m$ [0mnpm test 2>&1
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 111 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 168107706885287
+
+
+TEST RUN PASSED
+
+Duration: 495 ms
+Passed:   111
+Failed:   0
+[0m
+All tests pass. Let me verify the build still works.
+[0m$ [0mnpm run build 2>&1
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
+Build successful. Now let me commit all the fixes and finalize.

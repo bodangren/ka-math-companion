@@ -13,32 +13,21 @@ suite =
             \_ ->
                 let
                     card =
-                        Card.card [] [ Html.text "Card content" ]
+                        Card.card [ Html.text "Card content" ]
                 in
                 Expect.pass
         , Test.test "card with header renders" <|
             \_ ->
                 let
                     card =
-                        Card.card [ Card.header [ Html.text "Header" ] ] [ Html.text "Body" ]
+                        Card.withHeader [ Html.text "Header" ] [ Html.text "Body" ]
                 in
                 Expect.pass
         , Test.test "card with footer renders" <|
             \_ ->
                 let
                     card =
-                        Card.card [ Card.footer [ Html.text "Footer" ] ] [ Html.text "Body" ]
-                in
-                Expect.pass
-        , Test.test "card with header and footer renders" <|
-            \_ ->
-                let
-                    card =
-                        Card.card
-                            [ Card.header [ Html.text "Header" ]
-                            , Card.footer [ Html.text "Footer" ]
-                            ]
-                            [ Html.text "Body" ]
+                        Card.withFooter [ Html.text "Header" ] [ Html.text "Body" ] [ Html.text "Footer" ]
                 in
                 Expect.pass
         ]

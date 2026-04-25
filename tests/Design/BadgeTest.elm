@@ -9,46 +9,32 @@ import Test
 suite : Test.Test
 suite =
     Test.describe "Design.Badge"
-        [ Test.test "default badge renders" <|
+        [ Test.test "neutral badge renders" <|
             \_ ->
                 let
                     badge =
-                        Badge.badge [] [ Html.text "Default" ]
-                in
-                Expect.pass
-        , Test.test "primary badge renders" <|
-            \_ ->
-                let
-                    badge =
-                        Badge.badge [ Badge.primary ] [ Html.text "Primary" ]
-                in
-                Expect.pass
-        , Test.test "secondary badge renders" <|
-            \_ ->
-                let
-                    badge =
-                        Badge.badge [ Badge.secondary ] [ Html.text "Secondary" ]
+                        Badge.badge Badge.Neutral "Neutral"
                 in
                 Expect.pass
         , Test.test "success badge renders" <|
             \_ ->
                 let
                     badge =
-                        Badge.badge [ Badge.success ] [ Html.text "Success" ]
+                        Badge.badge Badge.Success "Success"
                 in
                 Expect.pass
         , Test.test "warning badge renders" <|
             \_ ->
                 let
                     badge =
-                        Badge.badge [ Badge.warning ] [ Html.text "Warning" ]
+                        Badge.badge Badge.Warning "Warning"
                 in
                 Expect.pass
         , Test.test "error badge renders" <|
             \_ ->
                 let
                     badge =
-                        Badge.badge [ Badge.error ] [ Html.text "Error" ]
+                        Badge.badge Badge.Error "Error"
                 in
                 Expect.pass
         ]

@@ -35,9 +35,6 @@ footer attrs children =
                                     ]
                                     [ Html.text label ]
                                 )
-
-                        _ ->
-                            Nothing
                 )
                 attrs
     in

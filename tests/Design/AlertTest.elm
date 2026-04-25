@@ -13,28 +13,28 @@ suite =
             \_ ->
                 let
                     alert =
-                        Alert.alert Alert.Info [] [ Html.text "Information message" ]
+                        Alert.alert Alert.Info [ Html.text "Information message" ]
                 in
                 Expect.pass
         , Test.test "success alert renders" <|
             \_ ->
                 let
                     alert =
-                        Alert.alert Alert.Success [] [ Html.text "Success message" ]
+                        Alert.alert Alert.Success [ Html.text "Success message" ]
                 in
                 Expect.pass
         , Test.test "warning alert renders" <|
             \_ ->
                 let
                     alert =
-                        Alert.alert Alert.Warning [] [ Html.text "Warning message" ]
+                        Alert.alert Alert.Warning [ Html.text "Warning message" ]
                 in
                 Expect.pass
         , Test.test "error alert renders" <|
             \_ ->
                 let
                     alert =
-                        Alert.alert Alert.Error [] [ Html.text "Error message" ]
+                        Alert.alert Alert.Error [ Html.text "Error message" ]
                 in
                 Expect.pass
         ]

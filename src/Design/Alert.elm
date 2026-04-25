@@ -1,4 +1,4 @@
-module Design.Alert exposing (alert)
+module Design.Alert exposing (Variant(..), alert)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html exposing (Html, div)

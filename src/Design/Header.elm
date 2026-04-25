@@ -57,8 +57,8 @@ header attrs children =
                                     , style "margin-left" Tokens.spacing.sm
                                     , style "border-radius" "9999px"
                                     , style "transition" "all 0.2s ease"
-                                    , attribute "onmouseover" "this.style.backgroundColor='rgba(0,0,0,0.05)';this.style.color='#" ++ Tokens.colorPalette.primary ++ "'"
-                                    , attribute "onmouseout" "this.style.backgroundColor='transparent';this.style.color='#" ++ Tokens.colorPalette.textSecondary ++ "'"
+                                    , attribute "onmouseover" ("this.style.backgroundColor='rgba(0,0,0,0.05)';this.style.color='#" ++ Tokens.colorPalette.primary ++ "'")
+                                    , attribute "onmouseout" ("this.style.backgroundColor='transparent';this.style.color='#" ++ Tokens.colorPalette.textSecondary ++ "'")
                                     ]
                                     [ Html.text label ]
                                 )

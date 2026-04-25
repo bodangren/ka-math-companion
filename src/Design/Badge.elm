@@ -1,4 +1,4 @@
-module Design.Badge exposing (badge)
+module Design.Badge exposing (Variant(..), badge)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html exposing (Html, span)

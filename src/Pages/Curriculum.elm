@@ -7,7 +7,7 @@ import Design.Grid as Grid
 import Design.Header as Header
 import Design.Tokens as Tokens
 import Html
-import Html.Attributes exposing (href, style)
+import Html.Attributes exposing (attribute, href, style)
 import View exposing (View)
 
 
