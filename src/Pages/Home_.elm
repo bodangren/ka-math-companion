@@ -3,6 +3,7 @@ module Pages.Home_ exposing (page)
 import Design.Button as Button
 import Design.Card as Card
 import Design.Container as Container
+import Design.Footer as Footer
 import Design.Grid as Grid
 import Design.Header as Header
 import Design.Stack as Stack
@@ -21,11 +22,19 @@ page =
             , style "background-color" ("#" ++ Tokens.colorPalette.surface)
             , style "color" ("#" ++ Tokens.colorPalette.textPrimary)
             , style "font-family" Tokens.typographyScale.bodyFont
+            , style "display" "flex"
+            , style "flex-direction" "column"
             ]
             [ viewHeader
             , Container.container
                 [ viewHero
                 , viewFeatures
+                ]
+            , Footer.footer
+                [ Footer.link "/curriculum" "Curriculum"
+                , Footer.link "/design-system" "Design System"
+                ]
+                [ Html.text "© 2026 KA Math Companion"
                 ]
             ]
         ]

@@ -5,6 +5,7 @@ import Data.IntegratedMath3 as IntegratedMath3
 import Design.Breadcrumb as Breadcrumb
 import Design.Card as Card
 import Design.Container as Container
+import Design.Footer as Footer
 import Design.Header as Header
 import Design.Stack as Stack
 import Design.Tokens as Tokens
@@ -53,6 +54,8 @@ viewLesson unit lesson =
             , style "background-color" ("#" ++ Tokens.colorPalette.surface)
             , style "color" ("#" ++ Tokens.colorPalette.textPrimary)
             , style "font-family" Tokens.typographyScale.bodyFont
+            , style "display" "flex"
+            , style "flex-direction" "column"
             ]
             [ viewHeader
             , Container.container
@@ -63,6 +66,11 @@ viewLesson unit lesson =
                     , viewObjectives lesson
                     ]
                 ]
+            , Footer.footer
+                [ Footer.link "/curriculum" "Curriculum"
+                , Footer.link "/design-system" "Design System"
+                ]
+                [ Html.text "© 2026 KA Math Companion" ]
             ]
         ]
     }
@@ -159,6 +167,8 @@ viewLessonNotFound unit lessonSlug =
             [ style "min-h" "100-vh"
             , style "background-color" ("#" ++ Tokens.colorPalette.surface)
             , style "font-family" Tokens.typographyScale.bodyFont
+            , style "display" "flex"
+            , style "flex-direction" "column"
             ]
             [ viewHeader
             , Container.container
@@ -185,6 +195,11 @@ viewLessonNotFound unit lessonSlug =
                         [ Html.text ("Back to " ++ unit.title) ]
                     ]
                 ]
+            , Footer.footer
+                [ Footer.link "/curriculum" "Curriculum"
+                , Footer.link "/design-system" "Design System"
+                ]
+                [ Html.text "© 2026 KA Math Companion" ]
             ]
         ]
     }
@@ -198,6 +213,8 @@ viewUnitNotFound unitSlug =
             [ style "min-h" "100-vh"
             , style "background-color" ("#" ++ Tokens.colorPalette.surface)
             , style "font-family" Tokens.typographyScale.bodyFont
+            , style "display" "flex"
+            , style "flex-direction" "column"
             ]
             [ viewHeader
             , Container.container
@@ -224,6 +241,11 @@ viewUnitNotFound unitSlug =
                         [ Html.text "← Back to Curriculum" ]
                     ]
                 ]
+            , Footer.footer
+                [ Footer.link "/curriculum" "Curriculum"
+                , Footer.link "/design-system" "Design System"
+                ]
+                [ Html.text "© 2026 KA Math Companion" ]
             ]
         ]
     }

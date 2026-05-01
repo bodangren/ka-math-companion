@@ -4,6 +4,7 @@ import Data.Curriculum exposing (Lesson, Unit)
 import Data.IntegratedMath3 as IntegratedMath3
 import Design.Card as Card
 import Design.Container as Container
+import Design.Footer as Footer
 import Design.Header as Header
 import Design.Stack as Stack
 import Design.Tokens as Tokens
@@ -38,6 +39,8 @@ viewUnit unit =
             , style "background-color" ("#" ++ Tokens.colorPalette.surface)
             , style "color" ("#" ++ Tokens.colorPalette.textPrimary)
             , style "font-family" Tokens.typographyScale.bodyFont
+            , style "display" "flex"
+            , style "flex-direction" "column"
             ]
             [ viewHeader
             , Container.container
@@ -48,6 +51,11 @@ viewUnit unit =
                     , viewLessons unit
                     ]
                 ]
+            , Footer.footer
+                [ Footer.link "/curriculum" "Curriculum"
+                , Footer.link "/design-system" "Design System"
+                ]
+                [ Html.text "© 2026 KA Math Companion" ]
             ]
         ]
     }
@@ -122,6 +130,8 @@ viewNotFound slug =
             [ style "min-h" "100-vh"
             , style "background-color" ("#" ++ Tokens.colorPalette.surface)
             , style "font-family" Tokens.typographyScale.bodyFont
+            , style "display" "flex"
+            , style "flex-direction" "column"
             ]
             [ viewHeader
             , Container.container
@@ -148,6 +158,11 @@ viewNotFound slug =
                         [ Html.text "Return to Curriculum" ]
                     ]
                 ]
+            , Footer.footer
+                [ Footer.link "/curriculum" "Curriculum"
+                , Footer.link "/design-system" "Design System"
+                ]
+                [ Html.text "© 2026 KA Math Companion" ]
             ]
         ]
     }
