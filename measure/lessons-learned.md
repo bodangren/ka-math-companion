@@ -45,4 +45,4 @@
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
 
-- (2026-05-01, curriculum-data) Plan staleness: Task 6 marked incomplete in plan.md but data already complete. Unit 7 had all objectives, descriptions, and time estimates. Lesson: always verify against actual data before assuming work remains.
+- (2026-05-02, design-system) Footer integration: Footer uses `margin-top: auto` to push it to bottom in flex column layout. Must add `display:flex;flex-direction:column` to parent div and include footer as direct child alongside header and main content.
