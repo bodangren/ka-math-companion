@@ -2,13 +2,13 @@
 
 ## Phase 1: Data Structure Updates
 
-- [ ] **Task 1: Update Lesson Type**
-  - [ ] Write Tests: Verify new fields exist in type
-  - [ ] Implement: Add `description : String` and `estimatedMinutes : Int` to Lesson type
+- [x] **Task 1: Update Lesson Type**
+  - [x] Write Tests: Verify new fields exist in type
+  - [x] Implement: Add `description : String` and `estimatedMinutes : Int` to Lesson type
 
-- [ ] **Task 2: Update Existing Lessons**
-  - [ ] Write Tests: Verify existing lessons compile with new fields
-  - [ ] Implement: Add default values to all existing lesson records
+- [x] **Task 2: Update Existing Lessons**
+  - [x] Write Tests: Verify existing lessons compile with new fields
+  - [x] Implement: Add default values to all existing lesson records
 
 ## Phase 2: Unit 2 - Polynomial Factorization
 
@@ -60,13 +60,13 @@
 
 ## Phase 10: Descriptions & Time Estimates
 
-- [ ] **Task 11: Add descriptions to all lessons**
-  - [ ] Write Tests: Verify descriptions are non-empty
-  - [ ] Implement: Add 1-2 sentence descriptions to all 65+ lessons
+- [x] **Task 11: Add descriptions to all lessons**
+  - [x] Write Tests: Verify descriptions are non-empty
+  - [x] Implement: Add 1-2 sentence descriptions to all 65+ lessons
 
-- [ ] **Task 12: Add time estimates to all lessons**
-  - [ ] Write Tests: Verify time estimates are positive
-  - [ ] Implement: Add estimatedMinutes to all lessons (15-45 min range)
+- [x] **Task 12: Add time estimates to all lessons**
+  - [x] Write Tests: Verify time estimates are positive
+  - [x] Implement: Add estimatedMinutes to all lessons (15-45 min range)
 
 ## Phase 11: Final Validation
 
