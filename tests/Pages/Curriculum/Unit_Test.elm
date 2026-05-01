@@ -45,4 +45,30 @@ suite =
                     |> Html.div []
                     |> Query.fromHtml
                     |> Query.has [ text "Intro to polynomials" ]
+        , Test.test "page uses Header component with brand" <|
+            \_ ->
+                let
+                    params =
+                        { unit = "polynomial-arithmetic"
+                        }
+
+                    view =
+                        Unit.page params
+                in
+                view.body
+                    |> Html.div []
+                    |> Query.fromHtml
+                    |> Query.has [ text "KA Math Companion" ]
+        , Test.test "page contains back link to curriculum" <|
+            \_ ->
+                let
+                    params =
+                        { unit = "polynomial-arithmetic"
+                        }
+                in
+                Unit.page params
+                    |> .body
+                    |> Html.div []
+                    |> Query.fromHtml
+                    |> Query.has [ text "← Back to Curriculum" ]
         ]
