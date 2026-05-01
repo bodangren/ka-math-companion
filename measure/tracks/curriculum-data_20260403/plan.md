@@ -30,9 +30,9 @@
 
 ## Phase 5: Unit 7 - Equations
 
-- [ ] **Task 6: Add objectives for Unit 7 lessons**
-  - [ ] Write Tests: Verify objectives are non-empty
-  - [ ] Implement: Add 3-5 objectives per lesson (4 lessons)
+- [x] **Task 6: Add objectives for Unit 7 lessons**
+  - [x] Write Tests: Verify objectives are non-empty
+  - [x] Implement: Add 3-5 objectives per lesson (4 lessons)
 
 ## Phase 6: Unit 9 - Modeling
 

@@ -45,4 +45,4 @@
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
 
-- (YYYY-MM-DD, track_id) Example: Underestimated integration testing time by 2x
+- (2026-05-01, curriculum-data) Plan staleness: Task 6 marked incomplete in plan.md but data already complete. Unit 7 had all objectives, descriptions, and time estimates. Lesson: always verify against actual data before assuming work remains.
