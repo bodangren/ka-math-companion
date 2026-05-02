@@ -67,5 +67,5 @@
   - [x] Implement: Refactor Home_, Curriculum, Unit_, Lesson_ to use new components
 
 - [ ] **Task 15: Create component showcase page**
-  - [ ] Write Tests: Verify showcase renders all components
-  - [ ] Implement: Create `/design-system` page showing all components
+  - [x] Write Tests: Verify showcase renders all components
+  - [x] Implement: Create `/design-system` page showing all components
