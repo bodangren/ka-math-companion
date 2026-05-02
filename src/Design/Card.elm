@@ -2,7 +2,7 @@ module Design.Card exposing (card, withFooter, withHeader)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html exposing (Html, div)
-import Html.Attributes exposing (attribute, style)
+import Html.Attributes exposing (attribute)
 
 
 card : List (Html msg) -> Html msg

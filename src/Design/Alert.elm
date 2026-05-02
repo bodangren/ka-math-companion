@@ -2,7 +2,7 @@ module Design.Alert exposing (Variant(..), alert)
 
 import Design.Tokens exposing (colorPalette, spacing, typographyScale)
 import Html exposing (Html, div)
-import Html.Attributes exposing (attribute, style)
+import Html.Attributes exposing (attribute)
 
 
 type Variant

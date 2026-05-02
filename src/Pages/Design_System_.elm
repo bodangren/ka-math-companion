@@ -14,7 +14,7 @@ import Design.Spinner as Spinner
 import Design.Stack as Stack
 import Design.Tokens as Tokens
 import Html
-import Html.Attributes exposing (href, style)
+import Html.Attributes exposing (style)
 import View exposing (View)
 
 

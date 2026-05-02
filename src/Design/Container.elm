@@ -1,6 +1,6 @@
 module Design.Container exposing (container)
 
-import Design.Tokens exposing (colorPalette, spacing)
+import Design.Tokens exposing (spacing)
 import Html exposing (Html, div)
 import Html.Attributes exposing (attribute)
 
