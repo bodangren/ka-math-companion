@@ -11,8 +11,6 @@
 ## Recurring Gotchas
 <!-- Problems encountered repeatedly; save future tracks from the same pain -->
 
-- (YYYY-MM-DD, track_id) Example: Always check for null before accessing config values
-
 ## Patterns That Worked Well
 <!-- Approaches worth repeating -->
 
@@ -41,6 +39,9 @@
 - (2026-04-25, visual_refresh) Elm operator precedence: `attribute "x" "y" ++ z` is parsed as `(attribute "x" "y") ++ z`, not `attribute "x" ("y" ++ z)`. Always use parentheses when concatenating strings to pass to a function.
 - (2026-04-25, visual_refresh) When refactoring component APIs, update tests as part of the same change. Tests are coupled to public API signatures - they will break if you don't update them.
 - (2026-04-25, visual_refresh) Elm module exports: `exposing (badge)` does not expose the `Variant` type or its constructors. Use `exposing (Variant(..), badge)` to expose both the type and constructors for tests.
+
+- (2026-05-02, katex-integration) Elm port module syntax: `port module Ports exposing (...)` requires the port keyword on both the module declaration and each port function. No implementation body - just type signatures.
+- (2026-05-02, katex-integration) KaTeX CDN: Load CSS before JS. Use `katex.render(latex, element, { throwOnError: false, displayMode: true/false })`. Fallback to textContent on error.
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
