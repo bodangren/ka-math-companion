@@ -1,4 +1,4 @@
-module Pages.Design_System_ exposing (page)
+module Pages.Design_System exposing (page)
 
 import Design.Alert as Alert
 import Design.Badge as Badge

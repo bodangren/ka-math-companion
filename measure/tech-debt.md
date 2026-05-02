@@ -8,6 +8,7 @@
 
 | Date | Track | Item | Severity | Status | Notes |
 |------|-------|------|----------|--------|-------|
+| 2026-05-03 | design-system | Elm Land auto-generates Design_System_ route with params despite page having no params | Critical | Open | Build fails with "TOO MANY ARGS". Elm Land framework bug - route generation mismatch with page signature. Workaround: rename page to avoid trailing underscore or manually patch generated files |
 | 2026-04-12 | curriculum-data | Add real descriptions to all lessons | Medium | Resolved | All 52 lessons now have descriptions |
 | 2026-04-17 | curriculum-data | Full data validation | Medium | Resolved | Validation tests confirm all lessons have objectives, descriptions, and time estimates |
 | 2026-01-01 | example_track | Example: Hardcoded timeout value | Low | Resolved | Replaced with config value in v1.2 |
