@@ -1,13 +1,16 @@
 [0m
 > build · MiniMax-M2.7
 [0m
-[0m→ [0mSkill "measure"
 [0m→ [0mRead measure/autonomous_prompt.md
+[0m→ [0mSkill "measure"
 [0m→ [0mRead measure/tracks.md
 [0m→ [0mRead measure/tech-debt.md
 [0m→ [0mRead measure/lessons-learned.md
 [0m✗ [0mread failed
 [91m[1mError: [0mFile not found: /home/daniel-bo/Desktop/ka-math-companion/measure/current_directive.md
+[0m
+[0m$ [0mgit log -1 --oneline
+dc0d87e chore(review): fix 5 unused import issues
 [0m
 [0m$ [0mgit status
 On branch feat/30-render-curriculum-overview-page
@@ -19,18 +22,6 @@ Changes not staged for commit:
   (use "git restore <file>..." to discard changes in working directory)
 	modified:   measure/output.log
 	modified:   measure/review-output.log
-	modified:   src/Pages/Curriculum/Unit_.elm
-	modified:   src/Pages/Curriculum/Unit_/Lesson_.elm
-	modified:   tests/Pages/Curriculum/Unit_Test.elm
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [0m
-[0m$ [0mgit log -1 --format='%an %ae'
-Daniel Bo bodangren@gmail.com
-[0m
-[0m$ [0mgit log -3 --oneline
-e2985c6 chore(measure): mark curriculum-data tasks complete, update memory files
-c6c3f9f chore: mark Task 6 complete, update tech-debt and lessons-learned
-fb922eb chore: clear output log
-[0m
-Dirty workspace. Committing current changes.
