@@ -47,3 +47,5 @@
 <!-- Notes on where estimates were wrong and why -->
 
 - (2026-05-02, design-system) Footer integration: Footer uses `margin-top: auto` to push it to bottom in flex column layout. Must add `display:flex;flex-direction:column` to parent div and include footer as direct child alongside header and main content.
+
+- (2026-05-02, design-system) Elm Land route generation: Design_System_ page route in .elm-land/src/Main.elm was incorrectly parameterized. For a simple route without params, the page function takes no arguments and the route pattern in initPageAndLayout, viewPage, etc. should not use `params`. Always match the generated pattern to the actual page function signature.
