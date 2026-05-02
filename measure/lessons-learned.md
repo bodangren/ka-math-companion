@@ -49,3 +49,4 @@
 - (2026-05-02, design-system) Footer integration: Footer uses `margin-top: auto` to push it to bottom in flex column layout. Must add `display:flex;flex-direction:column` to parent div and include footer as direct child alongside header and main content.
 
 - (2026-05-02, design-system) Elm Land route generation: Design_System_ page route in .elm-land/src/Main.elm was incorrectly parameterized. For a simple route without params, the page function takes no arguments and the route pattern in initPageAndLayout, viewPage, etc. should not use `params`. Always match the generated pattern to the actual page function signature.
+- (2026-05-03, design-system) Elm Land bug: Pages with trailing underscore (e.g., `Design_System_.elm`) auto-generate routes with params even when page takes no args, causing "TOO MANY ARGS" error. Fix: rename to `Design_System.elm` without trailing underscore.
