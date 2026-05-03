@@ -715,3 +715,16 @@ Index: /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
 \ No newline at end of file
 
 [0m
+[0m$ [0mgit add -A && git commit -m "chore: update lessons-learned with Elm type ordering insight"
+[feat/30-render-curriculum-overview-page e15fa4d] chore: update lessons-learned with Elm type ordering insight
+ 3 files changed, 63 insertions(+), 4 deletions(-)
+[0m
+[0m$ [0mgit push 2>&1
+To https://github.com/bodangren/ka-math-companion.git
+   3e2f99d..e15fa4d  feat/30-render-curriculum-overview-page -> feat/30-render-curriculum-overview-page
+[0m
+[0m$ [0mwc -l measure/tech-debt.md measure/lessons-learned.md
+25 measure/tech-debt.md
+  32 measure/lessons-learned.md
+  57 total
+[0m
