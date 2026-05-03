@@ -51,4 +51,3 @@ withFooter headerContent bodyContent footerContent =
             ]
             footerContent
         ]
-

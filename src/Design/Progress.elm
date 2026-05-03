@@ -33,7 +33,8 @@ progress attrs percentage =
         labelStyleValue =
             "font-size:"
                 ++ typographyScale.smallFontSize
-                ++ ";color:#" ++ colorPalette.textPrimary
+                ++ ";color:#"
+                ++ colorPalette.textPrimary
                 ++ ";margin-bottom:"
                 ++ spacing.xs
                 ++ ";display:flex;justify-content:space-between;font-weight:600;"
