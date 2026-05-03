@@ -12,9 +12,9 @@
 
 ## Phase 2: Content Renderer
 
-- [ ] **Task 3: Build Content View Components**
-   - [ ] Write Tests: Verify each content type renders
-   - [ ] Implement: Create `src/Components/Content.elm`
+- [x] **Task 3: Build Content View Components**
+   - [x] Write Tests: Verify each content type renders
+   - [x] Implement: Create `src/Components/Content.elm`
 
 - [ ] **Task 4: Comprehension Check Interaction**
   - [ ] Write Tests: Verify answer reveal works

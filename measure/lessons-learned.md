@@ -30,3 +30,4 @@
 - (2026-05-02, design-system) Footer integration: Footer uses `margin-top: auto` in flex column layout. Must set `display:flex;flex-direction:column` on parent
 - (2026-05-03, design-system) Elm Land bug: Pages with trailing underscore auto-generate routes with params even when page takes no args. Fix: rename without trailing underscore
 - (2026-05-03, autonomous) All 116 tests pass. Build succeeds. App serves at localhost:1235. elm-format needed on 6 files. elm-review found 65 issues (unused test vars, unused Button/Grid exports). Fixed via format + build.
+- (2026-05-03, lesson-content) Elm type aliases like `Step` must be defined BEFORE they're used in other type aliases like `WorkedExample`. Order matters in Elm type definitions.
