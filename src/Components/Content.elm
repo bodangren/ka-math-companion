@@ -1,6 +1,6 @@
 module Components.Content exposing (viewLessonContent)
 
-import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, CheckQuestion)
+import Data.LessonContent exposing (CheckQuestion, ContentBlock(..), LessonContent, WorkedExample)
 import Design.Alert as Alert
 import Design.Card as Card
 import Design.Stack as Stack

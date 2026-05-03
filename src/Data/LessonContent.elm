@@ -1,4 +1,4 @@
-module Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, checkQuestion, definition, example, explanation, getContent)
+module Data.LessonContent exposing (CheckQuestion, ContentBlock(..), LessonContent, Step, WorkedExample, checkQuestion, definition, example, explanation, getContent)
 
 
 type alias Step =

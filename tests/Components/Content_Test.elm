@@ -1,7 +1,7 @@
 module Components.Content_Test exposing (suite)
 
 import Components.Content as Content
-import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+import Data.LessonContent exposing (LessonContent, explanation)
 import Html
 import Test
 import Test.Html.Query as Query

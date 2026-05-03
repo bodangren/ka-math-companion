@@ -1,6 +1,6 @@
 module Data.LessonContent_Test exposing (suite)
 
-import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+import Data.LessonContent exposing (ContentBlock(..), Step, explanation, definition, example, checkQuestion)
 import Expect
 import Test
 
