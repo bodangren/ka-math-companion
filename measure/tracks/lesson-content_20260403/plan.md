@@ -6,15 +6,15 @@
    - [x] Write Tests: Verify type constructors
    - [x] Implement: Create `src/Data/LessonContent.elm` with content types
 
-- [ ] **Task 2: Create Content Storage**
-   - [ ] Write Tests: Verify content loads for lessons
-   - [ ] Implement: Create `src/Data/Content/` directory structure
+- [x] **Task 2: Create Content Storage**
+   - [x] Write Tests: Verify content loads for lessons
+   - [x] Implement: Create `src/Data/Content/` directory structure
 
 ## Phase 2: Content Renderer
 
 - [ ] **Task 3: Build Content View Components**
-  - [ ] Write Tests: Verify each content type renders
-  - [ ] Implement: Create `src/Components/Content.elm`
+   - [ ] Write Tests: Verify each content type renders
+   - [ ] Implement: Create `src/Components/Content.elm`
 
 - [ ] **Task 4: Comprehension Check Interaction**
   - [ ] Write Tests: Verify answer reveal works

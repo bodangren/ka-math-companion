@@ -511,3 +511,149 @@ $ elm-land build
 🌈  Elm Land [2m(v0.20.1)[0m build was successful.
 [32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
 [0m
+[0m$ [0mgit add -A && git commit -m "feat(lesson-content): Tasks 1-2 - LessonContent types and getContent for intro-to-polynomials"
+[feat/30-render-curriculum-overview-page 6c88b52] feat(lesson-content): Tasks 1-2 - LessonContent types and getContent for intro-to-polynomials
+ 5 files changed, 673 insertions(+), 5 deletions(-)
+ create mode 100644 src/Data/LessonContent.elm
+ create mode 100644 tests/Data/Content_LessonContent_Test.elm
+ create mode 100644 tests/Data/LessonContent_Test.elm
+[0m
+[0m← [0mEdit measure/tracks/lesson-content_20260403/plan.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/lesson-content_20260403/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/lesson-content_20260403/plan.md
++++ /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/lesson-content_20260403/plan.md
+@@ -5,17 +5,17 @@
+ - [x] **Task 1: Create Content Types**
+    - [x] Write Tests: Verify type constructors
+    - [x] Implement: Create `src/Data/LessonContent.elm` with content types
+ 
+-- [ ] **Task 2: Create Content Storage**
+-   - [ ] Write Tests: Verify content loads for lessons
+-   - [ ] Implement: Create `src/Data/Content/` directory structure
++- [x] **Task 2: Create Content Storage**
++   - [x] Write Tests: Verify content loads for lessons
++   - [x] Implement: Create `src/Data/Content/` directory structure
+ 
+ ## Phase 2: Content Renderer
+ 
+ - [ ] **Task 3: Build Content View Components**
+-  - [ ] Write Tests: Verify each content type renders
+-  - [ ] Implement: Create `src/Components/Content.elm`
++   - [ ] Write Tests: Verify each content type renders
++   - [ ] Implement: Create `src/Components/Content.elm`
+ 
+ - [ ] **Task 4: Comprehension Check Interaction**
+   - [ ] Write Tests: Verify answer reveal works
+   - [ ] Implement: Add state for showing/hiding answers
+
+[0m
+[0m✱ [0mGlob "src/Components/*.elm"[90m 0 matches[0m
+[0m
+[0m$ [0mls src/Design/*.elm | head -10
+src/Design/Alert.elm
+src/Design/Badge.elm
+src/Design/Breadcrumb.elm
+src/Design/Button.elm
+src/Design/Card.elm
+src/Design/Container.elm
+src/Design/Footer.elm
+src/Design/Grid.elm
+src/Design/Header.elm
+src/Design/Progress.elm
+[0m
+[0m← [0mWrite src/Components/Content.elm
+Wrote file successfully.
+[0m
+[0m$ [0mmkdir -p tests/Components
+(no output)
+[0m
+[0m← [0mWrite tests/Components/Content_Test.elm
+Wrote file successfully.
+[0m
+[0m$ [0mbun run test 2>&1 | tail -30
+$ elm-test
+Compiling-- TYPE MISMATCH - /home/daniel-bo/Desktop/ka-math-companion/src/Components/Content.elm
+
+Something is off with the body of the `viewSection` definition:
+
+28|>    Html.section
+29|>        [ style "margin-bottom" Tokens.spacing.xxl ]
+30|>        ([ Html.h2
+31|>            [ style "font-size" Tokens.typographyScale.h2FontSize
+32|>            , style "font-family" Tokens.typographyScale.headingFont
+33|>            , style "font-weight" "600"
+34|>            , style "margin-bottom" Tokens.spacing.lg
+35|>            ]
+36|>            [ Html.text title ]
+37|>        ]
+38|>            ++ items
+
+This `section` call produces:
+
+    Html msg
+
+But the type annotation on `viewSection` says it should be:
+
+    List (Html msg)
+
+
+`elm make` failed with exit code 1.
+error: script "test" exited with code 1
+[0m
+[0m→ [0mRead src/Components/Content.elm
+[0m
+[0m← [0mEdit src/Components/Content.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Components/Content.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Components/Content.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Components/Content.elm
+@@ -24,20 +24,20 @@
+ 
+ 
+ viewSection : String -> List (Html msg) -> List (Html msg)
+ viewSection title items =
+-    Html.section
++    [ Html.section
+         [ style "margin-bottom" Tokens.spacing.xxl ]
+-        ([ Html.h2
++        (Html.h2
+             [ style "font-size" Tokens.typographyScale.h2FontSize
+             , style "font-family" Tokens.typographyScale.headingFont
+             , style "font-weight" "600"
+             , style "margin-bottom" Tokens.spacing.lg
+             ]
+             [ Html.text title ]
+-        ]
+-            ++ items
++            :: items
+         )
++    ]
+ 
+ 
+ viewContentBlock : ContentBlock -> Html msg
+ viewContentBlock block =
+
+[0m
+[0m$ [0mbun run test 2>&1 | tail -30
+$ elm-test
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 124 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 157615994788427
+
+
+TEST RUN PASSED
+
+Duration: 1207 ms
+Passed:   124
+Failed:   0
+[0m
+[0m$ [0mbun run build 2>&1
+$ elm-land build
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
