@@ -2,13 +2,13 @@
 
 ## Phase 1: Content Data Model
 
-- [ ] **Task 1: Create Content Types**
-  - [ ] Write Tests: Verify type constructors
-  - [ ] Implement: Create `src/Data/LessonContent.elm` with content types
+- [x] **Task 1: Create Content Types**
+   - [x] Write Tests: Verify type constructors
+   - [x] Implement: Create `src/Data/LessonContent.elm` with content types
 
 - [ ] **Task 2: Create Content Storage**
-  - [ ] Write Tests: Verify content loads for lessons
-  - [ ] Implement: Create `src/Data/Content/` directory structure
+   - [ ] Write Tests: Verify content loads for lessons
+   - [ ] Implement: Create `src/Data/Content/` directory structure
 
 ## Phase 2: Content Renderer
 
