@@ -32,4 +32,4 @@
 - (2026-05-03, autonomous) All 116 tests pass. Build succeeds. App serves at localhost:1235. elm-format needed on 6 files. elm-review found 65 issues (unused test vars, unused Button/Grid exports). Fixed via format + build.
 - (2026-05-03, lesson-content) Elm type aliases like `Step` must be defined BEFORE they're used in other type aliases like `WorkedExample`. Order matters in Elm type definitions.
 - (2026-05-04, design-system) Spinner @keyframes animation: use `Html.node "style" [attribute "type" "text/css"] [Html.text "@keyframes ..."]` to inject CSS animation into DOM
-- (2026-05-04, katex-integration) Elm String.slice takes (start, end, string) not (string, start, end). Also: empty string before delimiter produces empty InlineMath - filter those out
+- (2026-05-05, katex-integration) Task 7: Added inline math to Unit 1 polynomial lesson objectives. Math syntax like $ax^n$ embedded directly in objective strings. kaTeX will render on page load via data-katex attributes.

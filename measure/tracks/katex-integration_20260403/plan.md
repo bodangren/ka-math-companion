@@ -32,9 +32,9 @@
 
 ## Phase 4: Math Content
 
-- [ ] **Task 7: Add math to Unit 1 (Polynomials)**
-  - [ ] Write Tests: Verify math renders in objectives
-  - [ ] Implement: Add polynomial expressions to objectives
+- [x] **Task 7: Add math to Unit 1 (Polynomials)**
+  - [x] Write Tests: Verify math renders in objectives
+  - [x] Implement: Add polynomial expressions to objectives
 
 - [ ] **Task 8: Add math to Unit 5 (Logarithms)**
   - [ ] Write Tests: Verify math renders in objectives
