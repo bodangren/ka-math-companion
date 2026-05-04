@@ -21,7 +21,7 @@
 
 ## Phase 2: Content & Interaction
 
-- [ ] **Track: Lesson Content**
+- [x] **Track: Lesson Content**
   _Link: [./tracks/lesson-content_20260403/](./tracks/lesson-content_20260403/)_
   Add conceptual explanations, worked examples, and comprehension checks.
 

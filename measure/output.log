@@ -477,3 +477,43 @@ Index: /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/lesson-content_2
 +   - [x] Implement: Integrate content renderer into Lesson_.elm
 
 [0m
+[0m$ [0mgit add -A && git commit -m "chore(measure): mark Task 12 complete in lesson-content plan"
+[feat/30-render-curriculum-overview-page 0211238] chore(measure): mark Task 12 complete in lesson-content plan
+ 2 files changed, 30 insertions(+), 3 deletions(-)
+[0m
+[0m$ [0mgit push 2>&1
+To https://github.com/bodangren/ka-math-companion.git
+   e15fa4d..0211238  feat/30-render-curriculum-overview-page -> feat/30-render-curriculum-overview-page
+[0m
+[0m$ [0mwc -l /home/daniel-bo/Desktop/ka-math-companion/measure/tech-debt.md /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
+25 /home/daniel-bo/Desktop/ka-math-companion/measure/tech-debt.md
+  32 /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
+  57 total
+[0m
+[0m$ [0mgit log --oneline -5
+0211238 chore(measure): mark Task 12 complete in lesson-content plan
+afc7f32 feat(lesson-content): Task 12 - Integrate content renderer into Lesson pages
+d22d07f Fix SpinnerTest, update output logs
+9938aba chore(review): fix 4 lint/style issues - elm-format and unused imports
+656fb90 checkpoint: autonomous run - lesson-content tasks 1-3 complete, 124 tests pass
+[0m
+[0m→ [0mRead measure/tracks/lesson-content_20260403/plan.md[90m [limit=15, offset=50][0m
+[0m
+[0m← [0mEdit measure/tracks.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/measure/tracks.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/measure/tracks.md
++++ /home/daniel-bo/Desktop/ka-math-companion/measure/tracks.md
+@@ -20,9 +20,9 @@
+   Integrate KaTeX for math notation rendering using JavaScript ports.
+ 
+ ## Phase 2: Content & Interaction
+ 
+-- [ ] **Track: Lesson Content**
++- [x] **Track: Lesson Content**
+   _Link: [./tracks/lesson-content_20260403/](./tracks/lesson-content_20260403/)_
+   Add conceptual explanations, worked examples, and comprehension checks.
+ 
+ - [ ] **Track: Interactive Visualizations**
+
+[0m
