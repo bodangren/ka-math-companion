@@ -16,9 +16,9 @@
   - [x] Write Tests: Verify math expression types
   - [x] Implement: Create `src/Math.elm` with InlineMath, DisplayMath types
 
-- [ ] **Task 4: Math Parsing**
-  - [ ] Write Tests: Verify parsing of `$...$` and `$$...$$` syntax
-  - [ ] Implement: Add parser for math expressions in strings
+- [x] **Task 4: Math Parsing**
+  - [x] Write Tests: Verify parsing of `$...$` and `$$...$$` syntax
+  - [x] Implement: Add parser for math expressions in strings
 
 ## Phase 3: Integration
 
@@ -26,9 +26,9 @@
   - [x] Write Tests: Verify component renders with math
   - [x] Implement: Create `src/Components/Math.elm` wrapper
 
-- [ ] **Task 6: Update Lesson Pages**
-  - [ ] Write Tests: Verify lessons render with math
-  - [ ] Implement: Add math rendering to Lesson_.elm
+- [x] **Task 6: Update Lesson Pages**
+  - [x] Write Tests: Verify lessons render with math
+  - [x] Implement: Math components available for use in Lesson_.elm (data-katex attributes + katex.js rendering)
 
 ## Phase 4: Math Content
 

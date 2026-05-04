@@ -26,7 +26,8 @@
       ],
       "script": [
         { "src": "https://cdn.tailwindcss.com" },
-        { "content": "tailwind.config = { theme: { extend: { colors: { 'primary': '#EB001B', 'secondary': '#FF5F00', 'accent': '#F79E1B', 'surface': '#F9F7F2', 'anthracite': '#1A1A1A' }, fontFamily: { 'sans': ['Inter', 'sans-serif'], 'serif': ['Newsreader', 'serif'] }, borderRadius: { 'orbital': '24px' } } } }" }
+        { "content": "tailwind.config = { theme: { extend: { colors: { 'primary': '#EB001B', 'secondary': '#FF5F00', 'accent': '#F79E1B', 'surface': '#F9F7F2', 'anthracite': '#1A1A1A' }, fontFamily: { 'sans': ['Inter', 'sans-serif'], 'serif': ['Newsreader', 'serif'] }, borderRadius: { 'orbital': '24px' } } } }" },
+        { "src": "/katex.js" }
       ]
     },
     "router": {
