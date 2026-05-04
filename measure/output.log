@@ -1275,3 +1275,50 @@ bash tool terminated command after exceeding timeout 120000 ms. If this command 
 [0m$ [0mkill -9 113862 113863 388535 2>/dev/null; sleep 1; echo "done"
 done
 [0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && git add -A && git status
+On branch feat/30-render-curriculum-overview-page
+Your branch is up to date with 'origin/feat/30-render-curriculum-overview-page'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   elm-land.json
+	modified:   measure/output.log
+	modified:   measure/tracks/katex-integration_20260403/plan.md
+	modified:   src/Math.elm
+	modified:   tests/MathTest.elm
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && git commit -m "feat(katex-integration): Tasks 4-6 - math parsing, lesson integration
+
+- Add parseMath function to Math.elm for $...$ and $$...$$ syntax
+- 9 new tests covering inline/display math parsing, edge cases
+- Add katex.js script to elm-land.json for CDN loading
+- Mark Tasks 4, 6 as complete in plan
+
+Model: MiniMax-M2.7"
+[feat/30-render-curriculum-overview-page 0d0edeb] feat(katex-integration): Tasks 4-6 - math parsing, lesson integration
+ 5 files changed, 1379 insertions(+), 8 deletions(-)
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && git push 2>&1
+To https://github.com/bodangren/ka-math-companion.git
+   d8af41f..0d0edeb  feat/30-render-curriculum-overview-page -> feat/30-render-curriculum-overview-page
+[0m
+[0m→ [0mRead measure/tech-debt.md
+[0m→ [0mRead measure/lessons-learned.md
+[0m
+[0m← [0mEdit measure/lessons-learned.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
++++ /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
+@@ -30,5 +30,6 @@
+ - (2026-05-02, design-system) Footer integration: Footer uses `margin-top: auto` in flex column layout. Must set `display:flex;flex-direction:column` on parent
+ - (2026-05-03, design-system) Elm Land bug: Pages with trailing underscore auto-generate routes with params even when page takes no args. Fix: rename without trailing underscore
+ - (2026-05-03, autonomous) All 116 tests pass. Build succeeds. App serves at localhost:1235. elm-format needed on 6 files. elm-review found 65 issues (unused test vars, unused Button/Grid exports). Fixed via format + build.
+ - (2026-05-03, lesson-content) Elm type aliases like `Step` must be defined BEFORE they're used in other type aliases like `WorkedExample`. Order matters in Elm type definitions.
+-- (2026-05-04, design-system) Spinner @keyframes animation: use `Html.node "style" [attribute "type" "text/css"] [Html.text "@keyframes ..."]` to inject CSS animation into DOM
+\ No newline at end of file
++- (2026-05-04, design-system) Spinner @keyframes animation: use `Html.node "style" [attribute "type" "text/css"] [Html.text "@keyframes ..."]` to inject CSS animation into DOM
++- (2026-05-04, katex-integration) Elm String.slice takes (start, end, string) not (string, start, end). Also: empty string before delimiter produces empty InlineMath - filter those out
+\ No newline at end of file
+
+[0m
