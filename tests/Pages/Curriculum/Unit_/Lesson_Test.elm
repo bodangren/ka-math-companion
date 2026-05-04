@@ -23,4 +23,30 @@ suite =
                     |> Html.div []
                     |> Query.fromHtml
                     |> Query.has [ text "Intro to polynomials" ]
+        , Test.test "page renders lesson content for intro-to-polynomials" <|
+            \_ ->
+                let
+                    params =
+                        { unit = "polynomial-arithmetic"
+                        , lesson = "intro-to-polynomials"
+                        }
+                in
+                Lesson.page params
+                    |> .body
+                    |> Html.div []
+                    |> Query.fromHtml
+                    |> Query.has [ text "A polynomial is an expression" ]
+        , Test.test "page renders worked example for intro-to-polynomials" <|
+            \_ ->
+                let
+                    params =
+                        { unit = "polynomial-arithmetic"
+                        , lesson = "intro-to-polynomials"
+                        }
+                in
+                Lesson.page params
+                    |> .body
+                    |> Html.div []
+                    |> Query.fromHtml
+                    |> Query.has [ text "Problem: Identify the degree" ]
         ]
