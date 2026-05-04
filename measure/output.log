@@ -1322,3 +1322,27 @@ Index: /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
 \ No newline at end of file
 
 [0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && git add -A && git commit -m "checkpoint: katex-integration Tasks 4-6 complete via MiniMax-M2.7
+
+- parseMath implemented with full $...$ and $$...$$ parsing
+- MathTest: 135 tests pass, build succeeds
+- katex.js added to elm-land.json for CDN loading
+- No browser-harness available (Node 24 build failure)
+- Updated lessons-learned.md" && git push
+[feat/30-render-curriculum-overview-page a72fc56] checkpoint: katex-integration Tasks 4-6 complete via MiniMax-M2.7
+ 2 files changed, 49 insertions(+), 1 deletion(-)
+To https://github.com/bodangren/ka-math-companion.git
+   0d0edeb..a72fc56  feat/30-render-curriculum-overview-page -> feat/30-render-curriculum-overview-page
+[0m
+**Session Summary (MiniMax-M2.7)**
+
+Completed katex-integration Tasks 4-6:
+- **Task 4 (Math Parsing)**: Implemented `parseMath` in `src/Math.elm` with 9 new tests covering `$...$` inline and `$$...$$` display math parsing, including edge cases (empty strings, multiple blocks, mixed content)
+- **Task 6 (Lesson Pages)**: Added `katex.js` to `elm-land.json` for CDN loading; math components in `Components/Math.elm` already existed and work with `data-katex` attributes
+
+**Verification**:
+- 135 tests pass
+- Build succeeds
+- browser-harness unavailable (Node 24 native module build failure) — skipped browser verification per protocol
+
+**Commit**: `a72fc56` - "checkpoint: katex-integration Tasks 4-6 complete via MiniMax-M2.7"

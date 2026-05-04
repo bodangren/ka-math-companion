@@ -1,4 +1,4 @@
-module Components.Math exposing (mathBlock, displayMath, mathInline)
+module Components.Math exposing (displayMath, mathBlock, mathInline)
 
 import Html exposing (Html)
 import Html.Attributes as Attr

@@ -1,4 +1,4 @@
-module Math exposing (MathExpr(..), render, renderDisplay, parseMath)
+module Math exposing (MathExpr(..), parseMath, render, renderDisplay)
 
 
 type MathExpr
@@ -31,9 +31,14 @@ parseMath text =
 
                 firstPos :: _ ->
                     let
-                        before = String.slice 0 firstPos str
-                        afterStart = firstPos + 2
-                        rest = String.slice afterStart (String.length str) str
+                        before =
+                            String.slice 0 firstPos str
+
+                        afterStart =
+                            firstPos + 2
+
+                        rest =
+                            String.slice afterStart (String.length str) str
                     in
                     case String.indexes "$$" rest of
                         [] ->
@@ -41,9 +46,18 @@ parseMath text =
 
                         secondPos :: _ ->
                             let
-                                latex = String.slice 0 secondPos rest
-                                after = String.slice (secondPos + 2) (String.length rest) rest
-                                beforeExpr = if String.isEmpty before then [] else [ InlineMath before ]
+                                latex =
+                                    String.slice 0 secondPos rest
+
+                                after =
+                                    String.slice (secondPos + 2) (String.length rest) rest
+
+                                beforeExpr =
+                                    if String.isEmpty before then
+                                        []
+
+                                    else
+                                        [ InlineMath before ]
                             in
                             extractDisplay (DisplayMath latex :: beforeExpr ++ acc) after
 
@@ -52,27 +66,43 @@ parseMath text =
                 [] ->
                     if String.isEmpty str then
                         List.reverse acc
+
                     else
                         List.reverse <| InlineMath str :: acc
 
                 firstPos :: _ ->
                     let
-                        before = String.slice 0 firstPos str
-                        afterStart = firstPos + 1
-                        rest = String.slice afterStart (String.length str) str
+                        before =
+                            String.slice 0 firstPos str
+
+                        afterStart =
+                            firstPos + 1
+
+                        rest =
+                            String.slice afterStart (String.length str) str
                     in
                     case String.indexes "$" rest of
                         [] ->
                             if String.isEmpty str then
                                 List.reverse acc
+
                             else
                                 List.reverse <| InlineMath str :: acc
 
                         secondPos :: _ ->
                             let
-                                latex = String.slice 0 secondPos rest
-                                after = String.slice (secondPos + 1) (String.length rest) rest
-                                beforeExpr = if String.isEmpty before then [] else [ InlineMath before ]
+                                latex =
+                                    String.slice 0 secondPos rest
+
+                                after =
+                                    String.slice (secondPos + 1) (String.length rest) rest
+
+                                beforeExpr =
+                                    if String.isEmpty before then
+                                        []
+
+                                    else
+                                        [ InlineMath before ]
                             in
                             extractInline (InlineMath latex :: beforeExpr ++ acc) after
     in
