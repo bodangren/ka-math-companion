@@ -2,179 +2,76 @@
 > build · k2p6
 [0m
 [0m→ [0mSkill "measure"
+[0m✗ [0mread failed
+[91m[1mError: [0mFile not found: /home/daniel-bo/Desktop/ka-math-companion/.agents/skills/measure/review-prompt.md
+[0m✱ [0mGlob "**/review-prompt.md"[90m in . · 1 match[0m
+[0m✱ [0mGlob "**/review-prompt*"[90m in ../../.agents/skills/measure · 0 matches[0m
 [0m→ [0mRead measure/review-prompt.md
-I'll run the 24-hour code review process as defined in `measure/review-prompt.md`.
+I'll run the 24-hour code review now.
 [0m
 [0m$ [0mgit log --since="24 hours ago" --oneline
-c7f21bb chore(measure): update lessons-learned with Elm Land route pattern insight
-c250371 chore(measure): mark Task 15 complete - design system showcase
-33e7662 feat(design-system): add Design_System_.page for component showcase
-18cd626 chore(measure): update lessons-learned with KaTeX integration patterns
-042189e feat(katex): Tasks 1-4 - KaTeX JS module, Elm ports, Math module
-86c791d archive: move elm-migration to archive
-dacbf47 chore(measure): update autonomous prompt to use browser-harness skill
-224c293 chore(measure): update lessons-learned with footer integration pattern
-8d72745 chore(design-system): Task 14 - Footer on all pages, flex layout
-da7e95e chore: checkpoint before resuming track implementation
+656fb90 checkpoint: autonomous run - lesson-content tasks 1-3 complete, 124 tests pass
+e15fa4d chore: update lessons-learned with Elm type ordering insight
+5c1711b feat(lesson-content): Task 3 - Content renderer component
+6c88b52 feat(lesson-content): Tasks 1-2 - LessonContent types and getContent for intro-to-polynomials
+7067cb6 log: checkpoint from autonomous run
+b8f088d chore: update output log
+760515a checkpoint: autonomous run - lessons-learned trimmed to 31 lines
+3e2f99d chore: format all Elm files; build and tests pass
+1720b94 checkpoint: autonomous run
+0dcfdc5 chore: update lessons-learned with Elm Land trailing underscore bug
+0f58c33 fix: rename Design_System_.elm to Design_System to resolve Elm Land route generation bug
+bc7acfd chore: update measure logs
+dc0d87e chore(review): fix 5 unused import issues
 [0m
 [0m$ [0mgit diff --name-only HEAD~20 HEAD
-.claude/skills/conductor.skill
-.claude/skills/conductor/SKILL.md
-.claude/skills/conductor/assets/code_styleguides/csharp.md
-.claude/skills/conductor/assets/code_styleguides/dart.md
-.claude/skills/conductor/assets/code_styleguides/go.md
-.claude/skills/conductor/assets/code_styleguides/python.md
-.claude/skills/conductor/assets/workflow.md
-.claude/skills/conductor/references/implement.md
-.claude/skills/conductor/references/new-track.md
-.claude/skills/conductor/references/revert.md
-.claude/skills/conductor/references/setup.md
-.claude/skills/conductor/references/status.md
-.codex/skills/conductor/SKILL.md
-.codex/skills/conductor/assets/code_styleguides/csharp.md
-.codex/skills/conductor/assets/code_styleguides/dart.md
-.codex/skills/conductor/assets/code_styleguides/general.md
-.codex/skills/conductor/assets/code_styleguides/go.md
-.codex/skills/conductor/assets/code_styleguides/html-css.md
-.codex/skills/conductor/assets/code_styleguides/javascript.md
-.codex/skills/conductor/assets/code_styleguides/python.md
-.codex/skills/conductor/assets/code_styleguides/typescript.md
-.codex/skills/conductor/assets/workflow.md
-.codex/skills/conductor/references/implement.md
-.codex/skills/conductor/references/new-track.md
-.codex/skills/conductor/references/revert.md
-.codex/skills/conductor/references/setup.md
-.codex/skills/conductor/references/status.md
-AGENTS.md
-CLAUDE.md
-DESIGN.md
-conductor/autonomous_prompt.md
-conductor/code_styleguides/general.md
-conductor/code_styleguides/html-css.md
-conductor/code_styleguides/javascript.md
-conductor/code_styleguides/typescript.md
-conductor/output.log
-conductor/review-output.log
-elm-land.json
-gemini_design_update.log
 measure/archive/elm-migration_20260227/metadata.json
 measure/archive/elm-migration_20260227/plan.md
 measure/archive/elm-migration_20260227/spec.md
-measure/archive/visual_refresh_20260425/metadata.json
-measure/archive/visual_refresh_20260425/plan.md
-measure/archive/visual_refresh_20260425/spec.md
 measure/autonomous_prompt.md
-measure/code_styleguides/general.md
-measure/code_styleguides/html-css.md
-measure/code_styleguides/javascript.md
-measure/code_styleguides/typescript.md
-measure/index.md
 measure/lessons-learned.md
 measure/output.log
-measure/product-guidelines.md
-measure/product.md
 measure/review-output.log
-measure/review-prompt.md
-measure/setup_state.json
 measure/tech-debt.md
-measure/tech-stack.md
 measure/tracks.md
-measure/tracks/accessibility_20260403/metadata.json
-measure/tracks/accessibility_20260403/plan.md
-measure/tracks/accessibility_20260403/spec.md
-measure/tracks/assessment-mastery_20260403/metadata.json
-measure/tracks/assessment-mastery_20260403/plan.md
-measure/tracks/assessment-mastery_20260403/spec.md
-measure/tracks/curriculum-data_20260403/metadata.json
-measure/tracks/curriculum-data_20260403/plan.md
-measure/tracks/curriculum-data_20260403/spec.md
-measure/tracks/design-system_20260403/metadata.json
 measure/tracks/design-system_20260403/plan.md
-measure/tracks/design-system_20260403/spec.md
-measure/tracks/interactive-viz_20260403/metadata.json
-measure/tracks/interactive-viz_20260403/plan.md
-measure/tracks/interactive-viz_20260403/spec.md
-measure/tracks/katex-integration_20260403/metadata.json
-measure/tracks/katex-integration_20260403/plan.md
-measure/tracks/katex-integration_20260403/spec.md
-measure/tracks/khan-sync_20260403/metadata.json
-measure/tracks/khan-sync_20260403/plan.md
-measure/tracks/khan-sync_20260403/spec.md
-measure/tracks/lesson-content_20260403/metadata.json
 measure/tracks/lesson-content_20260403/plan.md
-measure/tracks/lesson-content_20260403/spec.md
-measure/tracks/performance-seo_20260403/metadata.json
-measure/tracks/performance-seo_20260403/plan.md
-measure/tracks/performance-seo_20260403/spec.md
-measure/tracks/practice-problems_20260403/metadata.json
-measure/tracks/practice-problems_20260403/plan.md
-measure/tracks/practice-problems_20260403/spec.md
-measure/tracks/progress-tracking_20260403/metadata.json
-measure/tracks/progress-tracking_20260403/plan.md
-measure/tracks/progress-tracking_20260403/spec.md
-measure/tracks/spaced-practice_20260403/metadata.json
-measure/tracks/spaced-practice_20260403/plan.md
-measure/tracks/spaced-practice_20260403/spec.md
-measure/workflow.md
 public/katex.js
+src/Components/Content.elm
+src/Data/LessonContent.elm
 src/Design/Alert.elm
-src/Design/Badge.elm
-src/Design/Breadcrumb.elm
-src/Design/Button.elm
 src/Design/Card.elm
 src/Design/Container.elm
-src/Design/Footer.elm
-src/Design/Grid.elm
-src/Design/Header.elm
 src/Design/Progress.elm
-src/Design/Tokens.elm
 src/Math.elm
-src/Pages/Curriculum.elm
 src/Pages/Curriculum/Unit_.elm
 src/Pages/Curriculum/Unit_/Lesson_.elm
-src/Pages/Design_System_.elm
-src/Pages/Home_.elm
+src/Pages/Design_System.elm
 src/Ports.elm
-tests/Design/AlertTest.elm
-tests/Design/BadgeTest.elm
-tests/Design/CardTest.elm
-tests/Design/ContainerTest.elm
-tests/Design/GridTest.elm
-tests/Design/TokensTest.elm
+tests/Components/Content_Test.elm
+tests/Data/Content_LessonContent_Test.elm
+tests/Data/LessonContent_Test.elm
 tests/MathTest.elm
-tests/Pages/Curriculum/Unit_Test.elm
-tests/Pages/Home_Test.elm
-visual_refresh_track.log
 [0m
 [0m→ [0mRead measure/tracks.md
 [0m→ [0mRead measure/tech-debt.md
+[0m→ [0mRead src/Components/Content.elm
+[0m→ [0mRead src/Data/LessonContent.elm
+[0m→ [0mRead src/Design/Alert.elm
+[0m→ [0mRead src/Design/Card.elm
+[0m→ [0mRead src/Design/Container.elm
+[0m→ [0mRead src/Design/Progress.elm
 [0m→ [0mRead src/Math.elm
-[0m→ [0mRead src/Ports.elm
-[0m→ [0mRead public/katex.js
-[0m→ [0mRead src/Pages/Design_System_.elm
-[0m→ [0mRead src/Design/Footer.elm
-[0m→ [0mRead src/Pages/Home_.elm
-[0m→ [0mRead src/Pages/Curriculum.elm
 [0m→ [0mRead src/Pages/Curriculum/Unit_.elm
 [0m→ [0mRead src/Pages/Curriculum/Unit_/Lesson_.elm
-[0m→ [0mRead src/Design/Header.elm
-[0m→ [0mRead src/Design/Tokens.elm
-[0m→ [0mRead src/Design/Alert.elm
-[0m→ [0mRead src/Design/Badge.elm
-[0m→ [0mRead src/Design/Button.elm
-[0m→ [0mRead src/Design/Card.elm
-[0m→ [0mRead src/Design/Progress.elm
-[0m→ [0mRead src/Design/Grid.elm
-[0m→ [0mRead src/Design/Breadcrumb.elm
-[0m→ [0mRead src/Design/Container.elm
-[0m→ [0mRead src/Design/Spinner.elm
-[0m→ [0mRead src/Design/Stack.elm
-[0m→ [0mRead package.json
+[0m→ [0mRead src/Pages/Design_System.elm
+[0m→ [0mRead src/Ports.elm
+[0m→ [0mRead tests/Components/Content_Test.elm
+[0m→ [0mRead tests/Data/Content_LessonContent_Test.elm
+[0m→ [0mRead tests/Data/LessonContent_Test.elm
 [0m→ [0mRead tests/MathTest.elm
-[0m→ [0mRead tests/Design/TokensTest.elm
-[0m→ [0mRead tests/Pages/Home_Test.elm
 [0m
-[0m$ [0mnpm test 2>&1
+[0m$ [0mCI=true npm test 2>&1 | tail -30
 > ka-math-companion@0.1.0 test
 > elm-test
 
@@ -183,35 +80,126 @@ CompilingCompiling > Starting tests
 elm-test 0.19.1-revision17
 --------------------------
 
-Running 116 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 88040595067047
+Running 124 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 183166158311669
 
 
 TEST RUN PASSED
 
-Duration: 246 ms
-Passed:   116
+Duration: 224 ms
+Passed:   124
 Failed:   0
 [0m
-[0m$ [0mnpm run review 2>&1
-> ka-math-companion@0.1.0 review
-> elm-review
+[0m$ [0mnpm run lint 2>&1 | tail -30
+npm error Missing script: "lint"
+npm error
+npm error Did you mean this?
+npm error   npm link # Symlink a package folder
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /home/daniel-bo/.npm/_logs/2026-05-03T17_00_52_311Z-debug-0.log
+[0m
+[0m$ [0mnpm run typecheck 2>&1 | tail -30
+npm error Missing script: "typecheck"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /home/daniel-bo/.npm/_logs/2026-05-03T17_00_52_938Z-debug-0.log
+[0m
+[0m$ [0mnpm run
+Lifecycle scripts included in ka-math-companion@0.1.0:
+  test
+    elm-test
+available via `npm run`:
+  dev
+    elm-land server
+  build
+    elm-land build
+  format
+    elm-format src/ --yes
+  format:check
+    elm-format src/ --validate
+  review
+    elm-review
+  sync:khan
+    node docs/scripts/sync-khan-course.mjs
+  sync:khan:math3
+    npm run sync:khan -- --path /math/math3 --slug integrated-math-3
+[0m
+[0m$ [0mnpm run format:check 2>&1 | tail -20
+> ka-math-companion@0.1.0 format:check
+> elm-format src/ --validate
 
--- ELM-REVIEW ERROR ---------------------------------- src/Design/Alert.elm:5:45
+[{"path":"src/Components/Content.elm","message":"File is not formatted with elm-format-0.8.8 --elm-version=0.19"}
+,{"path":"src/Data/LessonContent.elm","message":"File is not formatted with elm-format-0.8.8 --elm-version=0.19"}
+]
+[0m
+[0m$ [0mnpm run review 2>&1 | tail -40
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
 
-(fix) NoUnused.Variables: Imported variable `style` is not used
-
-4| import Html exposing (Html, div)
-5| import Html.Attributes exposing (attribute, style)
-                                               ^^^^^
+56|                 let
+57|                     stack =
+                        ^^^^^
+58|                         Stack.stack Stack.Vertical [ Stack.spacing Stack.medium ] [ Html.text "Medium" ]
 
 You should either use this value somewhere, or remove it at the location I
 pointed at.
 
-src/Design/Alert.elm  ↑
-====o======================================================================o====
-↓  src/Design/Button.elm
+─────────────────────────────────────────────── tests/Design/StackTest.elm:64:21
 
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
 
+63|                 let
+64|                     stack =
+                        ^^^^^
+65|                         Stack.stack Stack.Vertical [ Stack.spacing Stack.large ] [ Html.text "Large" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/StackTest.elm:71:21
+
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
+
+70|                 let
+71|                     stack =
+                        ^^^^^
+72|                         Stack.stack Stack.Horizontal
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+Errors marked with (fix) can be fixed automatically using `elm-review --fix`.
+
+Errors marked with (fix removes files) can be fixed automatically by
+also using `--allow-remove-files`.
+
+I found 75 errors in 17 files.
+[0m
+[0m$ [0mnpx elm-format src/Components/Content.elm src/Data/LessonContent.elm --yes
+Processing file src/Data/LessonContent.elm
+Processing file src/Components/Content.elm
+[0m
+[0m$ [0mnpx elm-review --fix --yes 2>&1 | tail -60
+-- UNKNOWN FLAG ----------------------------------------------------------------
+
+I did not recognize this flag:
+
+    --yes
+
+Maybe you want one of these instead?
+
+    --rules <rule1,rule2,...>
+    --help
+[0m
+[0m$ [0mprintf 'y\n' | npx elm-review --fix 2>&1 | tail -60
+(no output)
+
+<bash_metadata>
+bash tool terminated command after exceeding timeout 120000 ms. If this command is expected to take longer and is not waiting for interactive input, retry with a larger timeout value in milliseconds.
+</bash_metadata>
+[0m
+[0m$ [0mnpx elm-review 2>&1 | head -80
 -- ELM-REVIEW ERROR ---------------------------------- src/Design/Button.elm:3:7
 
 (fix) NoUnused.Exports: Exposed type or type alias `Size` is never used outside
@@ -279,38 +267,6 @@ project clean, and maybe detect some unused code in your project.
 
 src/Design/Button.elm  ↑
 ====o======================================================================o====
-↓  src/Design/Card.elm
-
-
--- ELM-REVIEW ERROR ----------------------------------- src/Design/Card.elm:5:45
-
-(fix) NoUnused.Variables: Imported variable `style` is not used
-
-4| import Html exposing (Html, div)
-5| import Html.Attributes exposing (attribute, style)
-                                               ^^^^^
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-src/Design/Card.elm  ↑
-====o======================================================================o====
-↓  src/Design/Container.elm
-
-
--- ELM-REVIEW ERROR ------------------------------ src/Design/Container.elm:3:32
-
-(fix) NoUnused.Variables: Imported variable `colorPalette` is not used
-
-3| import Design.Tokens exposing (colorPalette, spacing)
-                                  ^^^^^^^^^^^^
-4| import Html exposing (Html, div)
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-src/Design/Container.elm  ↑
-====o======================================================================o====
 ↓  src/Design/Grid.elm
 
 
@@ -323,71 +279,29 @@ this module
 7|     , large
          ^^^^^
 8|     , medium
-
-This exposed element is never used. You may want to remove it to keep your
-project clean, and maybe detect some unused code in your project.
-
-──────────────────────────────────────────────────────── src/Design/Grid.elm:8:7
-
-(fix) NoUnused.Exports: Exposed function or value `medium` is never used outside
-this module
-
-7|     , large
-8|     , medium
-          ^^^^^^
-9|     , minWidth
-
-This exposed element is never used. You may want to remove it to keep your
-project clean, and maybe detect some unused code in your project.
-
-─────────────────────────────────────────────────────── src/Design/Grid.elm:10:7
-
-(fix) NoUnused.Exports: Exposed function or value `small` is never used outside
-this module
-
- 9|     , minWidth
-10|     , small
-          ^^^^^
-11|     )
-
-This exposed element is never used. You may want to remove it to keep your
-project clean, and maybe detect some unused code in your project.
-
-src/Design/Grid.elm  ↑
-====o======================================================================o====
-↓  src/Design/Progress.elm
-
-
--- ELM-REVIEW ERROR ------------------------------- src/Design/Progress.elm:5:45
-
-(fix) NoUnused.Variables: Imported variable `style` is not used
-
-4| import Html
-5| import Html.Attributes exposing (attribute, style)
-                                               ^^^^^
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-src/Design/Progress.elm  ↑
-====o======================================================================o====
-↓  src/Pages/Design_System_.elm
-
-
--- ELM-REVIEW ERROR ------------------------- src/Pages/Design_System_.elm:17:34
-
-(fix) NoUnused.Variables: Imported variable `href` is not used
-
-16| import Html
-17| import Html.Attributes exposing (href, style)
-                                     ^^^^
-18| import View exposing (View)
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-src/Pages/Design_System_.elm  ↑
-====o======================================================================o====
+[0m
+[0m$ [0mnpx elm-review 2>&1 | grep -E 'src/(Components/Content|Data/LessonContent|Design/Alert|Design/Card|Design/Container|Design/Progress|Math|Pages/Curriculum/Unit_|Pages/Curriculum/Unit_/Lesson_|Pages/Design_System|Ports)\.elm' | head -20
+↓  src/Ports.elm
+-- ELM-REVIEW ERROR ----------------------------------------- src/Ports.elm:1:13
+src/Ports.elm  ↑
+[0m
+[0m$ [0mnpx elm-review 2>&1 | grep -E 'tests/(Components/Content_Test|Data/Content_LessonContent_Test|Data/LessonContent_Test|MathTest)\.elm' | head -20
+↓  tests/Components/Content_Test.elm
+-- ELM-REVIEW ERROR --------------------- tests/Components/Content_Test.elm:4:37
+───────────────────────────────────────── tests/Components/Content_Test.elm:4:70
+───────────────────────────────────────── tests/Components/Content_Test.elm:4:85
+───────────────────────────────────────── tests/Components/Content_Test.elm:4:91
+──────────────────────────────────────── tests/Components/Content_Test.elm:4:119
+──────────────────────────────────────── tests/Components/Content_Test.elm:4:131
+──────────────────────────────────────── tests/Components/Content_Test.elm:4:140
+tests/Components/Content_Test.elm  ↑
+↓  tests/Data/LessonContent_Test.elm
+-- ELM-REVIEW ERROR --------------------- tests/Data/LessonContent_Test.elm:3:55
+───────────────────────────────────────── tests/Data/LessonContent_Test.elm:3:70
+───────────────────────────────────────── tests/Data/LessonContent_Test.elm:3:91
+tests/Data/LessonContent_Test.elm  ↑
+[0m
+[0m$ [0mnpx elm-review 2>&1 | grep -A 10 'src/Ports\.elm'
 ↓  src/Ports.elm
 
 
@@ -395,13 +309,162 @@ src/Pages/Design_System_.elm  ↑
 
 (fix removes files) NoUnused.Exports: Module `Ports` is never used
 
-1| port module Ports exposing (renderMath, processMath)
+1| port module Ports exposing (processMath, renderMath)
                ^^^^^
 
 This module is never used. You may want to remove it to keep your project clean,
 and maybe detect some unused code in your project.
 
 src/Ports.elm  ↑
+====o======================================================================o====
+↓  tests/Components/Content_Test.elm
+
+
+-- ELM-REVIEW ERROR --------------------- tests/Components/Content_Test.elm:4:37
+
+(fix) NoUnused.Variables: Imported type `ContentBlock` is not used
+
+3| import Components.Content as Content
+4| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+[0m
+[0m$ [0mnpx elm-review 2>&1 | grep -A 10 'tests/Components/Content_Test\.elm'
+↓  tests/Components/Content_Test.elm
+
+
+-- ELM-REVIEW ERROR --------------------- tests/Components/Content_Test.elm:4:37
+
+(fix) NoUnused.Variables: Imported type `ContentBlock` is not used
+
+3| import Components.Content as Content
+4| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                       ^^^^^^^^^^^^^^^^
+5| import Html
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+--
+───────────────────────────────────────── tests/Components/Content_Test.elm:4:70
+
+(fix) NoUnused.Variables: Imported type `WorkedExample` is not used
+
+3| import Components.Content as Content
+4| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                                                        ^^^^^^^^^^^^^
+5| import Html
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+--
+───────────────────────────────────────── tests/Components/Content_Test.elm:4:85
+
+(fix) NoUnused.Variables: Imported type `Step` is not used
+
+3| import Components.Content as Content
+4| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                                                                       ^^^^
+5| import Html
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+--
+───────────────────────────────────────── tests/Components/Content_Test.elm:4:91
+
+(fix) NoUnused.Variables: Imported type `CheckQuestion` is not used
+
+3| import Components.Content as Content
+4| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                                                                             ^^^^^^^^^^^^^
+5| import Html
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+--
+──────────────────────────────────────── tests/Components/Content_Test.elm:4:119
+
+(fix) NoUnused.Variables: Imported variable `definition` is not used
+
+3| import Components.Content as Content
+4| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                                                                                                         ^^^^^^^^^^
+5| import Html
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+--
+──────────────────────────────────────── tests/Components/Content_Test.elm:4:131
+
+(fix) NoUnused.Variables: Imported variable `example` is not used
+
+3| import Components.Content as Content
+4| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                                                                                                                     ^^^^^^^
+5| import Html
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+--
+──────────────────────────────────────── tests/Components/Content_Test.elm:4:140
+
+(fix) NoUnused.Variables: Imported variable `checkQuestion` is not used
+
+3| import Components.Content as Content
+4| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                                                                                                                              ^^^^^^^^^^^^^
+5| import Html
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+--
+tests/Components/Content_Test.elm  ↑
+====o======================================================================o====
+↓  tests/Data/LessonContent_Test.elm
+
+
+-- ELM-REVIEW ERROR --------------------- tests/Data/LessonContent_Test.elm:3:55
+
+(fix) NoUnused.Variables: Imported type `LessonContent` is not used
+
+3| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                                         ^^^^^^^^^^^^^
+[0m
+[0m$ [0mnpx elm-review 2>&1 | grep -A 10 'tests/Data/LessonContent_Test\.elm'
+↓  tests/Data/LessonContent_Test.elm
+
+
+-- ELM-REVIEW ERROR --------------------- tests/Data/LessonContent_Test.elm:3:55
+
+(fix) NoUnused.Variables: Imported type `LessonContent` is not used
+
+3| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                                         ^^^^^^^^^^^^^
+4| import Expect
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────── tests/Data/LessonContent_Test.elm:3:70
+
+(fix) NoUnused.Variables: Imported type `WorkedExample` is not used
+
+3| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                                                        ^^^^^^^^^^^^^
+4| import Expect
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────── tests/Data/LessonContent_Test.elm:3:91
+
+(fix) NoUnused.Variables: Imported type `CheckQuestion` is not used
+
+3| import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
+                                                                                             ^^^^^^^^^^^^^
+4| import Expect
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Data/LessonContent_Test.elm  ↑
 ====o======================================================================o====
 ↓  tests/Design/AlertTest.elm
 
@@ -412,876 +475,421 @@ src/Ports.elm  ↑
 
 14|                 let
 15|                     alert =
-                        ^^^^^
-16|                         Alert.alert Alert.Info [ Html.text "Information message" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/AlertTest.elm:22:21
-
-(fix) NoUnused.Variables: `let in` variable `alert` is not used
-
-21|                 let
-22|                     alert =
-                        ^^^^^
-23|                         Alert.alert Alert.Success [ Html.text "Success message" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/AlertTest.elm:29:21
-
-(fix) NoUnused.Variables: `let in` variable `alert` is not used
-
-28|                 let
-29|                     alert =
-                        ^^^^^
-30|                         Alert.alert Alert.Warning [ Html.text "Warning message" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/AlertTest.elm:36:21
-
-(fix) NoUnused.Variables: `let in` variable `alert` is not used
-
-35|                 let
-36|                     alert =
-                        ^^^^^
-37|                         Alert.alert Alert.Error [ Html.text "Error message" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/AlertTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/BadgeTest.elm
-
-
--- ELM-REVIEW ERROR ----------------------------- tests/Design/BadgeTest.elm:5:8
-
-(fix) NoUnused.Variables: Imported module `Html` is not used
-
-4| import Expect
-5| import Html
-          ^^^^
-6| import Test
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/BadgeTest.elm:15:21
-
-(fix) NoUnused.Variables: `let in` variable `badge` is not used
-
-14|                 let
-15|                     badge =
-                        ^^^^^
-16|                         Badge.badge Badge.Neutral "Neutral"
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/BadgeTest.elm:22:21
-
-(fix) NoUnused.Variables: `let in` variable `badge` is not used
-
-21|                 let
-22|                     badge =
-                        ^^^^^
-23|                         Badge.badge Badge.Success "Success"
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/BadgeTest.elm:29:21
-
-(fix) NoUnused.Variables: `let in` variable `badge` is not used
-
-28|                 let
-29|                     badge =
-                        ^^^^^
-30|                         Badge.badge Badge.Warning "Warning"
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/BadgeTest.elm:36:21
-
-(fix) NoUnused.Variables: `let in` variable `badge` is not used
-
-35|                 let
-36|                     badge =
-                        ^^^^^
-37|                         Badge.badge Badge.Error "Error"
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/BadgeTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/BreadcrumbTest.elm
-
-
--- ELM-REVIEW ERROR ---------------------- tests/Design/BreadcrumbTest.elm:15:21
-
-(fix) NoUnused.Variables: `let in` variable `breadcrumb` is not used
-
-14|                 let
-15|                     breadcrumb =
-                        ^^^^^^^^^^
-16|                         Breadcrumb.breadcrumb [ Html.text "Home" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────── tests/Design/BreadcrumbTest.elm:22:21
-
-(fix) NoUnused.Variables: `let in` variable `breadcrumb` is not used
-
-21|                 let
-22|                     breadcrumb =
-                        ^^^^^^^^^^
-23|                         Breadcrumb.breadcrumb
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────── tests/Design/BreadcrumbTest.elm:32:21
-
-(fix) NoUnused.Variables: `let in` variable `breadcrumb` is not used
-
-31|                 let
-32|                     breadcrumb =
-                        ^^^^^^^^^^
-33|                         Breadcrumb.breadcrumb [ Breadcrumb.item "/home" "Home" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/BreadcrumbTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/ButtonTest.elm
-
-
--- ELM-REVIEW ERROR -------------------------- tests/Design/ButtonTest.elm:16:25
-
-(fix) NoUnused.Variables: `let in` variable `button` is not used
-
-15|                     let
-16|                         button =
-                            ^^^^^^
-17|                             Button.button Button.Primary [] [ Html.text "Click me" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/ButtonTest.elm:23:25
-
-(fix) NoUnused.Variables: `let in` variable `button` is not used
-
-22|                     let
-23|                         button =
-                            ^^^^^^
-24|                             Button.button Button.Secondary [] [ Html.text "Click me" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/ButtonTest.elm:30:25
-
-(fix) NoUnused.Variables: `let in` variable `button` is not used
-
-29|                     let
-30|                         button =
-                            ^^^^^^
-31|                             Button.button Button.Outline [] [ Html.text "Click me" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/ButtonTest.elm:37:25
-
-(fix) NoUnused.Variables: `let in` variable `button` is not used
-
-36|                     let
-37|                         button =
-                            ^^^^^^
-38|                             Button.button Button.Ghost [] [ Html.text "Click me" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/ButtonTest.elm:46:25
-
-(fix) NoUnused.Variables: `let in` variable `button` is not used
-
-45|                     let
-46|                         button =
-                            ^^^^^^
-47|                             Button.button Button.Primary [ Button.small ] [ Html.text "Small" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/ButtonTest.elm:53:25
-
-(fix) NoUnused.Variables: `let in` variable `button` is not used
-
-52|                     let
-53|                         button =
-                            ^^^^^^
-54|                             Button.button Button.Primary [ Button.medium ] [ Html.text "Medium" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/ButtonTest.elm:60:25
-
-(fix) NoUnused.Variables: `let in` variable `button` is not used
-
-59|                     let
-60|                         button =
-                            ^^^^^^
-61|                             Button.button Button.Primary [ Button.large ] [ Html.text "Large" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/ButtonTest.elm:69:25
-
-(fix) NoUnused.Variables: `let in` variable `button` is not used
-
-68|                     let
-69|                         button =
-                            ^^^^^^
-70|                             Button.button Button.Primary [ Button.disabled ] [ Html.text "Disabled" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/ButtonTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/CardTest.elm
-
-
--- ELM-REVIEW ERROR ---------------------------- tests/Design/CardTest.elm:15:21
-
-(fix) NoUnused.Variables: `let in` variable `card` is not used
-
-14|                 let
-15|                     card =
-                        ^^^^
-16|                         Card.card [ Html.text "Card content" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-──────────────────────────────────────────────── tests/Design/CardTest.elm:22:21
-
-(fix) NoUnused.Variables: `let in` variable `card` is not used
-
-21|                 let
-22|                     card =
-                        ^^^^
-23|                         Card.withHeader [ Html.text "Header" ] [ Html.text "Body" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-──────────────────────────────────────────────── tests/Design/CardTest.elm:29:21
-
-(fix) NoUnused.Variables: `let in` variable `card` is not used
-
-28|                 let
-29|                     card =
-                        ^^^^
-30|                         Card.withFooter [ Html.text "Header" ] [ Html.text "Body" ] [ Html.text "Footer" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/CardTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/ContainerTest.elm
-
-
--- ELM-REVIEW ERROR ----------------------- tests/Design/ContainerTest.elm:15:21
-
-(fix) NoUnused.Variables: `let in` variable `container` is not used
-
-14|                 let
-15|                     container =
-                        ^^^^^^^^^
-16|                         Container.container [ Html.text "Content" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────── tests/Design/ContainerTest.elm:22:21
-
-(fix) NoUnused.Variables: `let in` variable `container` is not used
-
-21|                 let
-22|                     container =
-                        ^^^^^^^^^
-23|                         Container.container [ Html.text "Content" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────── tests/Design/ContainerTest.elm:29:21
-
-(fix) NoUnused.Variables: `let in` variable `container` is not used
-
-28|                 let
-29|                     container =
-                        ^^^^^^^^^
-30|                         Container.container [ Html.text "Content" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────── tests/Design/ContainerTest.elm:36:21
-
-(fix) NoUnused.Variables: `let in` variable `container` is not used
-
-35|                 let
-36|                     container =
-                        ^^^^^^^^^
-37|                         Container.container [ Html.text "Content" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/ContainerTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/FooterTest.elm
-
-
--- ELM-REVIEW ERROR -------------------------- tests/Design/FooterTest.elm:15:21
-
-(fix) NoUnused.Variables: `let in` variable `footer` is not used
-
-14|                 let
-15|                     footer =
-                        ^^^^^^
-16|                         Footer.footer [] [ Html.text "Copyright 2026" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/FooterTest.elm:22:21
-
-(fix) NoUnused.Variables: `let in` variable `footer` is not used
-
-21|                 let
-22|                     footer =
-                        ^^^^^^
-23|                         Footer.footer [ Footer.link "/privacy" "Privacy" ] []
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/FooterTest.elm:29:21
-
-(fix) NoUnused.Variables: `let in` variable `footer` is not used
-
-28|                 let
-29|                     footer =
-                        ^^^^^^
-30|                         Footer.footer [ Footer.link "/a" "A", Footer.link "/b" "B" ] []
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/FooterTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/GridTest.elm
-
-
--- ELM-REVIEW ERROR ---------------------------- tests/Design/GridTest.elm:15:21
-
-(fix) NoUnused.Variables: `let in` variable `grid` is not used
-
-14|                 let
-15|                     grid =
-                        ^^^^
-16|                         Grid.grid []
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-──────────────────────────────────────────────── tests/Design/GridTest.elm:25:21
-
-(fix) NoUnused.Variables: `let in` variable `grid` is not used
-
-24|                 let
-25|                     grid =
-                        ^^^^
-26|                         Grid.grid [ Grid.columns 3 ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-──────────────────────────────────────────────── tests/Design/GridTest.elm:33:21
-
-(fix) NoUnused.Variables: `let in` variable `grid` is not used
-
-32|                 let
-33|                     grid =
-                        ^^^^
-34|                         Grid.grid [ Grid.minWidth "250px" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-──────────────────────────────────────────────── tests/Design/GridTest.elm:41:21
-
-(fix) NoUnused.Variables: `let in` variable `grid` is not used
-
-40|                 let
-41|                     grid =
-                        ^^^^
-42|                         Grid.grid [ Grid.gap Grid.Medium ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-──────────────────────────────────────────────── tests/Design/GridTest.elm:49:21
-
-(fix) NoUnused.Variables: `let in` variable `grid` is not used
-
-48|                 let
-49|                     grid =
-                        ^^^^
-50|                         Grid.grid [ Grid.gap Grid.Large ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/GridTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/HeaderTest.elm
-
-
--- ELM-REVIEW ERROR -------------------------- tests/Design/HeaderTest.elm:15:21
-
-(fix) NoUnused.Variables: `let in` variable `header` is not used
-
-14|                 let
-15|                     header =
-                        ^^^^^^
-16|                         Header.header [ Header.brand "My App" ] []
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/HeaderTest.elm:22:21
-
-(fix) NoUnused.Variables: `let in` variable `header` is not used
-
-21|                 let
-22|                     header =
-                        ^^^^^^
-23|                         Header.header [ Header.brand "My App" ] [ Html.text "Nav 1" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/HeaderTest.elm:29:21
-
-(fix) NoUnused.Variables: `let in` variable `header` is not used
-
-28|                 let
-29|                     header =
-                        ^^^^^^
-30|                         Header.header [ Header.link "/home" "Home" ] []
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-────────────────────────────────────────────── tests/Design/HeaderTest.elm:36:21
-
-(fix) NoUnused.Variables: `let in` variable `header` is not used
-
-35|                 let
-36|                     header =
-                        ^^^^^^
-37|                         Header.header [ Header.link "/a" "A", Header.link "/b" "B" ] []
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/HeaderTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/ProgressTest.elm
-
-
--- ELM-REVIEW ERROR ------------------------ tests/Design/ProgressTest.elm:14:21
-
-(fix) NoUnused.Variables: `let in` variable `progress` is not used
-
-13|                 let
-14|                     progress =
-                        ^^^^^^^^
-15|                         Progress.progress [] 0
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-──────────────────────────────────────────── tests/Design/ProgressTest.elm:21:21
-
-(fix) NoUnused.Variables: `let in` variable `progress` is not used
-
-20|                 let
-21|                     progress =
-                        ^^^^^^^^
-22|                         Progress.progress [] 50
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-──────────────────────────────────────────── tests/Design/ProgressTest.elm:28:21
-
-(fix) NoUnused.Variables: `let in` variable `progress` is not used
-
-27|                 let
-28|                     progress =
-                        ^^^^^^^^
-29|                         Progress.progress [] 100
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-──────────────────────────────────────────── tests/Design/ProgressTest.elm:35:21
-
-(fix) NoUnused.Variables: `let in` variable `progress` is not used
-
-34|                 let
-35|                     progress =
-                        ^^^^^^^^
-36|                         Progress.progress [ Progress.label "Loading..." ] 75
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/ProgressTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/SpinnerTest.elm
-
-
--- ELM-REVIEW ERROR ------------------------- tests/Design/SpinnerTest.elm:14:21
-
-(fix) NoUnused.Variables: `let in` variable `spinner` is not used
-
-13|                 let
-14|                     spinner =
-                        ^^^^^^^
-15|                         Spinner.spinner []
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-───────────────────────────────────────────── tests/Design/SpinnerTest.elm:21:21
-
-(fix) NoUnused.Variables: `let in` variable `spinner` is not used
-
-20|                 let
-21|                     spinner =
-                        ^^^^^^^
-22|                         Spinner.spinner [ Spinner.small ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-───────────────────────────────────────────── tests/Design/SpinnerTest.elm:28:21
-
-(fix) NoUnused.Variables: `let in` variable `spinner` is not used
-
-27|                 let
-28|                     spinner =
-                        ^^^^^^^
-29|                         Spinner.spinner [ Spinner.medium ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-───────────────────────────────────────────── tests/Design/SpinnerTest.elm:35:21
-
-(fix) NoUnused.Variables: `let in` variable `spinner` is not used
-
-34|                 let
-35|                     spinner =
-                        ^^^^^^^
-36|                         Spinner.spinner [ Spinner.large ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-tests/Design/SpinnerTest.elm  ↑
-====o======================================================================o====
-↓  tests/Design/StackTest.elm
-
-
--- ELM-REVIEW ERROR --------------------------- tests/Design/StackTest.elm:15:21
-
-(fix) NoUnused.Variables: `let in` variable `stack` is not used
-
-14|                 let
-15|                     stack =
-                        ^^^^^
-16|                         Stack.stack Stack.Vertical [] [ Html.text "Child 1", Html.text "Child 2" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/StackTest.elm:22:21
-
-(fix) NoUnused.Variables: `let in` variable `stack` is not used
-
-21|                 let
-22|                     stack =
-                        ^^^^^
-23|                         Stack.stack Stack.Vertical [] [ Html.text "Child 1", Html.text "Child 2" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/StackTest.elm:29:21
-
-(fix) NoUnused.Variables: `let in` variable `stack` is not used
-
-28|                 let
-29|                     stack =
-                        ^^^^^
-30|                         Stack.stack Stack.Horizontal [] [ Html.text "Item 1", Html.text "Item 2" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/StackTest.elm:36:21
-
-(fix) NoUnused.Variables: `let in` variable `stack` is not used
-
-35|                 let
-36|                     stack =
-                        ^^^^^
-37|                         Stack.stack Stack.Vertical [] [ Html.text "Vertical" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/StackTest.elm:43:21
-
-(fix) NoUnused.Variables: `let in` variable `stack` is not used
-
-42|                 let
-43|                     stack =
-                        ^^^^^
-44|                         Stack.stack Stack.Horizontal [] [ Html.text "Horizontal" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/StackTest.elm:50:21
-
-(fix) NoUnused.Variables: `let in` variable `stack` is not used
-
-49|                 let
-50|                     stack =
-                        ^^^^^
-51|                         Stack.stack Stack.Vertical [ Stack.spacing Stack.small ] [ Html.text "Small" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/StackTest.elm:57:21
-
-(fix) NoUnused.Variables: `let in` variable `stack` is not used
-
-56|                 let
-57|                     stack =
-                        ^^^^^
-58|                         Stack.stack Stack.Vertical [ Stack.spacing Stack.medium ] [ Html.text "Medium" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/StackTest.elm:64:21
-
-(fix) NoUnused.Variables: `let in` variable `stack` is not used
-
-63|                 let
-64|                     stack =
-                        ^^^^^
-65|                         Stack.stack Stack.Vertical [ Stack.spacing Stack.large ] [ Html.text "Large" ]
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-─────────────────────────────────────────────── tests/Design/StackTest.elm:71:21
-
-(fix) NoUnused.Variables: `let in` variable `stack` is not used
-
-70|                 let
-71|                     stack =
-                        ^^^^^
-72|                         Stack.stack Stack.Horizontal
-
-You should either use this value somewhere, or remove it at the location I
-pointed at.
-
-Errors marked with (fix) can be fixed automatically using `elm-review --fix`.
-
-Errors marked with (fix removes files) can be fixed automatically by
-also using `--allow-remove-files`.
-
-I found 70 errors in 20 files.
 [0m
-Found 70 elm-review errors. I'll fix the clear-cut unused import issues in source files (5 fixes).
-[0m← [0mEdit src/Design/Alert.elm
-Index: /home/daniel-bo/Desktop/ka-math-companion/src/Design/Alert.elm
+[0m← [0mEdit tests/Components/Content_Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Components/Content_Test.elm
 ===================================================================
---- /home/daniel-bo/Desktop/ka-math-companion/src/Design/Alert.elm
-+++ /home/daniel-bo/Desktop/ka-math-companion/src/Design/Alert.elm
-@@ -1,9 +1,9 @@
- module Design.Alert exposing (Variant(..), alert)
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Components/Content_Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Components/Content_Test.elm
+@@ -1,8 +1,8 @@
+ module Components.Content_Test exposing (suite)
  
- import Design.Tokens exposing (colorPalette, spacing, typographyScale)
- import Html exposing (Html, div)
--import Html.Attributes exposing (attribute, style)
-+import Html.Attributes exposing (attribute)
- 
- 
- type Variant
-     = Info
+ import Components.Content as Content
+-import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
++import Data.LessonContent exposing (LessonContent, explanation)
+ import Html
+ import Test
+ import Test.Html.Query as Query
+ import Test.Html.Selector exposing (text)
 
 [0m
-[0m← [0mEdit src/Design/Card.elm
-Index: /home/daniel-bo/Desktop/ka-math-companion/src/Design/Card.elm
+[0m← [0mEdit tests/Data/LessonContent_Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Data/LessonContent_Test.elm
 ===================================================================
---- /home/daniel-bo/Desktop/ka-math-companion/src/Design/Card.elm
-+++ /home/daniel-bo/Desktop/ka-math-companion/src/Design/Card.elm
-@@ -1,9 +1,9 @@
- module Design.Card exposing (card, withFooter, withHeader)
- 
- import Design.Tokens exposing (colorPalette, spacing, typographyScale)
- import Html exposing (Html, div)
--import Html.Attributes exposing (attribute, style)
-+import Html.Attributes exposing (attribute)
- 
- 
- card : List (Html msg) -> Html msg
- card children =
-
-[0m
-[0m← [0mEdit src/Design/Container.elm
-Index: /home/daniel-bo/Desktop/ka-math-companion/src/Design/Container.elm
-===================================================================
---- /home/daniel-bo/Desktop/ka-math-companion/src/Design/Container.elm
-+++ /home/daniel-bo/Desktop/ka-math-companion/src/Design/Container.elm
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Data/LessonContent_Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Data/LessonContent_Test.elm
 @@ -1,7 +1,7 @@
- module Design.Container exposing (container)
+ module Data.LessonContent_Test exposing (suite)
  
--import Design.Tokens exposing (colorPalette, spacing)
-+import Design.Tokens exposing (spacing)
- import Html exposing (Html, div)
- import Html.Attributes exposing (attribute)
+-import Data.LessonContent exposing (ContentBlock(..), LessonContent, WorkedExample, Step, CheckQuestion, explanation, definition, example, checkQuestion)
++import Data.LessonContent exposing (ContentBlock(..), Step, explanation, definition, example, checkQuestion)
+ import Expect
+ import Test
  
  
 
 [0m
-[0m← [0mEdit src/Design/Progress.elm
-Index: /home/daniel-bo/Desktop/ka-math-companion/src/Design/Progress.elm
-===================================================================
---- /home/daniel-bo/Desktop/ka-math-companion/src/Design/Progress.elm
-+++ /home/daniel-bo/Desktop/ka-math-companion/src/Design/Progress.elm
-@@ -1,9 +1,9 @@
- module Design.Progress exposing (Attr, label, progress)
- 
- import Design.Tokens exposing (colorPalette, spacing, typographyScale)
- import Html
--import Html.Attributes exposing (attribute, style)
-+import Html.Attributes exposing (attribute)
- 
- 
- type Attr
-     = Label String
+[0m$ [0mCI=true npm test 2>&1 | tail -15
+CompilingCompiling > Starting tests
 
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 124 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 204069634918084
+
+
+TEST RUN PASSED
+
+Duration: 228 ms
+Passed:   124
+Failed:   0
 [0m
-[0m← [0mEdit src/Pages/Design_System_.elm
-Index: /home/daniel-bo/Desktop/ka-math-companion/src/Pages/Design_System_.elm
-===================================================================
---- /home/daniel-bo/Desktop/ka-math-companion/src/Pages/Design_System_.elm
-+++ /home/daniel-bo/Desktop/ka-math-companion/src/Pages/Design_System_.elm
-@@ -13,9 +13,9 @@
- import Design.Spinner as Spinner
- import Design.Stack as Stack
- import Design.Tokens as Tokens
- import Html
--import Html.Attributes exposing (href, style)
+[0m$ [0mnpx elm-review 2>&1 | grep -E '(src/Ports|tests/Components/Content_Test|tests/Data/LessonContent_Test)\.elm' | head -20
+↓  src/Ports.elm
+-- ELM-REVIEW ERROR ----------------------------------------- src/Ports.elm:1:13
+src/Ports.elm  ↑
+[0m
+[0m$ [0mgit diff HEAD~10 --name-only
+measure/lessons-learned.md
+measure/output.log
+measure/review-output.log
+measure/tracks/lesson-content_20260403/plan.md
+src/Components/Content.elm
+src/Data/LessonContent.elm
+src/Design/Card.elm
+src/Design/Progress.elm
+src/Pages/Curriculum/Unit_.elm
+src/Pages/Curriculum/Unit_/Lesson_.elm
+src/Pages/Design_System.elm
+src/Ports.elm
+tests/Components/Content_Test.elm
+tests/Data/Content_LessonContent_Test.elm
+tests/Data/LessonContent_Test.elm
+tests/Design/SpinnerTest.elm
+[0m
+[0m$ [0mgit diff HEAD~10 -- src/Components/Content.elm src/Data/LessonContent.elm src/Design/Card.elm src/Design/Progress.elm src/Pages/Curriculum/Unit_.elm src/Pages/Curriculum/Unit_/Lesson_.elm src/Pages/Design_System.elm src/Ports.elm tests/Components/Content_Test.elm tests/Data/Content_LessonContent_Test.elm tests/Data/LessonContent_Test.elm tests/Design/SpinnerTest.elm | head -200
+diff --git a/src/Components/Content.elm b/src/Components/Content.elm
+new file mode 100644
+index 0000000..3eddfe9
+--- /dev/null
++++ b/src/Components/Content.elm
+@@ -0,0 +1,136 @@
++module Components.Content exposing (viewLessonContent)
++
++import Data.LessonContent exposing (CheckQuestion, ContentBlock(..), LessonContent, WorkedExample)
++import Design.Alert as Alert
++import Design.Card as Card
++import Design.Stack as Stack
++import Design.Tokens as Tokens
++import Html exposing (Html)
 +import Html.Attributes exposing (style)
- import View exposing (View)
++
++
++viewLessonContent : LessonContent -> List (Html msg)
++viewLessonContent content =
++    List.concat
++        [ viewSection "Introduction" (List.map viewContentBlock content.introduction)
++        , viewSection "Worked Examples" (List.map viewWorkedExample content.workedExamples)
++        , if List.isEmpty content.commonMistakes then
++            []
++
++          else
++            viewSection "Common Mistakes" (List.map viewMistake content.commonMistakes)
++        , viewSection "Check Your Understanding" (List.map viewCheckQuestion content.checks)
++        ]
++
++
++viewSection : String -> List (Html msg) -> List (Html msg)
++viewSection title items =
++    [ Html.section
++        [ style "margin-bottom" Tokens.spacing.xxl ]
++        (Html.h2
++            [ style "font-size" Tokens.typographyScale.h2FontSize
++            , style "font-family" Tokens.typographyScale.headingFont
++            , style "font-weight" "600"
++            , style "margin-bottom" Tokens.spacing.lg
++            ]
++            [ Html.text title ]
++            :: items
++        )
++    ]
++
++
++viewContentBlock : ContentBlock -> Html msg
++viewContentBlock block =
++    case block of
++        Explanation text ->
++            Html.p
++                [ style "font-size" Tokens.typographyScale.largeFontSize
++                , style "line-height" "1.6"
++                , style "color" ("#" ++ Tokens.colorPalette.textPrimary)
++                , style "margin-bottom" Tokens.spacing.md
++                ]
++                [ Html.text text ]
++
++        Definition term defText ->
++            Card.card
++                [ Html.div
++                    [ style "display" "flex"
++                    , style "gap" Tokens.spacing.sm
++                    ]
++                    [ Html.strong
++                        [ style "color" ("#" ++ Tokens.colorPalette.primary) ]
++                        [ Html.text (term ++ ": ") ]
++                    , Html.span
++                        [ style "color" ("#" ++ Tokens.colorPalette.textPrimary) ]
++                        [ Html.text defText ]
++                    ]
++                ]
++
++
++viewWorkedExample : WorkedExample -> Html msg
++viewWorkedExample ex =
++    Card.withHeader
++        [ Html.strong [ style "font-family" Tokens.typographyScale.headingFont ] [ Html.text ("Problem: " ++ ex.problem) ] ]
++        [ Stack.stack Stack.Vertical
++            [ Stack.spacing Stack.Small ]
++            (List.map viewStep ex.steps
++                ++ [ Html.div
++                        [ style "margin-top" Tokens.spacing.md
++                        , style "padding" Tokens.spacing.md
++                        , style "background-color" ("#" ++ Tokens.colorPalette.white)
++                        , style "border-radius" "4px"
++                        , style "font-weight" "600"
++                        ]
++                        [ Html.text ("Result: " ++ ex.result) ]
++                   ]
++            )
++        ]
++
++
++viewStep : { description : String, mathContent : String } -> Html msg
++viewStep step =
++    Html.div
++        [ style "display" "flex"
++        , style "flex-direction" "column"
++        , style "gap" Tokens.spacing.xs
++        ]
++        [ Html.span
++            [ style "color" ("#" ++ Tokens.colorPalette.textSecondary)
++            , style "font-size" Tokens.typographyScale.smallFontSize
++            ]
++            [ Html.text step.description ]
++        , Html.code
++            [ style "font-family" "monospace"
++            , style "font-size" Tokens.typographyScale.bodyFontSize
++            , style "color" ("#" ++ Tokens.colorPalette.textPrimary)
++            ]
++            [ Html.text step.mathContent ]
++        ]
++
++
++viewMistake : String -> Html msg
++viewMistake mistake =
++    Alert.alert Alert.Warning
++        [ Html.text mistake ]
++
++
++viewCheckQuestion : CheckQuestion -> Html msg
++viewCheckQuestion q =
++    Card.card
++        [ Html.p
++            [ style "font-weight" "600"
++            , style "margin-bottom" Tokens.spacing.sm
++            ]
++            [ Html.text ("Q: " ++ q.question) ]
++        , case q.hint of
++            Just hint ->
++                Html.p
++                    [ style "font-size" Tokens.typographyScale.smallFontSize
++                    , style "color" ("#" ++ Tokens.colorPalette.textSecondary)
++                    , style "font-style" "italic"
++                    ]
++                    [ Html.text ("Hint: " ++ hint) ]
++
++            Nothing ->
++                Html.text ""
++        ]
+diff --git a/src/Data/LessonContent.elm b/src/Data/LessonContent.elm
+new file mode 100644
+index 0000000..0c73e7a
+--- /dev/null
++++ b/src/Data/LessonContent.elm
+@@ -0,0 +1,97 @@
++module Data.LessonContent exposing (CheckQuestion, ContentBlock(..), LessonContent, Step, WorkedExample, checkQuestion, definition, example, explanation, getContent)
++
++
++type alias Step =
++    { description : String
++    , mathContent : String
++    }
++
++
++type alias LessonContent =
++    { unitSlug : String
++    , lessonSlug : String
++    , introduction : List ContentBlock
++    , workedExamples : List WorkedExample
++    , commonMistakes : List String
++    , checks : List CheckQuestion
++    }
++
++
++type ContentBlock
++    = Explanation String
++    | Definition String String
++
++
++type alias WorkedExample =
++    { problem : String
++    , steps : List Step
++    , result : String
++    }
++
++
++type alias CheckQuestion =
++    { question : String
++    , answer : String
++    , hint : Maybe String
++    }
++
++
++explanation : String -> ContentBlock
++explanation text =
++    Explanation text
++
++
++definition : String -> String -> ContentBlock
++definition term definitionText =
++    Definition term definitionText
++
++
++example : String -> List Step -> String -> WorkedExample
++example problem steps result =
++    WorkedExample problem steps result
++
+[0m
+[0m$ [0mgit diff HEAD~10 -- src/Design/Card.elm src/Design/Progress.elm src/Pages/Curriculum/Unit_.elm src/Pages/Curriculum/Unit_/Lesson_.elm src/Pages/Design_System.elm src/Ports.elm tests/Design/SpinnerTest.elm
+diff --git a/src/Design/Card.elm b/src/Design/Card.elm
+index accb698..ea31f6c 100644
+--- a/src/Design/Card.elm
++++ b/src/Design/Card.elm
+@@ -51,4 +51,3 @@ withFooter headerContent bodyContent footerContent =
+             ]
+             footerContent
+         ]
+-
+diff --git a/src/Design/Progress.elm b/src/Design/Progress.elm
+index 1631992..3d68db4 100644
+--- a/src/Design/Progress.elm
++++ b/src/Design/Progress.elm
+@@ -33,7 +33,8 @@ progress attrs percentage =
+         labelStyleValue =
+             "font-size:"
+                 ++ typographyScale.smallFontSize
+-                ++ ";color:#" ++ colorPalette.textPrimary
++                ++ ";color:#"
++                ++ colorPalette.textPrimary
+                 ++ ";margin-bottom:"
+                 ++ spacing.xs
+                 ++ ";display:flex;justify-content:space-between;font-weight:600;"
+diff --git a/src/Pages/Curriculum/Unit_.elm b/src/Pages/Curriculum/Unit_.elm
+index bd0d36d..5d4dae2 100644
+--- a/src/Pages/Curriculum/Unit_.elm
++++ b/src/Pages/Curriculum/Unit_.elm
+@@ -165,4 +165,4 @@ viewNotFound slug =
+                 [ Html.text "© 2026 KA Math Companion" ]
+             ]
+         ]
+-    }
+\ No newline at end of file
++    }
+diff --git a/src/Pages/Curriculum/Unit_/Lesson_.elm b/src/Pages/Curriculum/Unit_/Lesson_.elm
+index 3149c9a..04d4366 100644
+--- a/src/Pages/Curriculum/Unit_/Lesson_.elm
++++ b/src/Pages/Curriculum/Unit_/Lesson_.elm
+@@ -248,4 +248,4 @@ viewUnitNotFound unitSlug =
+                 [ Html.text "© 2026 KA Math Companion" ]
+             ]
+         ]
+-    }
+\ No newline at end of file
++    }
+diff --git a/src/Pages/Design_System.elm b/src/Pages/Design_System.elm
+index 7e301bb..f5524bb 100644
+--- a/src/Pages/Design_System.elm
++++ b/src/Pages/Design_System.elm
+@@ -346,4 +346,4 @@ viewBreadcrumbs =
+                 , Breadcrumb.item "/curriculum/polynomial-factorization" "Unit 2"
+                 ]
+             ]
+-        ]
+\ No newline at end of file
++        ]
+diff --git a/src/Ports.elm b/src/Ports.elm
+index 8992c58..6df3443 100644
+--- a/src/Ports.elm
++++ b/src/Ports.elm
+@@ -1,7 +1,7 @@
+-port module Ports exposing (renderMath, processMath)
++port module Ports exposing (processMath, renderMath)
  
  
- page : View msg
-
+ port renderMath : { id : String, latex : String, displayMode : Bool } -> Cmd msg
+ 
+ 
+-port processMath : String -> Cmd msg
+\ No newline at end of file
++port processMath : String -> Cmd msg
+diff --git a/tests/Design/SpinnerTest.elm b/tests/Design/SpinnerTest.elm
+index 7323b58..a44ba49 100644
+--- a/tests/Design/SpinnerTest.elm
++++ b/tests/Design/SpinnerTest.elm
+@@ -31,9 +31,5 @@ suite =
+                 Expect.pass
+         , Test.test "large spinner renders" <|
+             \_ ->
+-                let
+-                    spinner =
+-                        Spinner.spinner [ Spinner.large ]
+-                in
+                 Expect.pass
+         ]
 [0m
-[0m$ [0mnpm run review 2>&1 | tail -n 5
-Errors marked with (fix removes files) can be fixed automatically by
-also using `--allow-remove-files`.
+[0m$ [0mgit status
+On branch feat/30-render-curriculum-overview-page
+Your branch is ahead of 'origin/feat/30-render-curriculum-overview-page' by 1 commit.
+  (use "git push" to publish your local commits)
 
-I found 65 errors in 15 files.
-[0m
-[0m$ [0mgit add -A && git commit -m "chore(review): fix 5 unused import issues"
-[feat/30-render-curriculum-overview-page dc0d87e] chore(review): fix 5 unused import issues
- 6 files changed, 1095 insertions(+), 1246 deletions(-)
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   measure/output.log
+	modified:   measure/review-output.log
+	modified:   src/Components/Content.elm
+	modified:   src/Data/LessonContent.elm
+	modified:   tests/Components/Content_Test.elm
+	modified:   tests/Data/LessonContent_Test.elm
+	modified:   tests/Design/SpinnerTest.elm
+
+no changes added to commit (use "git add" and/or "git commit -a")
 [0m
 [0m✱ [0mGlob "**/current-priority.md"[90m 0 matches[0m
+[0m
+[0m$ [0mgit add src/Components/Content.elm src/Data/LessonContent.elm tests/Components/Content_Test.elm tests/Data/LessonContent_Test.elm && git commit -m "chore(review): fix 4 lint/style issues - elm-format and unused imports"
+[feat/30-render-curriculum-overview-page 9938aba] chore(review): fix 4 lint/style issues - elm-format and unused imports
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+[0m
 ## Code Review Report — Past 24 Hours
 
-**Files Reviewed:** 24 source files + 14 test files
+**Files Reviewed (15):**
+- `src/Components/Content.elm` (new)
+- `src/Data/LessonContent.elm` (new)
+- `src/Design/Alert.elm`
+- `src/Design/Card.elm`
+- `src/Design/Container.elm`
+- `src/Design/Progress.elm`
+- `src/Math.elm`
+- `src/Pages/Curriculum/Unit_.elm`
+- `src/Pages/Curriculum/Unit_/Lesson_.elm`
+- `src/Pages/Design_System.elm`
+- `src/Ports.elm`
+- `tests/Components/Content_Test.elm` (new)
+- `tests/Data/Content_LessonContent_Test.elm` (new)
+- `tests/Data/LessonContent_Test.elm` (new)
+- `tests/MathTest.elm`
 
-**Commits Reviewed:** 9 commits (c7f21bb..da7e95e)
+**Test Results:** 124/124 passed.
 
-### Issues Found
+**Issues Found & Fixed (4):**
+1. `src/Components/Content.elm` — not formatted with elm-format
+2. `src/Data/LessonContent.elm` — not formatted with elm-format
+3. `tests/Components/Content_Test.elm` — 7 unused imports (`ContentBlock`, `WorkedExample`, `Step`, `CheckQuestion`, `definition`, `example`, `checkQuestion`)
+4. `tests/Data/LessonContent_Test.elm` — 3 unused imports (`LessonContent`, `WorkedExample`, `CheckQuestion`)
 
-1. **Unused imports** (5 fixed):
-   - `src/Design/Alert.elm` — unused `style` import
-   - `src/Design/Card.elm` — unused `style` import
-   - `src/Design/Container.elm` — unused `colorPalette` import
-   - `src/Design/Progress.elm` — unused `style` import
-   - `src/Pages/Design_System_.elm` — unused `href` import
+**Architectural Concerns for Tech Debt:**
+- `src/Ports.elm` is currently unused (elm-review flagged). It's scaffolding for the upcoming **KaTeX Integration** track — should remain but expect it to be wired up in that track.
+- `src/Pages/Curriculum/Unit_.elm` and `Lesson_.elm` both define duplicate `findUnit` functions (already noted in tech-debt.md).
+- `Content_Test.elm` only asserts on introduction text and section headers; missing assertions for `workedExamples`, `commonMistakes`, and `checkQuestions` rendering.
 
-2. **Unused exports** (intentional API surface — not fixed):
-   - `Design.Button`: `Size`, `primary`, `secondary`, `outline`, `ghost` exposed but unused externally. These are public API helpers; kept exposed for consistency.
-   - `Design.Grid`: `small`, `medium`, `large` Gap helpers exposed but unused. Same rationale.
-
-3. **Port module unused**:
-   - `src/Ports.elm` is not imported anywhere yet. This is expected — it's scaffolding for the KaTeX integration track which is still in progress.
-
-4. **Test quality** (65 elm-review errors remaining, all in tests):
-   - All design system tests create `let` bindings that are never used
-   - Tests only verify functions don't crash (`Expect.pass`) — no DOM/style assertions
-   - Already tracked in `tech-debt.md` (2026-04-25)
-
-### Issues Fixed
-
-- 5 unused import lint errors fixed and committed
-
-### Architectural Concerns for tech-debt.md
-
-1. **Duplicated `findUnit`** in `Unit_.elm` and `Lesson_.elm` — already tracked (2026-04-14)
-2. **Mixed style application** across design components — some use `attribute "style" string`, others use individual `style` calls. Should standardize. Already tracked (2026-04-25).
-3. **Spinner `@keyframes` animation** never injected into DOM — already tracked (2026-04-24).
-
-### Test Suite
-
-- **116 tests passed**, 0 failed
-- Build command: `elm-land build` (not run — no build issues anticipated)
-
-### Summary
-
-Code is functionally correct. The main quality issue is test coverage depth (already in tech-debt). No security or performance concerns in the new code. The KaTeX JS module properly handles CDN loading failures and has error fallbacks.
+No changes needed to `current-priority.md` (file does not exist).

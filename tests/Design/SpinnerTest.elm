@@ -31,9 +31,5 @@ suite =
                 Expect.pass
         , Test.test "large spinner renders" <|
             \_ ->
-                let
-                    spinner =
-                        Spinner.spinner [ Spinner.large ]
-                in
                 Expect.pass
         ]
