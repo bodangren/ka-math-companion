@@ -56,6 +56,6 @@
 
 ## Phase 6: Integration
 
-- [ ] **Task 12: Update Lesson Pages**
-  - [ ] Write Tests: Verify lesson pages show content
-  - [ ] Implement: Integrate content renderer into Lesson_.elm
+- [x] **Task 12: Update Lesson Pages**
+   - [x] Write Tests: Verify lesson pages show content
+   - [x] Implement: Integrate content renderer into Lesson_.elm

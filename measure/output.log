@@ -450,3 +450,30 @@ project clean, and maybe detect some unused code in your project.
 [0m$ [0mnpm run review 2>&1 | grep -E "(src/Pages/Curriculum/Unit_|src/Data/LessonContent|src/Components/Content|tests/Pages/Curriculum/Unit_)" | head -20
 (no output)
 [0m
+[0m$ [0mgit add -A && git commit -m "feat(lesson-content): Task 12 - Integrate content renderer into Lesson pages
+
+- Import Components.Content and Data.LessonContent in Lesson_.elm
+- Call Content.viewLessonContent when lesson content exists for a lesson
+- Add 2 new tests to verify content renders for intro-to-polynomials
+- 126 tests pass, build succeeds"
+[feat/30-render-curriculum-overview-page afc7f32] feat(lesson-content): Task 12 - Integrate content renderer into Lesson pages
+ 3 files changed, 461 insertions(+)
+[0m
+[0m← [0mEdit measure/tracks/lesson-content_20260403/plan.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/lesson-content_20260403/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/lesson-content_20260403/plan.md
++++ /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/lesson-content_20260403/plan.md
+@@ -55,7 +55,7 @@
+   - [ ] Implement: Write full lesson content
+ 
+ ## Phase 6: Integration
+ 
+-- [ ] **Task 12: Update Lesson Pages**
+-  - [ ] Write Tests: Verify lesson pages show content
+-  - [ ] Implement: Integrate content renderer into Lesson_.elm
++- [x] **Task 12: Update Lesson Pages**
++   - [x] Write Tests: Verify lesson pages show content
++   - [x] Implement: Integrate content renderer into Lesson_.elm
+
+[0m
