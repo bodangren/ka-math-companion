@@ -33,9 +33,9 @@ unit1 =
         [ { title = "Intro to polynomials"
           , slug = "intro-to-polynomials"
           , objectives =
-                [ "Define polynomial, degree, leading coefficient, and standard form"
-                , "Identify parts of a polynomial expression"
-                , "Classify polynomials by degree and number of terms"
+                [ "Define polynomial, degree, leading coefficient, and $ax^n$ standard form"
+                , "Identify parts of a $ax^n + bx^{n-1} + ... + c$ polynomial expression"
+                , "Classify polynomials by $n$ (degree) and number of terms"
                 ]
           , description = "Learn the vocabulary and classification system for polynomials, including degree, terms, and standard form."
           , estimatedMinutes = 30
@@ -53,9 +53,9 @@ unit1 =
         , { title = "Adding and subtracting polynomials"
           , slug = "adding-and-subtracting-polynomials"
           , objectives =
-                [ "Combine like terms to add polynomials"
-                , "Distribute negative signs to subtract polynomials"
-                , "Write results in standard form"
+                [ "Combine like terms $3x^2 + 5x^2 = 8x^2$ to add polynomials"
+                , "Distribute negative signs $-1 \\cdot (x^2 - 2x) = -x^2 + 2x$ to subtract polynomials"
+                , "Write results in $ax^n + bx^{n-1} + ...$ standard form"
                 ]
           , description = "Master the techniques for combining polynomials through addition and subtraction using like terms."
           , estimatedMinutes = 30
@@ -63,9 +63,9 @@ unit1 =
         , { title = "Multiplying monomials by polynomials"
           , slug = "multiplying-monomials-by-polynomials"
           , objectives =
-                [ "Apply distributive property to multiply monomials by polynomials"
-                , "Use exponent rules when multiplying powers"
-                , "Simplify products to standard form"
+                [ "Apply distributive property $a \\cdot (b + c) = ab + ac$ to multiply monomials by polynomials"
+                , "Use exponent rules $x^a \\cdot x^b = x^{a+b}$ when multiplying powers"
+                , "Simplify products to $ax^n$ standard form"
                 ]
           , description = "Apply the distributive property to multiply monomials by polynomials and simplify using exponent rules."
           , estimatedMinutes = 30
@@ -73,9 +73,9 @@ unit1 =
         , { title = "Multiplying binomials by polynomials"
           , slug = "multiplying-binomials-by-polynomials"
           , objectives =
-                [ "Apply FOIL method to multiply binomials"
-                , "Use area models to visualize polynomial multiplication"
-                , "Multiply binomials by trinomials using distribution"
+                [ "Apply FOIL method $(a+b)(c+d) = ac + ad + bc + bd$ to multiply binomials"
+                , "Use area models to visualize $x \\cdot x = x^2$ polynomial multiplication"
+                , "Multiply binomials by trinomials using $a(b+c) = ab + ac$ distribution"
                 ]
           , description = "Learn FOIL and area models to multiply binomials and extend to larger polynomial expressions."
           , estimatedMinutes = 30
@@ -83,9 +83,9 @@ unit1 =
         , { title = "Special products"
           , slug = "special-products"
           , objectives =
-                [ "Recognize and apply perfect square patterns (a+b)² and (a-b)²"
-                , "Apply difference of squares pattern (a+b)(a-b)"
-                , "Use special products to multiply efficiently"
+                [ "Recognize and apply $(a+b)^2 = a^2 + 2ab + b^2$ perfect square patterns"
+                , "Apply difference of squares $(a+b)(a-b) = a^2 - b^2$ pattern"
+                , "Use special products to multiply $x^2 - 9 = (x+3)(x-3)$ efficiently"
                 ]
           , description = "Discover shortcut patterns for multiplying conjugates and perfect square binomials to speed up calculations."
           , estimatedMinutes = 30
