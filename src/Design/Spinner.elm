@@ -30,6 +30,13 @@ large =
     SizeAttr Large
 
 
+keyframesStyle : Html.Html msg
+keyframesStyle =
+    Html.node "style"
+        [ attribute "type" "text/css" ]
+        [ Html.text "@keyframes spin { to { transform: rotate(360deg); } }" ]
+
+
 spinner : List Attr -> Html.Html msg
 spinner attrs =
     let
@@ -72,7 +79,8 @@ spinner attrs =
                 ++ ";"
     in
     Html.div [ attribute "style" containerStyleValue ]
-        [ Html.node "svg"
+        [ keyframesStyle
+        , Html.node "svg"
             [ attribute "viewBox" "0 0 24 24"
             , attribute "fill" "none"
             , attribute "style" circleStyleValue

@@ -2,19 +2,19 @@
 
 ## Phase 1: JavaScript Infrastructure
 
-- [ ] **Task 1: Create KaTeX JavaScript Module**
+- [x] **Task 1: Create KaTeX JavaScript Module**
   - [ ] Write Tests: N/A (JavaScript module)
-  - [ ] Implement: Create `public/katex.js` with KaTeX loader and port handlers
+  - [x] Implement: Create `public/katex.js` with KaTeX loader and port handlers
 
-- [ ] **Task 2: Set Up Elm Ports**
+- [x] **Task 2: Set Up Elm Ports**
   - [ ] Write Tests: Verify port types compile
-  - [ ] Implement: Create `src/Ports.elm` with outgoing/incoming ports
+  - [x] Implement: Create `src/Ports.elm` with outgoing/incoming ports
 
 ## Phase 2: Elm Math Module
 
-- [ ] **Task 3: Create Math Module**
-  - [ ] Write Tests: Verify math expression types
-  - [ ] Implement: Create `src/Math.elm` with InlineMath, DisplayMath types
+- [x] **Task 3: Create Math Module**
+  - [x] Write Tests: Verify math expression types
+  - [x] Implement: Create `src/Math.elm` with InlineMath, DisplayMath types
 
 - [ ] **Task 4: Math Parsing**
   - [ ] Write Tests: Verify parsing of `$...$` and `$$...$$` syntax
@@ -22,9 +22,9 @@
 
 ## Phase 3: Integration
 
-- [ ] **Task 5: Create Math View Component**
-  - [ ] Write Tests: Verify component renders with math
-  - [ ] Implement: Create `src/Components/Math.elm` wrapper
+- [x] **Task 5: Create Math View Component**
+  - [x] Write Tests: Verify component renders with math
+  - [x] Implement: Create `src/Components/Math.elm` wrapper
 
 - [ ] **Task 6: Update Lesson Pages**
   - [ ] Write Tests: Verify lessons render with math
