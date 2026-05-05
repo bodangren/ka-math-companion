@@ -35,3 +35,5 @@
 - (2026-05-05, katex-integration) Task 7: Added inline math to Unit 1 polynomial lesson objectives. Math syntax like $ax^n$ embedded directly in objective strings. kaTeX will render on page load via data-katex attributes.
 - (2026-05-05, katex-integration) Tasks 8-9: Added math notation to Unit 5 (logarithms: log rules, exponential equations) and Unit 8 (trigonometry: Law of Sines/Cosines, unit circle, Pythagorean identity). KaTeX track complete.
 - (2026-05-05, katex-integration) Error handling: katex.js already handles errors gracefully via `throwOnError: false` and try/catch fallback to plain text. Accessibility via rendered HTML structure.
+- (2026-05-05, interactive-viz) elm/svg package: Use `Svg` module for SVG elements, import specific `Svg.Attributes` functions. Html.svg doesn't exist - it's `Svg.svg`.
+- (2026-05-05, interactive-viz) Elm variable shadowing: Using `mathX` as parameter name shadows the `mathX` function. Use distinct names like `mx` or `my` to avoid compile errors.
