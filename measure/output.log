@@ -937,3 +937,72 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && git add measure/output.log measure/tracks/interactive-viz_20260403/plan.md src/Viz/NumberLine.elm tests/Viz/NumberLineTest.elm && git commit -m "Add NumberLine visualization with interactive selection (Tasks 6-8)
+
+Phase 3 of InteractiveVisualizations track:
+- Create NumberLine.elm with configurable range
+- Add point rendering with open/closed circles
+- Add interval rendering with color support
+- Add onClickSelect for interactive point selection
+- Write tests for all new functionality
+
+Tests: 188 passing
+Build: successful"
+[feat/30-render-curriculum-overview-page 849e3a6] Add NumberLine visualization with interactive selection (Tasks 6-8)
+ 4 files changed, 1405 insertions(+), 6 deletions(-)
+ create mode 100644 src/Viz/NumberLine.elm
+ create mode 100644 tests/Viz/NumberLineTest.elm
+[0m
+[0m✗ [0medit failed
+[91m[1mError: [0mNo changes to apply: oldString and newString are identical.
+[0m→ [0mRead measure/tracks/interactive-viz_20260403/plan.md
+[0m
+[0m$ [0mgit diff measure/tracks/interactive-viz_20260403/plan.md
+(no output)
+[0m
+[0m← [0mEdit measure/tracks/interactive-viz_20260403/plan.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/interactive-viz_20260403/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/interactive-viz_20260403/plan.md
++++ /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/interactive-viz_20260403/plan.md
+@@ -33,11 +33,11 @@
+ - [x] **Task 7: Points and Intervals**
+   - [x] Write Tests: Verify points and intervals plot correctly
+   - [x] Implement: Add point/interval rendering with open/closed circles
+ 
+-- [ ] **Task 8: Interactive Selection**
+-  - [ ] Write Tests: Verify click selects points
+-  - [ ] Implement: Add click handlers for point selection
++- [x] **Task 8: Interactive Selection**
++  - [x] Write Tests: Verify click selects points
++  - [x] Implement: Add click handlers for point selection
+ 
+ ## Phase 4: UnitCircle
+ 
+ - [ ] **Task 9: Basic UnitCircle**
+
+[0m
+[0m$ [0mgit add measure/tracks/interactive-viz_20260403/plan.md && git commit -m "Mark Task 8 complete in plan" && git push 2>&1
+[feat/30-render-curriculum-overview-page f6026e5] Mark Task 8 complete in plan
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+To https://github.com/bodangren/ka-math-companion.git
+   ccf0cfc..f6026e5  feat/30-render-curriculum-overview-page -> feat/30-render-curriculum-overview-page
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm test 2>&1
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 188 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 171609362959613
+
+
+TEST RUN PASSED
+
+Duration: 279 ms
+Passed:   188
+Failed:   0
+[0m
