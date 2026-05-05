@@ -4,8 +4,11 @@ module Viz.FunctionGrapher exposing
     , empty
     , functions
     , getScale
+    , green
     , init
+    , orange
     , plotFunction
+    , purple
     , red
     , render
     , withFunction
@@ -88,6 +91,21 @@ blue =
     "#3B82F6"
 
 
+green : String
+green =
+    "#22C55E"
+
+
+orange : String
+orange =
+    "#F97316"
+
+
+purple : String
+purple =
+    "#A855F7"
+
+
 red : String
 red =
     "#EF4444"
@@ -152,25 +170,84 @@ buildPath points =
 
 render : FunctionGrapher -> Html.Html msg
 render g =
-    Svg.svgContainer g.width g.height [] [ axes g ]
+    let
+        viewport =
+            Coords.init g.width g.height
+
+        gridLines =
+            renderGrid g
+
+        axisLines =
+            axes g
+
+        functionPlots =
+            List.map
+                (\( fn, color ) ->
+                    let
+                        pathData =
+                            plotFunction fn viewport -10 10
+                    in
+                    Svg.svgPath
+                        pathData
+                        [ Svg.withStroke color 2.5
+                        , Svg.withFill "none"
+                        ]
+                        []
+                )
+                g.functions
+    in
+    Svg.svgContainer g.width g.height [] (gridLines ++ axisLines :: functionPlots)
+
+
+renderGrid : FunctionGrapher -> List (Html.Html msg)
+renderGrid g =
+    let
+        gridColor =
+            "#E2E8F0"
+
+        xStep =
+            50
+
+        yStep =
+            50
+
+        verticalLines =
+            List.map
+                (\x ->
+                    Svg.svgLine x 0 x g.height [ Svg.withStroke gridColor 1 ] []
+                )
+                (List.filter (\x -> modBy xStep x == 0) (List.range 0 g.width))
+
+        horizontalLines =
+            List.map
+                (\y ->
+                    Svg.svgLine 0 y g.width y [ Svg.withStroke gridColor 1 ] []
+                )
+                (List.filter (\y -> modBy yStep y == 0) (List.range 0 g.height))
+    in
+    verticalLines ++ horizontalLines
 
 
 axes : FunctionGrapher -> Html.Html msg
 axes g =
+    let
+        axisColor =
+            "#64748B"
+    in
     Svg.svgGroup
-        [ Svg.withStroke "#94A3B8" 1 ]
+        []
         [ Svg.svgLine
             0
             (round g.originY)
             g.width
             (round g.originY)
-            []
+            [ Svg.withStroke axisColor 2 ]
             []
         , Svg.svgLine
             (round g.originX)
             0
             (round g.originX)
             g.height
-            []
+            [ Svg.withStroke axisColor 2 ]
             []
         ]
