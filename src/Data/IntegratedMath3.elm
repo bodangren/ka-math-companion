@@ -269,9 +269,9 @@ unit5 =
         [ { title = "Evaluating logarithms"
           , slug = "evaluating-logarithms"
           , objectives =
-                [ "Define logarithms as inverses of exponential functions"
-                , "Evaluate logarithms with base 10 and base e"
-                , "Convert between exponential and logarithmic form"
+                [ "Define logarithms as inverses of exponential functions: if $y = b^x$ then $\\log_b(y) = x$"
+                , "Evaluate common logarithms $\\log_{10}(x)$ and natural logarithms $\\ln(x)$"
+                , "Convert between exponential form $b^y = x$ and logarithmic form $\\log_b(x) = y$"
                 ]
           , description = "Learn what logarithms are and how to evaluate them as inverses of exponential functions."
           , estimatedMinutes = 30
@@ -279,9 +279,9 @@ unit5 =
         , { title = "Relationships between exponentials and logarithms"
           , slug = "exponentials-and-logarithms"
           , objectives =
-                [ "Explain the inverse relationship between exponential and logarithmic functions"
-                , "Use the property that log_b(b^x) = x and b^(log_b(x)) = x"
-                , "Graph exponential and logarithmic functions as reflections"
+                [ "Explain that exponential and logarithmic functions are inverses: $f^{-1}(x) = \\log_b(x)$ when $f(x) = b^x$"
+                , "Use the property that $\\log_b(b^x) = x$ and $b^{\\log_b(x)} = x$ to simplify expressions"
+                , "Graph exponential $y = b^x$ and logarithmic $y = \\log_b(x)$ functions as reflections across $y = x$"
                 ]
           , description = "Understand how exponential and logarithmic functions are inverses that undo each other's operations."
           , estimatedMinutes = 30
@@ -289,9 +289,10 @@ unit5 =
         , { title = "Properties of logarithms"
           , slug = "properties-of-logarithms"
           , objectives =
-                [ "Apply the product rule: log_b(MN) = log_b(M) + log_b(N)"
-                , "Apply the quotient rule: log_b(M/N) = log_b(M) - log_b(N)"
-                , "Apply the power rule: log_b(M^n) = n·log_b(M)"
+                [ "Apply the product rule: $\\log_b(MN) = \\log_b(M) + \\log_b(N)$ to combine or expand logs"
+                , "Apply the quotient rule: $\\log_b\\left(\\frac{M}{N}\\right) = \\log_b(M) - \\log_b(N)$"
+                , "Apply the power rule: $\\log_b(M^n) = n \\cdot \\log_b(M)$ to bring down exponents"
+                , "Use change of base formula: $\\log_b(x) = \\frac{\\ln(x)}{\\ln(b)} = \\frac{\\log(x)}{\\log(b)}$"
                 ]
           , description = "Master logarithmic rules for products, quotients, and powers to simplify complex expressions."
           , estimatedMinutes = 30
@@ -299,9 +300,10 @@ unit5 =
         , { title = "Solving exponential equations"
           , slug = "solving-exponential-equations"
           , objectives =
-                [ "Use logarithms to solve exponential equations"
-                , "Apply the change of base formula"
-                , "Solve real-world problems involving exponential growth/decay"
+                [ "Use logarithms to solve equations where the variable is in the exponent: $a \\cdot b^{cx} = d$"
+                , "Apply the property $\\log_b(x^n) = n \\cdot \\log_b(x)$ to isolate variables"
+                , "Solve for $x$ in $2^{3x+1} = 7$ by taking $\\log$ of both sides"
+                , "Solve real-world problems involving exponential growth $P(t) = P_0 \\cdot e^{rt}$ and decay"
                 ]
           , description = "Learn to solve equations where variables appear in exponents using logarithms."
           , estimatedMinutes = 30
@@ -309,9 +311,10 @@ unit5 =
         , { title = "Exponential modeling word problems"
           , slug = "exponential-modeling-word-problems"
           , objectives =
-                [ "Identify exponential growth and decay in context"
-                , "Write exponential models from given information"
-                , "Use models to make predictions and answer questions"
+                [ "Identify exponential growth in context: population $P(t) = P_0(1 + r)^t$ increases by constant ratio"
+                , "Write exponential decay models: radioactive decay $N(t) = N_0 \\cdot e^{-kt}$ with half-life $t_{1/2}$"
+                , "Use regression to fit exponential models $y = ab^x$ to data and interpret parameters $a$ and $b$"
+                , "Apply continuously compounded interest formula $A = Pe^{rt}$ to financial contexts"
                 ]
           , description = "Apply exponential functions to real-world scenarios like population growth and radioactive decay."
           , estimatedMinutes = 30
@@ -430,9 +433,9 @@ unit8 =
         [ { title = "Laws of sines and cosines"
           , slug = "laws-of-sines-and-cosines"
           , objectives =
-                [ "Apply the Law of Sines to find missing sides and angles"
-                , "Apply the Law of Cosines to find missing sides and angles"
-                , "Determine when each law is appropriate to use"
+                [ "Apply the Law of Sines $\\frac{a}{\\sin(A)} = \\frac{b}{\\sin(B)} = \\frac{c}{\\sin(C)}$ to find missing sides and angles"
+                , "Apply the Law of Cosines $c^2 = a^2 + b^2 - 2ab\\cos(C)$ to find missing sides and angles"
+                , "Determine when to use Law of Sines (ASA, AAS) vs Law of Cosines (SAS, SSS)"
                 ]
           , description = "Learn to solve triangles using the Law of Sines and Law of Cosines when standard right triangle trigonometry doesn't apply."
           , estimatedMinutes = 30
@@ -440,9 +443,9 @@ unit8 =
         , { title = "Unit circle"
           , slug = "unit-circle"
           , objectives =
-                [ "Define sine and cosine using the unit circle"
-                , "Evaluate trigonometric functions at standard angles"
-                , "Identify reference angles and use symmetry"
+                [ "Define coordinates on unit circle: $(\\cos(\\theta), \\sin(\\theta))$ for point at angle $\\theta$"
+                , "Evaluate $\\sin(\\theta)$, $\\cos(\\theta)$, $\\tan(\\theta)$ at standard angles: $0, \\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}, \\frac{\\pi}{2}$"
+                , "Use reference angles to find trig values in Quadrants II, III, IV: $\\sin(\\pi - \\theta) = \\sin(\\theta)$"
                 ]
           , description = "Use the unit circle to understand trigonometric functions beyond 0 to 90 degrees."
           , estimatedMinutes = 30
@@ -450,9 +453,9 @@ unit8 =
         , { title = "Pythagorean identity"
           , slug = "pythagorean-identity"
           , objectives =
-                [ "Derive the Pythagorean identity sin²(θ) + cos²(θ) = 1"
-                , "Use the identity to find missing trigonometric values"
-                , "Verify trigonometric equations using the identity"
+                [ "Derive the Pythagorean identity $\\sin^2(\\theta) + \\cos^2(\\theta) = 1$ from unit circle"
+                , "Use the identity to find $\\sin(\\theta)$ given $\\cos(\\theta)$: $\\sin(\\theta) = \\pm\\sqrt{1 - \\cos^2(\\theta)}$"
+                , "Verify trig identities: show that $1 + \\tan^2(\\theta) = \\sec^2(\\theta)$ using $\\frac{\\sin^2(\\theta)}{\\cos^2(\\theta)}$"
                 ]
           , description = "Discover the fundamental Pythagorean identity and use it to simplify trigonometric expressions."
           , estimatedMinutes = 30
@@ -460,9 +463,9 @@ unit8 =
         , { title = "Graphs of sinusoidal functions"
           , slug = "graphs-of-sinusoidal-functions"
           , objectives =
-                [ "Identify amplitude, period, and midline from equations"
-                , "Graph sine and cosine functions with transformations"
-                , "Write equations from graphs of sinusoidal functions"
+                [ "Identify amplitude $|A|$, period $\\frac{2\\pi}{|B|}$, and midline $D$ from $y = A\\sin(Bx) + D$"
+                , "Graph $y = A\\sin(Bx + C) + D$ using phase shift $-\\frac{C}{B}$ and vertical shift $D$"
+                , "Write equation from graph: determine $A$ from max-min range, $B$ from period, $C$ from phase shift"
                 ]
           , description = "Analyze and graph sine and cosine functions using amplitude, period, and phase shift transformations."
           , estimatedMinutes = 30
@@ -470,9 +473,10 @@ unit8 =
         , { title = "Modeling with sinusoidal functions"
           , slug = "modeling-with-sinusoidal-functions"
           , objectives =
-                [ "Fit sinusoidal models to periodic data"
-                , "Interpret amplitude, period, and phase shift in context"
-                , "Make predictions using sinusoidal models"
+                [ "Fit sinusoidal models to periodic data using $y = A\\sin(Bx + C) + D$ to represent tides, temperatures"
+                , "Interpret amplitude as half the range: $A = \\frac{y_{max} - y_{min}}{2}$"
+                , "Use period to find $B = \\frac{2\\pi}{P}$ where $P$ is the time for one complete cycle"
+                , "Make predictions: find $x$ where model reaches specific values using $\\arcsin$ and $\\arccos$"
                 ]
           , description = "Apply sinusoidal functions to model real-world periodic phenomena like sound waves and seasonal patterns."
           , estimatedMinutes = 30

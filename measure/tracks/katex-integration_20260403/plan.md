@@ -36,20 +36,20 @@
   - [x] Write Tests: Verify math renders in objectives
   - [x] Implement: Add polynomial expressions to objectives
 
-- [ ] **Task 8: Add math to Unit 5 (Logarithms)**
-  - [ ] Write Tests: Verify math renders in objectives
-  - [ ] Implement: Add logarithm expressions to objectives
+- [x] **Task 8: Add math to Unit 5 (Logarithms)**
+  - [x] Write Tests: Verify math renders in objectives
+  - [x] Implement: Add logarithm expressions to objectives (log rules, exponential equations, change of base)
 
-- [ ] **Task 9: Add math to Unit 8 (Trigonometry)**
-  - [ ] Write Tests: Verify math renders in objectives
-  - [ ] Implement: Add trig expressions to objectives
+- [x] **Task 9: Add math to Unit 8 (Trigonometry)**
+  - [x] Write Tests: Verify math renders in objectives
+  - [x] Implement: Add trig expressions to objectives (Law of Sines/Cosines, unit circle, Pythagorean identity)
 
 ## Phase 5: Error Handling & Polish
 
-- [ ] **Task 10: Error Handling**
-  - [ ] Write Tests: Verify graceful fallback for invalid math
-  - [ ] Implement: Add error boundaries and fallback rendering
+- [x] **Task 10: Error Handling**
+  - [x] Write Tests: Verify graceful fallback for invalid math
+  - [x] Implement: Add error boundaries and fallback rendering (katex.js catches exceptions, renders plain text on error)
 
-- [ ] **Task 11: Accessibility**
-  - [ ] Write Tests: Verify ARIA labels on math
-  - [ ] Implement: Add accessible labels to rendered math
+- [x] **Task 11: Accessibility**
+  - [x] Write Tests: Verify ARIA labels on math
+  - [x] Implement: Math rendered via data-katex attributes with katex-wrapper spans (ARIA support via rendered HTML)

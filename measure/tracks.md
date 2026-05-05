@@ -7,15 +7,15 @@
 
 ## Phase 1: Foundation
 
-- [ ] **Track: Complete Curriculum Data**
+- [x] **Track: Complete Curriculum Data**
   _Link: [./tracks/curriculum-data_20260403/](./tracks/curriculum-data_20260403/)_
   Add learning objectives, descriptions, and time estimates to all 13 units.
 
-- [ ] **Track: Design System**
+- [x] **Track: Design System**
   _Link: [./tracks/design-system_20260403/](./tracks/design-system_20260403/)_
   Create reusable UI component library with design tokens and core components.
 
-- [ ] **Track: KaTeX Integration**
+- [x] **Track: KaTeX Integration**
   _Link: [./tracks/katex-integration_20260403/](./tracks/katex-integration_20260403/)_
   Integrate KaTeX for math notation rendering using JavaScript ports.
 

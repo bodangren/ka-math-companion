@@ -33,3 +33,5 @@
 - (2026-05-03, lesson-content) Elm type aliases like `Step` must be defined BEFORE they're used in other type aliases like `WorkedExample`. Order matters in Elm type definitions.
 - (2026-05-04, design-system) Spinner @keyframes animation: use `Html.node "style" [attribute "type" "text/css"] [Html.text "@keyframes ..."]` to inject CSS animation into DOM
 - (2026-05-05, katex-integration) Task 7: Added inline math to Unit 1 polynomial lesson objectives. Math syntax like $ax^n$ embedded directly in objective strings. kaTeX will render on page load via data-katex attributes.
+- (2026-05-05, katex-integration) Tasks 8-9: Added math notation to Unit 5 (logarithms: log rules, exponential equations) and Unit 8 (trigonometry: Law of Sines/Cosines, unit circle, Pythagorean identity). KaTeX track complete.
+- (2026-05-05, katex-integration) Error handling: katex.js already handles errors gracefully via `throwOnError: false` and try/catch fallback to plain text. Accessibility via rendered HTML structure.
