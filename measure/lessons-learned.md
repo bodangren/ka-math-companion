@@ -37,3 +37,4 @@
 - (2026-05-05, katex-integration) Error handling: katex.js already handles errors gracefully via `throwOnError: false` and try/catch fallback to plain text. Accessibility via rendered HTML structure.
 - (2026-05-05, interactive-viz) elm/svg package: Use `Svg` module for SVG elements, import specific `Svg.Attributes` functions. Html.svg doesn't exist - it's `Svg.svg`.
 - (2026-05-05, interactive-viz) Elm variable shadowing: Using `mathX` as parameter name shadows the `mathX` function. Use distinct names like `mx` or `my` to avoid compile errors.
+- (2026-05-05, interactive-viz) Expect.false does not exist in Elm test Expect. Use case/if pattern with Expect.pass/Expect.fail instead.
