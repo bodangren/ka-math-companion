@@ -38,3 +38,5 @@
 - (2026-05-05, interactive-viz) elm/svg package: Use `Svg` module for SVG elements, import specific `Svg.Attributes` functions. Html.svg doesn't exist - it's `Svg.svg`.
 - (2026-05-05, interactive-viz) Elm variable shadowing: Using `mathX` as parameter name shadows the `mathX` function. Use distinct names like `mx` or `my` to avoid compile errors.
 - (2026-05-05, interactive-viz) Expect.false does not exist in Elm test Expect. Use case/if pattern with Expect.pass/Expect.fail instead.
+- (2026-05-06, interactive-viz) Elm type variable `msg` in type alias: when a component needs to produce messages (like click handlers), use `type alias NumberLine msg = { ... }` and pass `msg` through to Html.Html msg.
+- (2026-05-06, interactive-viz) Elm pipe precedence: `|>` has lower precedence than function application. `round v |> modBy step == 0` parses as `(round v |> modBy step) == 0`. Parenthesize: `(round v |> modBy step) == 0`.
