@@ -40,21 +40,24 @@ all =
         , Test.test "parseMath extracts single inline math"
             (\() ->
                 let
-                    result = Math.parseMath "x^2"
+                    result =
+                        Math.parseMath "x^2"
                 in
                 Expect.equal result [ Math.InlineMath "x^2" ]
             )
         , Test.test "parseMath extracts single display math"
             (\() ->
                 let
-                    result = Math.parseMath "$$x^2$$"
+                    result =
+                        Math.parseMath "$$x^2$$"
                 in
                 Expect.equal result [ Math.DisplayMath "x^2" ]
             )
         , Test.test "parseMath extracts mixed inline and display"
             (\() ->
                 let
-                    result = Math.parseMath "The equation is $$E=mc^2$$ and then $x^2$ follows."
+                    result =
+                        Math.parseMath "The equation is $$E=mc^2$$ and then $x^2$ follows."
                 in
                 Expect.equal result
                     [ Math.InlineMath "The equation is "
@@ -67,7 +70,8 @@ all =
         , Test.test "parseMath handles multiple display math blocks"
             (\() ->
                 let
-                    result = Math.parseMath "First: $$a$$ and second: $$b$$"
+                    result =
+                        Math.parseMath "First: $$a$$ and second: $$b$$"
                 in
                 Expect.equal result
                     [ Math.InlineMath "First: "
@@ -79,14 +83,16 @@ all =
         , Test.test "parseMath handles plain text with no math"
             (\() ->
                 let
-                    result = Math.parseMath "No math here"
+                    result =
+                        Math.parseMath "No math here"
                 in
                 Expect.equal result [ Math.InlineMath "No math here" ]
             )
         , Test.test "parseMath handles empty string"
             (\() ->
                 let
-                    result = Math.parseMath ""
+                    result =
+                        Math.parseMath ""
                 in
                 Expect.equal result []
             )

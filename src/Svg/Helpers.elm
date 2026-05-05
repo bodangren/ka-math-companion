@@ -8,6 +8,7 @@ module Svg.Helpers exposing
     , svgText
     , withFill
     , withStroke
+    , withStrokeWidth
     , withTransform
     , withViewBox
     )
@@ -102,9 +103,14 @@ withFill value =
     fill value
 
 
-withStroke : String -> Float -> Svg.Attribute msg
-withStroke color widthVal =
+withStroke : String -> Svg.Attribute msg
+withStroke color =
     stroke color
+
+
+withStrokeWidth : Float -> Svg.Attribute msg
+withStrokeWidth widthVal =
+    strokeWidth (String.fromFloat widthVal)
 
 
 withTransform : String -> Svg.Attribute msg

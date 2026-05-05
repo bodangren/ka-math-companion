@@ -22,9 +22,8 @@ module Viz.FunctionGrapher exposing
 import Html
 import Svg
 import Svg.Attributes exposing (fill, stroke, strokeWidth)
-import Viz.Coords as Coords
-import Viz.Coords exposing (Viewport(..))
 import Svg.Helpers as Svg
+import Viz.Coords as Coords exposing (Viewport(..))
 
 
 type alias FunctionGrapher =
@@ -192,7 +191,8 @@ render g =
                     in
                     Svg.svgPath
                         pathData
-                        [ Svg.withStroke color 2.5
+                        [ Svg.withStroke color
+                        , Svg.withStrokeWidth 2.5
                         , Svg.withFill "none"
                         ]
                         []
@@ -217,14 +217,14 @@ renderGrid g =
         verticalLines =
             List.map
                 (\x ->
-                    Svg.svgLine x 0 x g.height [ Svg.withStroke gridColor 1 ] []
+                    Svg.svgLine x 0 x g.height [ Svg.withStroke gridColor, Svg.withStrokeWidth 1 ] []
                 )
                 (List.filter (\x -> modBy xStep x == 0) (List.range 0 g.width))
 
         horizontalLines =
             List.map
                 (\y ->
-                    Svg.svgLine 0 y g.width y [ Svg.withStroke gridColor 1 ] []
+                    Svg.svgLine 0 y g.width y [ Svg.withStroke gridColor, Svg.withStrokeWidth 1 ] []
                 )
                 (List.filter (\y -> modBy yStep y == 0) (List.range 0 g.height))
     in
@@ -244,14 +244,14 @@ axes g =
             (round g.originY)
             g.width
             (round g.originY)
-            [ Svg.withStroke axisColor 2 ]
+            [ Svg.withStroke axisColor, Svg.withStrokeWidth 2 ]
             []
         , Svg.svgLine
             (round g.originX)
             0
             (round g.originX)
             g.height
-            [ Svg.withStroke axisColor 2 ]
+            [ Svg.withStroke axisColor, Svg.withStrokeWidth 2 ]
             []
         ]
 

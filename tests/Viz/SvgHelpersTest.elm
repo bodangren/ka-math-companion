@@ -76,7 +76,14 @@ suite =
             \_ ->
                 let
                     attr =
-                        Svg.withStroke "#0000FF" 2
+                        Svg.withStroke "#0000FF"
+                in
+                Expect.pass
+        , Test.test "withStrokeWidth returns attribute" <|
+            \_ ->
+                let
+                    attr =
+                        Svg.withStrokeWidth 2
                 in
                 Expect.pass
         , Test.test "withTransform returns attribute" <|
