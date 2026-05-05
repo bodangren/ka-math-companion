@@ -34,9 +34,9 @@
   - [x] Write Tests: Verify points and intervals plot correctly
   - [x] Implement: Add point/interval rendering with open/closed circles
 
-- [ ] **Task 8: Interactive Selection**
-  - [ ] Write Tests: Verify click selects points
-  - [ ] Implement: Add click handlers for point selection
+- [x] **Task 8: Interactive Selection**
+  - [x] Write Tests: Verify click selects points
+  - [x] Implement: Add click handlers for point selection
 
 ## Phase 4: UnitCircle
 
