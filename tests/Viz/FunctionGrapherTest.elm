@@ -153,4 +153,38 @@ suite =
                             |> FG.withFunction (\x -> Basics.sin x) FG.green
                 in
                 Expect.equal (List.length (FG.functions grapher)) 3
+        , Test.test "zoomIn increases scale" <|
+            \_ ->
+                let
+                    grapher =
+                        FG.empty
+                            |> FG.withViewport 800 600
+                            |> FG.zoomIn
+                in
+                Expect.greaterThan 1.0 (FG.getScale grapher)
+        , Test.test "zoomOut decreases scale" <|
+            \_ ->
+                let
+                    grapher =
+                        FG.empty
+                            |> FG.withViewport 800 600
+                            |> FG.withZoom 2.0
+                            |> FG.zoomOut
+                in
+                Expect.lessThan 2.0 (FG.getScale grapher)
+        , Test.test "pan moves origin" <|
+            \_ ->
+                let
+                    initial =
+                        FG.empty
+                            |> FG.withViewport 800 600
+
+                    panned =
+                        FG.pan 50 -50 initial
+                in
+                Expect.all
+                    [ \g -> Expect.equal g.originX (initial.originX + 50)
+                    , \g -> Expect.equal g.originY (initial.originY - 50)
+                    ]
+                    panned
         ]

@@ -7,6 +7,7 @@ module Viz.FunctionGrapher exposing
     , green
     , init
     , orange
+    , pan
     , plotFunction
     , purple
     , red
@@ -14,6 +15,8 @@ module Viz.FunctionGrapher exposing
     , withFunction
     , withViewport
     , withZoom
+    , zoomIn
+    , zoomOut
     )
 
 import Html
@@ -251,3 +254,18 @@ axes g =
             [ Svg.withStroke axisColor 2 ]
             []
         ]
+
+
+zoomIn : FunctionGrapher -> FunctionGrapher
+zoomIn g =
+    { g | scale = g.scale * 1.25 }
+
+
+zoomOut : FunctionGrapher -> FunctionGrapher
+zoomOut g =
+    { g | scale = Basics.max 0.1 (g.scale / 1.25) }
+
+
+pan : Float -> Float -> FunctionGrapher -> FunctionGrapher
+pan dx dy g =
+    { g | originX = g.originX + dx, originY = g.originY + dy }
