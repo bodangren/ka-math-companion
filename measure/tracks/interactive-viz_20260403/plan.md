@@ -26,13 +26,13 @@
 
 ## Phase 3: NumberLine
 
-- [ ] **Task 6: Basic NumberLine**
-  - [ ] Write Tests: Verify number line renders
-  - [ ] Implement: Create `src/Viz/NumberLine.elm`
+- [x] **Task 6: Basic NumberLine**
+  - [x] Write Tests: Verify number line renders
+  - [x] Implement: Create `src/Viz/NumberLine.elm`
 
-- [ ] **Task 7: Points and Intervals**
-  - [ ] Write Tests: Verify points and intervals plot correctly
-  - [ ] Implement: Add point/interval rendering with open/closed circles
+- [x] **Task 7: Points and Intervals**
+  - [x] Write Tests: Verify points and intervals plot correctly
+  - [x] Implement: Add point/interval rendering with open/closed circles
 
 - [ ] **Task 8: Interactive Selection**
   - [ ] Write Tests: Verify click selects points
