@@ -2,13 +2,13 @@
 
 ## Phase 1: SVG Infrastructure
 
-- [ ] **Task 1: Create SVG Helpers Module**
-  - [ ] Write Tests: Verify SVG helpers render correctly
-  - [ ] Implement: Create `src/Svg/Helpers.elm` with common SVG functions
+- [x] **Task 1: Create SVG Helpers Module**
+  - [x] Write Tests: Verify SVG helpers render correctly
+  - [x] Implement: Create `src/Svg/Helpers.elm` with common SVG functions
 
-- [ ] **Task 2: Create Coordinate System Module**
-  - [ ] Write Tests: Verify coordinate transformations
-  - [ ] Implement: Create `src/Viz/Coords.elm` for math-to-SVG mapping
+- [x] **Task 2: Create Coordinate System Module**
+  - [x] Write Tests: Verify coordinate transformations
+  - [x] Implement: Create `src/Viz/Coords.elm` for math-to-SVG mapping
 
 ## Phase 2: FunctionGrapher
 
