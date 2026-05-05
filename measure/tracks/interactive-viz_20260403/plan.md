@@ -12,17 +12,17 @@
 
 ## Phase 2: FunctionGrapher
 
-- [ ] **Task 3: Basic FunctionGrapher**
-  - [ ] Write Tests: Verify function plots render
-  - [ ] Implement: Create `src/Viz/FunctionGrapher.elm` with axes and grid
+- [x] **Task 3: Basic FunctionGrapher**
+  - [x] Write Tests: Verify function plots render
+  - [x] Implement: Create `src/Viz/FunctionGrapher.elm` with axes and grid
 
-- [ ] **Task 4: Function Plotting**
-  - [ ] Write Tests: Verify polynomial/exponential/log/trig plots
-  - [ ] Implement: Add function evaluation and path generation
+- [x] **Task 4: Function Plotting**
+  - [x] Write Tests: Verify polynomial/exponential/log/trig plots
+  - [x] Implement: Add function evaluation and path generation
 
-- [ ] **Task 5: Interactive Features**
-  - [ ] Write Tests: Verify zoom, pan, hover work
-  - [ ] Implement: Add mouse/keyboard interaction handlers
+- [x] **Task 5: Interactive Features**
+  - [x] Write Tests: Verify zoom, pan, hover work
+  - [x] Implement: Add mouse/keyboard interaction handlers
 
 ## Phase 3: NumberLine
 
