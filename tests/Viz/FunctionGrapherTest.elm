@@ -71,4 +71,86 @@ suite =
                             |> FG.withZoom 2.0
                 in
                 Expect.equal (FG.getScale grapher) 2.0
+        , Test.test "plot polynomial x^2" <|
+            \_ ->
+                let
+                    viewport =
+                        Coords.init 800 600
+
+                    polyFn x =
+                        x ^ 2
+
+                    pathData =
+                        FG.plotFunction polyFn viewport -5 5
+                in
+                case String.isEmpty pathData of
+                    True ->
+                        Expect.fail "polynomial path should not be empty"
+
+                    False ->
+                        Expect.pass
+        , Test.test "plot exponential 2^x" <|
+            \_ ->
+                let
+                    viewport =
+                        Coords.init 800 600
+
+                    expFn x =
+                        2 ^ x
+
+                    pathData =
+                        FG.plotFunction expFn viewport -2 3
+                in
+                case String.isEmpty pathData of
+                    True ->
+                        Expect.fail "exponential path should not be empty"
+
+                    False ->
+                        Expect.pass
+        , Test.test "plot logarithmic log2(x)" <|
+            \_ ->
+                let
+                    viewport =
+                        Coords.init 800 600
+
+                    logFn x =
+                        logBase 2 (max x 0.01)
+
+                    pathData =
+                        FG.plotFunction logFn viewport 0.1 5
+                in
+                case String.isEmpty pathData of
+                    True ->
+                        Expect.fail "logarithmic path should not be empty"
+
+                    False ->
+                        Expect.pass
+        , Test.test "plot trigonometric sin(x)" <|
+            \_ ->
+                let
+                    viewport =
+                        Coords.init 800 600
+
+                    trigFn x =
+                        Basics.sin x
+
+                    pathData =
+                        FG.plotFunction trigFn viewport -3.14 3.14
+                in
+                case String.isEmpty pathData of
+                    True ->
+                        Expect.fail "trig path should not be empty"
+
+                    False ->
+                        Expect.pass
+        , Test.test "withFunction adds multiple functions" <|
+            \_ ->
+                let
+                    grapher =
+                        FG.empty
+                            |> FG.withFunction (\x -> x) FG.red
+                            |> FG.withFunction (\x -> x ^ 2) FG.blue
+                            |> FG.withFunction (\x -> Basics.sin x) FG.green
+                in
+                Expect.equal (List.length (FG.functions grapher)) 3
         ]
