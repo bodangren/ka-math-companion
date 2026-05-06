@@ -45,3 +45,5 @@
 - (2026-05-06, interactive-viz) Elm Expect.within order: `Expect.within (Expect.Absolute 0.001) expected actual` not the other way around.
 - (2026-05-06, interactive-viz) Svg.Helpers withFontSize/textAnchor: Need to add these to Helpers module and import fontSize, textAnchor from Svg.Attributes.
 - (2026-05-06, interactive-viz) Elm config pattern: withAngle now sets both angle AND selectedAngle (default behavior). Keep related fields in sync when setting through builder functions.
+- (2026-05-07, interactive-viz) VizLessonContent pattern: separate data module maps (unitSlug, lessonSlug) pairs to VizBlock types. Cleaner than embedding viz in LessonContent.
+- (2026-05-07, interactive-viz) NumberLine.init takes (width, min, max) not (width) alone - check function signatures before chaining builders
