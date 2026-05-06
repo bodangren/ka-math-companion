@@ -577,3 +577,45 @@ project clean, and maybe detect some unused code in your project.
 shell tool terminated command after exceeding timeout 120000 ms. If this command is expected to take longer and is not waiting for interactive input, retry with a larger timeout value in milliseconds.
 </shell_metadata>
 [0m
+[0m$ [0mgit add -A && git commit -m "$(cat <<'EOF'
+feat(UnitCircle): add interactive angle selection (Task 11)
+
+- Add selectedAngle and dragEnabled fields to UnitCircle model
+- Add withSelectedAngle and withDragEnabled configuration functions  
+- withAngle now also sets selectedAngle (for default selection)
+- Tests pass: 213 tests
+
+EOF
+)"
+[feat/30-render-curriculum-overview-page 2591d63] feat(UnitCircle): add interactive angle selection (Task 11)
+ 6 files changed, 528 insertions(+), 900 deletions(-)
+[0m
+[0m$ [0mgit push origin feat/30-render-curriculum-overview-page
+To https://github.com/bodangren/ka-math-companion.git
+   def9536..2591d63  feat/30-render-curriculum-overview-page -> feat/30-render-curriculum-overview-page
+[0m
+[0m# [0mTodos
+[x] FUNCTIONALITY REVIEW: Verify previous phase (UnitCircle Tasks 9-10) works
+[x] Task 11: Interactive Angle Selection - Write Tests
+[x] Task 11: Interactive Angle Selection - Implement
+[x] Run tests, build, verify no console errors
+[x] Commit and push changes
+[ ] Finalize: update tech-debt.md and lessons-learned.md, commit checkpoint
+[0m
+[0m← [0mEdit measure/lessons-learned.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
++++ /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
+@@ -42,5 +42,6 @@
+ - (2026-05-06, interactive-viz) Elm pipe precedence: `|>` has lower precedence than function application. `round v |> modBy step == 0` parses as `(round v |> modBy step) == 0`. Parenthesize: `(round v |> modBy step) == 0`.
+ - (2026-05-06, interactive-viz) Elm SVG: `cos` and `sin` are built-in, not from a Math module. Use `Basics.cos` and `Basics.sin`.
+ - (2026-05-06, interactive-viz) Elm float division: `/` requires Float operands. Use `toFloat` to convert Int to Float before dividing.
+ - (2026-05-06, interactive-viz) Elm Expect.within order: `Expect.within (Expect.Absolute 0.001) expected actual` not the other way around.
+-- (2026-05-06, interactive-viz) Svg.Helpers withFontSize/textAnchor: Need to add these to Helpers module and import fontSize, textAnchor from Svg.Attributes.
+\ No newline at end of file
++- (2026-05-06, interactive-viz) Svg.Helpers withFontSize/textAnchor: Need to add these to Helpers module and import fontSize, textAnchor from Svg.Attributes.
++- (2026-05-06, interactive-viz) Elm config pattern: withAngle now sets both angle AND selectedAngle (default behavior). Keep related fields in sync when setting through builder functions.
+\ No newline at end of file
+
+[0m

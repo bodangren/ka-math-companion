@@ -44,3 +44,4 @@
 - (2026-05-06, interactive-viz) Elm float division: `/` requires Float operands. Use `toFloat` to convert Int to Float before dividing.
 - (2026-05-06, interactive-viz) Elm Expect.within order: `Expect.within (Expect.Absolute 0.001) expected actual` not the other way around.
 - (2026-05-06, interactive-viz) Svg.Helpers withFontSize/textAnchor: Need to add these to Helpers module and import fontSize, textAnchor from Svg.Attributes.
+- (2026-05-06, interactive-viz) Elm config pattern: withAngle now sets both angle AND selectedAngle (default behavior). Keep related fields in sync when setting through builder functions.
