@@ -5,6 +5,10 @@
 - [x] **Track: Next.js to Elm/ElmLand Migration**
   _Link: [./archive/elm-migration_20260227/](./archive/elm-migration_20260227/)_
 
+- [x] **Track: Interactive Visualizations**
+  _Link: [./archive/interactive-viz_20260403/](./archive/interactive-viz_20260403/)_
+  Build function graphers, number lines, and unit circles.
+
 ## Phase 1: Foundation
 
 - [x] **Track: Complete Curriculum Data**
@@ -24,14 +28,6 @@
 - [x] **Track: Lesson Content**
   _Link: [./tracks/lesson-content_20260403/](./tracks/lesson-content_20260403/)_
   Add conceptual explanations, worked examples, and comprehension checks.
-
-- [x] **Track: Interactive Visualizations**
-  _Link: [./tracks/interactive-viz_20260403/](./tracks/interactive-viz_20260403/)_
-  Build function graphers, number lines, and unit circles.
-
-- [ ] **Track: Practice Problems**
-  _Link: [./tracks/practice-problems_20260403/](./tracks/practice-problems_20260403/)_
-  Create interactive problem system with validation, hints, and solutions.
 
 ## Phase 3: Learning Systems
 
