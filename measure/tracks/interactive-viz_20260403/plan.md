@@ -40,13 +40,13 @@
 
 ## Phase 4: UnitCircle
 
-- [ ] **Task 9: Basic UnitCircle**
-  - [ ] Write Tests: Verify circle and axes render
-  - [ ] Implement: Create `src/Viz/UnitCircle.elm`
+- [x] **Task 9: Basic UnitCircle**
+  - [x] Write Tests: Verify circle and axes render
+  - [x] Implement: Create `src/Viz/UnitCircle.elm`
 
-- [ ] **Task 10: Angle Display**
-  - [ ] Write Tests: Verify angles and coordinates display
-  - [ ] Implement: Add angle arcs and coordinate labels
+- [x] **Task 10: Angle Display**
+  - [x] Write Tests: Verify angles and coordinates display
+  - [x] Implement: Add angle arcs and coordinate labels
 
 - [ ] **Task 11: Interactive Angle Selection**
   - [ ] Write Tests: Verify click/drag selects angles

@@ -11,11 +11,13 @@ module Svg.Helpers exposing
     , withStrokeWidth
     , withTransform
     , withViewBox
+    , withFontSize
+    , withTextAnchor
     )
 
 import Html
 import Svg
-import Svg.Attributes exposing (cx, cy, d, fill, height, r, rx, ry, stroke, strokeWidth, transform, viewBox, width, x, x1, x2, y, y1, y2)
+import Svg.Attributes exposing (cx, cy, d, fill, fontSize, height, r, rx, ry, stroke, strokeWidth, textAnchor, transform, viewBox, width, x, x1, x2, y, y1, y2)
 
 
 svgContainer : Int -> Int -> List (Svg.Attribute msg) -> List (Html.Html msg) -> Html.Html msg
@@ -116,3 +118,13 @@ withStrokeWidth widthVal =
 withTransform : String -> Svg.Attribute msg
 withTransform value =
     transform value
+
+
+withFontSize : String -> Svg.Attribute msg
+withFontSize size =
+    fontSize size
+
+
+withTextAnchor : String -> Svg.Attribute msg
+withTextAnchor anchor =
+    textAnchor anchor
