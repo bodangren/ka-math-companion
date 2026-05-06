@@ -54,14 +54,14 @@
 
 ## Phase 5: Integration
 
-- [ ] **Task 12: Add visualizations to lessons**
-  - [ ] Write Tests: Verify visualizations render in lessons
-  - [ ] Implement: Integrate FunctionGrapher in polynomial/log lessons
+- [x] **Task 12: Add visualizations to lessons**
+  - [x] Write Tests: Verify visualizations render in lessons
+  - [x] Implement: Integrate FunctionGrapher in polynomial/log lessons
 
-- [ ] **Task 13: Add UnitCircle to trig lessons**
-  - [ ] Write Tests: Verify UnitCircle renders in trig lessons
-  - [ ] Implement: Integrate UnitCircle in trigonometry lessons
+- [x] **Task 13: Add UnitCircle to trig lessons**
+  - [x] Write Tests: Verify UnitCircle renders in trig lessons
+  - [x] Implement: Integrate UnitCircle in trigonometry lessons
 
-- [ ] **Task 14: Create visualization demo page**
-  - [ ] Write Tests: Verify demo page renders all viz
-  - [ ] Implement: Create `/visualizations` showcase page
+- [x] **Task 14: Create visualization demo page**
+  - [x] Write Tests: Verify demo page renders all viz
+  - [x] Implement: Create `/visualizations` showcase page

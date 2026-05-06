@@ -1,9 +1,11 @@
 module Pages.Curriculum.Unit_.Lesson_ exposing (page)
 
 import Components.Content as Content
+import Components.VizContainer as VizContainer
 import Data.Curriculum exposing (Lesson, Unit)
 import Data.IntegratedMath3 as IntegratedMath3
 import Data.LessonContent as LessonContent
+import Data.VizLessonContent as VizLessonContent
 import Design.Breadcrumb as Breadcrumb
 import Design.Card as Card
 import Design.Container as Container
@@ -69,6 +71,12 @@ viewLesson unit lesson =
                     , case LessonContent.getContent unit.slug lesson.slug of
                         Just content ->
                             Html.div [] (Content.viewLessonContent content)
+
+                        Nothing ->
+                            Html.text ""
+                    , case VizLessonContent.getVizContent unit.slug lesson.slug of
+                        Just vizBlock ->
+                            VizContainer.viewVizBlock vizBlock
 
                         Nothing ->
                             Html.text ""
