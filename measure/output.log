@@ -1036,3 +1036,31 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [0m
+[0m$ [0mgit add -A && git commit -m "autonomous: complete UnitCircle Tasks 9-10, 206 tests pass"
+[feat/30-render-curriculum-overview-page db3d9dd] autonomous: complete UnitCircle Tasks 9-10, 206 tests pass
+ 5 files changed, 1375 insertions(+), 7 deletions(-)
+ create mode 100644 src/Viz/UnitCircle.elm
+ create mode 100644 tests/Viz/UnitCircleTest.elm
+[0m
+[0m← [0mEdit measure/lessons-learned.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
++++ /home/daniel-bo/Desktop/ka-math-companion/measure/lessons-learned.md
+@@ -37,6 +37,10 @@
+ - (2026-05-05, katex-integration) Error handling: katex.js already handles errors gracefully via `throwOnError: false` and try/catch fallback to plain text. Accessibility via rendered HTML structure.
+ - (2026-05-05, interactive-viz) elm/svg package: Use `Svg` module for SVG elements, import specific `Svg.Attributes` functions. Html.svg doesn't exist - it's `Svg.svg`.
+ - (2026-05-05, interactive-viz) Elm variable shadowing: Using `mathX` as parameter name shadows the `mathX` function. Use distinct names like `mx` or `my` to avoid compile errors.
+ - (2026-05-05, interactive-viz) Expect.false does not exist in Elm test Expect. Use case/if pattern with Expect.pass/Expect.fail instead.
+-- (2026-05-06, interactive-viz) Elm type variable `msg` in type alias: when a component needs to produce messages (like click handlers), use `type alias NumberLine msg = { ... }` and pass `msg` through to Html.Html msg.
+-- (2026-05-06, interactive-viz) Elm pipe precedence: `|>` has lower precedence than function application. `round v |> modBy step == 0` parses as `(round v |> modBy step) == 0`. Parenthesize: `(round v |> modBy step) == 0`.
+\ No newline at end of file
++- (2026-05-06, interactive-viz) Elm variable shadowing: Using `mathX` as parameter name shadows the `mathX` function. Use distinct names like `mx` or `my` to avoid compile errors.
++- (2026-05-06, interactive-viz) Elm pipe precedence: `|>` has lower precedence than function application. `round v |> modBy step == 0` parses as `(round v |> modBy step) == 0`. Parenthesize: `(round v |> modBy step) == 0`.
++- (2026-05-06, interactive-viz) Elm SVG: `cos` and `sin` are built-in, not from a Math module. Use `Basics.cos` and `Basics.sin`.
++- (2026-05-06, interactive-viz) Elm float division: `/` requires Float operands. Use `toFloat` to convert Int to Float before dividing.
++- (2026-05-06, interactive-viz) Elm Expect.within order: `Expect.within (Expect.Absolute 0.001) expected actual` not the other way around.
++- (2026-05-06, interactive-viz) Svg.Helpers withFontSize/textAnchor: Need to add these to Helpers module and import fontSize, textAnchor from Svg.Attributes.
+\ No newline at end of file
+
+[0m
