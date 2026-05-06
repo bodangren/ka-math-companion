@@ -25,7 +25,7 @@
   _Link: [./tracks/lesson-content_20260403/](./tracks/lesson-content_20260403/)_
   Add conceptual explanations, worked examples, and comprehension checks.
 
-- [ ] **Track: Interactive Visualizations**
+- [x] **Track: Interactive Visualizations**
   _Link: [./tracks/interactive-viz_20260403/](./tracks/interactive-viz_20260403/)_
   Build function graphers, number lines, and unit circles.
 
