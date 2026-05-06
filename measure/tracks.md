@@ -12,21 +12,21 @@
 ## Phase 1: Foundation
 
 - [x] **Track: Complete Curriculum Data**
-  _Link: [./tracks/curriculum-data_20260403/](./tracks/curriculum-data_20260403/)_
+  _Link: [./archive/curriculum-data_20260403/](./archive/curriculum-data_20260403/)_
   Add learning objectives, descriptions, and time estimates to all 13 units.
 
 - [x] **Track: Design System**
-  _Link: [./tracks/design-system_20260403/](./tracks/design-system_20260403/)_
+  _Link: [./archive/design-system_20260403/](./archive/design-system_20260403/)_
   Create reusable UI component library with design tokens and core components.
 
 - [x] **Track: KaTeX Integration**
-  _Link: [./tracks/katex-integration_20260403/](./tracks/katex-integration_20260403/)_
+  _Link: [./archive/katex-integration_20260403/](./archive/katex-integration_20260403/)_
   Integrate KaTeX for math notation rendering using JavaScript ports.
 
 ## Phase 2: Content & Interaction
 
 - [x] **Track: Lesson Content**
-  _Link: [./tracks/lesson-content_20260403/](./tracks/lesson-content_20260403/)_
+  _Link: [./archive/lesson-content_20260403/](./archive/lesson-content_20260403/)_
   Add conceptual explanations, worked examples, and comprehension checks.
 
 ## Phase 3: Learning Systems
