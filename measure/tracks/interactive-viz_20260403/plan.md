@@ -48,9 +48,9 @@
   - [x] Write Tests: Verify angles and coordinates display
   - [x] Implement: Add angle arcs and coordinate labels
 
-- [ ] **Task 11: Interactive Angle Selection**
-  - [ ] Write Tests: Verify click/drag selects angles
-  - [ ] Implement: Add angle selection interaction
+- [x] **Task 11: Interactive Angle Selection**
+   - [x] Write Tests: Verify click/drag selects angles
+   - [x] Implement: Add angle selection interaction
 
 ## Phase 5: Integration
 

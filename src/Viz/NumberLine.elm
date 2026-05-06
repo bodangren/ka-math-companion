@@ -2,12 +2,12 @@ module Viz.NumberLine exposing
     ( NumberLine
     , empty
     , init
-    , render
-    , withRange
-    , withPoint
-    , withInterval
-    , withSelection
     , onClickSelect
+    , render
+    , withInterval
+    , withPoint
+    , withRange
+    , withSelection
     )
 
 import Html
@@ -117,7 +117,10 @@ render nl =
             renderTicks nl lineY tickSize
 
         axisLine =
-            Svg.svgLine 0 lineY nl.width lineY
+            Svg.svgLine 0
+                lineY
+                nl.width
+                lineY
                 [ Svg.withStroke "#64748B", Svg.withStrokeWidth 2 ]
                 []
 
@@ -127,7 +130,9 @@ render nl =
         renderedIntervals =
             List.map (renderInterval nl lineY) nl.intervals
     in
-    Svg.svgContainer nl.width nl.height []
+    Svg.svgContainer nl.width
+        nl.height
+        []
         ([ axisLine ] ++ ticks ++ renderedIntervals ++ renderedPoints)
 
 
@@ -174,10 +179,15 @@ renderTicks nl lineY tickSize =
             in
             Svg.svgGroup
                 []
-                [ Svg.svgLine x (lineY - tickSize) x (lineY + tickSize)
+                [ Svg.svgLine x
+                    (lineY - tickSize)
+                    x
+                    (lineY + tickSize)
                     [ Svg.withStroke "#64748B", Svg.withStrokeWidth 1 ]
                     []
-                , Svg.svgText labelValue (x + 3) (lineY + 20)
+                , Svg.svgText labelValue
+                    (x + 3)
+                    (lineY + 20)
                     [ Svg.withFill "#64748B" ]
                 ]
         )
@@ -214,7 +224,9 @@ renderPoint nl lineY index point =
 
         circleElement =
             if point.isOpen then
-                Svg.svgCircle x lineY circleRadius
+                Svg.svgCircle x
+                    lineY
+                    circleRadius
                     ([ Svg.withFill "white"
                      , Svg.withStroke circleColor
                      , Svg.withStrokeWidth 2
@@ -224,7 +236,9 @@ renderPoint nl lineY index point =
                     []
 
             else
-                Svg.svgCircle x lineY circleRadius
+                Svg.svgCircle x
+                    lineY
+                    circleRadius
                     ([ Svg.withFill circleColor
                      , Svg.withStroke circleColor
                      , Svg.withStrokeWidth 2
@@ -236,7 +250,9 @@ renderPoint nl lineY index point =
         labelElement =
             case point.label of
                 Just label ->
-                    [ Svg.svgText label (x + 10) (lineY - 10)
+                    [ Svg.svgText label
+                        (x + 10)
+                        (lineY - 10)
                         [ Svg.withFill "#475569" ]
                     ]
 
@@ -261,7 +277,10 @@ renderInterval nl lineY interval =
         rectX =
             Basics.min startX endX
     in
-    Svg.svgRect rectX (lineY - 3) width 6
+    Svg.svgRect rectX
+        (lineY - 3)
+        width
+        6
         [ Svg.withFill interval.color
         , Svg.withStroke interval.color
         , Svg.withStrokeWidth 1

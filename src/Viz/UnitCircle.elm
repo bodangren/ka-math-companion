@@ -2,11 +2,13 @@ module Viz.UnitCircle exposing
     ( UnitCircle
     , empty
     , init
+    , onClickSelect
     , render
     , withAngle
-    , withLabel
     , withCoords
-    , onClickSelect
+    , withDragEnabled
+    , withLabel
+    , withSelectedAngle
     )
 
 import Html
@@ -21,8 +23,10 @@ type alias UnitCircle msg =
     , height : Int
     , radius : Int
     , angle : Float
+    , selectedAngle : Float
     , label : Maybe String
     , showCoords : Bool
+    , dragEnabled : Bool
     , onClickMsg : Maybe (Float -> msg)
     }
 
@@ -33,8 +37,10 @@ empty =
     , height = 200
     , radius = 90
     , angle = 0
+    , selectedAngle = 0
     , label = Nothing
     , showCoords = False
+    , dragEnabled = False
     , onClickMsg = Nothing
     }
 
@@ -45,15 +51,17 @@ init w =
     , height = w
     , radius = w // 2 - 10
     , angle = 0
+    , selectedAngle = 0
     , label = Nothing
     , showCoords = False
+    , dragEnabled = False
     , onClickMsg = Nothing
     }
 
 
 withAngle : Float -> UnitCircle msg -> UnitCircle msg
 withAngle a uc =
-    { uc | angle = a }
+    { uc | angle = a, selectedAngle = a }
 
 
 withLabel : String -> UnitCircle msg -> UnitCircle msg
@@ -64,6 +72,16 @@ withLabel l uc =
 withCoords : Bool -> UnitCircle msg -> UnitCircle msg
 withCoords show uc =
     { uc | showCoords = show }
+
+
+withSelectedAngle : Float -> UnitCircle msg -> UnitCircle msg
+withSelectedAngle a uc =
+    { uc | selectedAngle = a }
+
+
+withDragEnabled : Bool -> UnitCircle msg -> UnitCircle msg
+withDragEnabled enabled uc =
+    { uc | dragEnabled = enabled }
 
 
 onClickSelect : (Float -> msg) -> UnitCircle msg -> UnitCircle msg
@@ -116,7 +134,9 @@ render uc =
         labelElement =
             case uc.label of
                 Just l ->
-                    [ Svg.svgText l cx (cy + uc.radius + 20)
+                    [ Svg.svgText l
+                        cx
+                        (cy + uc.radius + 20)
                         [ Svg.withFill "#64748B"
                         , Svg.withFontSize "12"
                         , Svg.withTextAnchor "middle"
@@ -126,16 +146,24 @@ render uc =
                 Nothing ->
                     []
     in
-    Svg.svgContainer uc.width uc.height []
+    Svg.svgContainer uc.width
+        uc.height
+        []
         ([ circleElement ] ++ axesLines ++ [ angleArc, pointOnCircle ] ++ coordLabels ++ labelElement)
 
 
 renderAxes : Int -> Int -> Int -> List (Html.Html msg)
 renderAxes cx cy radius =
-    [ Svg.svgLine (cx - radius) cy (cx + radius) cy
+    [ Svg.svgLine (cx - radius)
+        cy
+        (cx + radius)
+        cy
         [ Svg.withStroke "#CBD5E1", Svg.withStrokeWidth 1 ]
         []
-    , Svg.svgLine cx (cy - radius) cx (cy + radius)
+    , Svg.svgLine cx
+        (cy - radius)
+        cx
+        (cy + radius)
         [ Svg.withStroke "#CBD5E1", Svg.withStrokeWidth 1 ]
         []
     ]
@@ -171,7 +199,9 @@ renderAnglePoint cx cy radius angle =
         pointY =
             cy - round (toFloat radius * sin angle)
     in
-    Svg.svgCircle pointX pointY 6
+    Svg.svgCircle pointX
+        pointY
+        6
         [ Svg.withFill "#3B82F6", Svg.withStroke "#1E293B", Svg.withStrokeWidth 1 ]
         []
 
@@ -200,8 +230,12 @@ renderCoordLabels cx cy radius angle =
         sinLabelY =
             cy - round (toFloat labelRadius * sinVal)
     in
-    [ Svg.svgText (String.fromFloat (toFloat (Basics.round (cosVal * 100)) / 100)) cosLabelX cosLabelY
+    [ Svg.svgText (String.fromFloat (toFloat (Basics.round (cosVal * 100)) / 100))
+        cosLabelX
+        cosLabelY
         [ Svg.withFill "#64748B", Svg.withFontSize "11", Svg.withTextAnchor "middle" ]
-    , Svg.svgText (String.fromFloat (toFloat (Basics.round (sinVal * 100)) / 100)) sinLabelX sinLabelY
+    , Svg.svgText (String.fromFloat (toFloat (Basics.round (sinVal * 100)) / 100))
+        sinLabelX
+        sinLabelY
         [ Svg.withFill "#64748B", Svg.withFontSize "11", Svg.withTextAnchor "end" ]
     ]

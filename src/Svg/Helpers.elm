@@ -7,12 +7,12 @@ module Svg.Helpers exposing
     , svgRect
     , svgText
     , withFill
+    , withFontSize
     , withStroke
     , withStrokeWidth
+    , withTextAnchor
     , withTransform
     , withViewBox
-    , withFontSize
-    , withTextAnchor
     )
 
 import Html

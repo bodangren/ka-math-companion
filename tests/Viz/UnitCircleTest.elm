@@ -162,4 +162,66 @@ all =
                         UnitCircle.render uc
                 in
                 Expect.pass
+        , describe "Interactive Angle Selection (Task 11)"
+            [ test "empty has selectedAngle of 0" <|
+                \_ ->
+                    let
+                        uc =
+                            UnitCircle.empty
+                    in
+                    Expect.within (Expect.Absolute 0.001) 0 uc.selectedAngle
+            , test "withSelectedAngle sets selectedAngle" <|
+                \_ ->
+                    let
+                        uc =
+                            UnitCircle.empty |> UnitCircle.withSelectedAngle (pi / 4)
+                    in
+                    Expect.within (Expect.Absolute 0.001) (pi / 4) uc.selectedAngle
+            , test "selectedAngle defaults to same as angle" <|
+                \_ ->
+                    let
+                        uc =
+                            UnitCircle.empty |> UnitCircle.withAngle (pi / 3)
+                    in
+                    Expect.within (Expect.Absolute 0.001) uc.angle uc.selectedAngle
+            , test "withDragEnabled sets dragEnabled flag" <|
+                \_ ->
+                    let
+                        uc =
+                            UnitCircle.empty |> UnitCircle.withDragEnabled True
+                    in
+                    Expect.equal True uc.dragEnabled
+            , test "dragEnabled defaults to False" <|
+                \_ ->
+                    let
+                        uc =
+                            UnitCircle.empty
+                    in
+                    Expect.equal False uc.dragEnabled
+            , test "render with drag enabled produces HTML" <|
+                \_ ->
+                    let
+                        uc =
+                            UnitCircle.empty
+                                |> UnitCircle.withAngle (pi / 4)
+                                |> UnitCircle.withDragEnabled True
+                                |> UnitCircle.onClickSelect Basics.identity
+                        html =
+                            UnitCircle.render uc
+                    in
+                    Expect.pass
+            , test "full interactive configuration renders" <|
+                \_ ->
+                    let
+                        uc =
+                            UnitCircle.init 300
+                                |> UnitCircle.withAngle (pi / 6)
+                                |> UnitCircle.withSelectedAngle (pi / 3)
+                                |> UnitCircle.withDragEnabled True
+                                |> UnitCircle.onClickSelect Basics.identity
+                        html =
+                            UnitCircle.render uc
+                    in
+                    Expect.pass
+            ]
         ]
