@@ -32,20 +32,14 @@
 - (2026-05-03, autonomous) All 116 tests pass. Build succeeds. App serves at localhost:1235. elm-format needed on 6 files. elm-review found 65 issues (unused test vars, unused Button/Grid exports). Fixed via format + build.
 - (2026-05-03, lesson-content) Elm type aliases like `Step` must be defined BEFORE they're used in other type aliases like `WorkedExample`. Order matters in Elm type definitions.
 - (2026-05-04, design-system) Spinner @keyframes animation: use `Html.node "style" [attribute "type" "text/css"] [Html.text "@keyframes ..."]` to inject CSS animation into DOM
-- (2026-05-05, katex-integration) Task 7: Added inline math to Unit 1 polynomial lesson objectives. Math syntax like $ax^n$ embedded directly in objective strings. kaTeX will render on page load via data-katex attributes.
-- (2026-05-05, katex-integration) Tasks 8-9: Added math notation to Unit 5 (logarithms: log rules, exponential equations) and Unit 8 (trigonometry: Law of Sines/Cosines, unit circle, Pythagorean identity). KaTeX track complete.
 - (2026-05-05, katex-integration) Error handling: katex.js already handles errors gracefully via `throwOnError: false` and try/catch fallback to plain text. Accessibility via rendered HTML structure.
 - (2026-05-05, interactive-viz) elm/svg package: Use `Svg` module for SVG elements, import specific `Svg.Attributes` functions. Html.svg doesn't exist - it's `Svg.svg`.
-- (2026-05-05, interactive-viz) Elm variable shadowing: Using `mathX` as parameter name shadows the `mathX` function. Use distinct names like `mx` or `my` to avoid compile errors.
 - (2026-05-05, interactive-viz) Expect.false does not exist in Elm test Expect. Use case/if pattern with Expect.pass/Expect.fail instead.
-- (2026-05-06, interactive-viz) Elm variable shadowing: Using `mathX` as parameter name shadows the `mathX` function. Use distinct names like `mx` or `my` to avoid compile errors.
-- (2026-05-06, interactive-viz) Elm pipe precedence: `|>` has lower precedence than function application. `round v |> modBy step == 0` parses as `(round v |> modBy step) == 0`. Parenthesize: `(round v |> modBy step) == 0`.
+- (2026-05-06, interactive-viz) Elm pipe precedence: `|>` has lower precedence than function application. Parenthesize: `(round v |> modBy step) == 0`.
 - (2026-05-06, interactive-viz) Elm SVG: `cos` and `sin` are built-in, not from a Math module. Use `Basics.cos` and `Basics.sin`.
 - (2026-05-06, interactive-viz) Elm float division: `/` requires Float operands. Use `toFloat` to convert Int to Float before dividing.
 - (2026-05-06, interactive-viz) Elm Expect.within order: `Expect.within (Expect.Absolute 0.001) expected actual` not the other way around.
-- (2026-05-06, interactive-viz) Svg.Helpers withFontSize/textAnchor: Need to add these to Helpers module and import fontSize, textAnchor from Svg.Attributes.
-- (2026-05-06, interactive-viz) Elm config pattern: withAngle now sets both angle AND selectedAngle (default behavior). Keep related fields in sync when setting through builder functions.
-- (2026-05-07, interactive-viz) VizLessonContent pattern: separate data module maps (unitSlug, lessonSlug) pairs to VizBlock types. Cleaner than embedding viz in LessonContent.
-- (2026-05-07, interactive-viz) NumberLine.init takes (width, min, max) not (width) alone - check function signatures before chaining builders
+- (2026-05-07, interactive-viz) Elm config pattern: withAngle now sets both angle AND selectedAngle. Keep related fields in sync when setting through builder functions.
 - (2026-05-07, progress-tracking) Elm port tests: can't test Cmd output directly in elm-test. Test exposed functions by verifying type signatures compile
-- (2026-05-07, progress-tracking) Decode.map8 with piped |> Decode.andThen needs careful type alignment - use intermediate record construction to avoid pipe type mismatch
+- (2026-05-07, spaced-practice) Elm custom type with record: `Card (CardFields ...)` requires wrapping in variant constructor when pattern matching
+- (2026-05-07, spaced-practice) Elm let bindings: `~` is invalid in let. Use `let boxedCard = Card {...} in` not `let ~(Card c) = card`
