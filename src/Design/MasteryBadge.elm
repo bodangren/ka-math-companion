@@ -39,7 +39,8 @@ masteryBadge level =
                 ++ typographyScale.smallFontSize
                 ++ ";font-family:"
                 ++ typographyScale.bodyFont
-                ++ ";font-weight:700;border-radius:9999px;display:inline-block;line-height:1;")
+                ++ ";font-weight:700;border-radius:9999px;display:inline-block;line-height:1;"
+            )
         ]
         [ Html.text labelText ]
 
@@ -72,6 +73,7 @@ masteryBadgeWithLabel level customLabel =
                 ++ typographyScale.smallFontSize
                 ++ ";font-family:"
                 ++ typographyScale.bodyFont
-                ++ ";font-weight:700;border-radius:9999px;display:inline-block;line-height:1;")
+                ++ ";font-weight:700;border-radius:9999px;display:inline-block;line-height:1;"
+            )
         ]
         [ Html.text customLabel ]

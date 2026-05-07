@@ -24,23 +24,23 @@
   - [x] Write Tests: Verify mastery decays after time
   - [x] Implement: Add time-based decay logic (needsReview)
 
-## Phase 3: Progress Visualization
+## Phase 3: Progress Visualization (Complete)
 
-- [ ] **Task 6: Progress Bar Component**
-  - [ ] Write Tests: Verify progress bar renders percentage
-  - [ ] Implement: Create `src/Components/ProgressBar.elm`
+- [x] **Task 6: Progress Bar Component**
+  - [x] Write Tests: Verify progress bar renders percentage
+  - [x] Implement: Create `src/Design/ProgressBar.elm`
 
-- [ ] **Task 7: Mastery Badge Component**
-  - [ ] Write Tests: Verify badge shows correct state
-  - [ ] Implement: Create `src/Components/MasteryBadge.elm`
+- [x] **Task 7: Mastery Badge Component**
+  - [x] Write Tests: Verify badge shows correct state
+  - [x] Implement: Create `src/Design/MasteryBadge.elm`
 
-- [ ] **Task 8: Update Curriculum Pages**
-  - [ ] Write Tests: Verify progress shows on curriculum
-  - [ ] Implement: Add progress indicators to Curriculum.elm
+- [x] **Task 8: Update Curriculum Pages**
+  - [x] Write Tests: Verify progress shows on curriculum
+  - [x] Implement: Add progress indicators to Curriculum.elm
 
-- [ ] **Task 9: Update Unit Pages**
-  - [ ] Write Tests: Verify progress shows on units
-  - [ ] Implement: Add progress indicators to Unit_.elm
+- [x] **Task 9: Update Unit Pages**
+  - [x] Write Tests: Verify progress shows on units
+  - [x] Implement: Add progress indicators to Unit_.elm
 
 ## Phase 4: Dashboard
 

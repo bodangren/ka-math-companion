@@ -101,6 +101,7 @@ viewUnit unit =
              ]
                 ++ (if unitProgress > 0 then
                         [ ProgressBar.progressBar (Just (String.fromInt unitProgress ++ "% complete")) unitProgress ]
+
                     else
                         []
                    )
