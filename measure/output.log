@@ -33,3 +33,374 @@ drwxrwxr-x 2 daniel-bo daniel-bo 4096 Apr 25 12:15 practice-problems_20260403
 drwxrwxr-x 2 daniel-bo daniel-bo 4096 Apr 25 12:15 progress-tracking_20260403
 drwxrwxr-x 2 daniel-bo daniel-bo 4096 Apr 25 12:15 spaced-practice_20260403
 [0m
+[0m$ [0mgit add measure/output.log && git commit -m "autonomous: checkpoint before switching tracks"
+[feat/30-render-curriculum-overview-page e50bc9c] autonomous: checkpoint before switching tracks
+ 1 file changed, 23 insertions(+), 1944 deletions(-)
+[0m
+[0m✱ [0mGlob "measure/tracks/*/plan.md"[90m 7 matches[0m
+[0m→ [0mRead measure/tracks/spaced-practice_20260403/plan.md
+[0m
+[0m# [0mTodos
+[ ] Functionality Review: Verify previous phase works before new work
+[ ] Implement Phase 1 of Spaced Practice track (SRS Data Types)
+[0m
+[0m$ [0mcat package.json | grep -E '"dev"|"start"'
+"dev": "elm-land server",
+[0m
+[0m$ [0mbun run dev
+$ elm-land server
+
+🌈  Elm Land [2m(v0.20.1)[0m is ready at http://localhost:1234
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+
+
+<shell_metadata>
+shell tool terminated command after exceeding timeout 30000 ms. If this command is expected to take longer and is not waiting for interactive input, retry with a larger timeout value in milliseconds.
+</shell_metadata>
+[0m
+[0m→ [0mSkill "browser-harness"
+[0m
+[0m$ [0mbrowser-harness-js 'await session.connect()'
+/bin/bash: line 1: browser-harness-js: command not found
+[0m
+[0m$ [0mwhich browser-harness || pip show browser-use 2>/dev/null | head -3
+Name: browser-use
+Version: 0.12.6
+Summary: Make websites accessible for AI agents
+[0m
+[0m→ [0mRead ../../.agents/skills/browser-harness/run.py
+[0m
+[0m$ [0mcd /home/daniel-bo/.agents/skills/browser-harness && uv run bh <<'PY'
+ensure_daemon()
+print("connected")
+PY
+/bin/bash: line 1: uv: command not found
+[0m
+[0m$ [0mpython3 /home/daniel-bo/.agents/skills/browser-harness/run.py -c "print('hello')"
+Traceback (most recent call last):
+  File "/home/daniel-bo/.agents/skills/browser-harness/run.py", line 70, in <module>
+    main()
+  File "/home/daniel-bo/.agents/skills/browser-harness/run.py", line 65, in main
+    ensure_daemon()
+  File "/home/daniel-bo/.agents/skills/browser-harness/admin.py", line 76, in ensure_daemon
+    p = subprocess.Popen(
+        ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'uv'
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && elm-test 2>&1 | tail -20
+/bin/bash: line 1: elm-test: command not found
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm run build 2>&1 | tail -30
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
+[0m$ [0mcurl -s http://localhost:1234 | head -50
+(no output)
+[0m
+[0m$ [0mbun run test 2>&1 | tail -30
+$ elm-test
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 260 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 126268471628687
+
+
+TEST RUN PASSED
+
+Duration: 287 ms
+Passed:   260
+Failed:   0
+[0m
+[0m✱ [0mGlob "src/Data/*.elm"[90m 5 matches[0m
+[0m✱ [0mGlob "src/Logic/*.elm"[90m 1 match[0m
+[0m✱ [0mGlob "tests/**/*SRS*.elm"[90m 0 matches[0m
+[0m✱ [0mGlob "tests/Data/*.elm"[90m 6 matches[0m
+Previous phase verified: 260 tests pass, build succeeds, app compiles. Continuing with Spaced Practice implementation.
+[0m
+[0m# [0mTodos
+[x] Functionality Review: Verify previous phase works before new work
+[ ] Task 1: Write Tests for SRS Data Types
+[ ] Task 1: Implement src/Data/SRS.elm with Leitner types
+[0m
+[0m← [0mWrite tests/Data/SRS_Test.elm
+Wrote file successfully.
+[0m
+[0m$ [0mbun run test 2>&1 | tail -40
+$ elm-test
+Compiling-- MODULE NOT FOUND - /home/daniel-bo/Desktop/ka-math-companion/tests/Data/SRS_Test.elm
+
+You are trying to import a `Data.SRS` module:
+
+3| import Data.SRS exposing (Box(..), Card, LeitnerBox, NewCard, ReviewStats)
+          ^^^^^^^^
+I checked the "dependencies" and "source-directories" listed in your elm.json,
+but I cannot find it! Maybe it is a typo for one of these names?
+
+    Data.SRS_Test
+    Task
+    Bitwise
+    Data.Progress
+
+Hint: If it is not a typo, check the "dependencies" and "source-directories" of
+your elm.json to make sure all the packages you need are listed there!
+
+
+`elm make` failed with exit code 1.
+error: script "test" exited with code 1
+[0m
+[0m→ [0mRead src/Data/Progress.elm[90m [limit=50][0m
+[0m
+[0m← [0mWrite src/Data/SRS.elm
+Wrote file successfully.
+[0m
+[0m$ [0mbun run test 2>&1 | tail -50
+$ elm-test
+Compiling-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Data/SRS_Test.elm
+
+I cannot find a `Data.SRS.NewCard` variant:
+
+33|                         Data.SRS.NewCard nc ->
+                            ^^^^^^^^^^^^^^^^
+The `Data.SRS` module does not expose a `NewCard` variant. These names seem
+close though:
+
+    Data.SRS.Card
+    Data.SRS.Box1
+    Data.SRS.Box2
+    Data.SRS.Box3
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+
+`elm make` failed with exit code 1.
+error: script "test" exited with code 1
+[0m
+[0m→ [0mRead tests/Data/SRS_Test.elm
+[0m
+[0m← [0mWrite tests/Data/SRS_Test.elm
+Wrote file successfully.
+[0m
+[0m$ [0mbun run test 2>&1
+$ elm-test
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 264 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 299790980195708
+
+
+TEST RUN PASSED
+
+Duration: 322 ms
+Passed:   264
+Failed:   0
+[0m
+[0m# [0mTodos
+[x] Functionality Review: Verify previous phase works before new work
+[x] Task 1: Write Tests for SRS Data Types
+[x] Task 1: Implement src/Data/SRS.elm with Leitner types
+[ ] Task 2: Write Tests for Box Progression Logic
+[ ] Task 2: Implement src/Logic/Leitner.elm
+[0m
+[0m$ [0mnpm run build 2>&1
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
+[0m← [0mWrite tests/Logic/Leitner_Test.elm
+Wrote file successfully.
+[0m
+[0m$ [0mbun run test 2>&1 | tail -30
+$ elm-test
+Compiling-- LET PROBLEM - /home/daniel-bo/Desktop/ka-math-companion/tests/Logic/Leitner_Test.elm
+
+I was partway through parsing a `let` expression, but I got stuck here:
+
+23|                     let
+24|                         card =
+25|                             newCard "q" "a" "obj-1"
+26|                         ~(Card c) =
+                            ^
+Based on the indentation, I was expecting to see the in keyword next. Is there a
+typo?
+
+Note: This can also happen if you are trying to define another value within the
+`let` but it is not indented enough. Make sure each definition has exactly the
+same amount of spaces before it. They should line up exactly!
+
+
+`elm make` failed with exit code 1.
+error: script "test" exited with code 1
+[0m
+[0m← [0mWrite tests/Logic/Leitner_Test.elm
+Wrote file successfully.
+[0m
+[0m$ [0mbun run test 2>&1 | tail -30
+$ elm-test
+Compiling-- BAD IMPORT - /home/daniel-bo/Desktop/ka-math-companion/tests/Logic/Leitner_Test.elm
+
+The `Data.SRS` module does not expose `moveCardDown`:
+
+3| import Data.SRS exposing (Box(..), Card(..), moveCardDown, moveCardUp, newCard)
+                                                ^^^^^^^^^^^^
+These names seem close though:
+
+    newCard
+    boxNumber
+    cardToReview
+    defaultReviewStats
+
+
+`elm make` failed with exit code 1.
+error: script "test" exited with code 1
+[0m
+[0m← [0mWrite src/Logic/Leitner.elm
+Wrote file successfully.
+[0m
+[0m$ [0mbun run test 2>&1
+$ elm-test
+Compiling-- BAD IMPORT - /home/daniel-bo/Desktop/ka-math-companion/tests/Logic/Leitner_Test.elm
+
+The `Data.SRS` module does not expose `moveCardDown`:
+
+3| import Data.SRS exposing (Box(..), Card(..), moveCardDown, moveCardUp, newCard)
+                                                ^^^^^^^^^^^^
+These names seem close though:
+
+    newCard
+    boxNumber
+    cardToReview
+    defaultReviewStats
+
+
+`elm make` failed with exit code 1.
+error: script "test" exited with code 1
+[0m
+[0m← [0mEdit tests/Logic/Leitner_Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Logic/Leitner_Test.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Logic/Leitner_Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Logic/Leitner_Test.elm
+@@ -1,7 +1,7 @@
+ module Logic.Leitner_Test exposing (suite)
+ 
+-import Data.SRS exposing (Box(..), Card(..), moveCardDown, moveCardUp, newCard)
++import Logic.Leitner exposing (moveCardDown, moveCardUp)
+ import Expect
+ import Test
+ 
+ 
+
+[0m
+[0m← [0mEdit tests/Logic/Leitner_Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Logic/Leitner_Test.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Logic/Leitner_Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Logic/Leitner_Test.elm
+@@ -1,6 +1,7 @@
+ module Logic.Leitner_Test exposing (suite)
+ 
++import Data.SRS exposing (Box(..), Card(..), newCard)
+ import Logic.Leitner exposing (moveCardDown, moveCardUp)
+ import Expect
+ import Test
+ 
+
+[0m
+[0m$ [0mbun run test 2>&1
+$ elm-test
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 268 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 257435218585415
+
+
+TEST RUN PASSED
+
+Duration: 408 ms
+Passed:   268
+Failed:   0
+[0m
+[0m# [0mTodos
+[x] Functionality Review: Verify previous phase works before new work
+[x] Task 1: Write Tests for SRS Data Types
+[x] Task 1: Implement src/Data/SRS.elm with Leitner types
+[x] Task 2: Write Tests for Box Progression Logic
+[x] Task 2: Implement src/Logic/Leitner.elm
+[ ] Task 3: Write Tests for Due Date Calculation
+[ ] Task 3: Implement interval logic for each box
+[ ] Run full test suite
+[ ] Run build
+[0m
+[0m$ [0mnpm run build 2>&1
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
+[0m← [0mWrite tests/Logic/Leitner_Test.elm
+Wrote file successfully.
+[0m
+[0m← [0mEdit src/Logic/Leitner.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Logic/Leitner.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Logic/Leitner.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Logic/Leitner.elm
+@@ -1,9 +1,19 @@
+-module Logic.Leitner exposing (moveCardDown, moveCardUp)
++module Logic.Leitner exposing (intervalDays, moveCardDown, moveCardUp)
+ 
+ import Data.SRS exposing (Box(..), Card(..))
+ 
+ 
++intervalDays : Box -> Int
++intervalDays box =
++    case box of
++        Box1 -> 1
++        Box2 -> 3
++        Box3 -> 7
++        Box4 -> 14
++        Box5 -> 30
++
++
+ moveCardUp : Card -> Card
+ moveCardUp (Card fields) =
+     let
+         newBox =
+
+[0m
+[0m$ [0mbun run test 2>&1
+$ elm-test
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 273 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 339515202937344
+
+
+TEST RUN PASSED
+
+Duration: 351 ms
+Passed:   273
+Failed:   0
+[0m
