@@ -14,15 +14,15 @@
   - [x] Write Tests: Verify progress updates correctly
   - [x] Implement: Create `src/Logic/Progress.elm` for state management
 
-## Phase 2: Mastery Logic
+## Phase 2: Mastery Logic (Complete)
 
-- [ ] **Task 4: Mastery Calculation**
-  - [ ] Write Tests: Verify mastery thresholds work
-  - [ ] Implement: Add mastery state machine logic
+- [x] **Task 4: Mastery Calculation**
+  - [x] Write Tests: Verify mastery thresholds work
+  - [x] Implement: Add mastery state machine logic (updateMasteryOnAttempt)
 
-- [ ] **Task 5: Decay System**
-  - [ ] Write Tests: Verify mastery decays after time
-  - [ ] Implement: Add time-based decay logic
+- [x] **Task 5: Decay System**
+  - [x] Write Tests: Verify mastery decays after time
+  - [x] Implement: Add time-based decay logic (needsReview)
 
 ## Phase 3: Progress Visualization
 

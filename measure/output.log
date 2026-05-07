@@ -911,3 +911,315 @@ Duration: 277 ms
 Passed:   241
 Failed:   0
 [0m
+[0m$ [0mgit add -A && git commit -m "chore: format Progress and Ports files"
+[feat/30-render-curriculum-overview-page c914a8d] chore: format Progress and Ports files
+ 5 files changed, 926 insertions(+), 26 deletions(-)
+[0m
+[0m→ [0mRead measure/tracks/progress-tracking_20260403/plan.md
+[0m
+[0m← [0mEdit measure/tracks/progress-tracking_20260403/plan.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/progress-tracking_20260403/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/progress-tracking_20260403/plan.md
++++ /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/progress-tracking_20260403/plan.md
+@@ -1,19 +1,19 @@
+ # Track Plan: Progress Tracking
+ 
+-## Phase 1: Data Model & Ports
++## Phase 1: Data Model & Ports (Complete)
+ 
+-- [ ] **Task 1: Create Progress Data Types**
+-  - [ ] Write Tests: Verify type constructors
+-  - [ ] Implement: Create `src/Data/Progress.elm` with mastery types
++- [x] **Task 1: Create Progress Data Types**
++  - [x] Write Tests: Verify type constructors
++  - [x] Implement: Create `src/Data/Progress.elm` with mastery types
+ 
+-- [ ] **Task 2: Set Up LocalStorage Ports**
+-  - [ ] Write Tests: Verify port types compile
+-  - [ ] Implement: Add save/load ports to `src/Ports.elm`
++- [x] **Task 2: Set Up LocalStorage Ports**
++  - [x] Write Tests: Verify port types compile
++  - [x] Implement: Add save/load ports to `src/Ports.elm`
+ 
+-- [ ] **Task 3: Create Progress Manager**
+-  - [ ] Write Tests: Verify progress updates correctly
+-  - [ ] Implement: Create `src/Logic/Progress.elm` for state management
++- [x] **Task 3: Create Progress Manager**
++  - [x] Write Tests: Verify progress updates correctly
++  - [x] Implement: Create `src/Logic/Progress.elm` for state management
+ 
+ ## Phase 2: Mastery Logic
+ 
+ - [ ] **Task 4: Mastery Calculation**
+
+[0m
+[0m$ [0mgit add measure/tracks/progress-tracking_20260403/plan.md && git commit -m "chore(progress): mark Phase 1 complete in plan"
+[feat/30-render-curriculum-overview-page 4044abe] chore(progress): mark Phase 1 complete in plan
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+[0m
+[0m$ [0mnpm run test 2>&1
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 241 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 234570023304904
+
+
+TEST RUN PASSED
+
+Duration: 397 ms
+Passed:   241
+Failed:   0
+[0m
+[0m$ [0mnpm run build 2>&1
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
+[0m$ [0mcurl -s http://localhost:1234 2>&1 | head -50
+(no output)
+[0m
+[0m$ [0mpgrep -f "elm-land" && lsof -i :1234 2>/dev/null || echo "Dev server not running"
+1960810
+Dev server not running
+[0m
+[0m$ [0mpkill -f "elm-land" 2>/dev/null; sleep 1; npm run dev 2>&1 &
+sleep 8
+curl -s http://localhost:1234 2>&1 | head -30
+(no output)
+
+<shell_metadata>
+shell tool terminated command after exceeding timeout 30000 ms. If this command is expected to take longer and is not waiting for interactive input, retry with a larger timeout value in milliseconds.
+</shell_metadata>
+[0m
+[0m# [0mTodos
+[x] Implement Progress Tracking - Phase 1: Data Model & Ports
+[x] Task 1: Create Progress Data Types
+[x] Task 2: Set Up LocalStorage Ports
+[x] Task 3: Create Progress Manager
+[ ] Phase 2: Mastery Logic
+[ ] Phase 3: Progress Visualization
+[ ] Phase 4: Dashboard
+[ ] Phase 5: Export/Import
+[ ] Phase 6: Integration
+[0m
+[0m→ [0mRead src/Data/Progress.elm
+[0m
+[0m← [0mEdit tests/Data/Progress_Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Data/Progress_Test.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Data/Progress_Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Data/Progress_Test.elm
+@@ -1,7 +1,7 @@
+ module Data.Progress_Test exposing (suite)
+ 
+-import Data.Progress exposing (MasteryLevel(..), ProgressEntry, encodeProgressEntry, decodeProgressEntry)
++import Data.Progress exposing (MasteryLevel(..), ProgressEntry, encodeProgressEntry, decodeProgressEntry, updateMasteryOnAttempt, needsReview, isMastered)
+ import Expect
+ import Json.Decode as Decode
+ import Json.Encode as Encode
+ import Test
+@@ -117,8 +117,117 @@
+ 
+                         Err _ ->
+                             Expect.fail "Failed to decode entry"
+             ]
++        , Test.describe "Mastery Calculation (Task 4)"
++            [ Test.test "3 consecutive correct = Mastered" <|
++                \_ ->
++                    let
++                        entry =
++                            createEntry "u1" "l1" "o1"
++                                |> updateMasteryOnAttempt True
++                                |> updateMasteryOnAttempt True
++                                |> updateMasteryOnAttempt True
++                    in
++                    Expect.equal entry.mastery Mastered
++            , Test.test "2 correct then incorrect resets consecutive" <|
++                \_ ->
++                    let
++                        entry =
++                            createEntry "u1" "l1" "o1"
++                                |> updateMasteryOnAttempt True
++                                |> updateMasteryOnAttempt True
++                                |> updateMasteryOnAttempt False
++                    in
++                    Expect.equal entry.consecutiveCorrect 0
++            , Test.test "1 correct then incorrect = InProgress" <|
++                \_ ->
++                    let
++                        entry =
++                            createEntry "u1" "l1" "o1"
++                                |> updateMasteryOnAttempt True
++                                |> updateMasteryOnAttempt False
++                    in
++                    Expect.equal entry.mastery InProgress
++            , Test.test "isMastered returns True for Mastered entries" <|
++                \_ ->
++                    let
++                        entry =
++                            createEntry "u1" "l1" "o1"
++                                |> updateMasteryOnAttempt True
++                                |> updateMasteryOnAttempt True
++                                |> updateMasteryOnAttempt True
++                    in
++                    Expect.equal (isMastered entry) True
++            ]
++        , Test.describe "Decay System (Task 5)"
++            [ Test.test "needsReview True after 7+ days for mastered entry" <|
++                \_ ->
++                    let
++                        sevenDaysAgo =
++                            7 * 24 * 60 * 60 * 1000
++
++                        currentTime =
++                            10 * sevenDaysAgo
++
++                        entry =
++                            { unitSlug = "u1"
++                            , lessonSlug = "l1"
++                            , objectiveId = "o1"
++                            , mastery = Mastered
++                            , attemptCount = 3
++                            , correctCount = 3
++                            , incorrectCount = 0
++                            , consecutiveCorrect = 3
++                            , lastAttemptTimestamp = Just sevenDaysAgo
++                            }
++                    in
++                    Expect.equal (needsReview currentTime entry) True
++            , Test.test "needsReview False within 7 days for mastered entry" <|
++                \_ ->
++                    let
++                        threeDaysAgo =
++                            3 * 24 * 60 * 60 * 1000
++
++                        currentTime =
++                            10 * 24 * 60 * 60 * 1000
++
++                        entry =
++                            { unitSlug = "u1"
++                            , lessonSlug = "l1"
++                            , objectiveId = "o1"
++                            , mastery = Mastered
++                            , attemptCount = 3
++                            , correctCount = 3
++                            , incorrectCount = 0
++                            , consecutiveCorrect = 3
++                            , lastAttemptTimestamp = Just threeDaysAgo
++                            }
++                    in
++                    Expect.equal (needsReview currentTime entry) False
++            , Test.test "needsReview False for non-mastered entry" <|
++                \_ ->
++                    let
++                        tenDaysAgo =
++                            10 * 24 * 60 * 60 * 1000
++
++                        currentTime =
++                            20 * 24 * 60 * 60 * 1000
++
++                        entry =
++                            { unitSlug = "u1"
++                            , lessonSlug = "l1"
++                            , objectiveId = "o1"
++                            , mastery = InProgress
++                            , attemptCount = 2
++                            , correctCount = 1
++                            , incorrectCount = 1
++                            , consecutiveCorrect = 0
++                            , lastAttemptTimestamp = Just tenDaysAgo
++                            }
++                    in
++                    Expect.equal (needsReview currentTime entry) False
++            ]
+         ]
+ 
+ 
+ masteryToInt : MasteryLevel -> Int
+
+[0m
+[0m$ [0mnpm run test 2>&1 | tail -20
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 248 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 337377155771091
+
+
+TEST RUN PASSED
+
+Duration: 279 ms
+Passed:   248
+Failed:   0
+[0m
+[0m← [0mEdit measure/tracks/progress-tracking_20260403/plan.md
+Index: /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/progress-tracking_20260403/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/progress-tracking_20260403/plan.md
++++ /home/daniel-bo/Desktop/ka-math-companion/measure/tracks/progress-tracking_20260403/plan.md
+@@ -13,17 +13,17 @@
+ - [x] **Task 3: Create Progress Manager**
+   - [x] Write Tests: Verify progress updates correctly
+   - [x] Implement: Create `src/Logic/Progress.elm` for state management
+ 
+-## Phase 2: Mastery Logic
++## Phase 2: Mastery Logic (Complete)
+ 
+-- [ ] **Task 4: Mastery Calculation**
+-  - [ ] Write Tests: Verify mastery thresholds work
+-  - [ ] Implement: Add mastery state machine logic
++- [x] **Task 4: Mastery Calculation**
++  - [x] Write Tests: Verify mastery thresholds work
++  - [x] Implement: Add mastery state machine logic (updateMasteryOnAttempt)
+ 
+-- [ ] **Task 5: Decay System**
+-  - [ ] Write Tests: Verify mastery decays after time
+-  - [ ] Implement: Add time-based decay logic
++- [x] **Task 5: Decay System**
++  - [x] Write Tests: Verify mastery decays after time
++  - [x] Implement: Add time-based decay logic (needsReview)
+ 
+ ## Phase 3: Progress Visualization
+ 
+ - [ ] **Task 6: Progress Bar Component**
+
+[0m
+[0m$ [0mnpm run test 2>&1 && npm run build 2>&1 | tail -10
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 248 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 280825620124743
+
+
+TEST RUN PASSED
+
+Duration: 322 ms
+Passed:   248
+Failed:   0
+
+
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
