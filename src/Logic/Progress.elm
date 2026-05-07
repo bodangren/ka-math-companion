@@ -1,15 +1,15 @@
 module Logic.Progress exposing
     ( State
+    , addEntry
+    , entryCount
+    , getEntry
+    , getUnitProgress
     , init
     , isEmpty
-    , entryCount
-    , addEntry
-    , getEntry
-    , updateEntry
-    , recordAttempt
-    , getUnitProgress
     , masteredCount
+    , recordAttempt
     , totalCount
+    , updateEntry
     )
 
 import Data.Progress exposing (ProgressEntry, updateMasteryOnAttempt)
@@ -57,9 +57,12 @@ getEntry unitSlug lessonSlug objectiveId state =
     state.entries
         |> List.filter
             (\e ->
-                e.unitSlug == unitSlug
-                    && e.lessonSlug == lessonSlug
-                    && e.objectiveId == objectiveId
+                e.unitSlug
+                    == unitSlug
+                    && e.lessonSlug
+                    == lessonSlug
+                    && e.objectiveId
+                    == objectiveId
             )
         |> List.head
 
@@ -70,11 +73,16 @@ updateEntry unitSlug lessonSlug objectiveId updateFn state =
         | entries =
             List.map
                 (\entry ->
-                    if entry.unitSlug == unitSlug
-                       && entry.lessonSlug == lessonSlug
-                       && entry.objectiveId == objectiveId
+                    if
+                        entry.unitSlug
+                            == unitSlug
+                            && entry.lessonSlug
+                            == lessonSlug
+                            && entry.objectiveId
+                            == objectiveId
                     then
                         updateFn entry
+
                     else
                         entry
                 )
@@ -94,7 +102,7 @@ recordAttempt unitSlug lessonSlug objectiveId isCorrect state =
                     { entry
                         | lastAttemptTimestamp = timestamp
                     }
-                    |> updateMasteryOnAttempt isCorrect
+                        |> updateMasteryOnAttempt isCorrect
             in
             updateEntry unitSlug lessonSlug objectiveId (\_ -> updatedEntry) state
 

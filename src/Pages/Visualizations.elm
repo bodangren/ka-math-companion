@@ -7,10 +7,10 @@ import Design.Stack as Stack
 import Design.Tokens as Tokens
 import Html
 import Html.Attributes exposing (style)
+import View exposing (View)
 import Viz.FunctionGrapher as FunctionGrapher
 import Viz.NumberLine as NumberLine
 import Viz.UnitCircle as UnitCircle
-import View exposing (View)
 
 
 page : View msg

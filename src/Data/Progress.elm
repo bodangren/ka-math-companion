@@ -1,22 +1,21 @@
 module Data.Progress exposing
     ( MasteryLevel(..)
-    , ProgressEntry
     , ProgressData
-    , masteryToInt
-    , intToMastery
+    , ProgressEntry
     , createEntry
-    , updateMasteryOnAttempt
-    , isMastered
-    , needsReview
-    , encodeMasteryLevel
     , decodeMasteryLevel
-    , encodeProgressEntry
-    , decodeProgressEntry
-    , encodeProgressData
     , decodeProgressData
+    , decodeProgressEntry
+    , encodeMasteryLevel
+    , encodeProgressData
+    , encodeProgressEntry
+    , intToMastery
+    , isMastered
+    , masteryToInt
+    , needsReview
+    , updateMasteryOnAttempt
     , version
     )
-
 
 import Json.Decode as Decode exposing (Decoder)
 import Json.Encode as Encode exposing (Value)
@@ -102,26 +101,31 @@ updateMasteryOnAttempt isCorrect entry =
         newConsecutiveCorrect =
             if isCorrect then
                 entry.consecutiveCorrect + 1
+
             else
                 0
 
         newCorrectCount =
             if isCorrect then
                 entry.correctCount + 1
+
             else
                 entry.correctCount
 
         newIncorrectCount =
             if isCorrect then
                 entry.incorrectCount
+
             else
                 entry.incorrectCount + 1
 
         newMastery =
             if newConsecutiveCorrect >= 3 then
                 Mastered
+
             else if newAttemptCount > 0 then
                 InProgress
+
             else
                 NotStarted
     in

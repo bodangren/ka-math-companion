@@ -1,4 +1,4 @@
-port module Ports exposing (processMath, renderMath, saveProgress, loadProgress, exportProgress, importProgress, progressReceived, progressImported)
+port module Ports exposing (exportProgress, importProgress, loadProgress, processMath, progressImported, progressReceived, renderMath, saveProgress)
 
 
 port renderMath : { id : String, latex : String, displayMode : Bool } -> Cmd msg

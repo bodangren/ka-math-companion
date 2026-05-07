@@ -23,3 +23,891 @@ M measure/output.log
 058a2f0 chore: update memory and plan after viz integration
 c216d8e feat(viz): integrate visualizations into lessons and create demo page
 [0m
+[0m$ [0mgit add measure/output.log && git commit -m "chore: checkpoint before autonomous run"
+[feat/30-render-curriculum-overview-page 980633d] chore: checkpoint before autonomous run
+ 1 file changed, 13 insertions(+), 11 deletions(-)
+[0m
+[0m$ [0mgit push
+To https://github.com/bodangren/ka-math-companion.git
+   80944ea..980633d  feat/30-render-curriculum-overview-page -> feat/30-render-curriculum-overview-page
+[0m
+[0m$ [0mgit log --oneline feat/30-render-curriculum-overview-page --not main | head -20
+980633d chore: checkpoint before autonomous run
+80944ea chore(measure): archive completed tracks, update registry
+7e6c2f0 chore: archive interactive-viz track
+8350f80 chore: mark interactive-viz track complete
+058a2f0 chore: update memory and plan after viz integration
+c216d8e feat(viz): integrate visualizations into lessons and create demo page
+7e9a030 chore: commit pending log files
+0224aa9 checkpoint: Complete UnitCircle Task 11, 213 tests pass
+2591d63 feat(UnitCircle): add interactive angle selection (Task 11)
+def9536 autonomous: update plan and lessons-learned
+db3d9dd autonomous: complete UnitCircle Tasks 9-10, 206 tests pass
+6c1b20c autonomous: checkpoint session state
+5b24f84 autonomous: update lessons-learned with Elm msg type variable insight
+581b449 autonomous: complete NumberLine (Tasks 6-8), 188 tests pass
+f6026e5 Mark Task 8 complete in plan
+849e3a6 Add NumberLine visualization with interactive selection (Tasks 6-8)
+0dd5daf checkpoint: autonomous session
+f1dfc36 chore(review): fix withStroke bug and format Elm files
+2f49240 chore: update lessons-learned after interactive-viz Phase 2
+a205760 chore(interactive-viz): Phase 2 complete - FunctionGrapher with interactive zoom/pan
+[0m
+[0m$ [0mls -la src/Pages/
+total 44
+drwxrwxr-x 3 daniel-bo daniel-bo  4096 May  7 04:34 .
+drwxrwxr-x 8 daniel-bo daniel-bo  4096 May  5 16:44 ..
+drwxrwxr-x 3 daniel-bo daniel-bo  4096 Feb 27 22:11 Curriculum
+-rw-rw-r-- 1 daniel-bo daniel-bo  3682 May  2 04:43 Curriculum.elm
+-rw-rw-r-- 1 daniel-bo daniel-bo 12597 May  3 10:33 Design_System.elm
+-rw-rw-r-- 1 daniel-bo daniel-bo  3983 May  2 04:42 Home_.elm
+-rw-rw-r-- 1 daniel-bo daniel-bo  6722 May  7 04:34 Visualizations.elm
+[0m
+[0m$ [0mgit diff main...HEAD --stat
+.codex/skills/conductor.skill                      |  Bin 0 -> 33454 bytes
+ .eslintrc.cjs                                      |   35 -
+ .gitignore                                         |   16 +-
+ .prettierignore                                    |    7 -
+ .prettierrc.json                                   |   15 -
+ AGENTS.md                                          |   21 +
+ CLAUDE.md                                          |    1 +
+ DESIGN.md                                          |  106 +
+ README.md                                          |  212 +-
+ app/curriculum/CurriculumOverview.test.tsx         |   65 -
+ app/curriculum/CurriculumOverview.tsx              |  166 -
+ app/curriculum/[courseSlug]/page.tsx               |   58 -
+ app/curriculum/page.tsx                            |   55 -
+ app/globals.css                                    |  451 --
+ app/layout.tsx                                     |   34 -
+ app/page.tsx                                       |   38 -
+ components/MasteryIndicator.test.tsx               |  126 -
+ components/MasteryIndicator.tsx                    |  160 -
+ elm-land.json                                      |   38 +
+ elm.json                                           |   28 +
+ gemini_design_update.log                           |   29 +
+ lib/getCurriculum.test.ts                          |  143 -
+ lib/getCurriculum.ts                               |  336 --
+ lib/progress-tracker.test.ts                       |  144 -
+ lib/progress-tracker.ts                            |  154 -
+ mdx.d.ts                                           |    5 -
+ .../archive/curriculum-data_20260403/metadata.json |    8 +
+ measure/archive/curriculum-data_20260403/plan.md   |   75 +
+ measure/archive/curriculum-data_20260403/spec.md   |   45 +
+ .../archive/design-system_20260403/metadata.json   |    8 +
+ measure/archive/design-system_20260403/plan.md     |   71 +
+ measure/archive/design-system_20260403/spec.md     |   55 +
+ .../archive/elm-migration_20260227/metadata.json   |    8 +
+ measure/archive/elm-migration_20260227/plan.md     |   75 +
+ measure/archive/elm-migration_20260227/spec.md     |   52 +
+ .../archive/interactive-viz_20260403/metadata.json |    9 +
+ measure/archive/interactive-viz_20260403/plan.md   |   67 +
+ measure/archive/interactive-viz_20260403/spec.md   |   53 +
+ .../katex-integration_20260403/metadata.json       |    8 +
+ measure/archive/katex-integration_20260403/plan.md |   55 +
+ measure/archive/katex-integration_20260403/spec.md |   49 +
+ .../archive/lesson-content_20260403/metadata.json  |    8 +
+ measure/archive/lesson-content_20260403/plan.md    |   61 +
+ measure/archive/lesson-content_20260403/spec.md    |   51 +
+ .../archive/visual_refresh_20260425/metadata.json  |    7 +
+ measure/archive/visual_refresh_20260425/plan.md    |   12 +
+ measure/archive/visual_refresh_20260425/spec.md    |   11 +
+ measure/autonomous_prompt.md                       |   62 +
+ measure/code_styleguides/general.md                |   23 +
+ measure/code_styleguides/html-css.md               |   49 +
+ measure/code_styleguides/javascript.md             |   51 +
+ measure/code_styleguides/typescript.md             |   43 +
+ measure/index.md                                   |   18 +
+ measure/lessons-learned.md                         |   49 +
+ measure/output.log                                 |   25 +
+ measure/product-guidelines.md                      |   18 +
+ measure/product.md                                 |   32 +
+ measure/review-output.log                          |   26 +
+ measure/review-prompt.md                           |   36 +
+ measure/setup_state.json                           |    1 +
+ measure/tech-debt.md                               |   26 +
+ measure/tech-stack.md                              |   37 +
+ measure/tracks.md                                  |   62 +
+ .../tracks/accessibility_20260403/metadata.json    |    8 +
+ measure/tracks/accessibility_20260403/plan.md      |   73 +
+ measure/tracks/accessibility_20260403/spec.md      |   52 +
+ .../assessment-mastery_20260403/metadata.json      |    8 +
+ measure/tracks/assessment-mastery_20260403/plan.md |   73 +
+ measure/tracks/assessment-mastery_20260403/spec.md |   51 +
+ measure/tracks/khan-sync_20260403/metadata.json    |    8 +
+ measure/tracks/khan-sync_20260403/plan.md          |   63 +
+ measure/tracks/khan-sync_20260403/spec.md          |   53 +
+ .../tracks/performance-seo_20260403/metadata.json  |    8 +
+ measure/tracks/performance-seo_20260403/plan.md    |   71 +
+ measure/tracks/performance-seo_20260403/spec.md    |   54 +
+ .../practice-problems_20260403/metadata.json       |    8 +
+ measure/tracks/practice-problems_20260403/plan.md  |   69 +
+ measure/tracks/practice-problems_20260403/spec.md  |   57 +
+ .../progress-tracking_20260403/metadata.json       |    8 +
+ measure/tracks/progress-tracking_20260403/plan.md  |   73 +
+ measure/tracks/progress-tracking_20260403/spec.md  |   52 +
+ .../tracks/spaced-practice_20260403/metadata.json  |    8 +
+ measure/tracks/spaced-practice_20260403/plan.md    |   73 +
+ measure/tracks/spaced-practice_20260403/spec.md    |   54 +
+ measure/workflow.md                                |  333 ++
+ next.config.ts                                     |   22 -
+ opencode.jsonc                                     |   28 +-
+ package-lock.json                                  | 3009 ++++++++++
+ package.json                                       |   46 +-
+ pnpm-lock.yaml                                     | 5807 --------------------
+ public/katex.js                                    |  149 +
+ review/elm.json                                    |   33 +
+ review/src/ReviewConfig.elm                        |   23 +
+ src/Components/Content.elm                         |  136 +
+ src/Components/Math.elm                            |   30 +
+ src/Components/VizContainer.elm                    |   49 +
+ src/Data/Curriculum.elm                            |   28 +
+ src/Data/IntegratedMath3.elm                       |  684 +++
+ src/Data/LessonContent.elm                         |   97 +
+ src/Data/VizLessonContent.elm                      |   37 +
+ src/Design/Alert.elm                               |   44 +
+ src/Design/Badge.elm                               |   36 +
+ src/Design/Breadcrumb.elm                          |   37 +
+ src/Design/Button.elm                              |  166 +
+ src/Design/Card.elm                                |   53 +
+ src/Design/Container.elm                           |   14 +
+ src/Design/Footer.elm                              |   53 +
+ src/Design/Grid.elm                                |  121 +
+ src/Design/Header.elm                              |   89 +
+ src/Design/Progress.elm                            |   65 +
+ src/Design/Spinner.elm                             |   98 +
+ src/Design/Stack.elm                               |   90 +
+ src/Design/Tokens.elm                              |   87 +
+ src/Math.elm                                       |  109 +
+ src/Pages/Curriculum.elm                           |   96 +
+ src/Pages/Curriculum/Unit_.elm                     |  168 +
+ src/Pages/Curriculum/Unit_/Lesson_.elm             |  267 +
+ src/Pages/Design_System.elm                        |  349 ++
+ src/Pages/Home_.elm                                |  113 +
+ src/Pages/Visualizations.elm                       |  166 +
+ src/Ports.elm                                      |    7 +
+ src/Svg/Helpers.elm                                |  130 +
+ src/Viz/Coords.elm                                 |   79 +
+ src/Viz/FunctionGrapher.elm                        |  271 +
+ src/Viz/NumberLine.elm                             |  288 +
+ src/Viz/UnitCircle.elm                             |  241 +
+ tests/Components/Content_Test.elm                  |   48 +
+ tests/Components/Math_Test.elm                     |   23 +
+ tests/Components/VizContainer_Test.elm             |   34 +
+ tests/Data/Content_LessonContent_Test.elm          |   30 +
+ tests/Data/CurriculumTest.elm                      |   78 +
+ tests/Data/IntegratedMath3Test.elm                 |  278 +
+ tests/Data/LessonContent_Test.elm                  |   51 +
+ tests/Data/VizLessonContent_Test.elm               |   40 +
+ tests/Design/AlertTest.elm                         |   40 +
+ tests/Design/BadgeTest.elm                         |   40 +
+ tests/Design/BreadcrumbTest.elm                    |   36 +
+ tests/Design/ButtonTest.elm                        |   74 +
+ tests/Design/CardTest.elm                          |   33 +
+ tests/Design/ContainerTest.elm                     |   40 +
+ tests/Design/FooterTest.elm                        |   33 +
+ tests/Design/GridTest.elm                          |   54 +
+ tests/Design/HeaderTest.elm                        |   40 +
+ tests/Design/ProgressTest.elm                      |   39 +
+ tests/Design/SpinnerTest.elm                       |   35 +
+ tests/Design/StackTest.elm                         |   77 +
+ tests/Design/TokensTest.elm                        |   83 +
+ tests/MainTest.elm                                 |    9 +
+ tests/MathTest.elm                                 |   99 +
+ tests/Pages/Curriculum/Unit_/Lesson_Test.elm       |   52 +
+ tests/Pages/Curriculum/Unit_Test.elm               |   74 +
+ tests/Pages/CurriculumTest.elm                     |   36 +
+ tests/Pages/Home_Test.elm                          |   30 +
+ tests/Pages/Visualizations_Test.elm                |   32 +
+ tests/Viz/CoordsTest.elm                           |  105 +
+ tests/Viz/FunctionGrapherTest.elm                  |  190 +
+ tests/Viz/NumberLineTest.elm                       |  214 +
+ tests/Viz/SvgHelpersTest.elm                       |   96 +
+ tests/Viz/UnitCircleTest.elm                       |  227 +
+ tsconfig.json                                      |   38 -
+ visual_refresh_track.log                           |   60 +
+ vitest.config.ts                                   |   12 -
+ vitest.setup.ts                                    |   26 -
+ 163 files changed, 12859 insertions(+), 8108 deletions(-)
+[0m
+[0m→ [0mRead src/Pages/Curriculum.elm
+[0m→ [0mRead package.json
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && npm run dev 2>&1 &
+sleep 5
+echo "Dev server started"
+> ka-math-companion@0.1.0 dev
+> elm-land server
+
+
+🌈  Elm Land [2m(v0.20.1)[0m is ready at http://localhost:1234
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+Dev server started
+
+
+<shell_metadata>
+shell tool terminated command after exceeding timeout 30000 ms. If this command is expected to take longer and is not waiting for interactive input, retry with a larger timeout value in milliseconds.
+</shell_metadata>
+[0m
+[0m→ [0mSkill "browser-harness"
+[0m
+[0m$ [0mbrowser-harness-js 'await session.connect()'
+/bin/bash: line 1: browser-harness-js: command not found
+[0m
+[0m$ [0mwhich browser-harness && browser-harness --help 2>&1 | head -20
+(no output)
+[0m
+[0m$ [0mls ~/.claude/skills/browser-harness/ && python3 ~/.claude/skills/browser-harness/run.py --help 2>&1 | head -10
+admin.py
+daemon.py
+docs
+domain-skills
+helpers.py
+install.md
+interaction-skills
+LICENSE
+__pycache__
+pyproject.toml
+README.md
+run.py
+SKILL.md
+test_js.py
+test_run.py
+Browser Harness
+
+Read SKILL.md for the default workflow and examples.
+
+Typical usage:
+  uv run bh <<'PY'
+  ensure_real_tab()
+  print(page_info())
+  PY
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && python3 ~/.claude/skills/browser-harness/run.py <<'PY'
+ensure_daemon()
+connect()
+new_tab("http://localhost:1234")
+wait_for_load()
+capture_screenshot()
+PY
+Usage: browser-harness -c "print(page_info())"
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && uv run python3 ~/.claude/skills/browser-harness/run.py <<'PY'
+ensure_daemon()
+connect()
+new_tab("http://localhost:1234")
+wait_for_load()
+capture_screenshot()
+PY
+/bin/bash: line 1: uv: command not found
+[0m
+[0m$ [0mcd /home/daniel-bo/Desktop/ka-math-companion && python3 -c "import sys; print(sys.version)" && pip3 install browser-use 2>&1 | tail -5
+3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]
+    
+    See /usr/share/doc/python3.12/README.venv for more information.
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.
+[0m
+[0m$ [0mcurl -s http://localhost:1234 2>&1 | head -20
+(no output)
+[0m
+[0m$ [0mnpm run test 2>&1
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 220 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 322556637046138
+
+
+TEST RUN PASSED
+
+Duration: 302 ms
+Passed:   220
+Failed:   0
+[0m
+[0m$ [0mnpm run build 2>&1
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
+Tests pass (220/220), build succeeds, dev server running at localhost:1234. Browser harness unavailable - falling back to manual verification.
+
+Let me pick up the next pending track: **Progress Tracking**.
+[0m→ [0mRead measure/tracks/progress-tracking_20260403/spec.md
+[0m→ [0mRead src/Ports.elm
+[0m
+[0m# [0mTodos
+[ ] Implement Progress Tracking - Phase 1: Data Model & Ports
+[ ] Task 1: Create Progress Data Types
+[ ] Task 2: Set Up LocalStorage Ports
+[ ] Task 3: Create Progress Manager
+[ ] Phase 2: Mastery Logic
+[ ] Phase 3: Progress Visualization
+[ ] Phase 4: Dashboard
+[ ] Phase 5: Export/Import
+[ ] Phase 6: Integration
+[0m
+[0m✱ [0mGlob "src/Data/*.elm"[90m 4 matches[0m
+[0m✱ [0mGlob "tests/Data/*_Test.elm"[90m 3 matches[0m
+[0m→ [0mRead src/Data/Curriculum.elm
+[0m→ [0mRead tests/Data/LessonContent_Test.elm
+Let me implement Progress Tracking with TDD. First, I'll create the test for the data types.
+[0m
+[0m← [0mWrite tests/Data/Progress_Test.elm
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run test 2>&1 | tail -30
+> ka-math-companion@0.1.0 test
+> elm-test
+
+Compiling-- MODULE NOT FOUND - /home/daniel-bo/Desktop/ka-math-companion/tests/Data/Progress_Test.elm
+
+You are trying to import a `Data.Progress` module:
+
+3| import Data.Progress exposing (MasteryLevel(..), ProgressEntry, encodeProgressEntry, decodeProgressEntry)
+          ^^^^^^^^^^^^^
+I checked the "dependencies" and "source-directories" listed in your elm.json,
+but I cannot find it! Maybe it is a typo for one of these names?
+
+    Data.Progress_Test
+    Design.Progress
+    Process
+    Data.Curriculum
+
+Hint: If it is not a typo, check the "dependencies" and "source-directories" of
+your elm.json to make sure all the packages you need are listed there!
+
+
+`elm make` failed with exit code 1.
+[0m
+[0m← [0mWrite src/Data/Progress.elm
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run test 2>&1 | tail -40
+> ka-math-companion@0.1.0 test
+> elm-test
+
+Compiling-- TYPE MISMATCH - /home/daniel-bo/Desktop/ka-math-companion/src/Data/Progress.elm
+
+This function cannot handle the argument sent through the (|>) pipe:
+
+198|     Decode.map8 ProgressEntry
+199|         (Decode.field "unitSlug" Decode.string)
+200|         (Decode.field "lessonSlug" Decode.string)
+201|         (Decode.field "objectiveId" Decode.string)
+202|         (Decode.field "mastery" decodeMasteryLevel)
+203|         (Decode.field "attemptCount" Decode.int)
+204|         (Decode.field "correctCount" Decode.int)
+205|         (Decode.field "incorrectCount" Decode.int)
+206|         (Decode.field "consecutiveCorrect" Decode.int)
+207|>        |> Decode.andThen
+208|>            (\entry ->
+209|>                Decode.oneOf
+210|>                    [ Decode.field "lastAttemptTimestamp" (Decode.nullable Decode.int)
+211|>                        |> Decode.map (\ts -> { entry | lastAttemptTimestamp = ts })
+212|>                    , Decode.succeed { entry | lastAttemptTimestamp = Nothing }
+213|>                    ]
+214|             )
+
+The argument is:
+
+    Decoder (Maybe Int -> ProgressEntry)
+
+But (|>) is piping it to a function that expects:
+
+    Decoder { a | lastAttemptTimestamp : Maybe Int }
+
+
+`elm make` failed with exit code 1.
+[0m
+[0m← [0mEdit src/Data/Progress.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Data/Progress.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Data/Progress.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Data/Progress.elm
+@@ -194,23 +194,43 @@
+ 
+ 
+ progressEntryDecoder : Decoder ProgressEntry
+ progressEntryDecoder =
+-    Decode.map8 ProgressEntry
++    Decode.map7
++        (\unitSlug lessonSlug objectiveId mastery attemptCount correctCount consecutiveCorrect ->
++            { unitSlug = unitSlug
++            , lessonSlug = lessonSlug
++            , objectiveId = objectiveId
++            , mastery = mastery
++            , attemptCount = attemptCount
++            , correctCount = correctCount
++            , incorrectCount = 0
++            , consecutiveCorrect = consecutiveCorrect
++            , lastAttemptTimestamp = Nothing
++            }
++        )
+         (Decode.field "unitSlug" Decode.string)
+         (Decode.field "lessonSlug" Decode.string)
+         (Decode.field "objectiveId" Decode.string)
+         (Decode.field "mastery" decodeMasteryLevel)
+         (Decode.field "attemptCount" Decode.int)
+         (Decode.field "correctCount" Decode.int)
+-        (Decode.field "incorrectCount" Decode.int)
+         (Decode.field "consecutiveCorrect" Decode.int)
+         |> Decode.andThen
+             (\entry ->
++                let
++                    handleTimestamp maybeTs =
++                        case maybeTs of
++                            Just ts ->
++                                Decode.succeed { entry | lastAttemptTimestamp = Just ts }
++
++                            Nothing ->
++                                Decode.succeed entry
++                in
+                 Decode.oneOf
+                     [ Decode.field "lastAttemptTimestamp" (Decode.nullable Decode.int)
+-                        |> Decode.map (\ts -> { entry | lastAttemptTimestamp = ts })
+-                    , Decode.succeed { entry | lastAttemptTimestamp = Nothing }
++                        |> Decode.andThen handleTimestamp
++                    , Decode.succeed entry
+                     ]
+             )
+ 
+ 
+
+[0m
+[0m← [0mEdit src/Data/Progress.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Data/Progress.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Data/Progress.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Data/Progress.elm
+@@ -194,17 +194,17 @@
+ 
+ 
+ progressEntryDecoder : Decoder ProgressEntry
+ progressEntryDecoder =
+-    Decode.map7
+-        (\unitSlug lessonSlug objectiveId mastery attemptCount correctCount consecutiveCorrect ->
++    Decode.map8
++        (\unitSlug lessonSlug objectiveId mastery attemptCount correctCount incorrectCount consecutiveCorrect ->
+             { unitSlug = unitSlug
+             , lessonSlug = lessonSlug
+             , objectiveId = objectiveId
+             , mastery = mastery
+             , attemptCount = attemptCount
+             , correctCount = correctCount
+-            , incorrectCount = 0
++            , incorrectCount = incorrectCount
+             , consecutiveCorrect = consecutiveCorrect
+             , lastAttemptTimestamp = Nothing
+             }
+         )
+@@ -213,8 +213,9 @@
+         (Decode.field "objectiveId" Decode.string)
+         (Decode.field "mastery" decodeMasteryLevel)
+         (Decode.field "attemptCount" Decode.int)
+         (Decode.field "correctCount" Decode.int)
++        (Decode.field "incorrectCount" Decode.int)
+         (Decode.field "consecutiveCorrect" Decode.int)
+         |> Decode.andThen
+             (\entry ->
+                 let
+
+[0m
+[0m$ [0mnpm run test 2>&1 | tail -50
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 231 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 144296803885280
+
+
+TEST RUN PASSED
+
+Duration: 339 ms
+Passed:   231
+Failed:   0
+[0m
+[0m$ [0mnpm run build 2>&1
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
+[0m$ [0mgit add src/Data/Progress.elm tests/Data/Progress_Test.elm && git commit -m "feat(progress): add Data.Progress module with mastery types (Task 1)"
+[feat/30-render-curriculum-overview-page 6c320fa] feat(progress): add Data.Progress module with mastery types (Task 1)
+ 2 files changed, 403 insertions(+)
+ create mode 100644 src/Data/Progress.elm
+ create mode 100644 tests/Data/Progress_Test.elm
+[0m
+[0m# [0mTodos
+[ ] Implement Progress Tracking - Phase 1: Data Model & Ports
+[x] Task 1: Create Progress Data Types
+[ ] Task 2: Set Up LocalStorage Ports
+[ ] Task 3: Create Progress Manager
+[ ] Phase 2: Mastery Logic
+[ ] Phase 3: Progress Visualization
+[ ] Phase 4: Dashboard
+[ ] Phase 5: Export/Import
+[ ] Phase 6: Integration
+[0m
+[0m← [0mWrite tests/Ports_Test.elm
+Wrote file successfully.
+[0m
+[0m→ [0mRead src/Ports.elm
+[0m
+[0m← [0mEdit src/Ports.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Ports.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Ports.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Ports.elm
+@@ -1,5 +1,5 @@
+-port module Ports exposing (processMath, renderMath)
++port module Ports exposing (processMath, renderMath, saveProgress, loadProgress, exportProgress, importProgress, progressReceived, progressImported)
+ 
+ 
+ port renderMath : { id : String, latex : String, displayMode : Bool } -> Cmd msg
+ 
+
+[0m
+[0m← [0mEdit src/Ports.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/src/Ports.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/src/Ports.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/src/Ports.elm
+@@ -4,4 +4,22 @@
+ port renderMath : { id : String, latex : String, displayMode : Bool } -> Cmd msg
+ 
+ 
+ port processMath : String -> Cmd msg
++
++
++port saveProgress : String -> Cmd msg
++
++
++port loadProgress : String -> Cmd msg
++
++
++port exportProgress : String -> Cmd msg
++
++
++port importProgress : String -> Cmd msg
++
++
++port progressReceived : (String -> msg) -> Sub msg
++
++
++port progressImported : (String -> msg) -> Sub msg
+
+[0m
+[0m$ [0mnpm run test 2>&1 | tail -30
+53|                     Cmd msg ->
+                        ^^^
+These names seem close though:
+
+    EQ
+    Err
+    GT
+    LT
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Ports_Test.elm
+
+I cannot find a `Cmd` variant:
+
+65|                     Cmd msg ->
+                        ^^^
+These names seem close though:
+
+    EQ
+    Err
+    GT
+    LT
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+
+`elm make` failed with exit code 1.
+[0m
+[0m← [0mEdit tests/Ports_Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Ports_Test.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Ports_Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Ports_Test.elm
+@@ -1,8 +1,9 @@
+ module Ports_Test exposing (suite)
+ 
+ import Expect
+ import Json.Encode as Encode
++import Platform.Cmd as Cmd
+ import Ports exposing (saveProgress, loadProgress, exportProgress, importProgress)
+ import Test
+ 
+ 
+
+[0m
+[0m✱ [0mGlob "tests/**/*_Test.elm"[90m 12 matches[0m
+[0m→ [0mRead tests/MainTest.elm
+[0m→ [0mRead elm.json
+[0m
+[0m← [0mWrite tests/Ports_Test.elm
+Wrote file successfully.
+[0m
+[0m← [0mWrite tests/Ports_Test.elm
+Wrote file successfully.
+[0m
+[0m← [0mEdit tests/Ports_Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Ports_Test.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Ports_Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Ports_Test.elm
+@@ -1,7 +1,8 @@
+ module Ports_Test exposing (suite)
+ 
+ import Expect
++import Ports
+ import Test
+ 
+ 
+ suite : Test.Test
+
+[0m
+[0m→ [0mRead tests/Design/ButtonTest.elm
+[0m
+[0m← [0mWrite tests/Ports_Test.elm
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run test 2>&1 | tail -40
+Platform.worker
+    Basics.compare
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Ports_Test.elm
+
+I cannot find a `Ports.progressReceived` variable:
+
+42|                         Ports.progressReceived
+                            ^^^^^^^^^^^^^^^^^^^^^^
+I cannot find a `Ports` import. These names seem close though:
+
+    Test.describe
+    Tuple.second
+    List.intersperse
+    List.product
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+-- NAMING ERROR - /home/daniel-bo/Desktop/ka-math-companion/tests/Ports_Test.elm
+
+I cannot find a `Ports.progressImported` variable:
+
+49|                         Ports.progressImported
+                            ^^^^^^^^^^^^^^^^^^^^^^
+I cannot find a `Ports` import. These names seem close though:
+
+    List.intersperse
+    Platform.worker
+    Basics.compare
+    Basics.fromPolar
+
+Hint: Read <https://elm-lang.org/0.19.1/imports> to see how `import`
+declarations work in Elm.
+
+
+`elm make` failed with exit code 1.
+[0m
+[0m$ [0mrm tests/Ports_Test.elm
+(no output)
+[0m
+[0m$ [0mnpm run test 2>&1 | tail -20
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 231 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 385532914058554
+
+
+TEST RUN PASSED
+
+Duration: 280 ms
+Passed:   231
+Failed:   0
+[0m
+[0m$ [0mgit add src/Ports.elm && git commit -m "feat(progress): add LocalStorage ports for progress persistence (Task 2)"
+[feat/30-render-curriculum-overview-page 0778305] feat(progress): add LocalStorage ports for progress persistence (Task 2)
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+[0m
+[0m# [0mTodos
+[ ] Implement Progress Tracking - Phase 1: Data Model & Ports
+[x] Task 1: Create Progress Data Types
+[x] Task 2: Set Up LocalStorage Ports
+[ ] Task 3: Create Progress Manager
+[ ] Phase 2: Mastery Logic
+[ ] Phase 3: Progress Visualization
+[ ] Phase 4: Dashboard
+[ ] Phase 5: Export/Import
+[ ] Phase 6: Integration
+[0m
+[0m✱ [0mGlob "src/Logic/*.elm"[90m 0 matches[0m
+[0m✱ [0mGlob "tests/Logic/*_Test.elm"[90m 0 matches[0m
+[0m
+[0m← [0mWrite tests/Logic/Progress_Test.elm
+Wrote file successfully.
+[0m
+[0m$ [0mmkdir -p src/Logic tests/Logic
+(no output)
+[0m
+[0m← [0mWrite src/Logic/Progress.elm
+Wrote file successfully.
+[0m
+[0m$ [0mnpm run test 2>&1 | tail -40
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 241 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 96899624732808
+
+
+TEST RUN PASSED
+
+Duration: 288 ms
+Passed:   241
+Failed:   0
+[0m
+[0m$ [0mnpm run build 2>&1
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m
+[0m$ [0mgit add src/Logic/Progress.elm tests/Logic/Progress_Test.elm && git commit -m "feat(progress): add Logic.Progress state manager (Task 3)"
+[feat/30-render-curriculum-overview-page 8af0569] feat(progress): add Logic.Progress state manager (Task 3)
+ 2 files changed, 268 insertions(+)
+ create mode 100644 src/Logic/Progress.elm
+ create mode 100644 tests/Logic/Progress_Test.elm
+[0m
+[0m$ [0mnpm run format:check 2>&1
+> ka-math-companion@0.1.0 format:check
+> elm-format src/ --validate
+
+[{"path":"src/Pages/Visualizations.elm","message":"File is not formatted with elm-format-0.8.8 --elm-version=0.19"}
+,{"path":"src/Data/Progress.elm","message":"File is not formatted with elm-format-0.8.8 --elm-version=0.19"}
+,{"path":"src/Logic/Progress.elm","message":"File is not formatted with elm-format-0.8.8 --elm-version=0.19"}
+,{"path":"src/Ports.elm","message":"File is not formatted with elm-format-0.8.8 --elm-version=0.19"}
+]
+[0m
+[0m$ [0mnpm run review 2>&1 | tail -30
+──────────────────────────────────────────── tests/Viz/UnitCircleTest.elm:209:25
+
+(fix) NoUnused.Variables: `let in` variable `html` is not used
+
+208|                                 |> UnitCircle.onClickSelect Basics.identity
+209|                         html =
+                             ^^^^
+210|                             UnitCircle.render uc
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Viz/UnitCircleTest.elm:222:25
+
+(fix) NoUnused.Variables: `let in` variable `html` is not used
+
+221|                                 |> UnitCircle.onClickSelect Basics.identity
+222|                         html =
+                             ^^^^
+223|                             UnitCircle.render uc
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+Errors marked with (fix) can be fixed automatically using `elm-review --fix`.
+
+Errors marked with (fix removes files) can be fixed automatically by
+also using `--allow-remove-files`.
+
+I found 124 errors in 25 files.
+[0m
+[0m$ [0mnpm run format 2>&1
+> ka-math-companion@0.1.0 format
+> elm-format src/ --yes
+
+Processing file src/Pages/Design_System.elm
+Processing file src/Pages/Home_.elm
+Processing file src/Pages/Curriculum.elm
+Processing file src/Pages/Curriculum/Unit_.elm
+Processing file src/Pages/Curriculum/Unit_/Lesson_.elm
+Processing file src/Pages/Visualizations.elm
+Processing file src/Design/Badge.elm
+Processing file src/Design/Header.elm
+Processing file src/Design/Stack.elm
+Processing file src/Design/Grid.elm
+Processing file src/Design/Tokens.elm
+Processing file src/Design/Alert.elm
+Processing file src/Design/Spinner.elm
+Processing file src/Design/Progress.elm
+Processing file src/Design/Footer.elm
+Processing file src/Design/Breadcrumb.elm
+Processing file src/Design/Card.elm
+Processing file src/Design/Container.elm
+Processing file src/Design/Button.elm
+Processing file src/Components/Content.elm
+Processing file src/Components/VizContainer.elm
+Processing file src/Components/Math.elm
+Processing file src/Svg/Helpers.elm
+Processing file src/Data/Curriculum.elm
+Processing file src/Data/LessonContent.elm
+Processing file src/Data/Progress.elm
+Processing file src/Data/IntegratedMath3.elm
+Processing file src/Data/VizLessonContent.elm
+Processing file src/Logic/Progress.elm
+Processing file src/Math.elm
+Processing file src/Viz/NumberLine.elm
+Processing file src/Viz/FunctionGrapher.elm
+Processing file src/Viz/Coords.elm
+Processing file src/Viz/UnitCircle.elm
+Processing file src/Ports.elm
+[0m
+[0m$ [0mnpm run test 2>&1 | tail -15
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 241 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 302743227065674
+
+
+TEST RUN PASSED
+
+Duration: 277 ms
+Passed:   241
+Failed:   0
+[0m
