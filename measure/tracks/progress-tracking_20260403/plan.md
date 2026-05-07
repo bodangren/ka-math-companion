@@ -42,32 +42,33 @@
   - [x] Write Tests: Verify progress shows on units
   - [x] Implement: Add progress indicators to Unit_.elm
 
-## Phase 4: Dashboard
+## Phase 4: Dashboard (Complete)
 
-- [ ] **Task 10: Create Dashboard Page**
-  - [ ] Write Tests: Verify dashboard renders
-  - [ ] Implement: Create `src/Pages/Dashboard.elm`
+- [x] **Task 10: Create Dashboard Page**
+  - [x] Write Tests: Verify dashboard renders
+  - [x] Implement: Create `src/Pages/Dashboard.elm`
 
-- [ ] **Task 11: Overall Progress Stats**
-  - [ ] Write Tests: Verify stats calculate correctly
-  - [ ] Implement: Add progress statistics to dashboard
+- [x] **Task 11: Overall Progress Stats**
+  - [x] Write Tests: Verify stats calculate correctly
+  - [x] Implement: Add progress statistics to dashboard
 
-- [ ] **Task 12: Unit Progress Breakdown**
-  - [ ] Write Tests: Verify per-unit stats show
-  - [ ] Implement: Add unit-by-unit progress view
+- [x] **Task 12: Unit Progress Breakdown**
+  - [x] Write Tests: Verify per-unit stats show
+  - [x] Implement: Add unit-by-unit progress view
 
-## Phase 5: Export/Import
+## Phase 5: Export/Import (Deferred)
+- Task 13 and 14 deferred - export/import ports added but UI not implemented
 
-- [ ] **Task 13: Export Functionality**
-  - [ ] Write Tests: Verify JSON export works
-  - [ ] Implement: Add export button and JSON generation
+## Phase 6: Integration (Deferred)
+- Task 15 deferred - no practice problems yet
 
-- [ ] **Task 14: Import Functionality**
-  - [ ] Write Tests: Verify JSON import works
-  - [ ] Implement: Add import input and validation
-
-## Phase 6: Integration
-
-- [ ] **Task 15: Connect to Practice Problems**
-  - [ ] Write Tests: Verify progress updates on answer
-  - [ ] Implement: Wire practice problems to progress tracking
+## Summary
+Progress tracking core infrastructure complete through Phase 4:
+- Data model with mastery levels (NotStarted, InProgress, Mastered)
+- LocalStorage ports for persistence
+- Logic.Progress state manager
+- Mastery calculation (3 consecutive correct = mastered)
+- Decay system (7 day review trigger)
+- ProgressBar and MasteryBadge UI components
+- Curriculum and Unit pages with progress indicators
+- Dashboard page with overall stats and unit breakdown

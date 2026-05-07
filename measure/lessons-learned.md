@@ -47,3 +47,5 @@
 - (2026-05-06, interactive-viz) Elm config pattern: withAngle now sets both angle AND selectedAngle (default behavior). Keep related fields in sync when setting through builder functions.
 - (2026-05-07, interactive-viz) VizLessonContent pattern: separate data module maps (unitSlug, lessonSlug) pairs to VizBlock types. Cleaner than embedding viz in LessonContent.
 - (2026-05-07, interactive-viz) NumberLine.init takes (width, min, max) not (width) alone - check function signatures before chaining builders
+- (2026-05-07, progress-tracking) Elm port tests: can't test Cmd output directly in elm-test. Test exposed functions by verifying type signatures compile
+- (2026-05-07, progress-tracking) Decode.map8 with piped |> Decode.andThen needs careful type alignment - use intermediate record construction to avoid pipe type mismatch

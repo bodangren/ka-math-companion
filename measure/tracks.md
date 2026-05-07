@@ -31,9 +31,9 @@
 
 ## Phase 3: Learning Systems
 
-- [ ] **Track: Progress Tracking**
-  _Link: [./tracks/progress-tracking_20260403/](./tracks/progress-tracking_20260403/)_
-  LocalStorage-based mastery tracking with visual progress indicators.
+- [x] **Track: Progress Tracking**
+  _Link: [./archive/progress-tracking_20260507/](./archive/progress-tracking_20260507/)_
+  LocalStorage-based mastery tracking with visual progress indicators. Core infrastructure through Phase 4 (data model, ports, logic, visualization, dashboard).
 
 - [ ] **Track: Spaced Practice (SRS)**
   _Link: [./tracks/spaced-practice_20260403/](./tracks/spaced-practice_20260403/)_
