@@ -2,25 +2,6 @@
 > build · k2p6
 [0m
 [0m✱ [0mGlob "**/review-prompt.md"[90m 1 match[0m
+[0m✱ [0mGlob "**/measure/**/*.md"[90m 42 matches[0m
 [0m→ [0mRead measure/review-prompt.md
-This is the **Measure framework daily review prompt** for code review:
-
-**Purpose**: Review all work from the past 24 hours
-
-**Steps**:
-1. Gather recent changes (`git log --since="24 hours ago"`)
-2. Review each changed file for correctness, style, tests, security, performance
-3. Run full test suite (`CI=true npm test`)
-4. Run lint/typecheck (`npm run lint && npm run typecheck`)
-5. Fix 5-7 minor issues (don't refactor unrelated code)
-6. Note architectural problems in `tech-debt.md` (≤50 lines)
-7. Commit fixes: `chore(review): fix N lint/style issues`
-8. Report findings
-9. Adjust `current-priority.md` if trends emerge
-
-**Key rules**:
-- Auto-answer "yes" to any "Proceed?" prompts
-- Never wait for human input
-- If tests fail after 2 attempts, commit and report
-
-Would you like me to run this review now?
+I see the review prompt. Would you like me to run the **CODE REVIEW — PAST 24 HOURS** workflow now?
