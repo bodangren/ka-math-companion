@@ -6,6 +6,7 @@ import Design.Card as Card
 import Design.Container as Container
 import Design.Footer as Footer
 import Design.Header as Header
+import Design.MasteryBadge as MasteryBadge
 import Design.Stack as Stack
 import Design.Tokens as Tokens
 import Html
@@ -110,14 +111,21 @@ viewLesson unitSlug lesson =
         , style "text-decoration" "none"
         ]
         [ Card.card
-            [ Html.h2
-                [ style "font-size" Tokens.typographyScale.h3FontSize
-                , style "font-family" Tokens.typographyScale.headingFont
-                , style "font-weight" "600"
-                , style "margin" "0"
-                , style "color" ("#" ++ Tokens.colorPalette.primary)
+            [ Html.div
+                [ style "display" "flex"
+                , style "justify-content" "space-between"
+                , style "align-items" "center"
                 ]
-                [ Html.text lesson.title ]
+                [ Html.h2
+                    [ style "font-size" Tokens.typographyScale.h3FontSize
+                    , style "font-family" Tokens.typographyScale.headingFont
+                    , style "font-weight" "600"
+                    , style "margin" "0"
+                    , style "color" ("#" ++ Tokens.colorPalette.primary)
+                    ]
+                    [ Html.text lesson.title ]
+                , MasteryBadge.masteryBadge MasteryBadge.NotStarted
+                ]
             ]
         ]
 

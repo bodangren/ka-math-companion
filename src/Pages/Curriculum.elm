@@ -6,6 +6,7 @@ import Design.Container as Container
 import Design.Footer as Footer
 import Design.Grid as Grid
 import Design.Header as Header
+import Design.ProgressBar as ProgressBar
 import Design.Tokens as Tokens
 import Html
 import Html.Attributes exposing (attribute, href, style)
@@ -67,6 +68,10 @@ viewHeader =
 
 viewUnit : { title : String, slug : String, lessons : List a } -> Html.Html msg
 viewUnit unit =
+    let
+        unitProgress =
+            0
+    in
     Html.a
         [ href ("/curriculum/" ++ unit.slug)
         , style "text-decoration" "none"
@@ -77,7 +82,7 @@ viewUnit unit =
         , attribute "onmouseout" "this.style.transform='translateY(0)'"
         ]
         [ Card.card
-            [ Html.h2
+            ([ Html.h2
                 [ style "font-size" Tokens.typographyScale.h3FontSize
                 , style "font-family" Tokens.typographyScale.headingFont
                 , style "font-weight" "600"
@@ -85,12 +90,19 @@ viewUnit unit =
                 , style "color" ("#" ++ Tokens.colorPalette.primary)
                 ]
                 [ Html.text unit.title ]
-            , Html.div
+             , Html.div
                 [ style "font-family" Tokens.typographyScale.bodyFont
                 , style "font-size" Tokens.typographyScale.smallFontSize
                 , style "font-weight" "600"
                 , style "color" ("#" ++ Tokens.colorPalette.textSecondary)
+                , style "margin-bottom" Tokens.spacing.sm
                 ]
                 [ Html.text (String.fromInt (List.length unit.lessons) ++ " Modules") ]
-            ]
+             ]
+                ++ (if unitProgress > 0 then
+                        [ ProgressBar.progressBar (Just (String.fromInt unitProgress ++ "% complete")) unitProgress ]
+                    else
+                        []
+                   )
+            )
         ]
