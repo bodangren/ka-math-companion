@@ -1486,3 +1486,34 @@ Failed:   0
 🌈  Elm Land [2m(v0.20.1)[0m build was successful.
 [32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
 [0m
+[0m$ [0mgit add -A && git commit -m "chore(review): fix 3 formatting issues and 2 unused import warnings"
+[feat/30-render-curriculum-overview-page aa7020a] chore(review): fix 3 formatting issues and 2 unused import warnings
+ 7 files changed, 1641 insertions(+), 36 deletions(-)
+[0m
+## Review Report — Past 24 Hours
+
+**Commits reviewed:** 4 (Phase 2 flashcard implementation + chore updates)
+
+**Files reviewed:**
+- `src/Components/Flashcard.elm` — Flashcard component with flip animation
+- `tests/Components/Flashcard_Test.elm` — Tests for flashcard component
+- `src/Data/SRS.elm` — SRS data types
+- `tests/Data/SRS_Test.elm` — Tests for SRS data
+- `src/Logic/Leitner.elm` — Leitner box logic
+
+**Issues found & fixed:**
+1. **Formatting** — 3 files not formatted with `elm-format` (Flashcard, SRS, Leitner)
+2. **Unused imports** — `Card(..)` in Flashcard_Test.elm
+3. **Unused imports** — `LeitnerBox`, `ReviewStats` in SRS_Test.elm
+
+**Issues noted (already in tech-debt.md):**
+- Flashcard button onclick handlers use `dispatchEvent` instead of proper Elm msg wiring
+- Review page (Phase 3) doesn't exist yet — blocks queue generation
+- Test pattern uses `Expect.pass` without real HTML assertions (codebase-wide)
+
+**Quality gates:**
+- ✅ 284 tests pass
+- ✅ Build succeeds
+- ✅ 3 files formatted
+
+**Commit:** `chore(review): fix 3 formatting issues and 2 unused import warnings`
