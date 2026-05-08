@@ -1,6 +1,7 @@
 module Data.SRS exposing
     ( Box(..)
     , Card(..)
+    , CardFields
     , LeitnerBox
     , NewCard
     , ReviewStats
