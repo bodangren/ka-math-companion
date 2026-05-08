@@ -8,7 +8,7 @@
 
 | Date | Track | Item | Severity | Status | Notes |
 |------|-------|------|----------|--------|-------|
-| 2026-05-03 | design-system | Elm Land auto-generates Design_System_ route with params despite page having no params | Critical | Open | Build fails with "TOO MANY ARGS". Elm Land framework bug - route generation mismatch with page signature. Workaround: rename page to avoid trailing underscore or manually patch generated files |
+| 2026-05-03 | design-system | Elm Land auto-generates Design_System_ route with params despite page having no params | Critical | Resolved | Renamed pages to avoid trailing underscore (Home_, Review_, etc). Use PageName.elm pattern instead. |
 | 2026-05-07 | interactive-viz | Tasks 12-14: Viz integration into lessons and demo page | Medium | Resolved | FunctionGrapher in polynomial/log lessons, UnitCircle in trig lessons, /visualizations demo page |
 | 2026-05-07 | progress-tracking | Export/Import UI not implemented | Low | Open | Ports exist but no UI for export/import buttons |
 | 2026-05-07 | progress-tracking | Mastery badges show NotStarted always | Low | Open | Unit_.elm shows MasteryBadge.NotStarted for all lessons - needs real progress data |
@@ -27,4 +27,4 @@
 | 2026-04-25 | visual_refresh | Visual refresh changed design tokens and component APIs | Medium | Resolved | Tests updated to match Orbital Editorial theme values |
 | 2026-05-01 | curriculum-data | Task 6 marked done but work already complete - Unit 7 has objectives/descriptions/time | Low | Resolved | Plan was stale; verification confirmed all data present |
 | 2026-05-08 | spaced-practice | Flashcard component: correctButton/incorrectButton use onclick dispatchEvent - not wired to Elm msg | Low | Open | Component renders but click handlers need Msg variant and update function |
-| 2026-05-08 | spaced-practice | Review page doesn't exist yet - Phase 3 tasks blocked | Medium | Open | Need to create src/Pages/Review.elm and src/Logic/Review.elm |
+| 2026-05-09 | spaced-practice | Review page doesn't exist yet - Phase 3 tasks blocked | Medium | Resolved | Created src/Pages/ReviewPage.elm and src/Logic/Review.elm (renamed from Review_ to avoid Elm Land route bug) |
