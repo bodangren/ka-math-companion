@@ -30,17 +30,17 @@
 
 ## Phase 3: Review Queue
 
-- [ ] **Task 7: Queue Generation**
-  - [ ] Write Tests: Verify due cards collected
-  - [ ] Implement: Create queue logic in `src/Logic/Review.elm`
+- [x] **Task 7: Queue Generation**
+  - [x] Write Tests: Verify due cards collected
+  - [x] Implement: Create queue logic in `src/Logic/Review.elm`
 
-- [ ] **Task 8: Review Session Page**
-  - [ ] Write Tests: Verify session shows cards
-  - [ ] Implement: Create `src/Pages/Review.elm`
+- [x] **Task 8: Review Session Page**
+  - [x] Write Tests: Verify session shows cards
+  - [x] Implement: Create `src/Pages/ReviewPage.elm`
 
-- [ ] **Task 9: Session Summary**
-  - [ ] Write Tests: Verify summary shows stats
-  - [ ] Implement: Add session completion view
+- [x] **Task 9: Session Summary**
+  - [x] Write Tests: Verify summary shows stats
+  - [x] Implement: Add session completion view
 
 ## Phase 4: Card Management
 
