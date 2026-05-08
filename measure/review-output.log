@@ -1,7 +1,1488 @@
 [0m
 > build · k2p6
 [0m
-[0m✱ [0mGlob "**/review-prompt.md"[90m 1 match[0m
-[0m✱ [0mGlob "**/measure/**/*.md"[90m 42 matches[0m
 [0m→ [0mRead measure/review-prompt.md
-I see the review prompt. Would you like me to run the **CODE REVIEW — PAST 24 HOURS** workflow now?
+[0m→ [0mSkill "measure"
+[0m
+[0m$ [0mgit log --since="24 hours ago" --oneline
+ba83afe chore: update lessons-learned and tech-debt, Phase 2 flashcard complete [MiniMax-M2.7]
+b7d9c7b feat(spaced-practice): Phase 2 complete - Flashcard component with flip animation and self-grading buttons
+527bb05 chore: checkpoint before Phase 2
+bdb1948 chore: save output log before autonomous run
+d91584d checkpoint: log file updates
+[0m
+[0m$ [0mgit diff --name-only HEAD~20 HEAD
+measure/archive/curriculum-data_20260403/metadata.json
+measure/archive/curriculum-data_20260403/plan.md
+measure/archive/curriculum-data_20260403/spec.md
+measure/archive/design-system_20260403/metadata.json
+measure/archive/design-system_20260403/plan.md
+measure/archive/design-system_20260403/spec.md
+measure/archive/katex-integration_20260403/metadata.json
+measure/archive/katex-integration_20260403/plan.md
+measure/archive/katex-integration_20260403/spec.md
+measure/archive/lesson-content_20260403/metadata.json
+measure/archive/lesson-content_20260403/plan.md
+measure/archive/lesson-content_20260403/spec.md
+measure/lessons-learned.md
+measure/output.log
+measure/review-output.log
+measure/tech-debt.md
+measure/tracks.md
+measure/tracks/progress-tracking_20260403/plan.md
+measure/tracks/spaced-practice_20260403/plan.md
+src/Components/Flashcard.elm
+src/Data/Progress.elm
+src/Data/SRS.elm
+src/Design/MasteryBadge.elm
+src/Design/ProgressBar.elm
+src/Logic/Leitner.elm
+src/Logic/Progress.elm
+src/Pages/Curriculum.elm
+src/Pages/Curriculum/Unit_.elm
+src/Pages/Dashboard.elm
+src/Pages/Visualizations.elm
+src/Ports.elm
+tests/Components/Flashcard_Test.elm
+tests/Data/Progress_Test.elm
+tests/Data/SRS_Test.elm
+tests/Design/MasteryBadge_Test.elm
+tests/Design/ProgressBar_Test.elm
+tests/Logic/Leitner_Test.elm
+tests/Logic/Progress_Test.elm
+tests/Pages/Dashboard_Test.elm
+[0m
+[0m→ [0mRead measure/tech-debt.md
+[0m→ [0mRead measure/tracks.md
+[0m
+[0m$ [0mgit diff HEAD~2 HEAD --stat
+measure/lessons-learned.md                      |   4 +-
+ measure/output.log                              | 360 ++++++++++++++++++++++++
+ measure/tech-debt.md                            |   2 +
+ measure/tracks/spaced-practice_20260403/plan.md |  38 +--
+ src/Components/Flashcard.elm                    |  92 ++++++
+ tests/Components/Flashcard_Test.elm             | 113 ++++++++
+ 6 files changed, 589 insertions(+), 20 deletions(-)
+[0m
+[0m→ [0mRead src/Components/Flashcard.elm
+[0m→ [0mRead tests/Components/Flashcard_Test.elm
+[0m→ [0mRead measure/lessons-learned.md
+[0m✱ [0mGlob "**/package.json"[90m 1 match[0m
+[0m✱ [0mGlob "**/elm.json"[90m 2 matches[0m
+[0m→ [0mRead package.json
+[0m→ [0mRead elm.json
+[0m→ [0mRead measure/tracks/spaced-practice_20260403/plan.md
+[0m
+[0m$ [0mnpm run format:check
+> ka-math-companion@0.1.0 format:check
+> elm-format src/ --validate
+
+[{"path":"src/Components/Flashcard.elm","message":"File is not formatted with elm-format-0.8.8 --elm-version=0.19"}
+,{"path":"src/Data/SRS.elm","message":"File is not formatted with elm-format-0.8.8 --elm-version=0.19"}
+,{"path":"src/Logic/Leitner.elm","message":"File is not formatted with elm-format-0.8.8 --elm-version=0.19"}
+]
+[0m
+[0m$ [0mnpm test
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 284 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 223821795535545
+
+
+TEST RUN PASSED
+
+Duration: 317 ms
+Passed:   284
+Failed:   0
+[0m
+[0m$ [0mnpm run review
+...output truncated...
+
+Full output saved to: /home/daniel-bo/.local/share/opencode/tool-output/tool_e0888eb1d001ybEBK7eq4arFui
+
+
+(fix) NoUnused.Variables: Imported variable `fill` is not used
+
+16| import Svg
+17| import Svg.Attributes exposing (fill, fontSize, textAnchor)
+                                    ^^^^
+18| import Svg.Helpers as Svg
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────────── src/Viz/UnitCircle.elm:17:39
+
+(fix) NoUnused.Variables: Imported variable `fontSize` is not used
+
+16| import Svg
+17| import Svg.Attributes exposing (fill, fontSize, textAnchor)
+                                          ^^^^^^^^
+18| import Svg.Helpers as Svg
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────────── src/Viz/UnitCircle.elm:17:49
+
+(fix) NoUnused.Variables: Imported variable `textAnchor` is not used
+
+16| import Svg
+17| import Svg.Attributes exposing (fill, fontSize, textAnchor)
+                                                    ^^^^^^^^^^
+18| import Svg.Helpers as Svg
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+src/Viz/UnitCircle.elm  ↑
+====o======================================================================o====
+↓  tests/Components/Flashcard_Test.elm
+
+
+-- ELM-REVIEW ERROR ------------------- tests/Components/Flashcard_Test.elm:4:27
+
+(fix) NoUnused.Variables: Imported type `Card` is not used
+
+3| import Components.Flashcard as Flashcard
+4| import Data.SRS exposing (Card(..), newCard)
+                             ^^^^^^^^
+5| import Expect
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Components/Flashcard_Test.elm  ↑
+====o======================================================================o====
+↓  tests/Data/SRS_Test.elm
+
+
+-- ELM-REVIEW ERROR ------------------------------- tests/Data/SRS_Test.elm:3:46
+
+(fix) NoUnused.Variables: Imported type `LeitnerBox` is not used
+
+3| import Data.SRS exposing (Box(..), Card(..), LeitnerBox, ReviewStats, boxNumber, newCard)
+                                                ^^^^^^^^^^
+4| import Expect
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────────── tests/Data/SRS_Test.elm:3:58
+
+(fix) NoUnused.Variables: Imported type `ReviewStats` is not used
+
+3| import Data.SRS exposing (Box(..), Card(..), LeitnerBox, ReviewStats, boxNumber, newCard)
+                                                            ^^^^^^^^^^^
+4| import Expect
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Data/SRS_Test.elm  ↑
+====o======================================================================o====
+↓  tests/Design/AlertTest.elm
+
+
+-- ELM-REVIEW ERROR --------------------------- tests/Design/AlertTest.elm:15:21
+
+(fix) NoUnused.Variables: `let in` variable `alert` is not used
+
+14|                 let
+15|                     alert =
+                        ^^^^^
+16|                         Alert.alert Alert.Info [ Html.text "Information message" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/AlertTest.elm:22:21
+
+(fix) NoUnused.Variables: `let in` variable `alert` is not used
+
+21|                 let
+22|                     alert =
+                        ^^^^^
+23|                         Alert.alert Alert.Success [ Html.text "Success message" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/AlertTest.elm:29:21
+
+(fix) NoUnused.Variables: `let in` variable `alert` is not used
+
+28|                 let
+29|                     alert =
+                        ^^^^^
+30|                         Alert.alert Alert.Warning [ Html.text "Warning message" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/AlertTest.elm:36:21
+
+(fix) NoUnused.Variables: `let in` variable `alert` is not used
+
+35|                 let
+36|                     alert =
+                        ^^^^^
+37|                         Alert.alert Alert.Error [ Html.text "Error message" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/AlertTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/BadgeTest.elm
+
+
+-- ELM-REVIEW ERROR ----------------------------- tests/Design/BadgeTest.elm:5:8
+
+(fix) NoUnused.Variables: Imported module `Html` is not used
+
+4| import Expect
+5| import Html
+          ^^^^
+6| import Test
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/BadgeTest.elm:15:21
+
+(fix) NoUnused.Variables: `let in` variable `badge` is not used
+
+14|                 let
+15|                     badge =
+                        ^^^^^
+16|                         Badge.badge Badge.Neutral "Neutral"
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/BadgeTest.elm:22:21
+
+(fix) NoUnused.Variables: `let in` variable `badge` is not used
+
+21|                 let
+22|                     badge =
+                        ^^^^^
+23|                         Badge.badge Badge.Success "Success"
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/BadgeTest.elm:29:21
+
+(fix) NoUnused.Variables: `let in` variable `badge` is not used
+
+28|                 let
+29|                     badge =
+                        ^^^^^
+30|                         Badge.badge Badge.Warning "Warning"
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/BadgeTest.elm:36:21
+
+(fix) NoUnused.Variables: `let in` variable `badge` is not used
+
+35|                 let
+36|                     badge =
+                        ^^^^^
+37|                         Badge.badge Badge.Error "Error"
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/BadgeTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/BreadcrumbTest.elm
+
+
+-- ELM-REVIEW ERROR ---------------------- tests/Design/BreadcrumbTest.elm:15:21
+
+(fix) NoUnused.Variables: `let in` variable `breadcrumb` is not used
+
+14|                 let
+15|                     breadcrumb =
+                        ^^^^^^^^^^
+16|                         Breadcrumb.breadcrumb [ Html.text "Home" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────── tests/Design/BreadcrumbTest.elm:22:21
+
+(fix) NoUnused.Variables: `let in` variable `breadcrumb` is not used
+
+21|                 let
+22|                     breadcrumb =
+                        ^^^^^^^^^^
+23|                         Breadcrumb.breadcrumb
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────── tests/Design/BreadcrumbTest.elm:32:21
+
+(fix) NoUnused.Variables: `let in` variable `breadcrumb` is not used
+
+31|                 let
+32|                     breadcrumb =
+                        ^^^^^^^^^^
+33|                         Breadcrumb.breadcrumb [ Breadcrumb.item "/home" "Home" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/BreadcrumbTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/ButtonTest.elm
+
+
+-- ELM-REVIEW ERROR -------------------------- tests/Design/ButtonTest.elm:16:25
+
+(fix) NoUnused.Variables: `let in` variable `button` is not used
+
+15|                     let
+16|                         button =
+                            ^^^^^^
+17|                             Button.button Button.Primary [] [ Html.text "Click me" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/ButtonTest.elm:23:25
+
+(fix) NoUnused.Variables: `let in` variable `button` is not used
+
+22|                     let
+23|                         button =
+                            ^^^^^^
+24|                             Button.button Button.Secondary [] [ Html.text "Click me" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/ButtonTest.elm:30:25
+
+(fix) NoUnused.Variables: `let in` variable `button` is not used
+
+29|                     let
+30|                         button =
+                            ^^^^^^
+31|                             Button.button Button.Outline [] [ Html.text "Click me" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/ButtonTest.elm:37:25
+
+(fix) NoUnused.Variables: `let in` variable `button` is not used
+
+36|                     let
+37|                         button =
+                            ^^^^^^
+38|                             Button.button Button.Ghost [] [ Html.text "Click me" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/ButtonTest.elm:46:25
+
+(fix) NoUnused.Variables: `let in` variable `button` is not used
+
+45|                     let
+46|                         button =
+                            ^^^^^^
+47|                             Button.button Button.Primary [ Button.small ] [ Html.text "Small" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/ButtonTest.elm:53:25
+
+(fix) NoUnused.Variables: `let in` variable `button` is not used
+
+52|                     let
+53|                         button =
+                            ^^^^^^
+54|                             Button.button Button.Primary [ Button.medium ] [ Html.text "Medium" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/ButtonTest.elm:60:25
+
+(fix) NoUnused.Variables: `let in` variable `button` is not used
+
+59|                     let
+60|                         button =
+                            ^^^^^^
+61|                             Button.button Button.Primary [ Button.large ] [ Html.text "Large" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/ButtonTest.elm:69:25
+
+(fix) NoUnused.Variables: `let in` variable `button` is not used
+
+68|                     let
+69|                         button =
+                            ^^^^^^
+70|                             Button.button Button.Primary [ Button.disabled ] [ Html.text "Disabled" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/ButtonTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/CardTest.elm
+
+
+-- ELM-REVIEW ERROR ---------------------------- tests/Design/CardTest.elm:15:21
+
+(fix) NoUnused.Variables: `let in` variable `card` is not used
+
+14|                 let
+15|                     card =
+                        ^^^^
+16|                         Card.card [ Html.text "Card content" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────────── tests/Design/CardTest.elm:22:21
+
+(fix) NoUnused.Variables: `let in` variable `card` is not used
+
+21|                 let
+22|                     card =
+                        ^^^^
+23|                         Card.withHeader [ Html.text "Header" ] [ Html.text "Body" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────────── tests/Design/CardTest.elm:29:21
+
+(fix) NoUnused.Variables: `let in` variable `card` is not used
+
+28|                 let
+29|                     card =
+                        ^^^^
+30|                         Card.withFooter [ Html.text "Header" ] [ Html.text "Body" ] [ Html.text "Footer" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/CardTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/ContainerTest.elm
+
+
+-- ELM-REVIEW ERROR ----------------------- tests/Design/ContainerTest.elm:15:21
+
+(fix) NoUnused.Variables: `let in` variable `container` is not used
+
+14|                 let
+15|                     container =
+                        ^^^^^^^^^
+16|                         Container.container [ Html.text "Content" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────── tests/Design/ContainerTest.elm:22:21
+
+(fix) NoUnused.Variables: `let in` variable `container` is not used
+
+21|                 let
+22|                     container =
+                        ^^^^^^^^^
+23|                         Container.container [ Html.text "Content" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────── tests/Design/ContainerTest.elm:29:21
+
+(fix) NoUnused.Variables: `let in` variable `container` is not used
+
+28|                 let
+29|                     container =
+                        ^^^^^^^^^
+30|                         Container.container [ Html.text "Content" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────── tests/Design/ContainerTest.elm:36:21
+
+(fix) NoUnused.Variables: `let in` variable `container` is not used
+
+35|                 let
+36|                     container =
+                        ^^^^^^^^^
+37|                         Container.container [ Html.text "Content" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/ContainerTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/FooterTest.elm
+
+
+-- ELM-REVIEW ERROR -------------------------- tests/Design/FooterTest.elm:15:21
+
+(fix) NoUnused.Variables: `let in` variable `footer` is not used
+
+14|                 let
+15|                     footer =
+                        ^^^^^^
+16|                         Footer.footer [] [ Html.text "Copyright 2026" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/FooterTest.elm:22:21
+
+(fix) NoUnused.Variables: `let in` variable `footer` is not used
+
+21|                 let
+22|                     footer =
+                        ^^^^^^
+23|                         Footer.footer [ Footer.link "/privacy" "Privacy" ] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/FooterTest.elm:29:21
+
+(fix) NoUnused.Variables: `let in` variable `footer` is not used
+
+28|                 let
+29|                     footer =
+                        ^^^^^^
+30|                         Footer.footer [ Footer.link "/a" "A", Footer.link "/b" "B" ] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/FooterTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/GridTest.elm
+
+
+-- ELM-REVIEW ERROR ---------------------------- tests/Design/GridTest.elm:15:21
+
+(fix) NoUnused.Variables: `let in` variable `grid` is not used
+
+14|                 let
+15|                     grid =
+                        ^^^^
+16|                         Grid.grid []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────────── tests/Design/GridTest.elm:25:21
+
+(fix) NoUnused.Variables: `let in` variable `grid` is not used
+
+24|                 let
+25|                     grid =
+                        ^^^^
+26|                         Grid.grid [ Grid.columns 3 ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────────── tests/Design/GridTest.elm:33:21
+
+(fix) NoUnused.Variables: `let in` variable `grid` is not used
+
+32|                 let
+33|                     grid =
+                        ^^^^
+34|                         Grid.grid [ Grid.minWidth "250px" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────────── tests/Design/GridTest.elm:41:21
+
+(fix) NoUnused.Variables: `let in` variable `grid` is not used
+
+40|                 let
+41|                     grid =
+                        ^^^^
+42|                         Grid.grid [ Grid.gap Grid.Medium ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────────── tests/Design/GridTest.elm:49:21
+
+(fix) NoUnused.Variables: `let in` variable `grid` is not used
+
+48|                 let
+49|                     grid =
+                        ^^^^
+50|                         Grid.grid [ Grid.gap Grid.Large ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/GridTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/HeaderTest.elm
+
+
+-- ELM-REVIEW ERROR -------------------------- tests/Design/HeaderTest.elm:15:21
+
+(fix) NoUnused.Variables: `let in` variable `header` is not used
+
+14|                 let
+15|                     header =
+                        ^^^^^^
+16|                         Header.header [ Header.brand "My App" ] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/HeaderTest.elm:22:21
+
+(fix) NoUnused.Variables: `let in` variable `header` is not used
+
+21|                 let
+22|                     header =
+                        ^^^^^^
+23|                         Header.header [ Header.brand "My App" ] [ Html.text "Nav 1" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/HeaderTest.elm:29:21
+
+(fix) NoUnused.Variables: `let in` variable `header` is not used
+
+28|                 let
+29|                     header =
+                        ^^^^^^
+30|                         Header.header [ Header.link "/home" "Home" ] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+────────────────────────────────────────────── tests/Design/HeaderTest.elm:36:21
+
+(fix) NoUnused.Variables: `let in` variable `header` is not used
+
+35|                 let
+36|                     header =
+                        ^^^^^^
+37|                         Header.header [ Header.link "/a" "A", Header.link "/b" "B" ] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/HeaderTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/MasteryBadge_Test.elm
+
+
+-- ELM-REVIEW ERROR ------------------- tests/Design/MasteryBadge_Test.elm:14:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+13|                 let
+14|                     _ =
+                        ^
+15|                         MasteryBadge.masteryBadge MasteryBadge.NotStarted
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+─────────────────────────────────────── tests/Design/MasteryBadge_Test.elm:21:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+20|                 let
+21|                     _ =
+                        ^
+22|                         MasteryBadge.masteryBadge MasteryBadge.InProgress
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+─────────────────────────────────────── tests/Design/MasteryBadge_Test.elm:28:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+27|                 let
+28|                     _ =
+                        ^
+29|                         MasteryBadge.masteryBadge MasteryBadge.Mastered
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+─────────────────────────────────────── tests/Design/MasteryBadge_Test.elm:35:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+34|                 let
+35|                     _ =
+                        ^
+36|                         MasteryBadge.masteryBadgeWithLabel MasteryBadge.Mastered "85%"
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+─────────────────────────────────────── tests/Design/MasteryBadge_Test.elm:42:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+41|                 let
+42|                     _ =
+                        ^
+43|                         MasteryBadge.masteryBadgeWithLabel MasteryBadge.NotStarted "0%"
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+tests/Design/MasteryBadge_Test.elm  ↑
+====o======================================================================o====
+↓  tests/Design/ProgressBar_Test.elm
+
+
+-- ELM-REVIEW ERROR -------------------- tests/Design/ProgressBar_Test.elm:14:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+13|                 let
+14|                     _ =
+                        ^
+15|                         ProgressBar.progressBar (Just "Progress") 0
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+──────────────────────────────────────── tests/Design/ProgressBar_Test.elm:21:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+20|                 let
+21|                     _ =
+                        ^
+22|                         ProgressBar.progressBar (Just "Progress") 50
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+──────────────────────────────────────── tests/Design/ProgressBar_Test.elm:28:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+27|                 let
+28|                     _ =
+                        ^
+29|                         ProgressBar.progressBar (Just "Progress") 100
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+──────────────────────────────────────── tests/Design/ProgressBar_Test.elm:35:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+34|                 let
+35|                     _ =
+                        ^
+36|                         ProgressBar.progressBar Nothing 75
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+──────────────────────────────────────── tests/Design/ProgressBar_Test.elm:42:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+41|                 let
+42|                     _ =
+                        ^
+43|                         ProgressBar.progressBar (Just "Progress") 150
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+──────────────────────────────────────── tests/Design/ProgressBar_Test.elm:49:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+48|                 let
+49|                     _ =
+                        ^
+50|                         ProgressBar.progressBar (Just "Progress") -10
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+tests/Design/ProgressBar_Test.elm  ↑
+====o======================================================================o====
+↓  tests/Design/ProgressTest.elm
+
+
+-- ELM-REVIEW ERROR ------------------------ tests/Design/ProgressTest.elm:14:21
+
+(fix) NoUnused.Variables: `let in` variable `progress` is not used
+
+13|                 let
+14|                     progress =
+                        ^^^^^^^^
+15|                         Progress.progress [] 0
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Design/ProgressTest.elm:21:21
+
+(fix) NoUnused.Variables: `let in` variable `progress` is not used
+
+20|                 let
+21|                     progress =
+                        ^^^^^^^^
+22|                         Progress.progress [] 50
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Design/ProgressTest.elm:28:21
+
+(fix) NoUnused.Variables: `let in` variable `progress` is not used
+
+27|                 let
+28|                     progress =
+                        ^^^^^^^^
+29|                         Progress.progress [] 100
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Design/ProgressTest.elm:35:21
+
+(fix) NoUnused.Variables: `let in` variable `progress` is not used
+
+34|                 let
+35|                     progress =
+                        ^^^^^^^^
+36|                         Progress.progress [ Progress.label "Loading..." ] 75
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/ProgressTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/SpinnerTest.elm
+
+
+-- ELM-REVIEW ERROR ------------------------- tests/Design/SpinnerTest.elm:14:21
+
+(fix) NoUnused.Variables: `let in` variable `spinner` is not used
+
+13|                 let
+14|                     spinner =
+                        ^^^^^^^
+15|                         Spinner.spinner []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Design/SpinnerTest.elm:21:21
+
+(fix) NoUnused.Variables: `let in` variable `spinner` is not used
+
+20|                 let
+21|                     spinner =
+                        ^^^^^^^
+22|                         Spinner.spinner [ Spinner.small ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Design/SpinnerTest.elm:28:21
+
+(fix) NoUnused.Variables: `let in` variable `spinner` is not used
+
+27|                 let
+28|                     spinner =
+                        ^^^^^^^
+29|                         Spinner.spinner [ Spinner.medium ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/SpinnerTest.elm  ↑
+====o======================================================================o====
+↓  tests/Design/StackTest.elm
+
+
+-- ELM-REVIEW ERROR --------------------------- tests/Design/StackTest.elm:15:21
+
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
+
+14|                 let
+15|                     stack =
+                        ^^^^^
+16|                         Stack.stack Stack.Vertical [] [ Html.text "Child 1", Html.text "Child 2" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/StackTest.elm:22:21
+
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
+
+21|                 let
+22|                     stack =
+                        ^^^^^
+23|                         Stack.stack Stack.Vertical [] [ Html.text "Child 1", Html.text "Child 2" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/StackTest.elm:29:21
+
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
+
+28|                 let
+29|                     stack =
+                        ^^^^^
+30|                         Stack.stack Stack.Horizontal [] [ Html.text "Item 1", Html.text "Item 2" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/StackTest.elm:36:21
+
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
+
+35|                 let
+36|                     stack =
+                        ^^^^^
+37|                         Stack.stack Stack.Vertical [] [ Html.text "Vertical" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/StackTest.elm:43:21
+
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
+
+42|                 let
+43|                     stack =
+                        ^^^^^
+44|                         Stack.stack Stack.Horizontal [] [ Html.text "Horizontal" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/StackTest.elm:50:21
+
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
+
+49|                 let
+50|                     stack =
+                        ^^^^^
+51|                         Stack.stack Stack.Vertical [ Stack.spacing Stack.small ] [ Html.text "Small" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/StackTest.elm:57:21
+
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
+
+56|                 let
+57|                     stack =
+                        ^^^^^
+58|                         Stack.stack Stack.Vertical [ Stack.spacing Stack.medium ] [ Html.text "Medium" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/StackTest.elm:64:21
+
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
+
+63|                 let
+64|                     stack =
+                        ^^^^^
+65|                         Stack.stack Stack.Vertical [ Stack.spacing Stack.large ] [ Html.text "Large" ]
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+─────────────────────────────────────────────── tests/Design/StackTest.elm:71:21
+
+(fix) NoUnused.Variables: `let in` variable `stack` is not used
+
+70|                 let
+71|                     stack =
+                        ^^^^^
+72|                         Stack.stack Stack.Horizontal
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Design/StackTest.elm  ↑
+====o======================================================================o====
+↓  tests/Pages/Dashboard_Test.elm
+
+
+-- ELM-REVIEW ERROR ----------------------- tests/Pages/Dashboard_Test.elm:14:21
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+13|                 let
+14|                     _ =
+                        ^
+15|                         Dashboard.page
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+tests/Pages/Dashboard_Test.elm  ↑
+====o======================================================================o====
+↓  tests/Viz/FunctionGrapherTest.elm
+
+
+-- ELM-REVIEW ERROR -------------------- tests/Viz/FunctionGrapherTest.elm:61:21
+
+(fix) NoUnused.Variables: `let in` variable `svg` is not used
+
+61|                     svg =
+                        ^^^
+62|                         FG.render grapher
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Viz/FunctionGrapherTest.elm  ↑
+====o======================================================================o====
+↓  tests/Viz/NumberLineTest.elm
+
+
+-- ELM-REVIEW ERROR ------------------------ tests/Viz/NumberLineTest.elm:124:25
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+124|                         _ =
+                             ^
+125|                             render nl
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+──────────────────────────────────────────── tests/Viz/NumberLineTest.elm:136:25
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+136|                         _ =
+                             ^
+137|                             render nl
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+──────────────────────────────────────────── tests/Viz/NumberLineTest.elm:147:25
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+147|                         _ =
+                             ^
+148|                             render nl
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+──────────────────────────────────────────── tests/Viz/NumberLineTest.elm:159:25
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+159|                         _ =
+                             ^
+160|                             render nl
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+──────────────────────────────────────────── tests/Viz/NumberLineTest.elm:171:25
+
+(fix) NoUnused.Variables: Value assigned to `_` is unused
+
+171|                         _ =
+                             ^
+172|                             render nl
+
+This value has been assigned to a wildcard, which makes the value unusable. You
+should remove it at the location I pointed at.
+
+tests/Viz/NumberLineTest.elm  ↑
+====o======================================================================o====
+↓  tests/Viz/SvgHelpersTest.elm
+
+
+-- ELM-REVIEW ERROR --------------------------- tests/Viz/SvgHelpersTest.elm:4:8
+
+(fix) NoUnused.Variables: Imported module `Html` is not used
+
+3| import Expect
+4| import Html
+          ^^^^
+5| import Svg.Helpers as Svg
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:15:21
+
+(fix) NoUnused.Variables: `let in` variable `result` is not used
+
+14|                 let
+15|                     result =
+                        ^^^^^^
+16|                         Svg.svgContainer 800 600 [] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:22:21
+
+(fix) NoUnused.Variables: `let in` variable `result` is not used
+
+21|                 let
+22|                     result =
+                        ^^^^^^
+23|                         Svg.svgContainer 800 600 [ Svg.withViewBox "0 0 800 600" ] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:29:21
+
+(fix) NoUnused.Variables: `let in` variable `result` is not used
+
+28|                 let
+29|                     result =
+                        ^^^^^^
+30|                         Svg.svgGroup [] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:36:21
+
+(fix) NoUnused.Variables: `let in` variable `result` is not used
+
+35|                 let
+36|                     result =
+                        ^^^^^^
+37|                         Svg.svgLine 0 0 100 100 [] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:43:21
+
+(fix) NoUnused.Variables: `let in` variable `result` is not used
+
+42|                 let
+43|                     result =
+                        ^^^^^^
+44|                         Svg.svgCircle 50 50 25 [] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:50:21
+
+(fix) NoUnused.Variables: `let in` variable `result` is not used
+
+49|                 let
+50|                     result =
+                        ^^^^^^
+51|                         Svg.svgPath "M 0 0 L 100 100" [] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:57:21
+
+(fix) NoUnused.Variables: `let in` variable `result` is not used
+
+56|                 let
+57|                     result =
+                        ^^^^^^
+58|                         Svg.svgText "Hello" 100 50 []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:64:21
+
+(fix) NoUnused.Variables: `let in` variable `result` is not used
+
+63|                 let
+64|                     result =
+                        ^^^^^^
+65|                         Svg.svgRect 10 10 100 50 [] []
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:71:21
+
+(fix) NoUnused.Variables: `let in` variable `attr` is not used
+
+70|                 let
+71|                     attr =
+                        ^^^^
+72|                         Svg.withFill "#FF0000"
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:78:21
+
+(fix) NoUnused.Variables: `let in` variable `attr` is not used
+
+77|                 let
+78|                     attr =
+                        ^^^^
+79|                         Svg.withStroke "#0000FF"
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:85:21
+
+(fix) NoUnused.Variables: `let in` variable `attr` is not used
+
+84|                 let
+85|                     attr =
+                        ^^^^
+86|                         Svg.withStrokeWidth 2
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+───────────────────────────────────────────── tests/Viz/SvgHelpersTest.elm:92:21
+
+(fix) NoUnused.Variables: `let in` variable `attr` is not used
+
+91|                 let
+92|                     attr =
+                        ^^^^
+93|                         Svg.withTransform "rotate(45)"
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+tests/Viz/SvgHelpersTest.elm  ↑
+====o======================================================================o====
+↓  tests/Viz/UnitCircleTest.elm
+
+
+-- ELM-REVIEW ERROR -------------------------- tests/Viz/UnitCircleTest.elm:5:47
+
+(fix) NoUnused.Variables: Imported type `UnitCircle` is not used
+
+4| import Test exposing (describe, test)
+5| import Viz.UnitCircle as UnitCircle exposing (UnitCircle)
+                                                 ^^^^^^^^^^
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Viz/UnitCircleTest.elm:112:21
+
+(fix) NoUnused.Variables: `let in` variable `html` is not used
+
+111|                         UnitCircle.empty
+112|                     html =
+                         ^^^^
+113|                         UnitCircle.render uc
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Viz/UnitCircleTest.elm:121:21
+
+(fix) NoUnused.Variables: `let in` variable `html` is not used
+
+120|                         UnitCircle.empty |> UnitCircle.withAngle (pi / 3)
+121|                     html =
+                         ^^^^
+122|                         UnitCircle.render uc
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Viz/UnitCircleTest.elm:130:21
+
+(fix) NoUnused.Variables: `let in` variable `html` is not used
+
+129|                         UnitCircle.empty |> UnitCircle.withCoords True
+130|                     html =
+                         ^^^^
+131|                         UnitCircle.render uc
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Viz/UnitCircleTest.elm:139:21
+
+(fix) NoUnused.Variables: `let in` variable `html` is not used
+
+138|                         UnitCircle.empty |> UnitCircle.withLabel "π/4"
+139|                     html =
+                         ^^^^
+140|                         UnitCircle.render uc
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Viz/UnitCircleTest.elm:148:21
+
+(fix) NoUnused.Variables: `let in` variable `html` is not used
+
+147|                         UnitCircle.empty |> UnitCircle.onClickSelect Basics.identity
+148|                     html =
+                         ^^^^
+149|                         UnitCircle.render uc
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Viz/UnitCircleTest.elm:161:21
+
+(fix) NoUnused.Variables: `let in` variable `html` is not used
+
+160|                             |> UnitCircle.onClickSelect Basics.identity
+161|                     html =
+                         ^^^^
+162|                         UnitCircle.render uc
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Viz/UnitCircleTest.elm:209:25
+
+(fix) NoUnused.Variables: `let in` variable `html` is not used
+
+208|                                 |> UnitCircle.onClickSelect Basics.identity
+209|                         html =
+                             ^^^^
+210|                             UnitCircle.render uc
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+──────────────────────────────────────────── tests/Viz/UnitCircleTest.elm:222:25
+
+(fix) NoUnused.Variables: `let in` variable `html` is not used
+
+221|                                 |> UnitCircle.onClickSelect Basics.identity
+222|                         html =
+                             ^^^^
+223|                             UnitCircle.render uc
+
+You should either use this value somewhere, or remove it at the location I
+pointed at.
+
+Errors marked with (fix) can be fixed automatically using `elm-review --fix`.
+
+Errors marked with (fix removes files) can be fixed automatically by
+also using `--allow-remove-files`.
+
+I found 148 errors in 33 files.
+[0m
+[0m$ [0mnpx elm-format src/Components/Flashcard.elm --yes --elm-version=0.19 && npx elm-format src/Data/SRS.elm --yes --elm-version=0.19 && npx elm-format src/Logic/Leitner.elm --yes --elm-version=0.19
+Processing file src/Components/Flashcard.elm
+Processing file src/Data/SRS.elm
+Processing file src/Logic/Leitner.elm
+[0m
+[0m→ [0mRead tests/Components/Flashcard_Test.elm
+[0m→ [0mRead tests/Data/SRS_Test.elm
+[0m
+[0m← [0mEdit tests/Components/Flashcard_Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Components/Flashcard_Test.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Components/Flashcard_Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Components/Flashcard_Test.elm
+@@ -1,8 +1,8 @@
+ module Components.Flashcard_Test exposing (suite)
+ 
+ import Components.Flashcard as Flashcard
+-import Data.SRS exposing (Card(..), newCard)
++import Data.SRS exposing (newCard)
+ import Expect
+ import Html
+ import Test
+ 
+
+[0m
+[0m← [0mEdit tests/Data/SRS_Test.elm
+Index: /home/daniel-bo/Desktop/ka-math-companion/tests/Data/SRS_Test.elm
+===================================================================
+--- /home/daniel-bo/Desktop/ka-math-companion/tests/Data/SRS_Test.elm
++++ /home/daniel-bo/Desktop/ka-math-companion/tests/Data/SRS_Test.elm
+@@ -1,7 +1,7 @@
+ module Data.SRS_Test exposing (suite)
+ 
+-import Data.SRS exposing (Box(..), Card(..), LeitnerBox, ReviewStats, boxNumber, newCard)
++import Data.SRS exposing (Box(..), Card(..), boxNumber, newCard)
+ import Expect
+ import Test
+ 
+ 
+
+[0m
+[0m$ [0mnpm test
+> ka-math-companion@0.1.0 test
+> elm-test
+
+CompilingCompiling > Starting tests
+
+elm-test 0.19.1-revision17
+--------------------------
+
+Running 284 tests. To reproduce these results, run: elm-test --fuzz 100 --seed 148285566844479
+
+
+TEST RUN PASSED
+
+Duration: 318 ms
+Passed:   284
+Failed:   0
+[0m
+[0m$ [0mnpm run build
+> ka-math-companion@0.1.0 build
+> elm-land build
+
+
+🌈  Elm Land [2m(v0.20.1)[0m build was successful.
+[32m    ⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺[0m
+[0m

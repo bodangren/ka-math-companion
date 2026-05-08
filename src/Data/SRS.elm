@@ -23,11 +23,20 @@ type Box
 boxNumber : Box -> Int
 boxNumber box =
     case box of
-        Box1 -> 1
-        Box2 -> 2
-        Box3 -> 3
-        Box4 -> 4
-        Box5 -> 5
+        Box1 ->
+            1
+
+        Box2 ->
+            2
+
+        Box3 ->
+            3
+
+        Box4 ->
+            4
+
+        Box5 ->
+            5
 
 
 type Card
@@ -79,11 +88,20 @@ cardToReview (Card fields) =
 nextReviewDate : Box -> String
 nextReviewDate box =
     case box of
-        Box1 -> "1 day"
-        Box2 -> "3 days"
-        Box3 -> "7 days"
-        Box4 -> "14 days"
-        Box5 -> "30 days"
+        Box1 ->
+            "1 day"
+
+        Box2 ->
+            "3 days"
+
+        Box3 ->
+            "7 days"
+
+        Box4 ->
+            "14 days"
+
+        Box5 ->
+            "30 days"
 
 
 type alias LeitnerBox =

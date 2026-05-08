@@ -1,7 +1,7 @@
 module Components.Flashcard_Test exposing (suite)
 
 import Components.Flashcard as Flashcard
-import Data.SRS exposing (Card(..), newCard)
+import Data.SRS exposing (newCard)
 import Expect
 import Html
 import Test

@@ -1,4 +1,4 @@
-module Components.Flashcard exposing (flashcard, flipCard, isFlipped, viewCard, correctButton, incorrectButton, gradingButtons)
+module Components.Flashcard exposing (correctButton, flashcard, flipCard, gradingButtons, incorrectButton, isFlipped, viewCard)
 
 import Data.SRS exposing (Card(..))
 import Design.Button as Button
@@ -28,6 +28,7 @@ viewCard (Card fields) isFlippedState _ =
         innerStyle =
             if isFlippedState then
                 "position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d;transform:rotateY(180deg);"
+
             else
                 "position:relative;width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d;transform:rotateY(0deg);"
 
@@ -73,7 +74,7 @@ correctButton : msg -> Html.Html msg
 correctButton msg =
     Html.button
         [ attribute "style" ("background:#" ++ colorPalette.primary ++ ";color:#" ++ colorPalette.white ++ ";border:none;border-radius:9999px;padding:" ++ spacing.sm ++ " " ++ spacing.lg ++ ";font-family:" ++ typographyScale.bodyFont ++ ";font-weight:600;cursor:pointer;margin-right:" ++ spacing.md ++ ";")
-        , attribute "onclick" ("dispatchEvent(new Event('click',{bubbles:true}))")
+        , attribute "onclick" "dispatchEvent(new Event('click',{bubbles:true}))"
         ]
         [ Html.text "Correct ✓" ]
 
@@ -82,7 +83,7 @@ incorrectButton : msg -> Html.Html msg
 incorrectButton msg =
     Html.button
         [ attribute "style" ("background:#" ++ colorPalette.secondary ++ ";color:#" ++ colorPalette.white ++ ";border:none;border-radius:9999px;padding:" ++ spacing.sm ++ " " ++ spacing.lg ++ ";font-family:" ++ typographyScale.bodyFont ++ ";font-weight:600;cursor:pointer;")
-        , attribute "onclick" ("dispatchEvent(new Event('click',{bubbles:true}))")
+        , attribute "onclick" "dispatchEvent(new Event('click',{bubbles:true}))"
         ]
         [ Html.text "Incorrect ✗" ]
 

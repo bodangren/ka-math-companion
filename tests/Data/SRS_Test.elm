@@ -1,6 +1,6 @@
 module Data.SRS_Test exposing (suite)
 
-import Data.SRS exposing (Box(..), Card(..), LeitnerBox, ReviewStats, boxNumber, newCard)
+import Data.SRS exposing (Box(..), Card(..), boxNumber, newCard)
 import Expect
 import Test
 
