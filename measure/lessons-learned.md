@@ -43,3 +43,5 @@
 - (2026-05-07, progress-tracking) Elm port tests: can't test Cmd output directly in elm-test. Test exposed functions by verifying type signatures compile
 - (2026-05-07, spaced-practice) Elm custom type with record: `Card (CardFields ...)` requires wrapping in variant constructor when pattern matching
 - (2026-05-07, spaced-practice) Elm let bindings: `~` is invalid in let. Use `let boxedCard = Card {...} in` not `let ~(Card c) = card`
+- (2026-05-08, spaced-practice) Elm Html div with style: `Html.div [attribute "style" cssString] children` - use `attribute` not `style` for CSS
+- (2026-05-08, spaced-practice) Elm flip animation: `transform:rotateY(180deg)` requires `perspective:1000px` on container and `backface-visibility:hidden` on faces

@@ -26,3 +26,5 @@
 | 2026-04-25 | design-system | Mixed style application: some components use `attribute "style" string`, others use `style` individual | Low | Open | Button.elm mixes both; should standardize on one approach across all components |
 | 2026-04-25 | visual_refresh | Visual refresh changed design tokens and component APIs | Medium | Resolved | Tests updated to match Orbital Editorial theme values |
 | 2026-05-01 | curriculum-data | Task 6 marked done but work already complete - Unit 7 has objectives/descriptions/time | Low | Resolved | Plan was stale; verification confirmed all data present |
+| 2026-05-08 | spaced-practice | Flashcard component: correctButton/incorrectButton use onclick dispatchEvent - not wired to Elm msg | Low | Open | Component renders but click handlers need Msg variant and update function |
+| 2026-05-08 | spaced-practice | Review page doesn't exist yet - Phase 3 tasks blocked | Medium | Open | Need to create src/Pages/Review.elm and src/Logic/Review.elm |
