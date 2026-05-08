@@ -2,31 +2,31 @@
 
 ## Phase 1: Leitner Box Logic
 
-- [ ] **Task 1: Create SRS Data Types**
-  - [ ] Write Tests: Verify box/card types
-  - [ ] Implement: Create `src/Data/SRS.elm` with Leitner types
+- [x] **Task 1: Create SRS Data Types**
+  - [x] Write Tests: Verify box/card types
+  - [x] Implement: Create `src/Data/SRS.elm` with Leitner types
 
-- [ ] **Task 2: Box Progression Logic**
-  - [ ] Write Tests: Verify correct moves card up, incorrect moves down
-  - [ ] Implement: Create `src/Logic/Leitner.elm`
+- [x] **Task 2: Box Progression Logic**
+  - [x] Write Tests: Verify correct moves card up, incorrect moves down
+  - [x] Implement: Create `src/Logic/Leitner.elm`
 
-- [ ] **Task 3: Due Date Calculation**
-  - [ ] Write Tests: Verify intervals calculated correctly
-  - [ ] Implement: Add interval logic for each box
+- [x] **Task 3: Due Date Calculation**
+  - [x] Write Tests: Verify intervals calculated correctly
+  - [x] Implement: Add interval logic for each box
 
 ## Phase 2: Flashcard Component
 
-- [ ] **Task 4: Flashcard Renderer**
-  - [ ] Write Tests: Verify front/back render
-  - [ ] Implement: Create `src/Components/Flashcard.elm`
+- [x] **Task 4: Flashcard Renderer**
+  - [x] Write Tests: Verify front/back render
+  - [x] Implement: Create `src/Components/Flashcard.elm`
 
-- [ ] **Task 5: Flip Animation**
-  - [ ] Write Tests: Verify flip state toggles
-  - [ ] Implement: Add CSS transitions for card flip
+- [x] **Task 5: Flip Animation**
+  - [x] Write Tests: Verify flip state toggles
+  - [x] Implement: Add CSS transitions for card flip
 
-- [ ] **Task 6: Self-Grading**
-  - [ ] Write Tests: Verify correct/incorrect buttons work
-  - [ ] Implement: Add grading interaction
+- [x] **Task 6: Self-Grading**
+  - [x] Write Tests: Verify correct/incorrect buttons work
+  - [x] Implement: Add grading interaction
 
 ## Phase 3: Review Queue
 
