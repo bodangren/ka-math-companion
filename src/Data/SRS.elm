@@ -5,12 +5,24 @@ module Data.SRS exposing
     , LeitnerBox
     , NewCard
     , ReviewStats
+    , accuracy
     , boxNumber
     , cardToReview
+    , decodeCards
+    , decodeSRSData
     , defaultReviewStats
+    , encodeCard
+    , encodeSRSData
+    , encodeSRSDataVal
+    , intToBox
     , newCard
     , nextReviewDate
+    , recordAnswer
+    , version
     )
+
+import Json.Decode as Decode exposing (Decoder)
+import Json.Encode as Encode exposing (Value)
 
 
 type Box
@@ -126,3 +138,119 @@ defaultReviewStats =
     , incorrectCount = 0
     , averageConfidence = 0.0
     }
+
+
+accuracy : Card -> Float
+accuracy (Card fields) =
+    if fields.reviewCount == 0 then
+        0.0
+    else
+        toFloat fields.correctCount / toFloat fields.reviewCount
+
+
+recordAnswer : Bool -> Card -> Card
+recordAnswer isCorrect (Card fields) =
+    Card
+        { fields
+            | reviewCount = fields.reviewCount + 1
+            , correctCount = fields.correctCount + (if isCorrect then 1 else 0)
+        }
+
+
+version : Int
+version =
+    1
+
+
+type alias SRSData =
+    { version : Int
+    , cards : List Card
+    }
+
+
+encodeSRSData : SRSData -> String
+encodeSRSData data =
+    Encode.encode 0 (encodeSRSDataVal data)
+
+
+encodeSRSDataVal : SRSData -> Encode.Value
+encodeSRSDataVal data =
+    Encode.object
+        [ ( "version", Encode.int data.version )
+        , ( "cards", Encode.list encodeCard data.cards )
+        ]
+
+
+encodeCard : Card -> Encode.Value
+encodeCard (Card fields) =
+    Encode.object
+        [ ( "question", Encode.string fields.question )
+        , ( "answer", Encode.string fields.answer )
+        , ( "objectiveId", Encode.string fields.objectiveId )
+        , ( "box", Encode.int (boxNumber fields.box) )
+        , ( "intervalDays", Encode.int fields.intervalDays )
+        , ( "nextReviewDate", Encode.string fields.nextReviewDate )
+        , ( "reviewCount", Encode.int fields.reviewCount )
+        , ( "correctCount", Encode.int fields.correctCount )
+        ]
+
+
+decodeCards : String -> Result Decode.Error (List Card)
+decodeCards jsonString =
+    Decode.decodeString (Decode.list cardDecoder) jsonString
+
+
+decodeSRSData : String -> Result Decode.Error SRSData
+decodeSRSData jsonString =
+    Decode.decodeString srsDataDecoder jsonString
+
+
+srsDataDecoder : Decoder SRSData
+srsDataDecoder =
+    Decode.map2 SRSData
+        (Decode.field "version" Decode.int)
+        (Decode.field "cards" (Decode.list cardDecoder))
+
+
+cardDecoder : Decoder Card
+cardDecoder =
+    Decode.map8
+        (\question answer objectiveId boxInterval intervalDays nextReviewDateStr reviewCount correctCount ->
+            Card
+                { question = question
+                , answer = answer
+                , objectiveId = objectiveId
+                , box = intToBox boxInterval
+                , intervalDays = intervalDays
+                , nextReviewDate = nextReviewDateStr
+                , reviewCount = reviewCount
+                , correctCount = correctCount
+                }
+        )
+        (Decode.field "question" Decode.string)
+        (Decode.field "answer" Decode.string)
+        (Decode.field "objectiveId" Decode.string)
+        (Decode.field "box" Decode.int)
+        (Decode.field "intervalDays" Decode.int)
+        (Decode.field "nextReviewDate" Decode.string)
+        (Decode.field "reviewCount" Decode.int)
+        (Decode.field "correctCount" Decode.int)
+
+
+intToBox : Int -> Box
+intToBox n =
+    case n of
+        1 ->
+            Box1
+
+        2 ->
+            Box2
+
+        3 ->
+            Box3
+
+        4 ->
+            Box4
+
+        _ ->
+            Box5

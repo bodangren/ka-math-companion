@@ -51,6 +51,7 @@ viewHeader =
     Header.header
         [ Header.brand "KA Math Companion"
         , Header.link "/curriculum" "Curriculum"
+        , Header.navBadge "Review" 3
         ]
         []
 
