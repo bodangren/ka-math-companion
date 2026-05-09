@@ -44,29 +44,29 @@
 
 ## Phase 4: Card Management
 
-- [ ] **Task 10: Auto-Create Cards**
-  - [ ] Write Tests: Verify cards created from mastered objectives
-  - [ ] Implement: Add card generation on mastery
+- [x] **Task 10: Auto-Create Cards**
+  - [x] Write Tests: Verify cards created from mastered objectives
+  - [x] Implement: Add card generation on mastery
 
-- [ ] **Task 11: Card Statistics**
-  - [ ] Write Tests: Verify stats track correctly
-  - [ ] Implement: Add accuracy and review count tracking
+- [x] **Task 11: Card Statistics**
+  - [x] Write Tests: Verify stats track correctly
+  - [x] Implement: Add accuracy and review count tracking
 
 ## Phase 5: Persistence
 
-- [ ] **Task 12: LocalStorage Integration**
-  - [ ] Write Tests: Verify save/load works
-  - [ ] Implement: Add ports for SRS data
+- [x] **Task 12: LocalStorage Integration**
+  - [x] Write Tests: Verify save/load works
+  - [x] Implement: Add ports for SRS data
 
-- [ ] **Task 13: Daily Notification Badge**
-  - [ ] Write Tests: Verify badge shows count
-  - [ ] Implement: Add due count to navigation
+- [x] **Task 13: Daily Notification Badge**
+  - [x] Write Tests: Verify badge shows count
+  - [x] Implement: Add due count to navigation
 
 ## Phase 6: Integration
 
-- [ ] **Task 14: Add Review to Navigation**
-  - [ ] Write Tests: Verify link appears in nav
-  - [ ] Implement: Add Review link to Header
+- [x] **Task 14: Add Review to Navigation**
+  - [x] Write Tests: Verify link appears in nav
+  - [x] Implement: Add Review link to Header
 
 - [ ] **Task 15: Connect to Progress Tracking**
   - [ ] Write Tests: Verify SRS syncs with progress

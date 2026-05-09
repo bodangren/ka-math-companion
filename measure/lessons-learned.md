@@ -45,5 +45,8 @@
 - (2026-05-07, spaced-practice) Elm let bindings: `~` is invalid in let. Use `let boxedCard = Card {...} in` not `let ~(Card c) = card`
 - (2026-05-08, spaced-practice) Elm Html div with style: `Html.div [attribute "style" cssString] children` - use `attribute` not `style` for CSS
 - (2026-05-08, spaced-practice) Elm flip animation: `transform:rotateY(180deg)` requires `perspective:1000px` on container and `backface-visibility:hidden` on faces
-- (2026-05-09, spaced-practice) Elm Land auto-generates routes with params for pages with trailing underscore (Home_, Review_). Fix: rename to HomePage, ReviewPage etc.
-- (2026-05-09, spaced-practice) Elm record update with multiple fields: `{ session.stats | field1 = x, field2 = y }` is invalid. Construct new record: `{ field1 = x, field2 = y, otherField = session.stats.otherField }`
+- (2026-05-09, spaced-practice) Elm shadowing: variable names like `nextReviewDate` in lambda args shadow top-level functions. Use distinct names (`nextReviewDateStr`, `boxInterval`).
+- (2026-05-09, spaced-practice) Elm record update syntax: you cannot use record update syntax for multiple fields. Must construct new record.
+- (2026-05-09, spaced-practice) Elm Expect.within for floats: `Expect.equal` doesn't work for floats. Use `Expect.within (Expect.Absolute 0.001) expected actual`
+- (2026-05-09, spaced-practice) Elm custom type variants: defining `type NavBadge = NavBadge String Int` twice causes name clash error. Remove duplicate type alias.
+- (2026-05-09, spaced-practice) SRS LocalStorage: encode/decode roundtrip test verifies persistence works correctly
