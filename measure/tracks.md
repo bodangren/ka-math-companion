@@ -35,8 +35,8 @@
   _Link: [./archive/progress-tracking_20260507/](./archive/progress-tracking_20260507/)_
   LocalStorage-based mastery tracking with visual progress indicators. Core infrastructure through Phase 4 (data model, ports, logic, visualization, dashboard).
 
-- [ ] **Track: Spaced Practice (SRS)**
-  _Link: [./tracks/spaced-practice_20260403/](./tracks/spaced-practice_20260403/)_
+- [x] **Track: Spaced Practice (SRS)**
+  _Link: [./archive/spaced-practice_20260403/](./archive/spaced-practice_20260403/)_ *Status: COMPLETE — Phase 4 done, 304 tests passing, build succeeds, committed and pushed*
   Leitner box spaced repetition with flashcards and daily review.
 
 - [ ] **Track: Assessment & Mastery**
