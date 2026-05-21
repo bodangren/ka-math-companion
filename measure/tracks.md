@@ -40,7 +40,7 @@
   Leitner box spaced repetition with flashcards and daily review.
 
 - [ ] **Track: Assessment & Mastery**
-  _Link: [./tracks/assessment-mastery_20260403/](./tracks/assessment-mastery_20260403/)_
+  _Link: [./archive/assessment-mastery_20260403/](./archive/assessment-mastery_20260403/)_
   Unit quizzes, mastery thresholds, and prerequisite checking.
 
 ## Phase 4: Polish & Deployment
