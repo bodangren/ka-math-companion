@@ -39,7 +39,7 @@
   _Link: [./archive/spaced-practice_20260403/](./archive/spaced-practice_20260403/)_ *Status: COMPLETE — Phase 4 done, 304 tests passing, build succeeds, committed and pushed*
   Leitner box spaced repetition with flashcards and daily review.
 
-- [ ] **Track: Assessment & Mastery**
+- [x] **Track: Assessment & Mastery**
   _Link: [./archive/assessment-mastery_20260403/](./archive/assessment-mastery_20260403/)_
   Unit quizzes, mastery thresholds, and prerequisite checking.
 
@@ -56,6 +56,7 @@
 - [ ] **Track: Performance & SEO**
   _Link: [./tracks/performance-seo_20260403/](./tracks/performance-seo_20260403/)_
   Bundle optimization, meta tags, service worker, Lighthouse targets.
+- [ ] **Track: Progress Integration & Data Portability** _Link: [./tracks/progress_integration_portability_20260524/](./tracks/progress_integration_portability_20260524/)_ — Wire real progress data into mastery badges, build export/import UI, refactor duplicated findUnit, add page-level view tests
 
 - [x] **Track: Visual Refresh: Define Unique Identity**
   *Link: [./archive/visual_refresh_20260425/](./archive/visual_refresh_20260425/)*

@@ -1,0 +1,11 @@
+{
+  "track_id": "progress_integration_portability_20260524",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-05-24T00:00:00Z",
+  "updated_at": "2026-05-24T00:00:00Z",
+  "description": "Wire real progress data into UI mastery badges, build export/import UI, and add page-level view tests.",
+  "priority": "high",
+  "depends_on": ["progress-tracking_20260507", "spaced-practice_20260403"],
+  "estimated_effort": "medium"
+}
